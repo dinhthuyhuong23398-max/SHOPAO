@@ -50,8 +50,31 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
     </fieldset>
     <div className="quantity-row"><label htmlFor="quantity">{text(lang,'수량','Quantity')}</label><div className="stepper"><button type="button" aria-label={text(lang,'수량 줄이기','Decrease quantity')} disabled={quantity<=1} onClick={()=>{setQuantity(quantity-1);setSaved(false)}}>−</button><input id="quantity" type="number" min="1" max="99" required value={quantity} onChange={e=>{setQuantity(Number(e.target.value));setSaved(false)}}/><button type="button" aria-label={text(lang,'수량 늘리기','Increase quantity')} disabled={quantity>=99} onClick={()=>{setQuantity(quantity+1);setSaved(false)}}>+</button></div></div>
     <label className="note-label" htmlFor="item-note">{text(lang,'아이템 메모','Item note')} <span>{text(lang,'선택','Optional')}</span></label><textarea id="item-note" rows={3} maxLength={MAX_NOTE} value={note} onChange={e=>{setNote(e.target.value);setSaved(false)}} placeholder={text(lang,'사이즈, 컬러, 제작 일정 등 궁금한 점을 남겨주세요.','Questions about sizing, color or production timing? Leave them here.')}/><span className="character-count">{note.length} / {MAX_NOTE}</span>
-    <button className="button primary full-width" disabled={!ready||!fabricId||!colorId||saved} type="submit">{saved?text(lang,'선택에 저장됨','Added to selections'):editId?text(lang,'선택 수정하기','Update selection'):text(lang,'나의 선택에 담기','Add to my selections')}<span>{saved?'✓':'+'}</span></button>
-    <p className="form-status" role="status">{message}</p>{saved&&<a className="button secondary full-width" href={sitePath(`/${lang}/selections/`)}>{text(lang,'나의 선택 확인하기','View my selections')} →</a>}
+    <div className="customizer-buttons-stack">
+      <button 
+        type="button" 
+        className="button order-now-btn full-width" 
+        disabled={!ready||!fabricId}
+        onClick={() => {
+          if (!fabricId) return;
+          window.dispatchEvent(new CustomEvent('michelle:open-order', {
+            detail: {
+              product,
+              fabricId,
+              colorId,
+              quantity,
+              note
+            }
+          }));
+        }}
+      >
+        🛍️ {text(lang, '바로 주문하기 (배송 정보 입력)', 'Order Now (Delivery Form)', 'Đặt Hàng Nhanh (Giao tận nơi)')} ↗
+      </button>
+      <button className="button secondary full-width" disabled={!ready||!fabricId||!colorId||saved} type="submit">
+        {saved?text(lang,'선택에 저장됨','Added to selections','Đã thêm vào túi đồ'):editId?text(lang,'선택 수정하기','Update selection','Cập nhật lựa chọn'):text(lang,'나의 선택에 담기','Add to my selections','Thêm vào túi đồ')}<span>{saved?'✓':'+'}</span>
+      </button>
+    </div>
+    <p className="form-status" role="status">{message}</p>{saved&&<a className="button secondary full-width" href={sitePath(`/${lang}/selections/`)}>{text(lang,'나의 선택 확인하기','View my selections','Xem túi đồ của tôi')} →</a>}
     <StorageNotice lang={lang} persistent={persistent} unreadable={unreadable}/>
     {!persistent&&cart.items.length>0&&<><p className="field-hint">{text(lang,'복구 링크를 저장해 다른 브라우저에서 열어 주세요. 메모와 치수는 링크에 포함되지 않아요.','Save this link and open it in another browser. It excludes notes and measurements.')}</p><CopyField value={`${window.location.origin}${sitePath(`/${lang}/restore/`)}#${encodeRecovery(cart)}`} label={text(lang,'복구 링크 복사','Copy recovery link')} lang={lang}/></>}
     <p className="field-hint centered">{text(lang,'치수는 모든 아이템을 고른 뒤 한 번만 입력해요.','Enter your measurements once, after choosing all your pieces.')}</p>

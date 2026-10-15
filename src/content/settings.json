@@ -3,5 +3,7 @@
   "threads": "michelle1998kr",
   "currency": "KRW",
   "defaultLocale": "ko",
-  "brand": "Michelle Store"
+  "brand": "Michelle Store",
+  "sheetId": "1E2ywyOPViJ73f5JrSzYRDQcQNaHOD5FrvCwHojrSb1s",
+  "orderApiUrl": ""
 }
