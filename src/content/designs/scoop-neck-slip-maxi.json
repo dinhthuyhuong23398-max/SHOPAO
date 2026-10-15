@@ -1,0 +1,24 @@
+{
+  "id": "ML-06",
+  "slug": "scoop-neck-slip-maxi",
+  "category": "dress",
+  "name": {
+    "ko": "스쿱넥 슬립 맥시",
+    "en": "Scoop-neck slip maxi"
+  },
+  "description": {
+    "ko": "가느다란 스트랩과 길게 이어지는 라인.",
+    "en": "Fine straps and a long, uninterrupted silhouette."
+  },
+  "image": "assets/designs/dress/scoop-neck-slip-maxi.png",
+  "published": true,
+  "featured": false,
+  "order": 6,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

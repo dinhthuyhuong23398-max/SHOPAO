@@ -1,0 +1,24 @@
+{
+  "id": "ML-04",
+  "slug": "elegant-satin-wide-leg-trousers",
+  "category": "trouser",
+  "name": {
+    "ko": "실크 와이드 트라우저",
+    "en": "Silk wide-leg trousers"
+  },
+  "description": {
+    "ko": "부드럽게 떨어지는 넓은 바지 라인.",
+    "en": "An elegant wide leg with a fluid drape."
+  },
+  "image": "assets/designs/trouser/elegant-satin-wide-leg-trousers.jpg",
+  "published": true,
+  "featured": true,
+  "order": 4,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

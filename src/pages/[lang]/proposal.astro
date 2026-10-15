@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Proposal from '../../components/Proposal';
+import {getCatalog} from '../../lib/catalog';
+import {locales,text} from '../../lib/i18n';
+import type {Locale} from '../../lib/types';
+export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
+const lang=Astro.params.lang as Locale;const catalog=await getCatalog();
+---
+<Layout lang={lang} title={text(lang,'제안서 만들기','Create a proposal')}><div class="section-wrap page-intro"><span class="eyebrow">YOUR DESIGN, MADE TO MEASURE</span><h1>{text(lang,'사이즈 맞춤 제안서','Made-to-measure proposal')}</h1></div><section class="section-wrap proposal-page"><Proposal catalog={catalog} lang={lang} client:load/><noscript>{text(lang,'제안서를 만들려면 자바스크립트를 켜 주세요.','Enable JavaScript to create a proposal.')}</noscript></section></Layout>

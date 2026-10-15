@@ -1,0 +1,11 @@
+node_modules
+dist
+.astro
+.git
+.DS_Store
+**/.DS_Store
+.env*
+coverage
+test-results
+playwright-report
+.wrangler

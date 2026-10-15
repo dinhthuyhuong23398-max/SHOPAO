@@ -1,0 +1,24 @@
+{
+  "id": "ML-12",
+  "slug": "mock-neck-top",
+  "category": "top",
+  "name": {
+    "ko": "타이넥 실크 탑",
+    "en": "Tie-neck silk top"
+  },
+  "description": {
+    "ko": "목선을 감싸는 타이 디테일의 실크 탑.",
+    "en": "A silk top with a soft tie detail at the neck."
+  },
+  "image": "assets/designs/top/mock-neck-top.jpg",
+  "published": true,
+  "featured": false,
+  "order": 12,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

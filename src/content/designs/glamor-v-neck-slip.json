@@ -1,0 +1,24 @@
+{
+  "id": "ML-08",
+  "slug": "glamor-v-neck-slip",
+  "category": "dress",
+  "name": {
+    "ko": "브이넥 슬립 드레스",
+    "en": "V-neck slip dress"
+  },
+  "description": {
+    "ko": "깊은 브이넥이 돋보이는 슬립 드레스.",
+    "en": "A slip dress with a defined V neckline."
+  },
+  "image": "assets/designs/dress/glamor-v-neck-slip.jpg",
+  "published": true,
+  "featured": false,
+  "order": 8,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

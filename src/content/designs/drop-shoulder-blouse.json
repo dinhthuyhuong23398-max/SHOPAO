@@ -1,0 +1,24 @@
+{
+  "id": "ML-11",
+  "slug": "drop-shoulder-blouse",
+  "category": "top",
+  "name": {
+    "ko": "드롭숄더 블라우스",
+    "en": "Drop-shoulder blouse"
+  },
+  "description": {
+    "ko": "여유로운 어깨선의 편안한 블라우스.",
+    "en": "A relaxed blouse with a dropped shoulder."
+  },
+  "image": "assets/designs/top/drop-shoulder-blouse.jpg",
+  "published": true,
+  "featured": false,
+  "order": 11,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

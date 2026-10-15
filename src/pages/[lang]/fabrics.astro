@@ -1,0 +1,14 @@
+---
+import {sitePath} from '../../lib/paths';
+import Layout from '../../layouts/Layout.astro';
+import {Image} from 'astro:assets';
+import {fabrics,sourceImage} from '../../lib/catalog';
+import {text,locales} from '../../lib/i18n';
+import type {Locale} from '../../lib/types';
+export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
+const lang=Astro.params.lang as Locale;
+---
+<Layout lang={lang} title={text(lang,'실크 & 컬러','Silk & color')}>
+  <div class="section-wrap page-intro"><span class="eyebrow">THE COLOR LIBRARY</span><h1>{text(lang,'나만의 색을 찾는 시간','Find your kind of color')}</h1><p>{text(lang,'수저우와 루비, 두 가지 실크에서 시작되는 나만의 선택.\n화면과 조명에 따라 색이 다르게 보일 수 있어요. 정확한 색은 미셸과 확인해 주세요.','Your choice begins with Suzhou or Ruby silk.\nScreens and lighting can change how colors appear. Confirm the exact shade with Michelle.')}</p></div>
+  <div class="section-wrap fabrics-page">{fabrics.map(fabric=><section class="fabric-library" id={fabric.id}><div class="fabric-library-heading"><span class="eyebrow">{fabric.id.toUpperCase()} SILK</span><h2>{fabric.name[lang]}</h2><p>{fabric.description[lang]}</p></div>{fabric.colors.length>0&&<div class="color-library">{fabric.colors.map(color=><div class="color-tile"><span style={`background:${color.hex}`}></span><b>{color.name[lang]}</b><small>No. {color.code}</small></div>)}</div>}{fabric.charts.length>0&&<details class="chart-details"><summary>{text(lang,'원본 컬러북 보기','View the original color books')} <span>+</span></summary><p class="muted">{text(lang,'컬러북별 코드가 다를 수 있어요. 선택 목록은 첫 번째 컬러북 기준이며, 다른 컬러북의 색은 아이템 메모에 페이지와 코드를 함께 남겨주세요.','Codes may differ between color books. The palette uses the first book. For another shade, include its book and code in your item note.')}</p><div class="chart-grid">{fabric.charts.map((chart,index)=><figure><Image src={sourceImage(chart)} width={1200} format="webp" alt={`${fabric.name[lang]} ${text(lang,'컬러북','color book')} ${index+1}`} loading="lazy"/><figcaption>{text(lang,'컬러북','Color book')} {index+1}</figcaption></figure>)}</div></details>}{!fabric.colors.length&&<div class="consultation-panel"><span class="serif">Ruby</span><p>{text(lang,'원하시는 컬러가 있나요?\n루비 실크를 선택하고 아이템 메모에 남겨주세요.','Have a color in mind?\nSelect Ruby silk and leave your preferred shade in the item note.')}</p></div>}</section>)}<a class="button primary" href={sitePath(`/${lang}/#collection`)}>{text(lang,'디자인 고르러 가기','Find your design')} ↗</a></div>
+</Layout>

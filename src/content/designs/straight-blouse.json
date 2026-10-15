@@ -1,0 +1,24 @@
+{
+  "id": "ML-03",
+  "slug": "straight-blouse",
+  "category": "top",
+  "name": {
+    "ko": "스트레이트 블라우스",
+    "en": "Straight-cut blouse"
+  },
+  "description": {
+    "ko": "단정한 칼라와 여유로운 스트레이트 라인.",
+    "en": "A clean collar and an easy, straight silhouette."
+  },
+  "image": "assets/designs/top/straight-blouse.jpg",
+  "published": true,
+  "featured": true,
+  "order": 3,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

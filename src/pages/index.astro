@@ -1,0 +1,5 @@
+---
+import {sitePath} from '../lib/paths';
+const destination=sitePath('/ko/');
+---
+<!doctype html><html lang="ko"><head><meta charset="utf-8"/><meta http-equiv="refresh" content={`0;url=${destination}`}/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Michelle Store</title></head><body><a href={destination}>미셸 스토어 · Michelle Store</a><script define:vars={{destination}}>location.replace(destination+location.search+location.hash);</script></body></html>

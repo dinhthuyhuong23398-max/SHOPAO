@@ -1,0 +1,24 @@
+{
+  "id": "ML-10",
+  "slug": "slim-fit-blouse",
+  "category": "top",
+  "name": {
+    "ko": "슬림핏 블라우스",
+    "en": "Slim-fit blouse"
+  },
+  "description": {
+    "ko": "허리선을 따라 정돈된 실루엣의 블라우스.",
+    "en": "A collared blouse with a shaped waist."
+  },
+  "image": "assets/designs/top/slim-fit-blouse.jpg",
+  "published": true,
+  "featured": false,
+  "order": 10,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

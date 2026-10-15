@@ -1,0 +1,41 @@
+---
+import {sitePath} from '../../lib/paths';
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import {getCatalog} from '../../lib/catalog';
+import {text,locales,categoryNames} from '../../lib/i18n';
+import type {Locale} from '../../lib/types';
+export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
+const lang=Astro.params.lang as Locale;
+const catalog=await getCatalog();
+const featured=catalog.designs.filter(d=>d.featured);
+const hero=featured[0]??catalog.designs[0];
+const second=featured[1]??catalog.designs.find(d=>d.id!==hero.id)??hero;
+const detail=catalog.designs.find(d=>d.slug==='slim-fit-blouse')??hero;
+---
+<Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection')}>
+  <section class="hero">
+    <div class="hero-copy"><span class="eyebrow">SILK, MADE TO MEASURE</span><h1>{text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>{text(lang,'나에게 맞는 사이즈.','made to your size.')}</h1><p class="hero-script">Silk, made to measure.</p><p class="hero-description">{text(lang,'미셸의 컬렉션에서 디자인과 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.','Choose a design from Michelle’s collection, along with your silk and color.\nYour selected piece is made to your measurements.')}</p><a class="button primary hero-button" href="#collection">{text(lang,'컬렉션 살펴보기','Explore the collection')}<span>↗</span></a><div class="hero-footnote"><span class="fine-line"></span><span>{text(lang,'미셸의 컬렉션에서 고르고, 사이즈는 나에게 맞게','Choose from the collection. Made to your measurements.')}</span></div></div>
+    <div class="hero-visual"><a class="hero-photo" href={sitePath(`/${lang}/designs/${hero.slug}/`)} aria-label={hero.name[lang]}><img src={hero.imageUrl} width="1000" height="1333" fetchpriority="high" alt={hero.name[lang]}/><span class="photo-caption">01 / THE SILK EDIT <span>↗</span></span></a><a class="hero-inset" href={sitePath(`/${lang}/designs/${second.slug}/`)}><img src={second.thumbnailUrl} width="480" height="640" alt={second.name[lang]}/><span>{text(lang,'나를 닮은 한 벌','A piece of you')} ↗</span></a><span class="vertical-caption">SUZHOU · RUBY · MADE TO MEASURE</span></div>
+  </section>
+  <section class="collection-section section-wrap" id="collection">
+    <div class="section-heading"><div><span class="eyebrow">THE COLLECTION</span><h2>{text(lang,'좋아하는 순간을 입다','Find your silhouette')}</h2></div><p>{text(lang,'미셸의 디자인 중 마음에 드는 한 벌을 고르세요.\n실크와 컬러를 선택하고, 사이즈는 나에게 맞추세요.','Find your favorite design in Michelle’s collection.\nChoose your silk and color, with sizing made for you.')}</p></div>
+    <div class="collection-toolbar"><div class="filters" role="group" aria-label={text(lang,'카테고리','Category')}><button type="button" data-filter="all" aria-pressed="true">{text(lang,'전체','All pieces')}</button>{Object.entries(categoryNames).map(([key,label])=><button type="button" data-filter={key} aria-pressed="false">{label[lang]}</button>)}</div><span class="collection-count"><span data-visible-count>{catalog.designs.length}</span> {text(lang,'가지 디자인','designs')}</span></div>
+    <div class="product-grid">{catalog.designs.map((product,index)=><ProductCard product={product} lang={lang} index={index}/>)}</div>
+  </section>
+  <section class="fabric-story section-wrap"><div class="fabric-story-art"><img src={detail.imageUrl} loading="lazy" width="1000" height="1300" alt={detail.name[lang]}/><span class="fabric-art-label">THE BEAUTY IS IN THE DETAIL.</span></div><div class="fabric-story-copy"><span class="eyebrow">SILK & COLOR</span><h2>{text(lang,'같은 디자인도,','The same silhouette,')}<br/>{text(lang,'나만의 분위기로.','a different feeling.')}</h2><p>{text(lang,'차분한 아이보리부터 깊은 올리브까지.\n원하는 실크와 컬러를 골라 나만의 조합을 찾아보세요.','From quiet ivory to a deep olive.\nExplore the silk and color that make a piece feel yours.')}</p><div class="editorial-swatches" aria-hidden="true">{catalog.fabrics[0].colors.filter(c=>['04','14','76','103','16','61'].includes(c.id)).map(color=><span style={`--swatch:${color.hex}`}></span>)}</div><a class="text-link" href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크와 컬러 만나보기','Discover the silks & colors')} ↗</a></div></section>
+  <section class="how-section section-wrap" id="how-it-works"><div class="section-heading"><div><span class="eyebrow">FROM YOUR WISHLIST, TO YOUR WARDROBE</span><h2>{text(lang,'사이즈 맞춤 제작 과정','Made to your measurements')}</h2></div><p>{text(lang,'선택한 디자인을, 내 치수에 맞게.','Your chosen design, made to your measurements.')}</p></div><div class="steps">{[
+    ['01',text(lang,'컬렉션에서 골라요','Choose from the collection'),text(lang,'미셸의 컬렉션에서 디자인을 고른 뒤 실크와 컬러를 선택해 주세요.','Choose an existing design from Michelle’s collection, then select your silk and color.')],
+    ['02',text(lang,'치수를 알려주세요','Share your measurements'),text(lang,'모든 선택을 마친 뒤, 신체 치수를 한 번만 입력해 주세요.','Once your selection is ready, enter your measurements just once.')],
+    ['03',text(lang,'미셸과 확인해요','Confirm with Michelle'),text(lang,'제안서를 인스타그램으로 보내고 선택한 디자인의 사이즈, 최종 가격과 제작 일정을 상담해요.','Send your proposal on Instagram to confirm sizing, the final quote and production timing.')]
+  ].map(([n,title,desc])=><div class="step"><span>{n}</span><h3>{title}</h3><p>{desc}</p></div>)}</div></section>
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
+      const category=button.dataset.filter;
+      document.querySelectorAll('[data-filter]').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
+      let count=0;
+      document.querySelectorAll<HTMLElement>('.product-card').forEach(card=>{card.hidden=category!=='all'&&card.dataset.category!==category;if(!card.hidden) count++;});
+      const label=document.querySelector('[data-visible-count]');if(label)label.textContent=String(count);
+    }));
+  </script>
+</Layout>

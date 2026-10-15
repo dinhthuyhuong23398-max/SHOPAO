@@ -1,0 +1,24 @@
+{
+  "id": "ML-09",
+  "slug": "minimal-long-sleeve-cowl-neck",
+  "category": "dress",
+  "name": {
+    "ko": "롱슬리브 드레이프 드레스",
+    "en": "Long-sleeve cowl dress"
+  },
+  "description": {
+    "ko": "드레이프 네크라인과 긴 소매의 미니 드레스.",
+    "en": "A mini dress with long sleeves and a draped neckline."
+  },
+  "image": "assets/designs/dress/minimal-long-sleeve-cowl-neck.jpg",
+  "published": true,
+  "featured": false,
+  "order": 9,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

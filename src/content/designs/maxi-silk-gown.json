@@ -1,0 +1,24 @@
+{
+  "id": "ML-05",
+  "slug": "maxi-silk-gown",
+  "category": "dress",
+  "name": {
+    "ko": "슬리브리스 맥시 가운",
+    "en": "Sleeveless maxi gown"
+  },
+  "description": {
+    "ko": "간결한 라운드 네크라인의 슬리브리스 가운.",
+    "en": "A sleeveless gown with a simple rounded neckline."
+  },
+  "image": "assets/designs/dress/maxi-silk-gown.jpg",
+  "published": true,
+  "featured": false,
+  "order": 5,
+  "priceMin": null,
+  "priceMax": null,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

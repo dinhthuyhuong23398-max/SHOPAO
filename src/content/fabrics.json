@@ -1,0 +1,460 @@
+[
+  {
+    "id": "suzhou",
+    "name": {
+      "ko": "수저우",
+      "en": "Suzhou"
+    },
+    "description": {
+      "ko": "수저우 원단 컬러북에서 나만의 색을 골라보세요. 정확한 색상과 제작 가능 여부는 상담 시 확인해 드려요.",
+      "en": "Explore the Suzhou color book. Michelle will confirm the exact shade and availability with you."
+    },
+    "colors": [
+      {
+        "id": "04",
+        "code": "04",
+        "name": {
+          "ko": "밀크 아이보리",
+          "en": "Milk ivory"
+        },
+        "hex": "#e9dfca"
+      },
+      {
+        "id": "01",
+        "code": "01",
+        "name": {
+          "ko": "펄 화이트",
+          "en": "Pearl white"
+        },
+        "hex": "#eeede6"
+      },
+      {
+        "id": "100",
+        "code": "100",
+        "name": {
+          "ko": "샴페인",
+          "en": "Champagne"
+        },
+        "hex": "#d9c9b3"
+      },
+      {
+        "id": "05",
+        "code": "05",
+        "name": {
+          "ko": "소프트 골드",
+          "en": "Soft gold"
+        },
+        "hex": "#cdb890"
+      },
+      {
+        "id": "14",
+        "code": "14",
+        "name": {
+          "ko": "라떼",
+          "en": "Latte"
+        },
+        "hex": "#a78d70"
+      },
+      {
+        "id": "13",
+        "code": "13",
+        "name": {
+          "ko": "누드 베이지",
+          "en": "Nude beige"
+        },
+        "hex": "#beaa9d"
+      },
+      {
+        "id": "129",
+        "code": "129",
+        "name": {
+          "ko": "브라운",
+          "en": "Brown"
+        },
+        "hex": "#6b4636"
+      },
+      {
+        "id": "98",
+        "code": "98",
+        "name": {
+          "ko": "코코아",
+          "en": "Cocoa"
+        },
+        "hex": "#665354"
+      },
+      {
+        "id": "73",
+        "code": "73",
+        "name": {
+          "ko": "테라코타",
+          "en": "Terracotta"
+        },
+        "hex": "#a4532c"
+      },
+      {
+        "id": "76",
+        "code": "76",
+        "name": {
+          "ko": "올리브",
+          "en": "Olive"
+        },
+        "hex": "#687532"
+      },
+      {
+        "id": "22",
+        "code": "22",
+        "name": {
+          "ko": "소프트 그린",
+          "en": "Soft green"
+        },
+        "hex": "#b3bc90"
+      },
+      {
+        "id": "125",
+        "code": "125",
+        "name": {
+          "ko": "딥 그린",
+          "en": "Deep green"
+        },
+        "hex": "#4a5342"
+      },
+      {
+        "id": "27",
+        "code": "27",
+        "name": {
+          "ko": "제이드",
+          "en": "Jade"
+        },
+        "hex": "#147d86"
+      },
+      {
+        "id": "18",
+        "code": "18",
+        "name": {
+          "ko": "베이비 블루",
+          "en": "Baby blue"
+        },
+        "hex": "#a8c9dc"
+      },
+      {
+        "id": "91",
+        "code": "91",
+        "name": {
+          "ko": "파스텔 블루",
+          "en": "Pastel blue"
+        },
+        "hex": "#a0adc6"
+      },
+      {
+        "id": "99",
+        "code": "99",
+        "name": {
+          "ko": "클래식 블루",
+          "en": "Classic blue"
+        },
+        "hex": "#354987"
+      },
+      {
+        "id": "19",
+        "code": "19",
+        "name": {
+          "ko": "로열 블루",
+          "en": "Royal blue"
+        },
+        "hex": "#15409c"
+      },
+      {
+        "id": "103",
+        "code": "103",
+        "name": {
+          "ko": "네이비",
+          "en": "Navy"
+        },
+        "hex": "#25364c"
+      },
+      {
+        "id": "35",
+        "code": "35",
+        "name": {
+          "ko": "스모크 그레이",
+          "en": "Smoke grey"
+        },
+        "hex": "#797784"
+      },
+      {
+        "id": "34",
+        "code": "34",
+        "name": {
+          "ko": "실버",
+          "en": "Silver"
+        },
+        "hex": "#bdc3ce"
+      },
+      {
+        "id": "16",
+        "code": "16",
+        "name": {
+          "ko": "더스티 로즈",
+          "en": "Dusty rose"
+        },
+        "hex": "#b57a94"
+      },
+      {
+        "id": "61",
+        "code": "61",
+        "name": {
+          "ko": "와인",
+          "en": "Wine"
+        },
+        "hex": "#632b43"
+      },
+      {
+        "id": "75",
+        "code": "75",
+        "name": {
+          "ko": "벨벳 레드",
+          "en": "Velvet red"
+        },
+        "hex": "#812d4e"
+      }
+    ],
+    "charts": [
+      "assets/fabrics/suzhou/color-code-3.jpg",
+      "assets/fabrics/suzhou/color-code-0.jpg",
+      "assets/fabrics/suzhou/color-code-1.jpg",
+      "assets/fabrics/suzhou/color-code-2.jpg"
+    ]
+  },
+  {
+    "id": "ruby",
+    "name": {
+      "ko": "루비",
+      "en": "Ruby"
+    },
+    "description": {
+      "ko": "루비 원단 컬러북에서 나만의 색을 골라보세요. 정확한 색상과 제작 가능 여부는 상담 시 확인해 드려요. 컬러북의 16번과 38번은 각각 두 가지 색에 쓰이므로, 색상 이름도 함께 확인해 주세요.",
+      "en": "Explore the Ruby color book. Michelle will confirm the exact shade and availability. The chart repeats codes 16 and 38 for different shades, so check the color name as well."
+    },
+    "colors": [
+      {
+        "id": "11",
+        "code": "11",
+        "name": {
+          "ko": "골드",
+          "en": "Gold"
+        },
+        "hex": "#c3af72"
+      },
+      {
+        "id": "26",
+        "code": "26",
+        "name": {
+          "ko": "크림 베이지",
+          "en": "Cream beige"
+        },
+        "hex": "#d4cdb5"
+      },
+      {
+        "id": "01",
+        "code": "01",
+        "name": {
+          "ko": "퓨어 화이트",
+          "en": "Pure white"
+        },
+        "hex": "#dfe3e5"
+      },
+      {
+        "id": "02",
+        "code": "02",
+        "name": {
+          "ko": "밀크 화이트",
+          "en": "Milk white"
+        },
+        "hex": "#dddacd"
+      },
+      {
+        "id": "43",
+        "code": "43",
+        "name": {
+          "ko": "라이트 그린",
+          "en": "Light green"
+        },
+        "hex": "#a6b08a"
+      },
+      {
+        "id": "52",
+        "code": "52",
+        "name": {
+          "ko": "민트 그린",
+          "en": "Mint green"
+        },
+        "hex": "#99aba2"
+      },
+      {
+        "id": "15",
+        "code": "15",
+        "name": {
+          "ko": "퍼플",
+          "en": "Purple"
+        },
+        "hex": "#6c3559"
+      },
+      {
+        "id": "25",
+        "code": "25",
+        "name": {
+          "ko": "말차 그린",
+          "en": "Matcha green"
+        },
+        "hex": "#a39f60"
+      },
+      {
+        "id": "28",
+        "code": "28",
+        "name": {
+          "ko": "파우더 핑크",
+          "en": "Powder pink"
+        },
+        "hex": "#ddb2ae"
+      },
+      {
+        "id": "71",
+        "code": "71",
+        "name": {
+          "ko": "스모키 핑크",
+          "en": "Smoky pink"
+        },
+        "hex": "#c3a5a2"
+      },
+      {
+        "id": "50",
+        "code": "50",
+        "name": {
+          "ko": "로즈 브라운",
+          "en": "Rose brown"
+        },
+        "hex": "#bb9e8e"
+      },
+      {
+        "id": "03",
+        "code": "03",
+        "name": {
+          "ko": "밀크 브라운",
+          "en": "Milk brown"
+        },
+        "hex": "#93816c"
+      },
+      {
+        "id": "80",
+        "code": "80",
+        "name": {
+          "ko": "와인 레드",
+          "en": "Wine red"
+        },
+        "hex": "#661f2f"
+      },
+      {
+        "id": "38-navy",
+        "code": "38",
+        "name": {
+          "ko": "네이비",
+          "en": "Navy"
+        },
+        "hex": "#384160"
+      },
+      {
+        "id": "65",
+        "code": "65",
+        "name": {
+          "ko": "클래식 레드",
+          "en": "Classic red"
+        },
+        "hex": "#aa0230"
+      },
+      {
+        "id": "67",
+        "code": "67",
+        "name": {
+          "ko": "로열 블루",
+          "en": "Royal blue"
+        },
+        "hex": "#4880c8"
+      },
+      {
+        "id": "24",
+        "code": "24",
+        "name": {
+          "ko": "차콜 그레이",
+          "en": "Charcoal grey"
+        },
+        "hex": "#5d5c5b"
+      },
+      {
+        "id": "16-black",
+        "code": "16",
+        "name": {
+          "ko": "블랙",
+          "en": "Black"
+        },
+        "hex": "#1d2026"
+      },
+      {
+        "id": "23",
+        "code": "23",
+        "name": {
+          "ko": "실버",
+          "en": "Silver"
+        },
+        "hex": "#c7cbd2"
+      },
+      {
+        "id": "37",
+        "code": "37",
+        "name": {
+          "ko": "모스 그린",
+          "en": "Moss green"
+        },
+        "hex": "#433f33"
+      },
+      {
+        "id": "22",
+        "code": "22",
+        "name": {
+          "ko": "민트 블루",
+          "en": "Mint blue"
+        },
+        "hex": "#8aabb0"
+      },
+      {
+        "id": "16-baby-blue",
+        "code": "16",
+        "name": {
+          "ko": "베이비 블루",
+          "en": "Baby blue"
+        },
+        "hex": "#90b7da"
+      },
+      {
+        "id": "38-brown",
+        "code": "38",
+        "name": {
+          "ko": "브라운",
+          "en": "Brown"
+        },
+        "hex": "#4c322f"
+      },
+      {
+        "id": "07",
+        "code": "07",
+        "name": {
+          "ko": "다크 브라운",
+          "en": "Dark brown"
+        },
+        "hex": "#91634b"
+      }
+    ],
+    "charts": [
+      "assets/fabrics/ruby/color-code-0.jpg"
+    ]
+  }
+]
