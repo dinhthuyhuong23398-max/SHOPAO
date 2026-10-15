@@ -20,9 +20,9 @@ export function proposalDocument(input: ProposalInput) {
     pieces: cart.items.map((item, index): ProposalPiece => {
       const { design, fabric, color } = resolveItem(item, catalog);
       return {
-        number: index + 1, designId: design!.id, name: design!.name[lang],
-        photo: design!.thumbnailUrl, fabric: fabric!.name[lang], quantity: item.quantity,
-        colorName: color?.name[lang] ?? text(lang, '미셸과 색상 상담', 'Discuss color with Michelle'),
+        number: index + 1, designId: design!.id, name: design!.name[lang] || design!.name.en,
+        photo: design!.thumbnailUrl, fabric: fabric!.name[lang] || fabric!.name.en, quantity: item.quantity,
+        colorName: (color?.name[lang] || color?.name.en) ?? text(lang, '미셸과 색상 상담', 'Discuss color with Michelle', 'Tư vấn màu với Michelle'),
         colorCode: color?.code ?? null, swatch: color?.hex ?? null,
         price: priceLabel(design!, lang), note: item.note.trim(),
       };
