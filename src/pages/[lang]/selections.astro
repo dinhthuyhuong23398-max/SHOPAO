@@ -8,14 +8,14 @@ export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
 const lang=Astro.params.lang as Locale;
 const catalog=await getCatalog();
 ---
-<Layout lang={lang} title={text(lang,'나의 선택','My selections','Túi đồ của tôi')}>
+<Layout lang={lang} title={text(lang,'나의 선택','My selections')}>
   <div class="section-wrap page-intro">
-    <span class="eyebrow">YOUR PERSONAL EDIT · TÚI ĐỒ MAY ĐO</span>
-    <h1>{text(lang,'나의 선택','My selections','Túi Đồ Của Tôi')}</h1>
-    <p>{text(lang,'마음에 담은 디자인, 나를 닮은 컬러.','The designs you love, in colors that feel like you.','Các mẫu thiết kế và màu lụa bạn đã chọn trước khi điền số đo.')}</p>
+    <span class="eyebrow">YOUR PERSONAL EDIT · {text(lang,'나의 선택','MY SELECTIONS')}</span>
+    <h1>{text(lang,'나의 선택','My selections')}</h1>
+    <p>{text(lang,'마음에 담은 디자인, 나를 닮은 컬러.','The designs you love, in colors that feel like you.')}</p>
   </div>
   <section class="section-wrap cart-page">
     <Selections catalog={catalog} lang={lang} client:load/>
-    <noscript>{text(lang,'선택을 저장하려면 자바스크립트를 켜 주세요.','Enable JavaScript to save and view selections.','Vui lòng bật JavaScript để xem túi đồ.')}</noscript>
+    <noscript>{text(lang,'선택을 저장하려면 자바스크립트를 켜 주세요.','Enable JavaScript to save and view selections.')}</noscript>
   </section>
 </Layout>

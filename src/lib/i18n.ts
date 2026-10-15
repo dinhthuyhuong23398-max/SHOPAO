@@ -1,5 +1,5 @@
 import type { Locale } from './types';
-export const locales: Locale[] = ['ko', 'vi', 'en'];
+export const locales: Locale[] = ['ko', 'en'];
 
 export function text(lang: Locale, ko: string, en: string, vi?: string): string {
   if (lang === 'vi') return vi || en;

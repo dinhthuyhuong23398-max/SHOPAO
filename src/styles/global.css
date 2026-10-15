@@ -678,7 +678,7 @@
   border: 1px dashed #b5bba9;
 }
 
-/* High-Res Color Charts Dual Grid */
+/* High-Res Color Chart Single Layout */
 .chart-section {
   margin-top: 45px;
   padding-top: 35px;
@@ -692,10 +692,9 @@
   font-size: 12px;
   margin-bottom: 24px;
 }
-.chart-dual-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+.chart-single-wrap {
+  max-width: 960px;
+  margin: 0 auto;
 }
 .chart-card {
   margin: 0;
@@ -705,33 +704,20 @@
   padding: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 6px;
 }
 .chart-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 .chart-card img {
   width: 100%;
   height: auto;
-  border-radius: 2px;
-}
-.chart-badge {
-  position: absolute;
-  top: 26px;
-  left: 26px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-  color: var(--ink);
+  border-radius: 4px;
+  display: block;
 }
 .chart-card figcaption {
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
   color: var(--muted);
   margin-top: 14px;

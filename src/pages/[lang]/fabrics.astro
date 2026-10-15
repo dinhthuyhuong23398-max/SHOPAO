@@ -8,14 +8,13 @@ import type {Locale} from '../../lib/types';
 export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
 const lang=Astro.params.lang as Locale;
 ---
-<Layout lang={lang} title={text(lang,'실크 & 컬러','Silk & color','Bảng màu & Chất liệu lụa')}>
+<Layout lang={lang} title={text(lang,'실크 & 컬러','Silk & color')}>
   <div class="section-wrap page-intro">
-    <span class="eyebrow">THE COLOR LIBRARY · BẢNG MÀU LỤA CAO CẤP</span>
-    <h1>{text(lang,'나만의 색을 찾는 시간','Find your kind of color','Bảng Màu Lụa Tô Châu & Lụa Ruby')}</h1>
+    <span class="eyebrow">THE COLOR LIBRARY</span>
+    <h1>{text(lang,'나만의 색을 찾는 시간','Find your kind of color')}</h1>
     <p>{text(lang,
       '수저우와 루비, 두 가지 프리미엄 실크에서 시작되는 나만의 선택.\n화면과 조명에 따라 색이 다르게 보일 수 있으니, 정확한 색상 코드는 미셸과 상담 시 확인해 주세요.',
-      'Your choice begins with Suzhou or Ruby silk.\nScreens and lighting can change how colors appear. Confirm the exact shade with Michelle.',
-      'Lựa chọn chất liệu lụa Tô Châu mềm rủ hoặc lụa Ruby sang trọng giữ phom. Mỗi loại lụa sở hữu bảng màu đa dạng, tinh tế được Michelle tuyển chọn kỹ lưỡng.'
+      'Your choice begins with Suzhou or Ruby silk.\nScreens and lighting can change how colors appear. Confirm the exact shade with Michelle.'
     )}</p>
   </div>
 
@@ -25,13 +24,12 @@ const lang=Astro.params.lang as Locale;
       const fDesc = fabric.description[lang] || fabric.description.en || fabric.description.ko;
       const isSuzhou = fabric.id === 'suzhou';
       
-      const chartKo = `assets/fabrics/${fabric.id}/chart-ko.jpg`;
-      const chartEn = `assets/fabrics/${fabric.id}/chart-en.jpg`;
+      const chartImg = `assets/fabrics/${fabric.id}/chart-ko.jpg`;
 
       return (
         <section class="fabric-library" id={fabric.id}>
           <div class="fabric-library-heading">
-            <span class="eyebrow">{fabric.id.toUpperCase()} SILK · {isSuzhou ? text(lang, '수저우 실크', 'Suzhou Silk', 'LỤA TÔ CHÂU') : text(lang, '루비 실크', 'Ruby Silk', 'LỤA RUBY')}</span>
+            <span class="eyebrow">{fabric.id.toUpperCase()} SILK · {isSuzhou ? text(lang, '수저우 실크', 'Suzhou Silk') : text(lang, '루비 실크', 'Ruby Silk')}</span>
             <h2>{fName}</h2>
             <p>{fDesc}</p>
           </div>
@@ -52,30 +50,22 @@ const lang=Astro.params.lang as Locale;
             </div>
           )}
 
-          <!-- High-Resolution Color Charts: Korean & English -->
+          <!-- Single Official High-Resolution Color Chart -->
           <div class="chart-section">
             <div class="chart-section-title">
-              <h3>{text(lang, '공식 컬러차트 (고해상도 2048px)', 'Official Color Charts (High-Res 2048px)', 'Ảnh Bảng Màu Chi Tiết (Độ phân giải cao)')}</h3>
+              <h3>{text(lang, '공식 컬러차트 (고해상도 2048px)', 'Official Color Chart (High-Res 2048px)')}</h3>
               <p class="muted">
                 {text(lang,
-                  '한국어 및 영문 2가지 버전의 고해상도 컬러차트가 준비되어 있습니다. 확대하여 원단의 미세한 광택과 톤을 확인해 보세요.',
-                  'Available in both Korean and English high-resolution editions. Zoom in to inspect the fine texture and sheen.',
-                  'Bảng màu chính thức gồm 2 phiên bản: Tiếng Hàn và Tiếng Anh với mã màu và tên màu chuẩn xác từ xưởng lụa cao cấp.'
+                  '확대하여 원단의 미세한 광택과 톤을 확인해 보세요.',
+                  'Zoom in to inspect the fine texture and sheen.'
                 )}
               </p>
             </div>
 
-            <div class="chart-dual-grid">
+            <div class="chart-single-wrap">
               <figure class="chart-card">
-                <div class="chart-badge">🇰🇷 {text(lang, '한국어 컬러차트', 'Korean Edition', 'Bản tiếng Hàn')}</div>
-                <Image src={sourceImage(chartKo)} width={1200} format="webp" alt={`${fName} Korean chart`} loading="lazy"/>
-                <figcaption>{isSuzhou ? '수저우 실크 프리미엄 컬러차트' : '루비 실크 프리미엄 컬러차트'}</figcaption>
-              </figure>
-
-              <figure class="chart-card">
-                <div class="chart-badge">🇬🇧 {text(lang, '영문 컬러차트', 'English Edition', 'Bản tiếng Anh')}</div>
-                <Image src={sourceImage(chartEn)} width={1200} format="webp" alt={`${fName} English chart`} loading="lazy"/>
-                <figcaption>{isSuzhou ? 'Suzhou Silk Premium Color Chart' : 'Ruby Silk Premium Color Chart'}</figcaption>
+                <Image src={sourceImage(chartImg)} width={1400} format="webp" alt={`${fName} color chart`} loading="lazy"/>
+                <figcaption>{isSuzhou ? text(lang, '수저우 실크 프리미엄 컬러차트', 'Suzhou Silk Premium Color Chart') : text(lang, '루비 실크 프리미엄 컬러차트', 'Ruby Silk Premium Color Chart')}</figcaption>
               </figure>
             </div>
           </div>
@@ -87,27 +77,27 @@ const lang=Astro.params.lang as Locale;
     <section class="fabric-characteristics-section">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">FABRIC GUIDE · SO SÁNH CHẤT LIỆU</span>
-          <h2>{text(lang, '두 가지 실크의 특별한 매력', 'The Unique Appeal of Two Silks', 'Đặc Tính & Cách Chọn Lụa')}</h2>
+          <span class="eyebrow">FABRIC GUIDE</span>
+          <h2>{text(lang, '두 가지 실크의 특별한 매력', 'The Unique Appeal of Two Silks')}</h2>
         </div>
       </div>
       <div class="fabric-compare-grid">
         <div class="compare-card">
           <span class="compare-badge">SUZHOU SILK</span>
-          <h3>{text(lang, '수저우 실크 (Suzhou Silk)', 'Suzhou Silk', 'Lụa Tô Châu')}</h3>
-          <p class="compare-lead">{text(lang, '은은한 광택과 극상의 부드러움', 'Subtle sheen & supreme softness', 'Mềm mại, mịn màng và có độ bóng nhẹ')}</p>
+          <h3>{text(lang, '수저우 실크 (Suzhou Silk)', 'Suzhou Silk')}</h3>
+          <p class="compare-lead">{text(lang, '은은한 광택과 극상의 부드러움', 'Subtle sheen & supreme softness')}</p>
           <ul class="compare-list">
-            <li>{text(lang, '피부에 닿는 촉감이 극도로 부드럽고 쾌적하여 한 겹으로 착용 시에도 편안합니다.', 'Exceptionally gentle and pleasant on skin, ideal even in a single layer.', 'Chất vải rủ mềm, khi mặc rất thoải mái. May 1 lớp tiếp xúc da cực kỳ dễ chịu.')}</li>
-            <li>{text(lang, '세탁 후 스팀 다리미로 살짝만 다려주면 주름이 쉽게 펴집니다 (손세탁 시 다림질 거의 불필요).', 'Restores easily with light steaming; hand washing rarely requires ironing.', 'Sau khi giặt chỉ cần dùng bàn là hơi nước là phẳng ngay; giặt tay hầu như không cần là.')}</li>
+            <li>{text(lang, '피부에 닿는 촉감이 극도로 부드럽고 쾌적하여 한 겹으로 착용 시에도 편안합니다.', 'Exceptionally gentle and pleasant on skin, ideal even in a single layer.')}</li>
+            <li>{text(lang, '세탁 후 스팀 다리미로 살짝만 다려주면 주름이 쉽게 펴집니다 (손세탁 시 다림질 거의 불필요).', 'Restores easily with light steaming; hand washing rarely requires ironing.')}</li>
           </ul>
         </div>
         <div class="compare-card">
           <span class="compare-badge">RUBY SILK</span>
-          <h3>{text(lang, '루비 실크 (Ruby Silk)', 'Ruby Silk', 'Lụa Ruby')}</h3>
-          <p class="compare-lead">{text(lang, '선명한 광택감과 탄탄한 실루엣 유지', 'Lustrous sheen & structured drape', 'Độ bóng rõ, dày dặn và giữ form tốt')}</p>
+          <h3>{text(lang, '루비 실크 (Ruby Silk)', 'Ruby Silk')}</h3>
+          <p class="compare-lead">{text(lang, '선명한 광택감과 탄탄한 실루엣 유지', 'Lustrous sheen & structured drape')}</p>
           <ul class="compare-list">
-            <li>{text(lang, '원단이 힘이 있고 도톰하여 완벽한 드레스 실루엣을 오랫동안 유지해 줍니다.', 'Substantial body and structured drape that keeps tailored silhouettes intact.', 'Vải có độ đứng phom, dày dặn hơn, không nhăn và giữ form váy áo hoàn hảo.')}</li>
-            <li>{text(lang, '구김이 거의 가지 않아 관리가 편리하며, 퓨어 화이트 등 극도로 밝은 색상에만 2겹 제작을 추천합니다.', 'Wrinkle-resistant. 2-layer lining is only advised for pure white; others look stunning in single layer.', 'Vải hầu như không nhăn nên rất dễ bảo quản. Chỉ khuyên may 2 lớp với màu rất sáng như trắng tinh.')}</li>
+            <li>{text(lang, '원단이 힘이 있고 도톰하여 완벽한 드레스 실루엣을 오랫동안 유지해 줍니다.', 'Substantial body and structured drape that keeps tailored silhouettes intact.')}</li>
+            <li>{text(lang, '구김이 거의 가지 않아 관리가 편리하며, 퓨어 화이트 등 극도로 밝은 색상에만 2겹 제작을 추천합니다.', 'Wrinkle-resistant. 2-layer lining is only advised for pure white; others look stunning in single layer.')}</li>
           </ul>
         </div>
       </div>
@@ -115,10 +105,10 @@ const lang=Astro.params.lang as Locale;
 
     <div class="fabric-action-footer">
       <a class="button primary" href={sitePath(`/${lang}/#collection`)}>
-        {text(lang,'컬렉션 디자인 고르기','Explore designs','Xem các mẫu thiết kế')} ↗
+        {text(lang,'컬렉션 디자인 고르기','Explore designs')} ↗
       </a>
       <a class="button secondary" href={sitePath(`/${lang}/#how-it-works`)}>
-        {text(lang,'사이즈 맞춤 안내','Made to measure guide','Quy trình may đo')} ↗
+        {text(lang,'사이즈 맞춤 안내','Made to measure guide')} ↗
       </a>
     </div>
   </div>

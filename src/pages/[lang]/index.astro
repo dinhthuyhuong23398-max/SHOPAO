@@ -33,14 +33,14 @@ if (heroSlides.length < 4) {
 const second = heroSlides[1] ?? catalog.designs[1];
 const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSlides[0];
 ---
-<Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection','Bộ sưu tập lụa may đo theo số đo')}>
+<Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection')}>
   <!-- 1. AUTO-SLIDING HERO BANNER WITH 4 MODELS -->
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">SILK, MADE TO MEASURE · {text(lang,'사이즈 맞춤 제작','BESPOKE SILK','MAY ĐO THEO SỐ ĐO')}</span>
+      <span class="eyebrow">SILK, MADE TO MEASURE · {text(lang,'사이즈 맞춤 제작','BESPOKE SILK')}</span>
       <h1>
-        {text(lang,'미셸의 디자인,','Michelle’s designs,','Thiết kế từ Michelle,')}<br/>
-        {text(lang,'나에게 맞는 사이즈.','made to your size.','may đo riêng cho bạn.')}
+        {text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>
+        {text(lang,'나에게 맞는 사이즈.','made to your size.')}
       </h1>
       <p class="hero-script">Silk, made to measure.</p>
       <p class="hero-description">
@@ -114,8 +114,8 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <section class="collection-section section-wrap" id="collection">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">THE COLLECTION · BỘ SƯU TẬP</span>
-        <h2>{text(lang,'좋아하는 순간을 입다','Find your silhouette','Chọn Mẫu Thiết Kế Bạn Yêu Thích')}</h2>
+        <span class="eyebrow">THE COLLECTION · {text(lang,'컬렉션','COLLECTION')}</span>
+        <h2>{text(lang,'좋아하는 순간을 입다','Find your silhouette')}</h2>
       </div>
       <p>{text(lang,
         '미셸의 디자인 중 마음에 드는 한 벌을 고르세요.\n실크와 컬러를 선택하고, 사이즈는 나에게 맞추세요.',
@@ -200,21 +200,20 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       <span class="fabric-art-label">THE BEAUTY IS IN THE DETAIL.</span>
     </div>
     <div class="fabric-story-copy">
-      <span class="eyebrow">SILK & COLOR · CHẤT LIỆU & MÀU SẮC</span>
+      <span class="eyebrow">SILK & COLOR · {text(lang,'실크 & 컬러','FABRICS & COLORS')}</span>
       <h2>
-        {text(lang,'같은 디자인도,','The same silhouette,','Cùng một thiết kế,')}<br/>
-        {text(lang,'나만의 분위기로.','a different feeling.','khí chất riêng biệt.')}
+        {text(lang,'같은 디자인도,','The same silhouette,')}<br/>
+        {text(lang,'나만의 분위기로.','a different feeling.')}
       </h2>
       <p>{text(lang,
         '수저우 실크는 은은한 광택과 부드러운 감촉을, 루비 실크는 선명한 윤기와 탄탄한 실루엣을 선사합니다.\n차분한 아이보리부터 깊은 올리브, 와인까지 40여 가지 컬러북에서 나만의 조합을 찾아보세요.',
-        'Suzhou silk offers a gentle sheen and soft drape, while Ruby silk provides luminous luster and structured silhouette.\nFrom quiet ivory to deep olive, find your shade across our curated palette.',
-        'Lụa Tô Châu mềm mại, mịn màng với độ bóng nhẹ; Lụa Ruby có độ bóng rõ, dày dặn và giữ form xuất sắc.\nKhám phá hơn 40 sắc thái lụa cao cấp từ trắng ngọc trai, be sữa đến xanh olive và đỏ rượu vang sang trọng.'
+        'Suzhou silk offers a gentle sheen and soft drape, while Ruby silk provides luminous luster and structured silhouette.\nFrom quiet ivory to deep olive, find your shade across our curated palette.'
       )}</p>
       <div class="editorial-swatches" aria-hidden="true">
         {catalog.fabrics[0].colors.filter(c=>['04','14','76','103','16','61'].includes(c.id)).map(color=><span style={`--swatch:${color.hex}`}></span>)}
       </div>
       <a class="text-link" href={sitePath(`/${lang}/fabrics/`)}>
-        {text(lang,'실크와 컬러 만나보기','Discover the silks & colors','Khám phá bảng màu lụa chi tiết')} ↗
+        {text(lang,'실크와 컬러 만나보기','Discover the silks & colors')} ↗
       </a>
     </div>
   </section>
@@ -223,8 +222,8 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <section class="how-section section-wrap" id="how-it-works">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">MADE TO MEASURE · QUY TRÌNH MAY ĐO</span>
-        <h2>{text(lang,'사이즈 맞춤 제작 과정 (4단계)','Made to Measure in 4 Steps','Quy Trình Đặt May Đồ Lụa 4 Bước')}</h2>
+        <span class="eyebrow">MADE TO MEASURE · {text(lang,'사이즈 맞춤 제작 과정','BESPOKE PROCESS')}</span>
+        <h2>{text(lang,'사이즈 맞춤 제작 과정 (4단계)','Made to Measure in 4 Steps')}</h2>
       </div>
       <p>{text(lang,
         '선택한 디자인을, 내 신체 치수에 딱 맞게.\n상담부터 배송까지 세심하게 제작됩니다.',
@@ -276,45 +275,43 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <section class="measurement-guide-section section-wrap" id="measurement-guide">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">MEASUREMENT GUIDE · HƯỚNG DẪN ĐO</span>
-        <h2>{text(lang,'신체 치수 측정 안내','How to Take Your Measurements','Hướng Dẫn Lấy Số Đo Chuẩn Xác')}</h2>
+        <span class="eyebrow">MEASUREMENT GUIDE · {text(lang,'신체 치수 측정 안내','MEASUREMENT GUIDE')}</span>
+        <h2>{text(lang,'신체 치수 측정 안내','How to Take Your Measurements')}</h2>
       </div>
       <p>{text(lang,
         '정확한 신체 치수를 알려주시면 가장 완벽하고 편안한 핏으로 제작해 드립니다.',
-        'Providing accurate measurements ensures your garment fits you gracefully and comfortably.',
-        'Vui lòng gửi đúng số đo thực tế của bạn, không tự ý tăng giảm số đo để trang phục lên phom đẹp nhất.'
+        'Providing accurate measurements ensures your garment fits you gracefully and comfortably.'
       )}</p>
     </div>
 
     <div class="measure-points-grid">
       <div class="measure-point-card">
         <div class="measure-icon">01</div>
-        <h4>{text(lang, '가슴둘레 (Bust)', 'Bust Measurement', 'Vòng Ngực')}</h4>
-        <p>{text(lang, '가슴의 가장 볼록한 부분을 줄자로 둘러 편안하게 측정합니다.', 'Measure around the fullest part of your bust comfortably.', 'Đo ở phần đầy đặn nhất của ngực.')}</p>
+        <h4>{text(lang, '가슴둘레 (Bust)', 'Bust Measurement')}</h4>
+        <p>{text(lang, '가슴의 가장 볼록한 부분을 줄자로 둘러 편안하게 측정합니다.', 'Measure around the fullest part of your bust comfortably.')}</p>
       </div>
       <div class="measure-point-card">
         <div class="measure-icon">02</div>
-        <h4>{text(lang, '허리둘레 (Waist)', 'Waist Measurement', 'Vòng Eo')}</h4>
-        <p>{text(lang, '배꼽 위 약 3cm, 가장 잘록한 허리 부분을 측정합니다.', 'Measure around your natural waist, roughly 3cm above the navel.', 'Đo ở phần nhỏ nhất của eo (khoảng 3 cm phía trên rốn).')}</p>
+        <h4>{text(lang, '허리둘레 (Waist)', 'Waist Measurement')}</h4>
+        <p>{text(lang, '배꼽 위 약 3cm, 가장 잘록한 허리 부분을 측정합니다.', 'Measure around your natural waist, roughly 3cm above the navel.')}</p>
       </div>
       <div class="measure-point-card">
         <div class="measure-icon">03</div>
-        <h4>{text(lang, '엉덩이둘레 (Hips)', 'Hips Measurement', 'Vòng Mông')}</h4>
-        <p>{text(lang, '엉덩이의 가장 넓고 볼록한 부분을 수평으로 측정합니다.', 'Measure around the widest part of your hips and buttocks.', 'Đo ở phần rộng nhất của mông.')}</p>
+        <h4>{text(lang, '엉덩이둘레 (Hips)', 'Hips Measurement')}</h4>
+        <p>{text(lang, '엉덩이의 가장 넓고 볼록한 부분을 수평으로 측정합니다.', 'Measure around the widest part of your hips and buttocks.')}</p>
       </div>
       <div class="measure-point-card">
         <div class="measure-icon">04</div>
-        <h4>{text(lang, '키 & 몸무게 & 특이사항', 'Height, Weight & Notes', 'Chiều Cao, Cân Nặng & Dáng Người')}</h4>
-        <p>{text(lang, '키와 몸무게를 함께 알려주시고, 어깨가 넓거나 팔이 긴 경우 메모를 남겨주세요.', 'Share your height & weight. Note if your shoulders or arms have special proportions.', 'Hãy cho Michelle biết chiều cao, cân nặng. Nếu vai rộng hoặc cánh tay dài hơn bình thường hãy ghi chú nhé.')}</p>
+        <h4>{text(lang, '키 & 몸무게 & 특이사항', 'Height, Weight & Notes')}</h4>
+        <p>{text(lang, '키와 몸무게를 함께 알려주시고, 어깨가 넓거나 팔이 긴 경우 메모를 남겨주세요.', 'Share your height & weight. Note if your shoulders or arms have special proportions.')}</p>
       </div>
     </div>
 
     <div class="measure-tip-box">
-      <strong>💡 {text(lang, '치수 측정 팁', 'Measurement Tip', 'Lưu ý khi đo')}:</strong>
+      <strong>💡 {text(lang, '치수 측정 팁', 'Measurement Tip')}:</strong>
       <span>{text(lang,
         '줄자를 너무 조이거나 헐겁지 않게, 편안하게 숨을 쉴 수 있는 상태에서 측정해 주세요. 치수를 임의로 늘리거나 줄이지 마시고 실제 신체 치수를 알려주세요.',
-        'Keep the measuring tape snug but not tight—you should breathe normally. Please do not add or subtract inches.',
-        'Khi đo, đừng siết thước quá chặt hoặc để quá lỏng, chỉ cần đo vừa phải để bạn vẫn có thể hít thở thoải mái. Vui lòng không tự ý cộng thêm hoặc trừ bớt số đo.'
+        'Keep the measuring tape snug but not tight—you should breathe normally. Please do not add or subtract inches.'
       )}</span>
     </div>
   </section>
@@ -323,8 +320,8 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <section class="care-guide-section section-wrap" id="care-guide">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">CARE GUIDE · HƯỚNG DẪN SỬ DỤNG</span>
-        <h2>{text(lang,'실크 & 린넨 관리 가이드','Silk & Linen Care Guide','Hướng Dẫn Sử Dụng & Bảo Quản')}</h2>
+        <span class="eyebrow">CARE GUIDE · {text(lang,'원단 관리 가이드','CARE GUIDE')}</span>
+        <h2>{text(lang,'실크 & 린넨 관리 가이드','Silk & Linen Care Guide')}</h2>
       </div>
       <p>{text(lang,
         '고급 원단을 오래도록 아름답게 유지하기 위한 세탁 및 보관 방법입니다.',
