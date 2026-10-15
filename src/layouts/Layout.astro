@@ -7,9 +7,9 @@ import type {Locale} from '../lib/types';
 import {text} from '../lib/i18n';
 import {settings} from '../lib/catalog';
 interface Props { lang:Locale; title?:string; description?:string; notFound?:boolean; }
-const {lang,title='Michelle Store',description=text(Astro.props.lang,'미셸의 컬렉션에서 디자인과 실크, 컬러를 선택하고 고객님의 신체 치수에 맞춰 제작하는 사이즈 맞춤 실크 컬렉션.','Choose from Michelle’s existing designs, select your silk and color, and have your piece made to your measurements.')}=Astro.props;
+const {lang,title='Michelle Store',description=text(Astro.props.lang,'미셸의 컬렉션에서 디자인과 실크, 컬러를 선택하고 고객님의 신체 치수에 맞춰 제작하는 사이즈 맞춤 실크 컬렉션.','Choose from Michelle’s existing designs, select your silk and color, and have your piece made to your measurements.','Bộ sưu tập lụa may đo cao cấp theo số đo cơ thể từ Michelle Store. Lựa chọn thiết kế, chất liệu lụa Tô Châu hoặc Ruby và màu sắc yêu thích.')}=Astro.props;
 const notFound=Astro.props.notFound===true;
-const path=notFound?'/':routePath(Astro.url.pathname).replace(/^\/(ko|en)(?=\/|$)/,'') || '/';
+const path=notFound?'/':routePath(Astro.url.pathname).replace(/^\/(ko|vi|en)(?=\/|$)/,'') || '/';
 const canonical=Astro.site&&!notFound?new URL(Astro.url.pathname,Astro.site):null;
 ---
 <!doctype html>
@@ -25,32 +25,37 @@ const canonical=Astro.site&&!notFound?new URL(Astro.url.pathname,Astro.site):nul
     <meta property="og:type" content="website" />
     <meta name="referrer" content="no-referrer" />
     {canonical && <link rel="canonical" href={canonical} />}
-    {Astro.site && !notFound && ['ko','en'].map(locale=><link rel="alternate" hreflang={locale} href={new URL(sitePath(`/${locale}${path}`),Astro.site)} />)}
+    {Astro.site && !notFound && ['ko','vi','en'].map(locale=><link rel="alternate" hreflang={locale} href={new URL(sitePath(`/${locale}${path}`),Astro.site)} />)}
     <link rel="icon" type="image/svg+xml" href={sitePath("/favicon.svg")} />
   </head>
   <body>
-    <a href="#main" class="skip-link">{text(lang,'본문으로 이동','Skip to content')}</a>
-    <div class="announcement">{text(lang,'미셸의 실크, 나에게 맞는 사이즈로','SILK, MADE TO YOUR MEASUREMENTS')}<span>SUZHOU & RUBY</span></div>
+    <a href="#main" class="skip-link">{text(lang,'본문으로 이동','Skip to content','Chuyển đến nội dung chính')}</a>
+    <div class="announcement">{text(lang,'미셸의 실크, 나에게 맞는 사이즈로','SILK, MADE TO YOUR MEASUREMENTS','LỤA CAO CẤP · THIẾT KẾ MAY ĐO THEO SỐ ĐO RIÊNG')}<span>SUZHOU & RUBY</span></div>
     <header class="site-header">
       <a class="brand" href={sitePath(`/${lang}/`)} aria-label="Michelle Store"><img src={sitePath("/brand/michelle-logo.png")} width="834" height="390" alt="ML Michelle Store" /></a>
-      <nav class="main-nav" aria-label={text(lang,'메인 메뉴','Main navigation')}>
-        <a href={sitePath(`/${lang}/#collection`)}>{text(lang,'컬렉션','Collection')}</a>
-        <a href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크 & 컬러','Silk & color')}</a>
-        <a href={sitePath(`/${lang}/#how-it-works`)}>{text(lang,'사이즈 맞춤 안내','Made to measure')}</a>
+      <nav class="main-nav" aria-label={text(lang,'메인 메뉴','Main navigation','Menu chính')}>
+        <a href={sitePath(`/${lang}/#collection`)}>{text(lang,'컬렉션','Collection','Bộ sưu tập')}</a>
+        <a href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크 & 컬러','Silk & color','Bảng màu & Chất liệu')}</a>
+        <a href={sitePath(`/${lang}/#how-it-works`)}>{text(lang,'사이즈 맞춤 안내','Made to measure','Quy trình may đo')}</a>
+        <a href={sitePath(`/${lang}/#care-guide`)}>{text(lang,'관리 가이드','Care guide','HD bảo quản')}</a>
       </nav>
       <div class="header-tools">
         <div class="language-switch" aria-label="Language">
-          <a data-language href={sitePath(`/ko${path}`)} lang="ko" aria-current={lang==='ko'?'page':undefined}>KR</a><span>/</span><a data-language href={sitePath(`/en${path}`)} lang="en" aria-current={lang==='en'?'page':undefined}>EN</a>
+          <a data-language href={sitePath(`/ko${path}`)} lang="ko" aria-current={lang==='ko'?'page':undefined}>KR</a>
+          <span>/</span>
+          <a data-language href={sitePath(`/vi${path}`)} lang="vi" aria-current={lang==='vi'?'page':undefined}>VN</a>
+          <span>/</span>
+          <a data-language href={sitePath(`/en${path}`)} lang="en" aria-current={lang==='en'?'page':undefined}>EN</a>
         </div>
-        <a class="bag-link" href={sitePath(`/${lang}/selections/`)} aria-label={text(lang,'나의 선택','My selections')}>
+        <a class="bag-link" href={sitePath(`/${lang}/selections/`)} aria-label={text(lang,'나의 선택','My selections','Túi đồ của tôi')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg><span class="bag-count" data-bag-count>0</span>
         </a>
       </div>
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer">
-      <div class="footer-top"><div><span class="eyebrow light">MICHELLE STORE</span><p class="footer-statement">Made for <em>you.</em></p></div><div class="footer-message"><p>{text(lang,'미셸의 디자인, 내가 고른 컬러.\n내 치수에 맞춰 제작하는 한 벌.','Michelle’s designs. Your chosen color.\nMade to your measurements.')}</p><div class="footer-social-links"><a class="text-link light" href={`https://www.instagram.com/${settings.instagram}/`} target="_blank" rel="noopener noreferrer">Instagram @{settings.instagram} ↗</a><a class="text-link light" href={`https://www.threads.com/@${settings.threads}`} target="_blank" rel="noopener noreferrer">Threads @{settings.threads} ↗</a></div></div></div>
-      <div class="footer-bottom"><span>© {new Date().getFullYear()} Michelle Store</span><span>{text(lang,'사이즈 맞춤 제작 · 최종 가격은 상담 후 안내','Made to measure · Final pricing confirmed in consultation')}</span><a href={sitePath(`/${lang}/privacy/`)}>{text(lang,'저장 정보 안내','Your saved information')}</a></div>
+      <div class="footer-top"><div><span class="eyebrow light">MICHELLE STORE</span><p class="footer-statement">Made for <em>you.</em></p></div><div class="footer-message"><p>{text(lang,'미셸의 디자인, 내가 고른 컬러.\n내 치수에 맞춰 제작하는 한 벌.','Michelle’s designs. Your chosen color.\nMade to your measurements.','Thiết kế từ Michelle, sắc màu do bạn chọn.\nMay đo vừa vặn riêng theo số đo của bạn.')}</p><div class="footer-social-links"><a class="text-link light" href={`https://www.instagram.com/${settings.instagram}/`} target="_blank" rel="noopener noreferrer">Instagram @{settings.instagram} ↗</a><a class="text-link light" href={`https://www.threads.com/@${settings.threads}`} target="_blank" rel="noopener noreferrer">Threads @{settings.threads} ↗</a></div></div></div>
+      <div class="footer-bottom"><span>© {new Date().getFullYear()} Michelle Store</span><span>{text(lang,'사이즈 맞춤 제작 · 최종 가격은 상담 후 안내','Made to measure · Final pricing confirmed in consultation','May đo theo số đo · Giá và thời gian tư vấn trực tiếp')}</span><a href={sitePath(`/${lang}/privacy/`)}>{text(lang,'저장 정보 안내','Your saved information','Chính sách thông tin')}</a></div>
       <p class="footer-credit">Website made by <a href="https://github.com/silverrainb" target="_blank" rel="noopener noreferrer">@silverrainb ↗</a></p>
     </footer>
     <script>
@@ -60,8 +65,7 @@ const canonical=Astro.site&&!notFound?new URL(Astro.url.pathname,Astro.site):nul
       }
       updateCount();
       window.addEventListener('storage',updateCount);
-      window.addEventListener('michelle:cart',(event)=>{document.querySelectorAll('[data-bag-count]').forEach(el=>el.textContent=String((event as CustomEvent).detail.count));});
-      document.querySelectorAll<HTMLAnchorElement>('[data-language]').forEach(link=>{link.href+=window.location.search+window.location.hash;});
+      window.addEventListener('michelle:cart-updated',updateCount);
     </script>
   </body>
 </html>

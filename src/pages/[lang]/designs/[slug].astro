@@ -13,10 +13,64 @@ const lang=Astro.params.lang as Locale;
 const catalog=await getCatalog();
 const product=catalog.designs.find(d=>d.slug===Astro.params.slug)!;
 const related=catalog.designs.filter(d=>d.category===product.category&&d.id!==product.id).slice(0,3);
+const pName = product.name[lang] || product.name.en || product.name.ko;
+const pDesc = product.description[lang] || product.description.en || product.description.ko;
+const catName = categoryNames[product.category]?.[lang] || categoryNames[product.category]?.en;
 ---
-<Layout lang={lang} title={product.name[lang]} description={product.description[lang]}>
-  <div class="breadcrumb section-wrap"><a href={sitePath(`/${lang}/#collection`)}>{text(lang,'컬렉션','Collection')}</a><span>/</span><span>{categoryNames[product.category][lang]}</span></div>
-  <section class="product-detail section-wrap"><div class="detail-photograph"><img src={product.imageUrl} width="1000" height="1333" alt={product.name[lang]} fetchpriority="high"/><div class="image-caption"><span>{product.id} / {categoryNames[product.category][lang]}</span><span>{text(lang,'디자인 참고 사진','Design reference')}</span></div><p class="field-hint">{text(lang,'사진은 디자인 참고용이며 선택하신 컬러로 자동 변경되지 않아요. 코디된 다른 의류와 액세서리는 선택에 포함되지 않아요.','This photograph shows the design and does not change with your color choice. Other styled garments and accessories are not included.')}</p></div><div class="detail-content"><span class="eyebrow">MADE TO MEASURE · {product.id}</span><h1>{product.name[lang]}</h1><p class="detail-description">{product.description[lang]}</p><p class="detail-price">{priceLabel(product,lang)}</p><p class="field-hint">{text(lang,'선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요. 최종 가격과 제작 가능 여부는 상담 시 확인해 주세요.','This design is made to your measurements. Michelle will confirm final pricing and availability with you.')}</p><ProductCustomizer product={product} catalog={catalog} lang={lang} client:load/><details class="product-details"><summary>{text(lang,'사이즈 맞춤 제작 안내','Made-to-measure details')} <span>+</span></summary><p>{text(lang,'미셸의 컬렉션에 있는 디자인을 선택하고 실크와 컬러, 신체 치수를 담아 제안서를 만들어 주세요. 선택하신 디자인의 사이즈를 고객님의 치수에 맞춰 제작하며, 인스타그램 상담을 통해 사이즈와 최종 가격, 제작 일정을 확인해 드려요. 이곳에서 결제되거나 주문이 확정되지는 않아요.','Choose an existing design from Michelle’s collection, select your silk and color, then add your measurements to the proposal. Your selected design is made to your size. Michelle will confirm sizing, final pricing and production timing on Instagram. This site does not take payment or confirm an order.')}</p></details></div></section>
+<Layout lang={lang} title={pName} description={pDesc}>
+  <div class="breadcrumb section-wrap">
+    <a href={sitePath(`/${lang}/#collection`)}>{text(lang,'컬렉션','Collection','Bộ sưu tập')}</a>
+    <span>/</span>
+    <span>{catName}</span>
+  </div>
+  <section class="product-detail section-wrap">
+    <div class="detail-photograph">
+      <img src={product.imageUrl} width="1000" height="1333" alt={pName} fetchpriority="high"/>
+      <div class="image-caption">
+        <span>{product.id} / {catName}</span>
+        <span>{text(lang,'디자인 참고 사진','Design reference','Ảnh mẫu thiết kế')}</span>
+      </div>
+      <p class="field-hint">
+        {text(lang,
+          '사진은 디자인 참고용이며 선택하신 컬러로 자동 변경되지 않아요. 코디된 다른 의류와 액세서리는 선택에 포함되지 않아요.',
+          'This photograph shows the design and does not change with your color choice. Other styled garments and accessories are not included.',
+          'Hình ảnh thể hiện phom dáng thiết kế mẫu. Sản phẩm thực tế sẽ được may theo đúng chất liệu lụa, màu sắc và số đo bạn đã chọn.'
+        )}
+      </p>
+    </div>
+    <div class="detail-content">
+      <span class="eyebrow">MADE TO MEASURE · {product.id}</span>
+      <h1>{pName}</h1>
+      <p class="detail-description">{pDesc}</p>
+      <p class="detail-price">{priceLabel(product,lang)}</p>
+      <p class="field-hint">
+        {text(lang,
+          '선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요. 최종 가격과 제작 가능 여부는 상담 시 확인해 주세요.',
+          'This design is made to your measurements. Michelle will confirm final pricing and availability with you.',
+          'Thiết kế này được may đo theo số đo của bạn. Thời gian may khoảng 7 ngày, vận chuyển khoảng 5–6 ngày.'
+        )}
+      </p>
+      <ProductCustomizer product={product} catalog={catalog} lang={lang} client:load/>
+      <details class="product-details">
+        <summary>{text(lang,'사이즈 맞춤 제작 안내','Made-to-measure details','Quy trình may đo & đặt hàng')} <span>+</span></summary>
+        <p>{text(lang,
+          '미셸의 컬렉션에 있는 디자인을 선택하고 실크와 컬러, 신체 치수를 담아 제안서를 만들어 주세요. 선택하신 디자인의 사이즈를 고객님의 치수에 맞춰 제작하며, 인스타그램 상담을 통해 사이즈와 최종 가격, 제작 일정을 확인해 드려요. 이곳에서 결제되거나 주문이 확정되지는 않아요.',
+          'Choose an existing design from Michelle’s collection, select your silk and color, then add your measurements to the proposal. Your selected design is made to your size. Michelle will confirm sizing, final pricing and production timing on Instagram. This site does not take payment or confirm an order.',
+          'Lựa chọn thiết kế yêu thích, chọn loại lụa (Tô Châu hoặc Ruby) và mã màu, sau đó điền số đo cơ thể để tạo đề xuất. Michelle sẽ tư vấn trực tiếp qua Instagram @michelle1998kr để xác nhận số đo, giá và thời gian hoàn thiện.'
+        )}</p>
+      </details>
+    </div>
+  </section>
   <DesignPosts reviews={product.reviews} lang={lang}/>
-  <section class="section-wrap related-section"><div class="section-heading"><div><span class="eyebrow">ALSO IN THE EDIT</span><h2>{text(lang,'함께 살펴볼 디자인','More to fall for')}</h2></div></div><div class="product-grid related-grid">{related.map(product=><ProductCard product={product} lang={lang}/>)}</div></section>
+  <section class="section-wrap related-section">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">ALSO IN THE EDIT</span>
+        <h2>{text(lang,'함께 살펴볼 디자인','More to fall for','Các thiết kế cùng phong cách')}</h2>
+      </div>
+    </div>
+    <div class="product-grid related-grid">
+      {related.map(product=><ProductCard product={product} lang={lang}/>)}
+    </div>
+  </section>
 </Layout>

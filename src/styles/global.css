@@ -483,3 +483,340 @@
     padding: 6px 10px;
   }
 }
+
+
+/* ==========================================================================
+   NEW BESPOKE PROCESS, MEASUREMENT GUIDE & FABRIC CARE STYLES
+   ========================================================================== */
+
+/* Hero Action Buttons */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.hero-actions .hero-button {
+  margin-top: 0;
+}
+.hero-sub-button {
+  min-height: 55px;
+  padding: 16px 22px;
+  font-size: 12px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  transition: all 0.25s ease;
+}
+.hero-sub-button:hover {
+  background: rgba(52, 72, 53, 0.08);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* 4-Step Bespoke Grid */
+.steps-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  border-top: 1px solid var(--line);
+  padding-top: 35px;
+  margin-top: 20px;
+}
+.step-card {
+  padding: 24px 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.step-card:hover {
+  background: #ffffff;
+  border-color: var(--green);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
+}
+.step-card .step-num {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-style: italic;
+  color: #879476;
+  display: block;
+  line-height: 1;
+}
+.step-card h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 16px 0 10px;
+  color: var(--ink);
+}
+.step-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+/* Measurement Guide Section */
+.measurement-guide-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+.measure-points-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 35px;
+}
+.measure-point-card {
+  padding: 26px 22px;
+  background: #fdfcf9;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+.measure-point-card:hover {
+  border-color: #8c7355;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+.measure-point-card .measure-icon {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: #8c7355;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.measure-point-card h4 {
+  font-size: 15px;
+  margin: 0 0 10px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.measure-point-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+.measure-tip-box {
+  margin-top: 28px;
+  padding: 18px 24px;
+  background: #f1efe6;
+  border-left: 3px solid var(--green);
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--ink);
+}
+
+/* Fabric Care Guide Section (Silk & Linen) */
+.care-guide-section {
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+.care-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin-top: 35px;
+}
+.care-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+.care-card:hover {
+  border-color: var(--green);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+.care-card-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+.care-tag {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--green);
+  background: rgba(52, 72, 53, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.care-card-header h3 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 400;
+}
+.care-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.care-item strong {
+  display: block;
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.care-item p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin: 0;
+}
+.timeline-box {
+  margin-top: 8px;
+  padding: 14px 18px;
+  background: #f7f6f0;
+  border-radius: 4px;
+  border: 1px dashed #b5bba9;
+}
+
+/* High-Res Color Charts Dual Grid */
+.chart-section {
+  margin-top: 45px;
+  padding-top: 35px;
+  border-top: 1px solid var(--line);
+}
+.chart-section-title h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.chart-section-title p {
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+.chart-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.chart-card {
+  margin: 0;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.chart-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+.chart-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+.chart-badge {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  color: var(--ink);
+}
+.chart-card figcaption {
+  font-size: 12px;
+  text-align: center;
+  color: var(--muted);
+  margin-top: 14px;
+  font-weight: 500;
+}
+
+/* Fabric Characteristics Comparison */
+.fabric-characteristics-section {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+}
+.fabric-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 28px;
+}
+.compare-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 32px 28px;
+  border-radius: 4px;
+}
+.compare-badge {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--green);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+.compare-card h3 {
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+.compare-lead {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.compare-list {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 2;
+}
+.fabric-action-footer {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 45px;
+  flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media(max-width: 1050px) {
+  .steps-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .measure-points-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+@media(max-width: 760px) {
+  .care-grid, .chart-dual-grid, .fabric-compare-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .steps-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .measure-points-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

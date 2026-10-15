@@ -4,11 +4,13 @@
   "category": "top",
   "name": {
     "ko": "스트레이트 블라우스",
-    "en": "Straight-cut blouse"
+    "en": "Straight-cut blouse",
+    "vi": "Áo blouse lụa suông phom đứng"
   },
   "description": {
     "ko": "단정한 칼라와 여유로운 스트레이트 라인.",
-    "en": "A clean collar and an easy, straight silhouette."
+    "en": "A clean collar and an easy, straight silhouette.",
+    "vi": "Phom áo suông thẳng hiện đại, dễ dàng phối hợp cùng quần tây hay chân váy lụa."
   },
   "image": "assets/designs/top/straight-blouse.jpg",
   "published": true,

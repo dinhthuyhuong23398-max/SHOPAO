@@ -4,11 +4,13 @@
   "category": "dress",
   "name": {
     "ko": "슬리브리스 맥시 가운",
-    "en": "Sleeveless maxi gown"
+    "en": "Sleeveless maxi gown",
+    "vi": "Đầm dạ hội lụa maxi sát nách"
   },
   "description": {
     "ko": "간결한 라운드 네크라인의 슬리브리스 가운.",
-    "en": "A sleeveless gown with a simple rounded neckline."
+    "en": "A sleeveless gown with a simple rounded neckline.",
+    "vi": "Đầm dạ hội lụa cao cấp với đường nét tối giản tôn vinh vẻ đẹp sang trọng đẳng cấp."
   },
   "image": "assets/designs/dress/maxi-silk-gown.jpg",
   "published": true,

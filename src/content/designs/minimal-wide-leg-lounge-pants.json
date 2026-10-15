@@ -4,11 +4,13 @@
   "category": "trouser",
   "name": {
     "ko": "릴랙스 와이드 팬츠",
-    "en": "Relaxed wide-leg pants"
+    "en": "Relaxed wide-leg pants",
+    "vi": "Quần lụa ống rộng thư giãn cao cấp"
   },
   "description": {
     "ko": "일상에 편안하게 어울리는 와이드 실루엣.",
-    "en": "An easy wide-leg silhouette for everyday dressing."
+    "en": "An easy wide-leg silhouette for everyday dressing.",
+    "vi": "Chất liệu lụa êm ái đem lại cảm giác tự do, nhẹ tênh khi mặc ở nhà hay dạo phố."
   },
   "image": "assets/designs/trouser/minimal-wide-leg-lounge-pants.jpg",
   "published": true,

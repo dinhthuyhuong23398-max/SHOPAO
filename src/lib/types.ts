@@ -1,5 +1,5 @@
-export type Locale = 'ko' | 'en';
-export type Localized = Record<Locale, string>;
+export type Locale = 'ko' | 'vi' | 'en';
+export type Localized = { ko: string; en: string; vi?: string; [key: string]: string | undefined };
 export type FabricId = 'suzhou' | 'ruby';
 export interface Color { id: string; code: string; name: Localized; hex: string }
 export interface Fabric { id: FabricId; name: Localized; description: Localized; colors: Color[]; charts: string[] }

@@ -4,11 +4,13 @@
   "category": "dress",
   "name": {
     "ko": "드레이프 슬립 드레스",
-    "en": "Cowl-neck slip dress"
+    "en": "Cowl-neck slip dress",
+    "vi": "Đầm lụa slip dress cổ đổ tối giản"
   },
   "description": {
     "ko": "자연스럽게 흐르는 네크라인과 긴 실루엣.",
-    "en": "A softly draped neckline and a long, fluid silhouette."
+    "en": "A softly draped neckline and a long, fluid silhouette.",
+    "vi": "Điểm nhấn cổ đổ mềm mại tự nhiên, phom dáng rủ nhẹ nhàng tôn lên thần thái quý phái."
   },
   "image": "assets/designs/dress/minimal-cowl-neck-slip-dress.jpg",
   "published": true,

@@ -4,11 +4,13 @@
   "category": "top",
   "name": {
     "ko": "타이넥 실크 탑",
-    "en": "Tie-neck silk top"
+    "en": "Tie-neck silk top",
+    "vi": "Áo lụa cổ thắt nơ thanh lịch"
   },
   "description": {
     "ko": "목선을 감싸는 타이 디테일의 실크 탑.",
-    "en": "A silk top with a soft tie detail at the neck."
+    "en": "A silk top with a soft tie detail at the neck.",
+    "vi": "Chi tiết thắt nơ tinh tế nơi cổ áo tạo điểm nhấn nữ tính, trang nhã và duyên dáng."
   },
   "image": "assets/designs/top/mock-neck-top.jpg",
   "published": true,

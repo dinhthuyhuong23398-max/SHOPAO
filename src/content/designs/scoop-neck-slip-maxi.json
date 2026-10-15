@@ -4,11 +4,13 @@
   "category": "dress",
   "name": {
     "ko": "스쿱넥 슬립 맥시",
-    "en": "Scoop-neck slip maxi"
+    "en": "Scoop-neck slip maxi",
+    "vi": "Đầm lụa maxi hai dây cổ chữ U"
   },
   "description": {
     "ko": "가느다란 스트랩과 길게 이어지는 라인.",
-    "en": "Fine straps and a long, uninterrupted silhouette."
+    "en": "Fine straps and a long, uninterrupted silhouette.",
+    "vi": "Đầm hai dây dáng suông mềm mại ôm nhẹ theo từng chuyển động của cơ thể."
   },
   "image": "assets/designs/dress/scoop-neck-slip-maxi.png",
   "published": true,

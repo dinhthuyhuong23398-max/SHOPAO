@@ -4,11 +4,13 @@
   "category": "trouser",
   "name": {
     "ko": "실크 와이드 트라우저",
-    "en": "Silk wide-leg trousers"
+    "en": "Silk wide-leg trousers",
+    "vi": "Quần lụa ống suông dáng dài"
   },
   "description": {
     "ko": "부드럽게 떨어지는 넓은 바지 라인.",
-    "en": "An elegant wide leg with a fluid drape."
+    "en": "An elegant wide leg with a fluid drape.",
+    "vi": "Dáng quần ống suông tôn chiều dài đôi chân, chất lụa rủ tự nhiên đầy sang trọng."
   },
   "image": "assets/designs/trouser/elegant-satin-wide-leg-trousers.jpg",
   "published": true,

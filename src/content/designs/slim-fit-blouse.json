@@ -4,11 +4,13 @@
   "category": "top",
   "name": {
     "ko": "슬림핏 블라우스",
-    "en": "Slim-fit blouse"
+    "en": "Slim-fit blouse",
+    "vi": "Áo blouse lụa ôm dáng tôn eo"
   },
   "description": {
     "ko": "허리선을 따라 정돈된 실루엣의 블라우스.",
-    "en": "A collared blouse with a shaped waist."
+    "en": "A collared blouse with a shaped waist.",
+    "vi": "Đường may tinh xảo ôm nhẹ cơ thể, làm nổi bật vòng eo thon gọn và phong cách chỉn chu."
   },
   "image": "assets/designs/top/slim-fit-blouse.jpg",
   "published": true,

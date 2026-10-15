@@ -4,11 +4,13 @@
   "category": "trouser",
   "name": {
     "ko": "하이웨이스트 플리츠 팬츠",
-    "en": "High-waisted pleated trousers"
+    "en": "High-waisted pleated trousers",
+    "vi": "Quần tây lụa cạp cao xếp ly"
   },
   "description": {
     "ko": "높은 허리선과 앞면 주름의 테일러드 팬츠.",
-    "en": "Tailored trousers with a high waist and front pleats."
+    "en": "Tailored trousers with a high waist and front pleats.",
+    "vi": "Cạp cao xếp ly thanh lịch tạo phom dáng chuẩn, phù hợp cả công sở lẫn dạo phố."
   },
   "image": "assets/designs/trouser/high-waisted-tailored-pleated-trousers.jpg",
   "published": true,

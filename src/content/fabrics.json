@@ -2,12 +2,14 @@
   {
     "id": "suzhou",
     "name": {
-      "ko": "수저우",
-      "en": "Suzhou"
+      "ko": "수저우 실크",
+      "vi": "Lụa Tô Châu",
+      "en": "Suzhou Silk"
     },
     "description": {
-      "ko": "수저우 원단 컬러북에서 나만의 색을 골라보세요. 정확한 색상과 제작 가능 여부는 상담 시 확인해 드려요.",
-      "en": "Explore the Suzhou color book. Michelle will confirm the exact shade and availability with you."
+      "ko": "부드럽고 매끄러우며 은은한 광택감이 특징입니다. 피부에 닿았을 때 êm ái, 편안하고 쾌적하며 구김이 적습니다.",
+      "vi": "Chất vải mềm mại, mịn màng, bóng nhẹ, tiếp xúc với da êm ái, rất dễ chịu và ít nhăn.",
+      "en": "Soft, smooth texture with a subtle natural sheen. Exceptionally gentle on the skin, comfortable, and resists creasing."
     },
     "colors": [
       {
@@ -15,7 +17,8 @@
         "code": "04",
         "name": {
           "ko": "밀크 아이보리",
-          "en": "Milk ivory"
+          "en": "Milk ivory",
+          "vi": "Trắng ngà sữa (Milk Ivory)"
         },
         "hex": "#e9dfca"
       },
@@ -24,7 +27,8 @@
         "code": "01",
         "name": {
           "ko": "펄 화이트",
-          "en": "Pearl white"
+          "en": "Pearl white",
+          "vi": "Trắng ngọc trai (Pearl White)"
         },
         "hex": "#eeede6"
       },
@@ -33,7 +37,8 @@
         "code": "100",
         "name": {
           "ko": "샴페인",
-          "en": "Champagne"
+          "en": "Champagne",
+          "vi": "Vàng Champagne (Champagne)"
         },
         "hex": "#d9c9b3"
       },
@@ -42,7 +47,8 @@
         "code": "05",
         "name": {
           "ko": "소프트 골드",
-          "en": "Soft gold"
+          "en": "Soft gold",
+          "vi": "Vàng kim nhạt (Soft Gold)"
         },
         "hex": "#cdb890"
       },
@@ -51,7 +57,8 @@
         "code": "14",
         "name": {
           "ko": "라떼",
-          "en": "Latte"
+          "en": "Latte",
+          "vi": "Nâu Latte (Latte)"
         },
         "hex": "#a78d70"
       },
@@ -60,7 +67,8 @@
         "code": "13",
         "name": {
           "ko": "누드 베이지",
-          "en": "Nude beige"
+          "en": "Nude beige",
+          "vi": "Be da tự nhiên (Nude Beige)"
         },
         "hex": "#beaa9d"
       },
@@ -69,7 +77,8 @@
         "code": "129",
         "name": {
           "ko": "브라운",
-          "en": "Brown"
+          "en": "Brown",
+          "vi": "Nâu đất ấm (Brown)"
         },
         "hex": "#6b4636"
       },
@@ -78,7 +87,8 @@
         "code": "98",
         "name": {
           "ko": "코코아",
-          "en": "Cocoa"
+          "en": "Cocoa",
+          "vi": "Nâu ca cao (Cocoa)"
         },
         "hex": "#665354"
       },
@@ -87,7 +97,8 @@
         "code": "73",
         "name": {
           "ko": "테라코타",
-          "en": "Terracotta"
+          "en": "Terracotta",
+          "vi": "Cam đất nung (Terracotta)"
         },
         "hex": "#a4532c"
       },
@@ -96,7 +107,8 @@
         "code": "76",
         "name": {
           "ko": "올리브",
-          "en": "Olive"
+          "en": "Olive",
+          "vi": "Xanh ô liu (Olive)"
         },
         "hex": "#687532"
       },
@@ -105,7 +117,8 @@
         "code": "22",
         "name": {
           "ko": "소프트 그린",
-          "en": "Soft green"
+          "en": "Soft green",
+          "vi": "Xanh bơ nhạt (Soft Green)"
         },
         "hex": "#b3bc90"
       },
@@ -114,7 +127,8 @@
         "code": "125",
         "name": {
           "ko": "딥 그린",
-          "en": "Deep green"
+          "en": "Deep green",
+          "vi": "Xanh lục trầm (Deep Green)"
         },
         "hex": "#4a5342"
       },
@@ -123,7 +137,8 @@
         "code": "27",
         "name": {
           "ko": "제이드",
-          "en": "Jade"
+          "en": "Jade",
+          "vi": "Xanh ngọc bích (Jade)"
         },
         "hex": "#147d86"
       },
@@ -132,7 +147,8 @@
         "code": "18",
         "name": {
           "ko": "베이비 블루",
-          "en": "Baby blue"
+          "en": "Baby blue",
+          "vi": "Xanh pastel nhạt (Baby Blue)"
         },
         "hex": "#a8c9dc"
       },
@@ -141,7 +157,8 @@
         "code": "91",
         "name": {
           "ko": "파스텔 블루",
-          "en": "Pastel blue"
+          "en": "Pastel blue",
+          "vi": "Xanh da trời phấn (Pastel Blue)"
         },
         "hex": "#a0adc6"
       },
@@ -150,7 +167,8 @@
         "code": "99",
         "name": {
           "ko": "클래식 블루",
-          "en": "Classic blue"
+          "en": "Classic blue",
+          "vi": "Xanh cổ điển (Classic Blue)"
         },
         "hex": "#354987"
       },
@@ -159,7 +177,8 @@
         "code": "19",
         "name": {
           "ko": "로열 블루",
-          "en": "Royal blue"
+          "en": "Royal blue",
+          "vi": "Xanh hoàng gia (Royal Blue)"
         },
         "hex": "#15409c"
       },
@@ -168,7 +187,8 @@
         "code": "103",
         "name": {
           "ko": "네이비",
-          "en": "Navy"
+          "en": "Navy",
+          "vi": "Xanh than đậm (Navy)"
         },
         "hex": "#25364c"
       },
@@ -177,7 +197,8 @@
         "code": "35",
         "name": {
           "ko": "스모크 그레이",
-          "en": "Smoke grey"
+          "en": "Smoke grey",
+          "vi": "Xám khói (Smoke Grey)"
         },
         "hex": "#797784"
       },
@@ -186,7 +207,8 @@
         "code": "34",
         "name": {
           "ko": "실버",
-          "en": "Silver"
+          "en": "Silver",
+          "vi": "Xám bạc ánh kim (Silver)"
         },
         "hex": "#bdc3ce"
       },
@@ -195,7 +217,8 @@
         "code": "16",
         "name": {
           "ko": "더스티 로즈",
-          "en": "Dusty rose"
+          "en": "Dusty rose",
+          "vi": "Hồng đất dịu dàng (Dusty Rose)"
         },
         "hex": "#b57a94"
       },
@@ -204,7 +227,8 @@
         "code": "61",
         "name": {
           "ko": "와인",
-          "en": "Wine"
+          "en": "Wine",
+          "vi": "Đỏ rượu vang (Wine)"
         },
         "hex": "#632b43"
       },
@@ -213,13 +237,16 @@
         "code": "75",
         "name": {
           "ko": "벨벳 레드",
-          "en": "Velvet red"
+          "en": "Velvet red",
+          "vi": "Đỏ nhung sang trọng (Velvet Red)"
         },
         "hex": "#812d4e"
       }
     ],
     "charts": [
-      "assets/fabrics/suzhou/color-code-3.jpg",
+      "assets/fabrics/suzhou/chart-ko.jpg",
+      "assets/fabrics/suzhou/chart-vi.jpg",
+      "assets/fabrics/suzhou/chart-en.jpg",
       "assets/fabrics/suzhou/color-code-0.jpg",
       "assets/fabrics/suzhou/color-code-1.jpg",
       "assets/fabrics/suzhou/color-code-2.jpg"
@@ -228,12 +255,14 @@
   {
     "id": "ruby",
     "name": {
-      "ko": "루비",
-      "en": "Ruby"
+      "ko": "루비 실크",
+      "vi": "Lụa Ruby",
+      "en": "Ruby Silk"
     },
     "description": {
-      "ko": "루비 원단 컬러북에서 나만의 색을 골라보세요. 정확한 색상과 제작 가능 여부는 상담 시 확인해 드려요. 컬러북의 16번과 38번은 각각 두 가지 색에 쓰이므로, 색상 이름도 함께 확인해 주세요.",
-      "en": "Explore the Ruby color book. Michelle will confirm the exact shade and availability. The chart repeats codes 16 and 38 for different shades, so check the color name as well."
+      "ko": "수저우 실크보다 광택감이 더 뚜렷하며, 원단이 도톰하고 힘이 있어 핏(form)을 탄탄하게 잡아주며 구김이 없습니다.",
+      "vi": "Độ bóng rõ hơn lụa Tô Châu, chất vải dày dặn, đầm tay, giữ form dáng tốt và không nhăn.",
+      "en": "More pronounced luster than Suzhou silk, thicker hand-feel, structured drape with excellent shape retention, wrinkle-free."
     },
     "colors": [
       {
@@ -241,7 +270,8 @@
         "code": "11",
         "name": {
           "ko": "골드",
-          "en": "Gold"
+          "en": "Gold",
+          "vi": "Vàng hoàng kim (Gold)"
         },
         "hex": "#c3af72"
       },
@@ -250,7 +280,8 @@
         "code": "26",
         "name": {
           "ko": "크림 베이지",
-          "en": "Cream beige"
+          "en": "Cream beige",
+          "vi": "Be kem sáng (Cream Beige)"
         },
         "hex": "#d4cdb5"
       },
@@ -259,7 +290,8 @@
         "code": "01",
         "name": {
           "ko": "퓨어 화이트",
-          "en": "Pure white"
+          "en": "Pure white",
+          "vi": "Trắng tinh khôi (Pure White)"
         },
         "hex": "#dfe3e5"
       },
@@ -268,7 +300,8 @@
         "code": "02",
         "name": {
           "ko": "밀크 화이트",
-          "en": "Milk white"
+          "en": "Milk white",
+          "vi": "Trắng sữa dịu (Milk White)"
         },
         "hex": "#dddacd"
       },
@@ -277,7 +310,8 @@
         "code": "43",
         "name": {
           "ko": "라이트 그린",
-          "en": "Light green"
+          "en": "Light green",
+          "vi": "Xanh non nhạt (Light Green)"
         },
         "hex": "#a6b08a"
       },
@@ -286,7 +320,8 @@
         "code": "52",
         "name": {
           "ko": "민트 그린",
-          "en": "Mint green"
+          "en": "Mint green",
+          "vi": "Xanh bạc hà (Mint Green)"
         },
         "hex": "#99aba2"
       },
@@ -295,7 +330,8 @@
         "code": "15",
         "name": {
           "ko": "퍼플",
-          "en": "Purple"
+          "en": "Purple",
+          "vi": "Tím cẩm tú (Purple)"
         },
         "hex": "#6c3559"
       },
@@ -304,7 +340,8 @@
         "code": "25",
         "name": {
           "ko": "말차 그린",
-          "en": "Matcha green"
+          "en": "Matcha green",
+          "vi": "Xanh matcha (Matcha Green)"
         },
         "hex": "#a39f60"
       },
@@ -313,7 +350,8 @@
         "code": "28",
         "name": {
           "ko": "파우더 핑크",
-          "en": "Powder pink"
+          "en": "Powder pink",
+          "vi": "Hồng phấn ngọt ngào (Powder Pink)"
         },
         "hex": "#ddb2ae"
       },
@@ -322,7 +360,8 @@
         "code": "71",
         "name": {
           "ko": "스모키 핑크",
-          "en": "Smoky pink"
+          "en": "Smoky pink",
+          "vi": "Hồng khói thanh lịch (Smoky Pink)"
         },
         "hex": "#c3a5a2"
       },
@@ -331,7 +370,8 @@
         "code": "50",
         "name": {
           "ko": "로즈 브라운",
-          "en": "Rose brown"
+          "en": "Rose brown",
+          "vi": "Nâu cánh hồng (Rose Brown)"
         },
         "hex": "#bb9e8e"
       },
@@ -340,7 +380,8 @@
         "code": "03",
         "name": {
           "ko": "밀크 브라운",
-          "en": "Milk brown"
+          "en": "Milk brown",
+          "vi": "Nâu sữa (Milk Brown)"
         },
         "hex": "#93816c"
       },
@@ -349,7 +390,8 @@
         "code": "80",
         "name": {
           "ko": "와인 레드",
-          "en": "Wine red"
+          "en": "Wine red",
+          "vi": "Đỏ mận chín (Wine Red)"
         },
         "hex": "#661f2f"
       },
@@ -358,7 +400,8 @@
         "code": "38",
         "name": {
           "ko": "네이비",
-          "en": "Navy"
+          "en": "Navy",
+          "vi": "Xanh than đậm (Navy)"
         },
         "hex": "#384160"
       },
@@ -367,7 +410,8 @@
         "code": "65",
         "name": {
           "ko": "클래식 레드",
-          "en": "Classic red"
+          "en": "Classic red",
+          "vi": "Đỏ thuần cổ điển (Classic Red)"
         },
         "hex": "#aa0230"
       },
@@ -376,7 +420,8 @@
         "code": "67",
         "name": {
           "ko": "로열 블루",
-          "en": "Royal blue"
+          "en": "Royal blue",
+          "vi": "Xanh lam đậm (Royal Blue)"
         },
         "hex": "#4880c8"
       },
@@ -385,7 +430,8 @@
         "code": "24",
         "name": {
           "ko": "차콜 그레이",
-          "en": "Charcoal grey"
+          "en": "Charcoal grey",
+          "vi": "Xám than chì (Charcoal Grey)"
         },
         "hex": "#5d5c5b"
       },
@@ -394,7 +440,8 @@
         "code": "16",
         "name": {
           "ko": "블랙",
-          "en": "Black"
+          "en": "Black",
+          "vi": "Đen tuyền quý phái (Black)"
         },
         "hex": "#1d2026"
       },
@@ -403,7 +450,8 @@
         "code": "23",
         "name": {
           "ko": "실버",
-          "en": "Silver"
+          "en": "Silver",
+          "vi": "Xám bạc ánh lụa (Silver)"
         },
         "hex": "#c7cbd2"
       },
@@ -412,7 +460,8 @@
         "code": "37",
         "name": {
           "ko": "모스 그린",
-          "en": "Moss green"
+          "en": "Moss green",
+          "vi": "Xanh rêu đậm (Moss Green)"
         },
         "hex": "#433f33"
       },
@@ -421,7 +470,8 @@
         "code": "22",
         "name": {
           "ko": "민트 블루",
-          "en": "Mint blue"
+          "en": "Mint blue",
+          "vi": "Xanh bơ nhạt (Soft Green)"
         },
         "hex": "#8aabb0"
       },
@@ -430,7 +480,8 @@
         "code": "16",
         "name": {
           "ko": "베이비 블루",
-          "en": "Baby blue"
+          "en": "Baby blue",
+          "vi": "Xanh da trời baby (Baby Blue)"
         },
         "hex": "#90b7da"
       },
@@ -439,7 +490,8 @@
         "code": "38",
         "name": {
           "ko": "브라운",
-          "en": "Brown"
+          "en": "Brown",
+          "vi": "Nâu cà phê (Brown)"
         },
         "hex": "#4c322f"
       },
@@ -448,13 +500,16 @@
         "code": "07",
         "name": {
           "ko": "다크 브라운",
-          "en": "Dark brown"
+          "en": "Dark brown",
+          "vi": "Nâu socola đậm (Dark Brown)"
         },
         "hex": "#91634b"
       }
     ],
     "charts": [
-      "assets/fabrics/ruby/color-code-0.jpg"
+      "assets/fabrics/ruby/chart-ko.jpg",
+      "assets/fabrics/ruby/chart-vi.jpg",
+      "assets/fabrics/ruby/chart-en.jpg"
     ]
   }
 ]

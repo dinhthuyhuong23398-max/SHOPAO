@@ -5,6 +5,8 @@ import {priceLabel} from '../lib/shop';
 import {categoryNames} from '../lib/i18n';
 interface Props {product:Product;lang:Locale;index?:number}
 const {product,lang,index=0}=Astro.props;
+const productName = product.name[lang] || product.name.en || product.name.ko;
+const categoryLabel = categoryNames[product.category]?.[lang] || categoryNames[product.category]?.en;
 ---
 <article 
   class="product-card" 
@@ -13,13 +15,14 @@ const {product,lang,index=0}=Astro.props;
   data-slug={product.slug.toLowerCase()}
   data-name-ko={product.name.ko.toLowerCase()}
   data-name-en={product.name.en.toLowerCase()}
+  data-name-vi={(product.name.vi || product.name.en).toLowerCase()}
   data-fabrics={product.fabrics.join(' ').toLowerCase()}
 >
   <a href={sitePath(`/${lang}/designs/${product.slug}/`)} class="product-image-link">
-    <img src={product.thumbnailUrl} srcset={`${product.thumbnailUrl} 480w, ${product.imageUrl} 1000w`} sizes="(max-width: 640px) 48vw, (max-width: 1000px) 31vw, 24vw" width="600" height="800" loading={index<4?'eager':'lazy'} alt={product.name[lang]} />
+    <img src={product.thumbnailUrl} srcset={`${product.thumbnailUrl} 480w, ${product.imageUrl} 1000w`} sizes="(max-width: 640px) 48vw, (max-width: 1000px) 31vw, 24vw" width="600" height="800" loading={index<4?'eager':'lazy'} alt={productName} />
     <span class="product-number">{product.id}</span><span class="product-explore" aria-hidden="true">↗</span>
   </a>
-  <div class="product-meta"><span>{categoryNames[product.category][lang]}</span><span>SUZHOU / RUBY</span></div>
-  <a class="product-name" href={sitePath(`/${lang}/designs/${product.slug}/`)}>{product.name[lang]}</a>
+  <div class="product-meta"><span>{categoryLabel}</span><span>SUZHOU / RUBY</span></div>
+  <a class="product-name" href={sitePath(`/${lang}/designs/${product.slug}/`)}>{productName}</a>
   <p class="product-price">{priceLabel(product,lang)}</p>
 </article>

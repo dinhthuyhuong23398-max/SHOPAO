@@ -33,33 +33,53 @@ if (heroSlides.length < 4) {
 const second = heroSlides[1] ?? catalog.designs[1];
 const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSlides[0];
 ---
-<Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection')}>
+<Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection','Bộ sưu tập lụa may đo theo số đo')}>
+  <!-- 1. AUTO-SLIDING HERO BANNER WITH 4 MODELS -->
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">SILK, MADE TO MEASURE</span>
-      <h1>{text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>{text(lang,'나에게 맞는 사이즈.','made to your size.')}</h1>
+      <span class="eyebrow">SILK, MADE TO MEASURE · {text(lang,'사이즈 맞춤 제작','BESPOKE SILK','MAY ĐO THEO SỐ ĐO')}</span>
+      <h1>
+        {text(lang,'미셸의 디자인,','Michelle’s designs,','Thiết kế từ Michelle,')}<br/>
+        {text(lang,'나에게 맞는 사이즈.','made to your size.','may đo riêng cho bạn.')}
+      </h1>
       <p class="hero-script">Silk, made to measure.</p>
-      <p class="hero-description">{text(lang,'미셸의 컬렉션에서 디자인과 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.','Choose a design from Michelle’s collection, along with your silk and color.\nYour selected piece is made to your measurements.')}</p>
-      <a class="button primary hero-button" href="#collection">{text(lang,'컬렉션 살펴보기','Explore the collection')}<span>↗</span></a>
-      <div class="hero-footnote"><span class="fine-line"></span><span>{text(lang,'미셸의 컬렉션에서 고르고, 사이즈는 나에게 맞게','Choose from the collection. Made to your measurements.')}</span></div>
+      <p class="hero-description">
+        {text(lang,
+          '미셸의 컬렉션에서 디자인과 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.',
+          'Choose a design from Michelle’s collection, along with your silk and color.\nYour selected piece is made to your measurements.',
+          'Lựa chọn thiết kế từ bộ sưu tập của Michelle, chọn chất liệu lụa Tô Châu hoặc Ruby cùng bảng màu ưng ý.\nTrang phục sẽ được may đo chuẩn xác theo từng số đo cơ thể của bạn.'
+        )}
+      </p>
+      <div class="hero-actions">
+        <a class="button primary hero-button" href="#collection">
+          {text(lang,'컬렉션 살펴보기','Explore collection','Xem bộ sưu tập')}<span>↗</span>
+        </a>
+        <a class="button secondary hero-sub-button" href="#care-guide">
+          {text(lang,'원단 관리 가이드','Fabric care guide','Hướng dẫn bảo quản')}
+        </a>
+      </div>
+      <div class="hero-footnote">
+        <span class="fine-line"></span>
+        <span>{text(lang,'미셸의 컬렉션에서 고르고, 사이즈는 나에게 맞게','Choose from the collection. Made to your measurements.','Đồ lụa may đo theo số đo · Đồ linen may sẵn theo size')}</span>
+      </div>
     </div>
     
     <div class="hero-visual">
       <div class="hero-carousel" id="heroCarousel">
         <div class="hero-slides-track" id="heroTrack">
           {heroSlides.map((slide, idx) => (
-            <a class="hero-slide" href={sitePath(`/${lang}/designs/${slide.slug}/`)} aria-label={slide.name[lang]}>
+            <a class="hero-slide" href={sitePath(`/${lang}/designs/${slide.slug}/`)} aria-label={slide.name[lang] || slide.name.en}>
               <img 
                 src={slide.imageUrl} 
                 width="1000" 
                 height="1333" 
                 fetchpriority={idx === 0 ? "high" : "auto"} 
                 loading={idx === 0 ? "eager" : "lazy"} 
-                alt={slide.name[lang]}
+                alt={slide.name[lang] || slide.name.en}
               />
               <span class="photo-caption">
-                <span>0{idx + 1} / {slide.name[lang]}</span>
-                <span>{text(lang, '디자인 보기', 'EXPLORE')} ↗</span>
+                <span>0{idx + 1} / {slide.name[lang] || slide.name.en}</span>
+                <span>{text(lang, '디자인 보기', 'EXPLORE', 'CHI TIẾT')} ↗</span>
               </span>
             </a>
           ))}
@@ -83,23 +103,28 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       </div>
 
       <a class="hero-inset" href={sitePath(`/${lang}/designs/${second.slug}/`)}>
-        <img src={second.thumbnailUrl} width="480" height="640" alt={second.name[lang]}/>
-        <span>{text(lang,'나를 닮은 한 벌','A piece of you')} ↗</span>
+        <img src={second.thumbnailUrl} width="480" height="640" alt={second.name[lang] || second.name.en}/>
+        <span>{text(lang,'나를 닮은 한 벌','A piece of you','Thiết kế tinh tế')} ↗</span>
       </a>
       <span class="vertical-caption">SUZHOU · RUBY · MADE TO MEASURE</span>
     </div>
   </section>
 
+  <!-- 2. COLLECTION SECTION WITH HORIZONTAL SCROLL & REALTIME SEARCH -->
   <section class="collection-section section-wrap" id="collection">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">THE COLLECTION</span>
-        <h2>{text(lang,'좋아하는 순간을 입다','Find your silhouette')}</h2>
+        <span class="eyebrow">THE COLLECTION · BỘ SƯU TẬP</span>
+        <h2>{text(lang,'좋아하는 순간을 입다','Find your silhouette','Chọn Mẫu Thiết Kế Bạn Yêu Thích')}</h2>
       </div>
-      <p>{text(lang,'미셸의 디자인 중 마음에 드는 한 벌을 고르세요.\n실크와 컬러를 선택하고, 사이즈는 나에게 맞추세요.','Find your favorite design in Michelle’s collection.\nChoose your silk and color, with sizing made for you.')}</p>
+      <p>{text(lang,
+        '미셸의 디자인 중 마음에 드는 한 벌을 고르세요.\n실크와 컬러를 선택하고, 사이즈는 나에게 맞추세요.',
+        'Find your favorite design in Michelle’s collection.\nChoose your silk and color, with sizing made for you.',
+        'Đồ lụa cao cấp được may đo chuẩn xác theo từng số đo cơ thể; Đồ linen may sẵn theo size chuẩn S·M·L. Chọn chất liệu lụa Tô Châu hoặc Ruby và màu sắc bạn thích.'
+      )}</p>
     </div>
 
-    <!-- Search Input -->
+    <!-- Search Input Bar -->
     <div class="collection-search-container">
       <div class="search-input-wrapper">
         <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -110,33 +135,35 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           type="search" 
           id="collectionSearchInput" 
           class="collection-search-input" 
-          placeholder={text(lang, '디자인 이름, 번호(ML-01), 실크 검색...', 'Search designs, code (ML-01), silk type...')} 
+          placeholder={text(lang, '디자인 이름, 번호(ML-01), 실크 검색...', 'Search designs, code (ML-01), silk type...', 'Tìm kiếm theo tên thiết kế, mã số (ML-01), loại vải lụa...')} 
           autocomplete="off" 
         />
         <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" hidden>✕</button>
       </div>
     </div>
 
+    <!-- Collection Toolbar with Filter Pills & View Mode Toggle -->
     <div class="collection-toolbar">
-      <div class="filters" role="group" aria-label={text(lang,'카테고리','Category')}>
-        <button type="button" data-filter="all" aria-pressed="true">{text(lang,'전체','All pieces')}</button>
-        {Object.entries(categoryNames).map(([key,label])=><button type="button" data-filter={key} aria-pressed="false">{label[lang]}</button>)}
+      <div class="filters" role="group" aria-label={text(lang,'카테고리','Category','Phân loại')}>
+        <button type="button" data-filter="all" aria-pressed="true">{text(lang,'전체','All pieces','Tất cả')}</button>
+        {Object.entries(categoryNames).map(([key,label])=><button type="button" data-filter={key} aria-pressed="false">{label[lang] || label.en}</button>)}
       </div>
       <div class="toolbar-right">
-        <span class="collection-count"><span data-visible-count>{catalog.designs.length}</span> {text(lang,'가지 디자인','designs')}</span>
+        <span class="collection-count"><span data-visible-count>{catalog.designs.length}</span> {text(lang,'가지 디자인','designs','mẫu thiết kế')}</span>
         <div class="view-mode-toggle" role="group" aria-label="View mode">
-          <button type="button" class="view-btn active" data-view="scroll" title={text(lang, '가로 스크롤 보기', 'Horizontal scroll view')}>
+          <button type="button" class="view-btn active" data-view="scroll" title={text(lang, '가로 스크롤 보기', 'Horizontal scroll view', 'Xem cuộn ngang')}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="6" height="14" rx="1"></rect><rect x="10" y="5" width="6" height="14" rx="1"></rect><rect x="18" y="5" width="6" height="14" rx="1"></rect></svg>
-            <span>{text(lang, '가로 스크롤', 'Scroll')}</span>
+            <span>{text(lang, '가로 스크롤', 'Scroll', 'Cuộn ngang')}</span>
           </button>
-          <button type="button" class="view-btn" data-view="grid" title={text(lang, '그리드 보기', 'Grid view')}>
+          <button type="button" class="view-btn" data-view="grid" title={text(lang, '그리드 보기', 'Grid view', 'Xem dạng lưới')}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><rect x="13" y="13" width="8" height="8" rx="1"></rect></svg>
-            <span>{text(lang, '그리드', 'Grid')}</span>
+            <span>{text(lang, '그리드', 'Grid', 'Lưới')}</span>
           </button>
         </div>
       </div>
     </div>
 
+    <!-- Horizontal Scroll Section with Chevrons -->
     <div class="horizontal-scroll-section" id="horizontalScrollSection">
       <button type="button" class="scroll-chevron-btn prev" id="scrollPrevBtn" aria-label="Scroll left">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -151,52 +178,213 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       </button>
     </div>
 
+    <!-- Scroll Progress Indicator -->
     <div class="scroll-indicator-bar" id="scrollIndicatorBar">
       <div class="scroll-indicator-thumb" id="scrollIndicatorThumb"></div>
     </div>
 
+    <!-- Search Empty State -->
     <div class="search-empty-state" id="searchEmptyState" hidden>
-      <p class="empty-title">{text(lang, '일치하는 디자인이 없습니다', 'No designs match your search')}</p>
-      <p class="empty-sub">{text(lang, '다른 검색어로 검색해 보시거나 필터를 초기화해 보세요.', 'Try searching with different keywords or reset your filters.')}</p>
+      <p class="empty-title">{text(lang, '일치하는 디자인이 없습니다', 'No designs match your search', 'Không tìm thấy thiết kế phù hợp')}</p>
+      <p class="empty-sub">{text(lang, '다른 검색어로 검색해 보시거나 필터를 초기화해 보세요.', 'Try searching with different keywords or reset your filters.', 'Hãy thử tìm kiếm với từ khóa khác hoặc đặt lại bộ lọc.')}</p>
       <button type="button" class="button secondary reset-search-btn" id="resetSearchBtn">
-        {text(lang, '검색 초기화', 'Reset search')}
+        {text(lang, '검색 초기화', 'Reset search', 'Đặt lại tìm kiếm')}
       </button>
     </div>
   </section>
 
+  <!-- 3. FABRIC STORY & 2 SILK CHARACTERISTICS (SUZHOU & RUBY) -->
   <section class="fabric-story section-wrap">
     <div class="fabric-story-art">
-      <img src={detail.imageUrl} loading="lazy" width="1000" height="1300" alt={detail.name[lang]}/>
+      <img src={detail.imageUrl} loading="lazy" width="1000" height="1300" alt={detail.name[lang] || detail.name.en}/>
       <span class="fabric-art-label">THE BEAUTY IS IN THE DETAIL.</span>
     </div>
     <div class="fabric-story-copy">
-      <span class="eyebrow">SILK & COLOR</span>
-      <h2>{text(lang,'같은 디자인도,','The same silhouette,')}<br/>{text(lang,'나만의 분위기로.','a different feeling.')}</h2>
-      <p>{text(lang,'차분한 아이보리부터 깊은 올리브까지.\n원하는 실크와 컬러를 골라 나만의 조합을 찾아보세요.','From quiet ivory to a deep olive.\nExplore the silk and color that make a piece feel yours.')}</p>
+      <span class="eyebrow">SILK & COLOR · CHẤT LIỆU & MÀU SẮC</span>
+      <h2>
+        {text(lang,'같은 디자인도,','The same silhouette,','Cùng một thiết kế,')}<br/>
+        {text(lang,'나만의 분위기로.','a different feeling.','khí chất riêng biệt.')}
+      </h2>
+      <p>{text(lang,
+        '수저우 실크는 은은한 광택과 부드러운 감촉을, 루비 실크는 선명한 윤기와 탄탄한 실루엣을 선사합니다.\n차분한 아이보리부터 깊은 올리브, 와인까지 40여 가지 컬러북에서 나만의 조합을 찾아보세요.',
+        'Suzhou silk offers a gentle sheen and soft drape, while Ruby silk provides luminous luster and structured silhouette.\nFrom quiet ivory to deep olive, find your shade across our curated palette.',
+        'Lụa Tô Châu mềm mại, mịn màng với độ bóng nhẹ; Lụa Ruby có độ bóng rõ, dày dặn và giữ form xuất sắc.\nKhám phá hơn 40 sắc thái lụa cao cấp từ trắng ngọc trai, be sữa đến xanh olive và đỏ rượu vang sang trọng.'
+      )}</p>
       <div class="editorial-swatches" aria-hidden="true">
         {catalog.fabrics[0].colors.filter(c=>['04','14','76','103','16','61'].includes(c.id)).map(color=><span style={`--swatch:${color.hex}`}></span>)}
       </div>
-      <a class="text-link" href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크와 컬러 만나보기','Discover the silks & colors')} ↗</a>
+      <a class="text-link" href={sitePath(`/${lang}/fabrics/`)}>
+        {text(lang,'실크와 컬러 만나보기','Discover the silks & colors','Khám phá bảng màu lụa chi tiết')} ↗
+      </a>
     </div>
   </section>
 
+  <!-- 4. BESPOKE PROCESS: 4 STEPS (From user chat screenshot) -->
   <section class="how-section section-wrap" id="how-it-works">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">FROM YOUR WISHLIST, TO YOUR WARDROBE</span>
-        <h2>{text(lang,'사이즈 맞춤 제작 과정','Made to your measurements')}</h2>
+        <span class="eyebrow">MADE TO MEASURE · QUY TRÌNH MAY ĐO</span>
+        <h2>{text(lang,'사이즈 맞춤 제작 과정 (4단계)','Made to Measure in 4 Steps','Quy Trình Đặt May Đồ Lụa 4 Bước')}</h2>
       </div>
-      <p>{text(lang,'선택한 디자인을, 내 치수에 맞게.','Your chosen design, made to your measurements.')}</p>
+      <p>{text(lang,
+        '선택한 디자인을, 내 신체 치수에 딱 맞게.\n상담부터 배송까지 세심하게 제작됩니다.',
+        'Your chosen design, crafted perfectly to your personal measurements.\nFrom initial consultation to doorstep delivery.',
+        'Mỗi bộ trang phục lụa được may đo riêng theo số đo thực tế của bạn.\nQuy trình tư vấn tận tâm trực tiếp cùng Michelle.'
+      )}</p>
     </div>
-    <div class="steps">
-      {[
-        ['01',text(lang,'컬렉션에서 골라요','Choose from the collection'),text(lang,'미셸의 컬렉션에서 디자인을 고른 뒤 실크와 컬러를 선택해 주세요.','Choose an existing design from Michelle’s collection, then select your silk and color.')],
-        ['02',text(lang,'치수를 알려주세요','Share your measurements'),text(lang,'모든 선택을 마친 뒤, 신체 치수를 한 번만 입력해 주세요.','Once your selection is ready, enter your measurements just once.')],
-        ['03',text(lang,'미셸과 확인해요','Confirm with Michelle'),text(lang,'제안서를 인스타그램으로 보내고 선택한 디자인의 사이즈, 최종 가격과 제작 일정을 상담해요.','Send your proposal on Instagram to confirm sizing, the final quote and production timing.')]
-      ].map(([n,title,desc])=><div class="step"><span>{n}</span><h3>{title}</h3><p>{desc}</p></div>)}
+    <div class="steps-grid-4">
+      <div class="step-card">
+        <span class="step-num">01</span>
+        <h3>{text(lang,'디자인 선택','Choose Design','Chọn mẫu thiết kế')}</h3>
+        <p>{text(lang,
+          '미셸의 컬렉션에서 마음에 드는 디자인(드레스, 탑, 트라우저)을 선택해 주세요.',
+          'Browse Michelle’s collection and pick your favorite silhouette.',
+          'Lựa chọn mẫu đầm, áo hoặc quần yêu thích từ bộ sưu tập của Michelle Store.'
+        )}</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">02</span>
+        <h3>{text(lang,'원단 & 컬러 선택','Silk & Color','Chọn lụa & màu sắc')}</h3>
+        <p>{text(lang,
+          '수저우 실크 또는 루비 실크를 고르고, 공식 컬러차트에서 원하는 색상 코드를 확인합니다.',
+          'Choose between Suzhou or Ruby silk and pick your desired shade from the color chart.',
+          'Chọn Lụa Tô Châu mềm rủ hoặc Lụa Ruby giữ form, tra cứu mã màu trong bảng màu 2048px.'
+        )}</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">03</span>
+        <h3>{text(lang,'상세 치수 측정','Measurements','Tư vấn lấy số đo')}</h3>
+        <p>{text(lang,
+          '가슴, 허리, 엉덩이둘레와 키, 몸무게를 편안한 상태에서 측정하여 알려주세요.',
+          'Share your bust, waist, hips measurements, along with height and weight.',
+          'Đo 3 vòng ngực, eo, mông cùng chiều cao, cân nặng theo hướng dẫn để may vừa vặn nhất.'
+        )}</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">04</span>
+        <h3>{text(lang,'주문 확인 & 배송','Confirm & Delivery','Xác nhận & Giao hàng')}</h3>
+        <p>{text(lang,
+          '인스타그램 @michelle1998kr로 최종 상담을 진행합니다. 제작 약 7일, 배송 약 5~6일이 소요됩니다.',
+          'Confirm with Michelle on Instagram @michelle1998kr. Tailoring takes ~7 days, delivery ~5-6 days.',
+          'Xác nhận đơn qua Instagram @michelle1998kr. Thời gian may khoảng 7 ngày, vận chuyển khoảng 5–6 ngày.'
+        )}</p>
+      </div>
     </div>
   </section>
 
+  <!-- 5. DETAILED MEASUREMENT GUIDE (From user chat screenshot) -->
+  <section class="measurement-guide-section section-wrap" id="measurement-guide">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">MEASUREMENT GUIDE · HƯỚNG DẪN ĐO</span>
+        <h2>{text(lang,'신체 치수 측정 안내','How to Take Your Measurements','Hướng Dẫn Lấy Số Đo Chuẩn Xác')}</h2>
+      </div>
+      <p>{text(lang,
+        '정확한 신체 치수를 알려주시면 가장 완벽하고 편안한 핏으로 제작해 드립니다.',
+        'Providing accurate measurements ensures your garment fits you gracefully and comfortably.',
+        'Vui lòng gửi đúng số đo thực tế của bạn, không tự ý tăng giảm số đo để trang phục lên phom đẹp nhất.'
+      )}</p>
+    </div>
+
+    <div class="measure-points-grid">
+      <div class="measure-point-card">
+        <div class="measure-icon">01</div>
+        <h4>{text(lang, '가슴둘레 (Bust)', 'Bust Measurement', 'Vòng Ngực')}</h4>
+        <p>{text(lang, '가슴의 가장 볼록한 부분을 줄자로 둘러 편안하게 측정합니다.', 'Measure around the fullest part of your bust comfortably.', 'Đo ở phần đầy đặn nhất của ngực.')}</p>
+      </div>
+      <div class="measure-point-card">
+        <div class="measure-icon">02</div>
+        <h4>{text(lang, '허리둘레 (Waist)', 'Waist Measurement', 'Vòng Eo')}</h4>
+        <p>{text(lang, '배꼽 위 약 3cm, 가장 잘록한 허리 부분을 측정합니다.', 'Measure around your natural waist, roughly 3cm above the navel.', 'Đo ở phần nhỏ nhất của eo (khoảng 3 cm phía trên rốn).')}</p>
+      </div>
+      <div class="measure-point-card">
+        <div class="measure-icon">03</div>
+        <h4>{text(lang, '엉덩이둘레 (Hips)', 'Hips Measurement', 'Vòng Mông')}</h4>
+        <p>{text(lang, '엉덩이의 가장 넓고 볼록한 부분을 수평으로 측정합니다.', 'Measure around the widest part of your hips and buttocks.', 'Đo ở phần rộng nhất của mông.')}</p>
+      </div>
+      <div class="measure-point-card">
+        <div class="measure-icon">04</div>
+        <h4>{text(lang, '키 & 몸무게 & 특이사항', 'Height, Weight & Notes', 'Chiều Cao, Cân Nặng & Dáng Người')}</h4>
+        <p>{text(lang, '키와 몸무게를 함께 알려주시고, 어깨가 넓거나 팔이 긴 경우 메모를 남겨주세요.', 'Share your height & weight. Note if your shoulders or arms have special proportions.', 'Hãy cho Michelle biết chiều cao, cân nặng. Nếu vai rộng hoặc cánh tay dài hơn bình thường hãy ghi chú nhé.')}</p>
+      </div>
+    </div>
+
+    <div class="measure-tip-box">
+      <strong>💡 {text(lang, '치수 측정 팁', 'Measurement Tip', 'Lưu ý khi đo')}:</strong>
+      <span>{text(lang,
+        '줄자를 너무 조이거나 헐겁지 않게, 편안하게 숨을 쉴 수 있는 상태에서 측정해 주세요. 치수를 임의로 늘리거나 줄이지 마시고 실제 신체 치수를 알려주세요.',
+        'Keep the measuring tape snug but not tight—you should breathe normally. Please do not add or subtract inches.',
+        'Khi đo, đừng siết thước quá chặt hoặc để quá lỏng, chỉ cần đo vừa phải để bạn vẫn có thể hít thở thoải mái. Vui lòng không tự ý cộng thêm hoặc trừ bớt số đo.'
+      )}</span>
+    </div>
+  </section>
+
+  <!-- 6. FABRIC CARE GUIDE: SILK & LINEN (From user chat screenshot) -->
+  <section class="care-guide-section section-wrap" id="care-guide">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">CARE GUIDE · HƯỚNG DẪN SỬ DỤNG</span>
+        <h2>{text(lang,'실크 & 린넨 관리 가이드','Silk & Linen Care Guide','Hướng Dẫn Sử Dụng & Bảo Quản')}</h2>
+      </div>
+      <p>{text(lang,
+        '고급 원단을 오래도록 아름답게 유지하기 위한 세탁 및 보관 방법입니다.',
+        'Proper care guidelines to maintain the lasting beauty and sheen of your luxury garments.',
+        'Bí quyết giữ gìn độ bóng mịn của lụa và sự mộc mạc thoáng mát của linen theo thời gian.'
+      )}</p>
+    </div>
+
+    <div class="care-grid">
+      <!-- Silk Care -->
+      <div class="care-card">
+        <div class="care-card-header">
+          <span class="care-tag">SILK CARE</span>
+          <h3>{text(lang, '실크 의류 관리법', 'Silk Garment Care', 'Hướng Dẫn Bảo Quản Đồ Lụa')}</h3>
+        </div>
+        <div class="care-details">
+          <div class="care-item">
+            <strong>{text(lang, '세탁 (Washing)', 'Washing', 'Giặt giũ')}:</strong>
+            <p>{text(lang, '손세탁 또는 세탁망에 넣어 30°C 이하 미온수/냉수로 세탁하세요. 샴푸나 순한 중성세제를 사용하시고 강력 표백제는 피해주세요.', 'Hand wash or use a laundry bag in water below 30°C. Use mild shampoo or gentle silk detergent. Avoid harsh detergents.', 'Giặt tay hoặc cho vào túi giặt và giặt bằng nước dưới 30°C. Sử dụng dầu gội hoặc xà phòng dịu nhẹ, tránh các loại chất tẩy rửa mạnh.')}</p>
+          </div>
+          <div class="care-item">
+            <strong>{text(lang, '건조 (Drying)', 'Drying', 'Phơi khô')}:</strong>
+            <p>{text(lang, '원단을 강하게 비틀어 짜지 마시고, 통풍이 잘되는 그늘에서 건조하세요. 직사광선은 원단 손상의 원인이 됩니다.', 'Do not wring forcefully. Dry in a well-ventilated, shaded area. Avoid harsh direct sunlight.', 'Không vắt quá mạnh, phơi ở nơi thoáng gió, có bóng râm. Tránh ánh nắng mặt trời gay gắt.')}</p>
+          </div>
+          <div class="care-item">
+            <strong>{text(lang, '다림질 (Ironing)', 'Ironing', 'Ủi đồ')}:</strong>
+            <p>{text(lang, '원단이 약간 축축할 때 뒤집어서 160°C 이하로 다림질하거나, 옷걸이에 건 상태로 스팀 다리미를 사용하는 것이 가장 좋습니다.', 'Turn inside out and iron below 160°C while slightly damp, or use an upright steam iron while hanging.', 'Lộn trái quần áo, ủi ở nhiệt độ dưới 160°C khi vải còn hơi ẩm. Hoặc tốt nhất là sử dụng bàn là hơi nước chuyên dụng để ủi khi đang treo trên móc.')}</p>
+          </div>
+          <div class="care-item">
+            <strong>{text(lang, '보관 (Storage)', 'Storage', 'Bảo quản')}:</strong>
+            <p>{text(lang, '옷걸이에 걸어 보관하시고, 장기간 접어서 보관하지 마세요. 향수나 화장품이 원단에 직접 닿지 않도록 주의해 주세요.', 'Hang on soft hangers; avoid folding for extended periods. Prevent direct perfume or cosmetic contact.', 'Treo quần áo bằng móc, tránh gấp và cất giữ trong thời gian dài. Chú ý không để nước hoa hoặc mỹ phẩm tiếp xúc trực tiếp với vải.')}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linen Care -->
+      <div class="care-card">
+        <div class="care-card-header">
+          <span class="care-tag">LINEN CARE</span>
+          <h3>{text(lang, '린넨 의류 관리법', 'Linen Garment Care', 'Hướng Dẫn Bảo Quản Đồ Linen')}</h3>
+        </div>
+        <div class="care-details">
+          <div class="care-item">
+            <strong>{text(lang, '세탁 (Washing)', 'Washing', 'Giặt giũ')}:</strong>
+            <p>{text(lang, '세탁기 사용이 가능하지만, 울 코스(약한 모드)를 선택하거나 세탁망을 사용하세요. 건조기 사용은 피하고 자연 건조를 권장합니다.', 'Machine washable on wool/gentle cycle or in a laundry bag. Avoid tumble drying; air dry naturally.', 'Về cơ bản có thể giặt bằng máy, nhưng chọn chế độ đồ len (giặt nhẹ) hoặc túi giặt. Tránh dùng máy sấy và nên phơi khô tự nhiên nơi bóng râm, tránh nắng trực tiếp.')}</p>
+          </div>
+          <div class="care-item">
+            <strong>{text(lang, '특성 및 건조 (Characteristics)', 'Handling & Drying', 'Đặc tính & Phơi đồ')}:</strong>
+            <p>{text(lang, '린넨 천연 원단 특성상 고열에서 수축이 발생할 수 있습니다. 세탁 후 가볍게 헹군 뒤, 손으로 털어 물기를 빼고 옷걸이에 걸어 자연 건조해 주세요.', 'Natural linen may shrink if exposed to high heat. After rinsing gently, shake out excess water by hand and hang on a hanger to air dry.', 'Do đặc tính tự nhiên của vải linen, vải có thể bị co rút khi tiếp xúc với nhiệt độ cao. Sau khi giặt chỉ cần xả nhẹ, dùng tay giũ bớt nước rồi treo lên móc và để khô tự nhiên.')}</p>
+          </div>
+          <div class="care-item timeline-box">
+            <strong>⏱️ {text(lang, '제작 및 배송 소요 기간', 'Production & Shipping Timing', 'Thời Gian Hoàn Thiện & Giao Hàng')}:</strong>
+            <p>{text(lang, '맞춤 제작 약 7일, 배송 약 5~6일이 소요됩니다 (공휴일 및 주말 제외).', 'Tailoring takes ~7 days; shipping takes ~5-6 business days (excluding holidays).', 'Thời gian may khoảng 7 ngày, thời gian vận chuyển khoảng 5–6 ngày. Thời gian này không bao gồm các ngày nghỉ lễ nhé 😉')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT-SIDE SCRIPT FOR HERO AUTO-PLAY & HORIZONTAL PRODUCT SEARCH -->
   <script>
     // 1. Auto-sliding Hero Carousel
     const heroTrack = document.getElementById('heroTrack');
@@ -303,6 +491,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
         const slug = card.dataset.slug || '';
         const nameKo = card.dataset.nameKo || '';
         const nameEn = card.dataset.nameEn || '';
+        const nameVi = card.dataset.nameVi || '';
         const fabrics = card.dataset.fabrics || '';
 
         const matchesCategory = (activeCategory === 'all' || cat === activeCategory);
@@ -311,6 +500,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           slug.includes(q) ||
           nameKo.includes(q) ||
           nameEn.includes(q) ||
+          nameVi.includes(q) ||
           fabrics.includes(q)
         );
 

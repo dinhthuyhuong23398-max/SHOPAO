@@ -39,14 +39,22 @@ export function resolveItem(item: Selection, catalog: Catalog) {
 }
 
 export function colorLabel(item: Selection, catalog: Catalog, lang: Locale) {
-  if (item.colorId === 'consult') return lang === 'ko' ? '색상 상담' : 'Color consultation';
+  if (item.colorId === 'consult') {
+    if (lang === 'vi') return 'Tư vấn màu sắc';
+    return lang === 'ko' ? '색상 상담' : 'Color consultation';
+  }
   const color = resolveItem(item,catalog).color;
-  return color ? `${color.name[lang]} · ${color.code}` : `${lang === 'ko' ? '색상' : 'Color'} ${item.colorId}`;
+  const colorName = color ? (color.name[lang] || color.name.en || color.name.ko) : '';
+  const prefix = lang === 'vi' ? 'Màu' : (lang === 'ko' ? '색상' : 'Color');
+  return color ? `${colorName} · ${color.code}` : `${prefix} ${item.colorId}`;
 }
 
 export function priceLabel(design: Pick<Product,'priceMin'|'priceMax'>, lang: Locale) {
-  if (design.priceMin === null || design.priceMax === null) return lang === 'ko' ? '가격 문의' : 'Ask for pricing';
-  const format = (value:number) => new Intl.NumberFormat(lang === 'ko'?'ko-KR':'en-US',{style:'currency',currency:'KRW',maximumFractionDigits:0}).format(value);
+  if (design.priceMin === null || design.priceMax === null) {
+    if (lang === 'vi') return 'Liên hệ báo giá';
+    return lang === 'ko' ? '가격 문의' : 'Ask for pricing';
+  }
+  const format = (value:number) => new Intl.NumberFormat(lang === 'ko'?'ko-KR':lang === 'vi'?'vi-VN':'en-US',{style:'currency',currency:'KRW',maximumFractionDigits:0}).format(value);
   return `${format(design.priceMin)} – ${format(design.priceMax)}`;
 }
 
@@ -79,19 +87,37 @@ export function fromMetric(value: Measurements, units: UnitSystem): Measurements
   return {chest:value.chest/2.54,waist:value.waist/2.54,hips:value.hips/2.54,height:value.height/2.54,weight:value.weight/0.45359237};
 }
 export function measurementLabel(key: keyof Measurements, lang: Locale) {
-  return ({chest:{ko:'가슴둘레',en:'Chest'},waist:{ko:'허리둘레',en:'Waist'},hips:{ko:'엉덩이둘레',en:'Hips'},height:{ko:'키',en:'Height'},weight:{ko:'몸무게',en:'Weight'}})[key][lang];
+  const labels: Record<keyof Measurements, { ko: string; en: string; vi: string }> = {
+    chest: { ko: '가슴둘레', en: 'Chest', vi: 'Vòng ngực' },
+    waist: { ko: '허리둘레', en: 'Waist', vi: 'Vòng eo' },
+    hips: { ko: '엉덩이둘레', en: 'Hips', vi: 'Vòng mông' },
+    height: { ko: '키', en: 'Height', vi: 'Chiều cao' },
+    weight: { ko: '몸무게', en: 'Weight', vi: 'Cân nặng' }
+  };
+  return labels[key][lang] || labels[key].en;
 }
 export function buildProposal(cart: Cart, measurements: Measurements, units: UnitSystem, catalog: Catalog, lang: Locale): string {
   parseCart(cart);
   if (!cart.items.length || !validMeasurements(measurements) || cart.items.some(item=>!resolveItem(item,catalog).available)) throw new Error('Incomplete proposal');
-  const lines = [lang==='ko'?'안녕하세요 미셸님, 아래 디자인의 사이즈 맞춤 제작 상담을 요청드려요.':'Hi Michelle, I would like a quote for these designs made to my measurements.',''];
+  const greeting = lang === 'vi' 
+    ? 'Xin chào Michelle, mình muốn đặt may đo các thiết kế lụa theo số đo cá nhân dưới đây:' 
+    : (lang === 'ko' ? '안녕하세요 미셸님, 아래 디자인의 사이즈 맞춤 제작 상담을 요청드려요.' : 'Hi Michelle, I would like a quote for these designs made to my measurements.');
+  const lines = [greeting, ''];
   cart.items.forEach((item,index)=>{
     const {design,fabric} = resolveItem(item,catalog);
-    lines.push(`${index+1}. ${design!.name[lang]} (${design!.id})`, `   ${fabric!.name[lang]} / ${colorLabel(item,catalog,lang)} / ${item.quantity}${lang==='ko'?'개':' piece(s)'}`,`   ${priceLabel(design!,lang)}`);
-    if(item.note.trim()) lines.push(`   ${lang==='ko'?'메모':'Note'}: ${item.note.trim()}`);
+    const dName = design!.name[lang] || design!.name.en || design!.name.ko;
+    const fName = fabric!.name[lang] || fabric!.name.en || fabric!.name.ko;
+    const qtyUnit = lang === 'vi' ? 'chiếc' : (lang === 'ko' ? '개' : 'piece(s)');
+    const noteLabel = lang === 'vi' ? 'Ghi chú' : (lang === 'ko' ? '메모' : 'Note');
+    lines.push(`${index+1}. ${dName} (${design!.id})`, `   ${fName} / ${colorLabel(item,catalog,lang)} / ${item.quantity} ${qtyUnit}`,`   ${priceLabel(design!,lang)}`);
+    if(item.note.trim()) lines.push(`   ${noteLabel}: ${item.note.trim()}`);
   });
-  lines.push('',lang==='ko'?'신체 치수 (한 사람 기준)':'Body measurements (one person)');
+  const measureTitle = lang === 'vi' ? 'Số đo cơ thể cá nhân' : (lang === 'ko' ? '신체 치수 (한 사람 기준)' : 'Body measurements (one person)');
+  lines.push('', measureTitle);
   for (const key of measurementKeys) lines.push(`${measurementLabel(key,lang)}: ${Number(measurements[key].toFixed(2))} ${key==='weight'?(units==='metric'?'kg':'lb'):(units==='metric'?'cm':'in')}`);
-  lines.push('',lang==='ko'?'최종 가격과 색상, 제작 가능 여부 및 소요 기간을 안내해 주세요. 감사합니다.':'Please confirm the final price, color availability and production time. Thank you.');
+  const closing = lang === 'vi' 
+    ? 'Nhờ Michelle tư vấn giúp mình về màu sắc, giá và thời gian hoàn thiện nhé. Cảm ơn Michelle!' 
+    : (lang === 'ko' ? '최종 가격과 색상, 제작 가능 여부 및 소요 기간을 안내해 주세요. 감사합니다.' : 'Please confirm the final price, color availability and production time. Thank you.');
+  lines.push('', closing);
   return lines.join('\n');
 }

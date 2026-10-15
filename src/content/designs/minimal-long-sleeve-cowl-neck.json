@@ -4,11 +4,13 @@
   "category": "dress",
   "name": {
     "ko": "롱슬리브 드레이프 드레스",
-    "en": "Long-sleeve cowl dress"
+    "en": "Long-sleeve cowl dress",
+    "vi": "Đầm lụa tay dài cổ đổ trang nhã"
   },
   "description": {
     "ko": "드레이프 네크라인과 긴 소매의 미니 드레스.",
-    "en": "A mini dress with long sleeves and a draped neckline."
+    "en": "A mini dress with long sleeves and a draped neckline.",
+    "vi": "Sự kết hợp giữa cổ đổ mềm mại và tay áo dài kín đáo, thanh lịch cho mùa thu đông."
   },
   "image": "assets/designs/dress/minimal-long-sleeve-cowl-neck.jpg",
   "published": true,

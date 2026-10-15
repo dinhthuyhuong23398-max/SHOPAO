@@ -4,11 +4,13 @@
   "category": "dress",
   "name": {
     "ko": "브이넥 슬립 드레스",
-    "en": "V-neck slip dress"
+    "en": "V-neck slip dress",
+    "vi": "Đầm lụa slip dress cổ chữ V quyến rũ"
   },
   "description": {
     "ko": "깊은 브이넥이 돋보이는 슬립 드레스.",
-    "en": "A slip dress with a defined V neckline."
+    "en": "A slip dress with a defined V neckline.",
+    "vi": "Đường cắt cổ chữ V tinh tế khoe trọn nét quyến rũ tự nhiên, ôm nhẹ đường cong cơ thể."
   },
   "image": "assets/designs/dress/glamor-v-neck-slip.jpg",
   "published": true,

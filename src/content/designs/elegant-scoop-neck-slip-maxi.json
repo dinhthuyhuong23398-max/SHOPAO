@@ -4,11 +4,13 @@
   "category": "dress",
   "name": {
     "ko": "라운드넥 롱 드레스",
-    "en": "Rounded-neck long dress"
+    "en": "Rounded-neck long dress",
+    "vi": "Đầm lụa maxi cổ tròn thanh lịch"
   },
   "description": {
     "ko": "부드러운 네크라인과 슬림한 롱 실루엣.",
-    "en": "A soft neckline and a slender, full-length silhouette."
+    "en": "A soft neckline and a slender, full-length silhouette.",
+    "vi": "Đầm lụa dài thướt tha với đường viền cổ tròn tinh tế, hoàn hảo cho mọi dịp đặc biệt."
   },
   "image": "assets/designs/dress/elegant-scoop-neck-slip-maxi.jpg",
   "published": true,

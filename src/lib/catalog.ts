@@ -5,7 +5,7 @@ import type { Catalog, Design, Fabric } from './types';
 import fabricData from '../content/fabrics.json';
 import settingsData from '../content/settings.json';
 
-const localized = z.object({ ko: z.string().min(1), en: z.string().min(1) });
+const localized = z.object({ ko: z.string().min(1), en: z.string().min(1), vi: z.string().optional() });
 const fabricId = z.enum(['suzhou', 'ruby']);
 const imagePath = z.string().regex(/^assets\/(designs|fabrics)\/[a-zA-Z0-9_\-/.]+\.(jpg|jpeg|png|webp)$/).refine(p => !p.includes('..'));
 const designSchema = z.object({

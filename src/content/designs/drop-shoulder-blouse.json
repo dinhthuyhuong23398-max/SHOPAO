@@ -4,11 +4,13 @@
   "category": "top",
   "name": {
     "ko": "드롭숄더 블라우스",
-    "en": "Drop-shoulder blouse"
+    "en": "Drop-shoulder blouse",
+    "vi": "Áo blouse vai trễ nhẹ nhàng"
   },
   "description": {
     "ko": "여유로운 어깨선의 편안한 블라우스.",
-    "en": "A relaxed blouse with a dropped shoulder."
+    "en": "A relaxed blouse with a dropped shoulder.",
+    "vi": "Thiết kế vai trễ phóng khoáng mang lại cảm giác thoải mái và vẻ đẹp thanh thoát."
   },
   "image": "assets/designs/top/drop-shoulder-blouse.jpg",
   "published": true,

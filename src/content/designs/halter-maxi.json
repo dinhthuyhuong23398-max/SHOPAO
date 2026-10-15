@@ -4,11 +4,13 @@
   "category": "dress",
   "name": {
     "ko": "홀터넥 맥시 드레스",
-    "en": "Halter maxi dress"
+    "en": "Halter maxi dress",
+    "vi": "Đầm lụa maxi cổ yếm kiêu kỳ"
   },
   "description": {
     "ko": "어깨 라인이 돋보이는 홀터넥 맥시 실루엣.",
-    "en": "An open-shoulder halter neckline with a flowing maxi silhouette."
+    "en": "An open-shoulder halter neckline with a flowing maxi silhouette.",
+    "vi": "Thiết kế cổ yếm thon gọn bờ vai, lưng trần gợi cảm và tà váy dài mềm mại bay bổng."
   },
   "image": "assets/designs/dress/halter-maxi.png",
   "published": true,
