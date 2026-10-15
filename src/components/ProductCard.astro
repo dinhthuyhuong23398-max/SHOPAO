@@ -6,7 +6,15 @@ import {categoryNames} from '../lib/i18n';
 interface Props {product:Product;lang:Locale;index?:number}
 const {product,lang,index=0}=Astro.props;
 ---
-<article class="product-card" data-category={product.category}>
+<article 
+  class="product-card" 
+  data-category={product.category}
+  data-id={product.id.toLowerCase()}
+  data-slug={product.slug.toLowerCase()}
+  data-name-ko={product.name.ko.toLowerCase()}
+  data-name-en={product.name.en.toLowerCase()}
+  data-fabrics={product.fabrics.join(' ').toLowerCase()}
+>
   <a href={sitePath(`/${lang}/designs/${product.slug}/`)} class="product-image-link">
     <img src={product.thumbnailUrl} srcset={`${product.thumbnailUrl} 480w, ${product.imageUrl} 1000w`} sizes="(max-width: 640px) 48vw, (max-width: 1000px) 31vw, 24vw" width="600" height="800" loading={index<4?'eager':'lazy'} alt={product.name[lang]} />
     <span class="product-number">{product.id}</span><span class="product-explore" aria-hidden="true">↗</span>

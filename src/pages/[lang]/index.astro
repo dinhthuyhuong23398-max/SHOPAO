@@ -8,34 +8,409 @@ import type {Locale} from '../../lib/types';
 export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
 const lang=Astro.params.lang as Locale;
 const catalog=await getCatalog();
-const featured=catalog.designs.filter(d=>d.featured);
-const hero=featured[0]??catalog.designs[0];
-const second=featured[1]??catalog.designs.find(d=>d.id!==hero.id)??hero;
-const detail=catalog.designs.find(d=>d.slug==='slim-fit-blouse')??hero;
+
+// 4 high-fashion model designs for the auto-sliding hero
+const heroSlugs = [
+  'minimal-cowl-neck-slip-dress',
+  'halter-maxi',
+  'scoop-neck-slip-maxi',
+  'minimal-long-sleeve-cowl-neck'
+];
+
+const heroSlides = heroSlugs
+  .map(slug => catalog.designs.find(d => d.slug === slug))
+  .filter((d): d is typeof catalog.designs[0] => Boolean(d));
+
+if (heroSlides.length < 4) {
+  for (const d of catalog.designs) {
+    if (!heroSlides.some(s => s.id === d.id)) {
+      heroSlides.push(d);
+      if (heroSlides.length >= 4) break;
+    }
+  }
+}
+
+const second = heroSlides[1] ?? catalog.designs[1];
+const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSlides[0];
 ---
 <Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection')}>
   <section class="hero">
-    <div class="hero-copy"><span class="eyebrow">SILK, MADE TO MEASURE</span><h1>{text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>{text(lang,'나에게 맞는 사이즈.','made to your size.')}</h1><p class="hero-script">Silk, made to measure.</p><p class="hero-description">{text(lang,'미셸의 컬렉션에서 디자인과 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.','Choose a design from Michelle’s collection, along with your silk and color.\nYour selected piece is made to your measurements.')}</p><a class="button primary hero-button" href="#collection">{text(lang,'컬렉션 살펴보기','Explore the collection')}<span>↗</span></a><div class="hero-footnote"><span class="fine-line"></span><span>{text(lang,'미셸의 컬렉션에서 고르고, 사이즈는 나에게 맞게','Choose from the collection. Made to your measurements.')}</span></div></div>
-    <div class="hero-visual"><a class="hero-photo" href={sitePath(`/${lang}/designs/${hero.slug}/`)} aria-label={hero.name[lang]}><img src={hero.imageUrl} width="1000" height="1333" fetchpriority="high" alt={hero.name[lang]}/><span class="photo-caption">01 / THE SILK EDIT <span>↗</span></span></a><a class="hero-inset" href={sitePath(`/${lang}/designs/${second.slug}/`)}><img src={second.thumbnailUrl} width="480" height="640" alt={second.name[lang]}/><span>{text(lang,'나를 닮은 한 벌','A piece of you')} ↗</span></a><span class="vertical-caption">SUZHOU · RUBY · MADE TO MEASURE</span></div>
+    <div class="hero-copy">
+      <span class="eyebrow">SILK, MADE TO MEASURE</span>
+      <h1>{text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>{text(lang,'나에게 맞는 사이즈.','made to your size.')}</h1>
+      <p class="hero-script">Silk, made to measure.</p>
+      <p class="hero-description">{text(lang,'미셸의 컬렉션에서 디자인과 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.','Choose a design from Michelle’s collection, along with your silk and color.\nYour selected piece is made to your measurements.')}</p>
+      <a class="button primary hero-button" href="#collection">{text(lang,'컬렉션 살펴보기','Explore the collection')}<span>↗</span></a>
+      <div class="hero-footnote"><span class="fine-line"></span><span>{text(lang,'미셸의 컬렉션에서 고르고, 사이즈는 나에게 맞게','Choose from the collection. Made to your measurements.')}</span></div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="hero-carousel" id="heroCarousel">
+        <div class="hero-slides-track" id="heroTrack">
+          {heroSlides.map((slide, idx) => (
+            <a class="hero-slide" href={sitePath(`/${lang}/designs/${slide.slug}/`)} aria-label={slide.name[lang]}>
+              <img 
+                src={slide.imageUrl} 
+                width="1000" 
+                height="1333" 
+                fetchpriority={idx === 0 ? "high" : "auto"} 
+                loading={idx === 0 ? "eager" : "lazy"} 
+                alt={slide.name[lang]}
+              />
+              <span class="photo-caption">
+                <span>0{idx + 1} / {slide.name[lang]}</span>
+                <span>{text(lang, '디자인 보기', 'EXPLORE')} ↗</span>
+              </span>
+            </a>
+          ))}
+        </div>
+        
+        <button type="button" class="hero-nav-btn prev" id="heroPrevBtn" aria-label="Previous slide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button type="button" class="hero-nav-btn next" id="heroNextBtn" aria-label="Next slide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <div class="hero-indicators" id="heroIndicators">
+          {heroSlides.map((_, idx) => (
+            <button type="button" class={`hero-indicator-btn ${idx === 0 ? 'active' : ''}`} data-index={idx} aria-label={`Slide ${idx + 1}`}>
+              <span class="ind-number">0{idx + 1}</span>
+              <span class="ind-bar"><span class="ind-progress"></span></span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <a class="hero-inset" href={sitePath(`/${lang}/designs/${second.slug}/`)}>
+        <img src={second.thumbnailUrl} width="480" height="640" alt={second.name[lang]}/>
+        <span>{text(lang,'나를 닮은 한 벌','A piece of you')} ↗</span>
+      </a>
+      <span class="vertical-caption">SUZHOU · RUBY · MADE TO MEASURE</span>
+    </div>
   </section>
+
   <section class="collection-section section-wrap" id="collection">
-    <div class="section-heading"><div><span class="eyebrow">THE COLLECTION</span><h2>{text(lang,'좋아하는 순간을 입다','Find your silhouette')}</h2></div><p>{text(lang,'미셸의 디자인 중 마음에 드는 한 벌을 고르세요.\n실크와 컬러를 선택하고, 사이즈는 나에게 맞추세요.','Find your favorite design in Michelle’s collection.\nChoose your silk and color, with sizing made for you.')}</p></div>
-    <div class="collection-toolbar"><div class="filters" role="group" aria-label={text(lang,'카테고리','Category')}><button type="button" data-filter="all" aria-pressed="true">{text(lang,'전체','All pieces')}</button>{Object.entries(categoryNames).map(([key,label])=><button type="button" data-filter={key} aria-pressed="false">{label[lang]}</button>)}</div><span class="collection-count"><span data-visible-count>{catalog.designs.length}</span> {text(lang,'가지 디자인','designs')}</span></div>
-    <div class="product-grid">{catalog.designs.map((product,index)=><ProductCard product={product} lang={lang} index={index}/>)}</div>
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">THE COLLECTION</span>
+        <h2>{text(lang,'좋아하는 순간을 입다','Find your silhouette')}</h2>
+      </div>
+      <p>{text(lang,'미셸의 디자인 중 마음에 드는 한 벌을 고르세요.\n실크와 컬러를 선택하고, 사이즈는 나에게 맞추세요.','Find your favorite design in Michelle’s collection.\nChoose your silk and color, with sizing made for you.')}</p>
+    </div>
+
+    <!-- Search Input -->
+    <div class="collection-search-container">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="search" 
+          id="collectionSearchInput" 
+          class="collection-search-input" 
+          placeholder={text(lang, '디자인 이름, 번호(ML-01), 실크 검색...', 'Search designs, code (ML-01), silk type...')} 
+          autocomplete="off" 
+        />
+        <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" hidden>✕</button>
+      </div>
+    </div>
+
+    <div class="collection-toolbar">
+      <div class="filters" role="group" aria-label={text(lang,'카테고리','Category')}>
+        <button type="button" data-filter="all" aria-pressed="true">{text(lang,'전체','All pieces')}</button>
+        {Object.entries(categoryNames).map(([key,label])=><button type="button" data-filter={key} aria-pressed="false">{label[lang]}</button>)}
+      </div>
+      <div class="toolbar-right">
+        <span class="collection-count"><span data-visible-count>{catalog.designs.length}</span> {text(lang,'가지 디자인','designs')}</span>
+        <div class="view-mode-toggle" role="group" aria-label="View mode">
+          <button type="button" class="view-btn active" data-view="scroll" title={text(lang, '가로 스크롤 보기', 'Horizontal scroll view')}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="6" height="14" rx="1"></rect><rect x="10" y="5" width="6" height="14" rx="1"></rect><rect x="18" y="5" width="6" height="14" rx="1"></rect></svg>
+            <span>{text(lang, '가로 스크롤', 'Scroll')}</span>
+          </button>
+          <button type="button" class="view-btn" data-view="grid" title={text(lang, '그리드 보기', 'Grid view')}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><rect x="13" y="13" width="8" height="8" rx="1"></rect></svg>
+            <span>{text(lang, '그리드', 'Grid')}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="horizontal-scroll-section" id="horizontalScrollSection">
+      <button type="button" class="scroll-chevron-btn prev" id="scrollPrevBtn" aria-label="Scroll left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="product-horizontal-track" id="productTrack">
+        {catalog.designs.map((product,index)=><ProductCard product={product} lang={lang} index={index}/>)}
+      </div>
+
+      <button type="button" class="scroll-chevron-btn next" id="scrollNextBtn" aria-label="Scroll right">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <div class="scroll-indicator-bar" id="scrollIndicatorBar">
+      <div class="scroll-indicator-thumb" id="scrollIndicatorThumb"></div>
+    </div>
+
+    <div class="search-empty-state" id="searchEmptyState" hidden>
+      <p class="empty-title">{text(lang, '일치하는 디자인이 없습니다', 'No designs match your search')}</p>
+      <p class="empty-sub">{text(lang, '다른 검색어로 검색해 보시거나 필터를 초기화해 보세요.', 'Try searching with different keywords or reset your filters.')}</p>
+      <button type="button" class="button secondary reset-search-btn" id="resetSearchBtn">
+        {text(lang, '검색 초기화', 'Reset search')}
+      </button>
+    </div>
   </section>
-  <section class="fabric-story section-wrap"><div class="fabric-story-art"><img src={detail.imageUrl} loading="lazy" width="1000" height="1300" alt={detail.name[lang]}/><span class="fabric-art-label">THE BEAUTY IS IN THE DETAIL.</span></div><div class="fabric-story-copy"><span class="eyebrow">SILK & COLOR</span><h2>{text(lang,'같은 디자인도,','The same silhouette,')}<br/>{text(lang,'나만의 분위기로.','a different feeling.')}</h2><p>{text(lang,'차분한 아이보리부터 깊은 올리브까지.\n원하는 실크와 컬러를 골라 나만의 조합을 찾아보세요.','From quiet ivory to a deep olive.\nExplore the silk and color that make a piece feel yours.')}</p><div class="editorial-swatches" aria-hidden="true">{catalog.fabrics[0].colors.filter(c=>['04','14','76','103','16','61'].includes(c.id)).map(color=><span style={`--swatch:${color.hex}`}></span>)}</div><a class="text-link" href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크와 컬러 만나보기','Discover the silks & colors')} ↗</a></div></section>
-  <section class="how-section section-wrap" id="how-it-works"><div class="section-heading"><div><span class="eyebrow">FROM YOUR WISHLIST, TO YOUR WARDROBE</span><h2>{text(lang,'사이즈 맞춤 제작 과정','Made to your measurements')}</h2></div><p>{text(lang,'선택한 디자인을, 내 치수에 맞게.','Your chosen design, made to your measurements.')}</p></div><div class="steps">{[
-    ['01',text(lang,'컬렉션에서 골라요','Choose from the collection'),text(lang,'미셸의 컬렉션에서 디자인을 고른 뒤 실크와 컬러를 선택해 주세요.','Choose an existing design from Michelle’s collection, then select your silk and color.')],
-    ['02',text(lang,'치수를 알려주세요','Share your measurements'),text(lang,'모든 선택을 마친 뒤, 신체 치수를 한 번만 입력해 주세요.','Once your selection is ready, enter your measurements just once.')],
-    ['03',text(lang,'미셸과 확인해요','Confirm with Michelle'),text(lang,'제안서를 인스타그램으로 보내고 선택한 디자인의 사이즈, 최종 가격과 제작 일정을 상담해요.','Send your proposal on Instagram to confirm sizing, the final quote and production timing.')]
-  ].map(([n,title,desc])=><div class="step"><span>{n}</span><h3>{title}</h3><p>{desc}</p></div>)}</div></section>
+
+  <section class="fabric-story section-wrap">
+    <div class="fabric-story-art">
+      <img src={detail.imageUrl} loading="lazy" width="1000" height="1300" alt={detail.name[lang]}/>
+      <span class="fabric-art-label">THE BEAUTY IS IN THE DETAIL.</span>
+    </div>
+    <div class="fabric-story-copy">
+      <span class="eyebrow">SILK & COLOR</span>
+      <h2>{text(lang,'같은 디자인도,','The same silhouette,')}<br/>{text(lang,'나만의 분위기로.','a different feeling.')}</h2>
+      <p>{text(lang,'차분한 아이보리부터 깊은 올리브까지.\n원하는 실크와 컬러를 골라 나만의 조합을 찾아보세요.','From quiet ivory to a deep olive.\nExplore the silk and color that make a piece feel yours.')}</p>
+      <div class="editorial-swatches" aria-hidden="true">
+        {catalog.fabrics[0].colors.filter(c=>['04','14','76','103','16','61'].includes(c.id)).map(color=><span style={`--swatch:${color.hex}`}></span>)}
+      </div>
+      <a class="text-link" href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크와 컬러 만나보기','Discover the silks & colors')} ↗</a>
+    </div>
+  </section>
+
+  <section class="how-section section-wrap" id="how-it-works">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">FROM YOUR WISHLIST, TO YOUR WARDROBE</span>
+        <h2>{text(lang,'사이즈 맞춤 제작 과정','Made to your measurements')}</h2>
+      </div>
+      <p>{text(lang,'선택한 디자인을, 내 치수에 맞게.','Your chosen design, made to your measurements.')}</p>
+    </div>
+    <div class="steps">
+      {[
+        ['01',text(lang,'컬렉션에서 골라요','Choose from the collection'),text(lang,'미셸의 컬렉션에서 디자인을 고른 뒤 실크와 컬러를 선택해 주세요.','Choose an existing design from Michelle’s collection, then select your silk and color.')],
+        ['02',text(lang,'치수를 알려주세요','Share your measurements'),text(lang,'모든 선택을 마친 뒤, 신체 치수를 한 번만 입력해 주세요.','Once your selection is ready, enter your measurements just once.')],
+        ['03',text(lang,'미셸과 확인해요','Confirm with Michelle'),text(lang,'제안서를 인스타그램으로 보내고 선택한 디자인의 사이즈, 최종 가격과 제작 일정을 상담해요.','Send your proposal on Instagram to confirm sizing, the final quote and production timing.')]
+      ].map(([n,title,desc])=><div class="step"><span>{n}</span><h3>{title}</h3><p>{desc}</p></div>)}
+    </div>
+  </section>
+
   <script>
-    document.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
-      const category=button.dataset.filter;
-      document.querySelectorAll('[data-filter]').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
-      let count=0;
-      document.querySelectorAll<HTMLElement>('.product-card').forEach(card=>{card.hidden=category!=='all'&&card.dataset.category!==category;if(!card.hidden) count++;});
-      const label=document.querySelector('[data-visible-count]');if(label)label.textContent=String(count);
-    }));
+    // 1. Auto-sliding Hero Carousel
+    const heroTrack = document.getElementById('heroTrack');
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroIndicators = document.querySelectorAll('.hero-indicator-btn');
+    const heroPrevBtn = document.getElementById('heroPrevBtn');
+    const heroNextBtn = document.getElementById('heroNextBtn');
+    const heroCarousel = document.getElementById('heroCarousel');
+
+    let currentHeroSlide = 0;
+    const totalHeroSlides = heroSlides.length;
+    let heroAutoTimer: number | undefined;
+
+    function goToHeroSlide(index: number) {
+      if (totalHeroSlides === 0) return;
+      currentHeroSlide = (index + totalHeroSlides) % totalHeroSlides;
+      if (heroTrack) {
+        heroTrack.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
+      }
+      heroIndicators.forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === currentHeroSlide);
+      });
+    }
+
+    function startHeroAutoPlay() {
+      stopHeroAutoPlay();
+      heroAutoTimer = window.setInterval(() => {
+        goToHeroSlide(currentHeroSlide + 1);
+      }, 4500);
+    }
+
+    function stopHeroAutoPlay() {
+      if (heroAutoTimer) {
+        clearInterval(heroAutoTimer);
+        heroAutoTimer = undefined;
+      }
+    }
+
+    heroPrevBtn?.addEventListener('click', () => {
+      goToHeroSlide(currentHeroSlide - 1);
+      startHeroAutoPlay();
+    });
+
+    heroNextBtn?.addEventListener('click', () => {
+      goToHeroSlide(currentHeroSlide + 1);
+      startHeroAutoPlay();
+    });
+
+    heroIndicators.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = Number(btn.getAttribute('data-index') || 0);
+        goToHeroSlide(idx);
+        startHeroAutoPlay();
+      });
+    });
+
+    heroCarousel?.addEventListener('mouseenter', stopHeroAutoPlay);
+    heroCarousel?.addEventListener('mouseleave', startHeroAutoPlay);
+
+    // Touch swipe for Hero
+    let heroTouchStart = 0;
+    heroCarousel?.addEventListener('touchstart', (e: TouchEvent) => {
+      heroTouchStart = e.changedTouches[0].screenX;
+      stopHeroAutoPlay();
+    }, { passive: true });
+
+    heroCarousel?.addEventListener('touchend', (e: TouchEvent) => {
+      const heroTouchEnd = e.changedTouches[0].screenX;
+      const diff = heroTouchStart - heroTouchEnd;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) goToHeroSlide(currentHeroSlide + 1);
+        else goToHeroSlide(currentHeroSlide - 1);
+      }
+      startHeroAutoPlay();
+    }, { passive: true });
+
+    startHeroAutoPlay();
+
+    // 2. Collection Search, Filter & Horizontal Scrolling
+    const searchInput = document.getElementById('collectionSearchInput') as HTMLInputElement | null;
+    const clearSearchBtn = document.getElementById('clearSearchBtn') as HTMLButtonElement | null;
+    const resetSearchBtn = document.getElementById('resetSearchBtn') as HTMLButtonElement | null;
+    const emptyState = document.getElementById('searchEmptyState') as HTMLElement | null;
+    const productCards = document.querySelectorAll<HTMLElement>('.product-card');
+    const countLabel = document.querySelector('[data-visible-count]');
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const track = document.getElementById('productTrack');
+    const scrollSection = document.getElementById('horizontalScrollSection');
+    const scrollPrevBtn = document.getElementById('scrollPrevBtn') as HTMLButtonElement | null;
+    const scrollNextBtn = document.getElementById('scrollNextBtn') as HTMLButtonElement | null;
+    const scrollThumb = document.getElementById('scrollIndicatorThumb') as HTMLElement | null;
+    const viewButtons = document.querySelectorAll<HTMLButtonElement>('[data-view]');
+
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    function applyFilterAndSearch() {
+      const q = searchQuery.trim().toLowerCase();
+      let visibleCount = 0;
+
+      productCards.forEach(card => {
+        const cat = card.dataset.category || '';
+        const id = card.dataset.id || '';
+        const slug = card.dataset.slug || '';
+        const nameKo = card.dataset.nameKo || '';
+        const nameEn = card.dataset.nameEn || '';
+        const fabrics = card.dataset.fabrics || '';
+
+        const matchesCategory = (activeCategory === 'all' || cat === activeCategory);
+        const matchesQuery = !q || (
+          id.includes(q) ||
+          slug.includes(q) ||
+          nameKo.includes(q) ||
+          nameEn.includes(q) ||
+          fabrics.includes(q)
+        );
+
+        const isVisible = matchesCategory && matchesQuery;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount++;
+      });
+
+      if (countLabel) countLabel.textContent = String(visibleCount);
+      if (emptyState) emptyState.hidden = (visibleCount > 0);
+      if (clearSearchBtn) clearSearchBtn.hidden = (q.length === 0);
+
+      if (track) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        updateScrollIndicator();
+      }
+    }
+
+    searchInput?.addEventListener('input', () => {
+      searchQuery = searchInput.value;
+      applyFilterAndSearch();
+    });
+
+    clearSearchBtn?.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        searchQuery = '';
+        searchInput.focus();
+        applyFilterAndSearch();
+      }
+    });
+
+    resetSearchBtn?.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      activeCategory = 'all';
+      filterButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.filter === 'all')));
+      applyFilterAndSearch();
+    });
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.dataset.filter || 'all';
+        filterButtons.forEach(el => el.setAttribute('aria-pressed', String(el === btn)));
+        applyFilterAndSearch();
+      });
+    });
+
+    // Horizontal Scroll controls
+    function updateScrollIndicator() {
+      if (!track || !scrollThumb) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (maxScroll <= 0) {
+        scrollThumb.style.width = '100%';
+        scrollThumb.style.transform = 'translateX(0)';
+        if (scrollPrevBtn) scrollPrevBtn.disabled = true;
+        if (scrollNextBtn) scrollNextBtn.disabled = true;
+        return;
+      }
+
+      const ratio = track.clientWidth / track.scrollWidth;
+      const thumbWidthPercent = Math.max(15, Math.min(100, ratio * 100));
+      scrollThumb.style.width = `${thumbWidthPercent}%`;
+
+      const progress = track.scrollLeft / maxScroll;
+      const maxTranslatePercent = (100 - thumbWidthPercent);
+      scrollThumb.style.transform = `translateX(${(progress * maxTranslatePercent).toFixed(1)}%)`;
+
+      if (scrollPrevBtn) scrollPrevBtn.disabled = track.scrollLeft <= 5;
+      if (scrollNextBtn) scrollNextBtn.disabled = track.scrollLeft >= maxScroll - 5;
+    }
+
+    track?.addEventListener('scroll', updateScrollIndicator, { passive: true });
+    window.addEventListener('resize', updateScrollIndicator, { passive: true });
+
+    scrollPrevBtn?.addEventListener('click', () => {
+      if (!track) return;
+      const scrollAmount = track.clientWidth * 0.75;
+      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    scrollNextBtn?.addEventListener('click', () => {
+      if (!track) return;
+      const scrollAmount = track.clientWidth * 0.75;
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    // View mode toggle (Scroll vs Grid)
+    viewButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const view = btn.dataset.view;
+        viewButtons.forEach(b => b.classList.toggle('active', b === btn));
+        if (scrollSection) {
+          scrollSection.classList.toggle('grid-view', view === 'grid');
+        }
+        updateScrollIndicator();
+      });
+    });
+
+    // Initial setup
+    updateScrollIndicator();
   </script>
 </Layout>
