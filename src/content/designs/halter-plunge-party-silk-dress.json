@@ -1,0 +1,29 @@
+{
+  "id": "ML-21",
+  "slug": "halter-plunge-party-silk-dress",
+  "category": "dress",
+  "name": {
+    "ko": "홀터 딥 플런지 파티 실크 드레스",
+    "en": "Halter Deep Plunge Party Silk Maxi Dress",
+    "vi": "Đầm tiệc lụa cổ yếm xẻ sâu"
+  },
+  "description": {
+    "ko": "매혹적인 딥 플런지 네크라인과 홀터넥 라인이 조화를 이루는 100% 최고급 실크 파티 드레스. 은은하게 빛나는 골드 실루엣으로 이브닝 파티와 특별한 날을 위해 맞춤 제작됩니다.",
+    "en": "An alluring 100% luxury silk party maxi dress featuring a dramatic deep-plunge halter neckline and fluid silhouette. Custom made-to-measure for evening celebrations and gala events.",
+    "vi": "Đầm tiệc lụa tơ tằm cổ yếm xẻ sâu quyến rũ tông vàng champagne sang trọng, tôn trọn vóc dáng kiêu kỳ và thanh lịch, may đo riêng chuẩn xác theo số đo."
+  },
+  "image": "assets/designs/dress/halter-plunge-party-silk-dress.jpg",
+  "published": true,
+  "featured": true,
+  "order": 6,
+  "priceMin": 80000,
+  "priceMax": 80000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": [],
+  "gallery": [
+    "assets/designs/dress/halter-plunge-party-silk-dress-real.jpg"
+  ]
+}
