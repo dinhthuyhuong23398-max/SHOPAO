@@ -1,0 +1,26 @@
+{
+  "id": "ML-23",
+  "slug": "ruby-silk-flared-maxi-skirt",
+  "category": "skirt",
+  "name": {
+    "ko": "루비 실크 플레어 맥시 스커트",
+    "en": "Ruby Silk Flared Maxi Skirt",
+    "vi": "Chân váy xòe lụa Ruby"
+  },
+  "description": {
+    "ko": "매혹적인 실루엣과 고급스러운 광택을 지닌 100% 루비(Ruby) 실크 플레어 맥시 스커트. 버터 옐로우 등 화사한 컬러감으로 우아하고 편안하게 맞춤 제작됩니다.",
+    "en": "A radiant flared maxi skirt in 100% pure Ruby silk with an exquisite drape and subtle luster in butter cream. Custom tailored made-to-measure.",
+    "vi": "Chân váy xòe dáng dài trên chất liệu lụa Ruby cao cấp mềm mại rủ nhẹ, gam màu vàng kem tươi trẻ sang trọng, may đo chuẩn chỉ theo số đo."
+  },
+  "image": "assets/designs/skirt/ruby-silk-flared-maxi-skirt.jpg",
+  "published": true,
+  "featured": true,
+  "order": 15,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "ruby",
+    "suzhou"
+  ],
+  "reviews": []
+}

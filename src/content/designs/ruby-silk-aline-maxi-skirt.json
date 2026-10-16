@@ -1,0 +1,26 @@
+{
+  "id": "ML-25",
+  "slug": "ruby-silk-aline-maxi-skirt",
+  "category": "skirt",
+  "name": {
+    "ko": "루비 실크 A라인 맥시 스커트",
+    "en": "Ruby Silk A-Line Maxi Skirt",
+    "vi": "Chân váy chữ A lụa Ruby"
+  },
+  "description": {
+    "ko": "은은하게 빛나는 펄 광택과 탄탄한 핏의 100% 루비 실크 A라인 맥시 스커트. 화이트 실버 톤의 매혹적인 드레이프로 오피스 및 데일리 룩에 맞춰 제작됩니다.",
+    "en": "A chic shimmering A-line maxi skirt in 100% premium Ruby silk with an ethereal luminous sheen. Custom made-to-measure for everyday elegance.",
+    "vi": "Chân váy chữ A dáng dài trên lụa Ruby thượng hạng với độ bóng ngọc trai óng ả sang trọng, tôn dáng thon thả, may đo riêng chuẩn xác theo số đo."
+  },
+  "image": "assets/designs/skirt/ruby-silk-aline-maxi-skirt.jpg",
+  "published": true,
+  "featured": true,
+  "order": 17,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "ruby",
+    "suzhou"
+  ],
+  "reviews": []
+}

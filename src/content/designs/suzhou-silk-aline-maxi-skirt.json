@@ -1,0 +1,26 @@
+{
+  "id": "ML-24",
+  "slug": "suzhou-silk-aline-maxi-skirt",
+  "category": "skirt",
+  "name": {
+    "ko": "쑤저우 실크 A라인 맥시 스커트",
+    "en": "Suzhou Silk A-Line Maxi Skirt",
+    "vi": "Chân váy chữ A lụa Tô Châu"
+  },
+  "description": {
+    "ko": "간결하면서도 기품 있는 A라인 실루엣의 100% 쑤저우 실크 맥시 스커트. 부드럽게 감싸는 크림 아이보리 톤으로 다양한 상의와 완벽하게 어우러집니다.",
+    "en": "A timeless minimalist A-line maxi skirt in 100% luxury Suzhou silk. Fluidly falling in cream ivory, custom tailored to your exact measurements.",
+    "vi": "Chân váy chữ A dáng dài thanh lịch trên nền lụa Tô Châu cao cấp màu kem ngà dịu dàng, phom suông A nhẹ nhàng che khuyết điểm, may đo riêng chuẩn xác."
+  },
+  "image": "assets/designs/skirt/suzhou-silk-aline-maxi-skirt.jpg",
+  "published": true,
+  "featured": true,
+  "order": 16,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
