@@ -1,0 +1,31 @@
+{
+  "id": "ML-26",
+  "slug": "suzhou-silk-mermaid-maxi-skirt",
+  "category": "skirt",
+  "name": {
+    "ko": "쑤저우 실크 머메이드 피쉬테일 맥시 스커트",
+    "en": "Suzhou Silk Mermaid Fishtail Maxi Skirt",
+    "vi": "Chân váy đuôi cá lụa Tô Châu"
+  },
+  "description": {
+    "ko": "허리와 힙라인을 유려하게 감싸며 무릎 아래로 우아하게 퍼지는 100% 쑤저우(Suzhou) 프리미엄 실크 머메이드 맥시 스커트. 크림, 샴페인, 에스프레소 브라운, 클래식 블랙 등 다양한 컬러로 고객님의 치수에 맞춰 맞춤 제작됩니다.",
+    "en": "An exquisitely contoured mermaid fishtail maxi skirt in pure 100% luxury Suzhou silk. Fluidly draped through the hips before opening into an elegant sweep. Custom tailored to your exact measurements.",
+    "vi": "Chân váy đuôi cá dáng dài tôn đường cong hông và xòe nhẹ phần đuôi mềm mại trên nền lụa Tô Châu 100% thượng hạng. May đo riêng theo số đo chuẩn chỉ với các tông màu kem ngà, champagne, nâu tây và đen cổ điển."
+  },
+  "image": "assets/designs/skirt/suzhou-silk-mermaid-maxi-skirt.jpg",
+  "gallery": [
+    "assets/designs/skirt/suzhou-silk-mermaid-maxi-skirt-duo.jpg",
+    "assets/designs/skirt/suzhou-silk-mermaid-maxi-skirt-champagne.jpg",
+    "assets/designs/skirt/suzhou-silk-mermaid-maxi-skirt-black.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 18,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
