@@ -3,21 +3,24 @@
   "slug": "halter-maxi",
   "category": "dress",
   "name": {
-    "ko": "홀터넥 맥시 드레스",
-    "en": "Halter maxi dress",
-    "vi": "Đầm lụa maxi cổ yếm kiêu kỳ"
+    "ko": "홀터넥 실크 맥시 드레스",
+    "en": "Halter Neck Silk Maxi Dress",
+    "vi": "Đầm lụa cổ yếm (Đầm cổ yếm)"
   },
   "description": {
-    "ko": "어깨 라인이 돋보이는 홀터넥 맥시 실루엣.",
-    "en": "An open-shoulder halter neckline with a flowing maxi silhouette.",
-    "vi": "Thiết kế cổ yếm thon gọn bờ vai, lưng trần gợi cảm và tà váy dài mềm mại bay bổng."
+    "ko": "우아한 어깨 라인과 자연스럽게 흐르는 롱 실루엣이 돋보이는 홀터넥 실크 맥시 드레스. 웨딩, 스냅 촬영 및 특별한 날을 위한 100% 프리미엄 실크 맞춤 제작.",
+    "en": "A breathtaking halter neckline silk maxi dress with a fluid silhouette. Ideal for weddings, special celebrations and bespoke styling in pure 100% silk.",
+    "vi": "Đầm lụa cổ yếm kiêu kỳ, tôn bờ vai thon thả và vóc dáng thướt tha. Lựa chọn hoàn hảo cho tiệc cưới, chụp ảnh kỷ niệm và dạ hội trên nền lụa tơ tằm thượng hạng."
   },
-  "image": "assets/designs/dress/halter-maxi.png",
+  "image": "assets/designs/dress/halter-maxi.jpg",
+  "gallery": [
+    "assets/designs/dress/halter-maxi.png"
+  ],
   "published": true,
   "featured": true,
-  "order": 5,
-  "priceMin": null,
-  "priceMax": null,
+  "order": 3,
+  "priceMin": 82000,
+  "priceMax": 82000,
   "fabrics": [
     "suzhou",
     "ruby"
