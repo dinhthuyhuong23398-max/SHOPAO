@@ -1,0 +1,29 @@
+{
+  "id": "ML-30",
+  "slug": "basic-silk-cami-slip-dress",
+  "category": "dress",
+  "name": {
+    "ko": "베이직 실크 캐미 슬립 롱 드레스",
+    "en": "Basic Silk Cami Slip Maxi Dress",
+    "vi": "Đầm 2 dây basic lụa tơ tằm dáng dài"
+  },
+  "description": {
+    "ko": "미니멀하면서도 우아한 실루엣의 100% 최고급 프리미엄 실크 2줄 스트랩 캐미 슬립 롱 드레스. 은은한 샴페인 펄 광택감과 부드럽게 흐르는 바이어스 핏으로, 단독 착용은 물론 테일러드 블레이저나 재킷과 레이어링 시 시크한 도시적 무드를 연출합니다. 고객님의 체형에 맞게 맞춤 제작됩니다.",
+    "en": "A minimalist yet deeply elegant maxi slip dress handcrafted in pure 100% luxury silk with delicate cami straps. Flowing gracefully in subtle champagne pearl, it looks effortless worn standalone or styled chicly beneath a tailored blazer. Custom tailored to your exact measurements.",
+    "vi": "Đầm 2 dây basic lụa tơ tằm cao cấp dáng dài thướt tha, phom suông rũ nhẹ tôn dáng tự nhiên và thanh lịch. Dễ dàng mặc đơn lẻ hay khoác cùng blazer thời thượng, may đo riêng chuẩn xác theo số đo."
+  },
+  "image": "assets/designs/dress/basic-silk-cami-slip-dress.jpg",
+  "gallery": [
+    "assets/designs/dress/basic-silk-cami-slip-dress-detail.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 7,
+  "priceMin": 77000,
+  "priceMax": 77000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
