@@ -1,0 +1,29 @@
+{
+  "id": "ML-20",
+  "slug": "cowl-neck-cami-flare-shorts-set",
+  "category": "loungewear",
+  "name": {
+    "ko": "카울넥 실크 캐미 & 플레어 쇼츠 라운지 세트",
+    "en": "Cowl Neck Silk Cami & Flared Shorts Lounge Set",
+    "vi": "Set áo cổ đổ 2 dây & quần đùi dáng xòe lụa"
+  },
+  "description": {
+    "ko": "자연스럽게 흘러내리는 카울 네크라인 캐미솔과 A라인 플레어 쇼츠로 구성된 프리미엄 실크 라운지 세트. 단품 상의 ₩30,000 / 세트 ₩60,000으로 취향에 맞게 맞춤 제작됩니다.",
+    "en": "A graceful luxury silk loungewear set featuring a draped cowl-neck camisole top paired with fluid flared A-line shorts. Available as top only (₩30,000) or full set (₩60,000), custom made-to-measure.",
+    "vi": "Set đồ mặc nhà lụa tơ tằm thiết kế áo 2 dây cổ đổ mềm mại kết hợp quần đùi xòe bồng bềnh nữ tính. Mua lẻ áo 30.000 won / Cả set 60.000 won, may đo riêng chuẩn xác theo số đo."
+  },
+  "image": "assets/designs/loungewear/cowl-neck-cami-flare-shorts-set.jpg",
+  "published": true,
+  "featured": true,
+  "order": 11,
+  "priceMin": 30000,
+  "priceMax": 60000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": [],
+  "gallery": [
+    "assets/designs/loungewear/cowl-neck-cami-flare-shorts-set-detail.jpg"
+  ]
+}

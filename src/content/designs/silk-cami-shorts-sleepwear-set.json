@@ -1,0 +1,29 @@
+{
+  "id": "ML-19",
+  "slug": "silk-cami-shorts-sleepwear-set",
+  "category": "sleepwear",
+  "name": {
+    "ko": "실크 스트랩 캐미 & 쇼츠 슬립웨어 세트",
+    "en": "Silk Strappy Cami & Shorts Sleepwear Set",
+    "vi": "Set 2 dây lụa quần đùi ngủ"
+  },
+  "description": {
+    "ko": "우아하고 여성스러운 더블 스트랩 캐미솔과 편안한 실크 쇼츠로 구성된 100% 최고급 실크 파자마 세트. 와인 버건디와 샴페인 골드 등 다양한 컬러로 맞춤 제작됩니다.",
+    "en": "An alluring 2-piece pure silk pajama set featuring delicate camisole shoulder straps and comfortable silk shorts. Tailored made-to-measure in rich burgundy wine, champagne gold, or custom silk shades.",
+    "vi": "Set đồ ngủ lụa 2 dây cao cấp phối quần đùi mềm mại, dáng ôm nhẹ thoải mái, êm ái trên da. May đo riêng theo số đo chuẩn chỉ với các tông màu đỏ rượu, vàng champagne sang trọng."
+  },
+  "image": "assets/designs/sleepwear/silk-cami-shorts-sleepwear-set.jpg",
+  "published": true,
+  "featured": true,
+  "order": 10,
+  "priceMin": 55000,
+  "priceMax": 55000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": [],
+  "gallery": [
+    "assets/designs/sleepwear/silk-cami-shorts-sleepwear-set-gold.jpg"
+  ]
+}
