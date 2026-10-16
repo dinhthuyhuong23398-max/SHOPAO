@@ -1,0 +1,31 @@
+{
+  "id": "ML-28",
+  "slug": "silk-mini-skirt",
+  "category": "skirt",
+  "name": {
+    "ko": "실크 A라인 미니 스커트",
+    "en": "Silk A-Line Mini Skirt",
+    "vi": "Chân váy ngắn lụa tơ tằm"
+  },
+  "description": {
+    "ko": "경쾌하면서도 세련된 실루엣의 100% 최고급 실크 A라인 미니 스커트. 샴페인 골드, 퓨어 화이트, 라임 그린, 실버 등 다채로운 실크 컬러와 완벽한 맞춤 핏으로 제작됩니다.",
+    "en": "A chic, effortlessly playful A-line mini skirt handcrafted in pure 100% luxury silk. Tailored made-to-measure for a flattering leg-lengthening fit in champagne gold, crisp white, lime green, or custom silk shades.",
+    "vi": "Chân váy ngắn lụa tơ tằm cao cấp dáng chữ A trẻ trung, tôn dáng hack chân thon dài, chất liệu lụa mềm mại sang trọng, may đo riêng chuẩn xác theo chiều cao và số đo."
+  },
+  "image": "assets/designs/skirt/silk-mini-skirt.jpg",
+  "gallery": [
+    "assets/designs/skirt/silk-mini-skirt-white.jpg",
+    "assets/designs/skirt/silk-mini-skirt-green.jpg",
+    "assets/designs/skirt/silk-mini-skirt-silver.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 20,
+  "priceMin": 40000,
+  "priceMax": 40000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
