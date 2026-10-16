@@ -554,10 +554,10 @@ export default function FloatingWidgets({
                   <div className="form-section-card">
                     <span className="card-sub-title">01. {text(lang, '선택한 디자인 및 원단', 'Selected Garment', 'Sản phẩm & Chất liệu lụa')}</span>
                     <div className="selected-summary-box">
-                      <p><b>{text(lang, 'Thiết kế', 'Design', 'Thiết kế')}:</b> {orderForm.productName || 'Thiết kế lụa theo yêu cầu'}</p>
+                      <p><b>{text(lang, '디자인', 'Design', 'Thiết kế')}:</b> {orderForm.productName || text(lang, '실크 맞춤 디자인', 'Bespoke Silk Design', 'Thiết kế lụa theo yêu cầu')}</p>
                       <div className="flex-row">
                         <span><b>{text(lang, '원단', 'Fabric', 'Loại vải')}:</b> {orderForm.fabric}</span>
-                        <span><b>{text(lang, '컬러', 'Color', 'Mã màu')}:</b> {orderForm.color || 'Tư vấn theo bảng màu 2048px'}</span>
+                        <span><b>{text(lang, '컬러', 'Color', 'Mã màu')}:</b> {orderForm.color || text(lang, '컬러차트 선택', 'Palette Selection', 'Tư vấn theo bảng màu')}</span>
                       </div>
                     </div>
                   </div>

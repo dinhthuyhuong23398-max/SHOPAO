@@ -1,0 +1,26 @@
+{
+  "id": "ML-15",
+  "slug": "short-sleeve-silk-shirt",
+  "category": "top",
+  "name": {
+    "ko": "숏슬리브 실크 셔츠",
+    "en": "Short-Sleeve Silk Shirt",
+    "vi": "Áo sơ mi lụa tay ngắn"
+  },
+  "description": {
+    "ko": "단정하고 세련된 오픈 칼라와 매끄러운 100% 프리미엄 실크 소재의 숏슬리브 셔츠. 고객님의 신체 사이즈에 맞춰 정교하게 맞춤 제작됩니다.",
+    "en": "A refined short-sleeve shirt crafted from 100% pure luxury silk with a polished open collar and concealed placket. Custom made to your measurements.",
+    "vi": "Áo sơ mi lụa cộc tay cao cấp với thiết kế ve cổ thanh lịch, nẹp giấu khuy tinh tế trên nền lụa thượng hạng may đo riêng theo số đo cá nhân."
+  },
+  "image": "assets/designs/top/short-sleeve-silk-shirt.jpg",
+  "published": true,
+  "featured": true,
+  "order": 6,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

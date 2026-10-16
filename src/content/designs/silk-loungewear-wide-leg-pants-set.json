@@ -1,0 +1,26 @@
+{
+  "id": "ML-17",
+  "slug": "silk-loungewear-wide-leg-pants-set",
+  "category": "loungewear",
+  "name": {
+    "ko": "와이드 팬츠 실크 라운지웨어 세트",
+    "en": "Silk Loungewear Wide-Leg Pants Set",
+    "vi": "Set đồ mặc nhà lụa quần dài"
+  },
+  "description": {
+    "ko": "우아한 보트넥 슬리브리스 탑과 여유로운 실루엣의 와이드 롱 팬츠로 구성된 100% 프리미엄 실크 라운지웨어 세트. 고객님의 신체 치수에 맞춰 맞춤 제작됩니다.",
+    "en": "A luxury 2-piece loungewear set featuring a boatneck sleeveless top and fluid wide-leg pants in pure 100% silk. Custom made-to-measure tailored to your body.",
+    "vi": "Set đồ mặc nhà lụa 2 món gồm áo sát nách cổ thuyền trang nhã và quần ống rộng suông thướt tha, may đo chuẩn từng centimet theo số đo cá nhân."
+  },
+  "image": "assets/designs/loungewear/silk-loungewear-wide-leg-pants-set.jpg",
+  "published": true,
+  "featured": true,
+  "order": 8,
+  "priceMin": 75000,
+  "priceMax": 75000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

@@ -1,0 +1,26 @@
+{
+  "id": "ML-18",
+  "slug": "silk-tank-top-sleepwear-set",
+  "category": "sleepwear",
+  "name": {
+    "ko": "실크 탱크탑 슬립웨어 세트",
+    "en": "Silk Tank Top & Shorts Sleepwear Set",
+    "vi": "Set tank top lụa đồ ngủ"
+  },
+  "description": {
+    "ko": "부드러운 V넥 탱크탑과 편안한 실크 쇼츠로 구성된 100% 최고급 실크 슬립웨어 세트. 극상의 부드러움과 쾌적한 착용감으로 맞춤 제작됩니다.",
+    "en": "A serene 2-piece silk sleepwear set with a flattering V-neck camisole tank top and relaxed lounge shorts in pure 100% silk. Custom made to your measurements.",
+    "vi": "Set đồ ngủ lụa 2 món gồm áo tank top cổ chữ V nhẹ nhàng và quần đùi ngủ lụa mềm mại, êm ái trên da, may đo riêng chuẩn xác theo số đo."
+  },
+  "image": "assets/designs/sleepwear/silk-tank-top-sleepwear-set.jpg",
+  "published": true,
+  "featured": true,
+  "order": 9,
+  "priceMin": 55000,
+  "priceMax": 55000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

@@ -1,0 +1,26 @@
+{
+  "id": "ML-16",
+  "slug": "front-tie-ribbon-silk-blouse",
+  "category": "top",
+  "name": {
+    "ko": "프론트 타이 리본 실크 블라우스",
+    "en": "Front-Tie Ribbon Silk Blouse",
+    "vi": "Áo sơ mi lụa thắt nơ ngực"
+  },
+  "description": {
+    "ko": "매력적인 프론트 리본 스트랩 디테일과 유려한 긴 소매 실루엣의 100% 프리미엄 실크 블라우스. 고객님의 신체 치수에 맞춰 맞춤 제작됩니다.",
+    "en": "An enchanting front-tie ribbon silk blouse featuring delicate bow strings and flared cuff sleeves in 100% luxury silk. Custom made to your measurements.",
+    "vi": "Áo sơ mi lụa thắt nơ trước ngực nữ tính, cổ chữ V kiêu kỳ cùng tay áo xẻ tà thanh thoát trên nền lụa tơ tằm thượng hạng may đo riêng."
+  },
+  "image": "assets/designs/top/front-tie-ribbon-silk-blouse.png",
+  "published": true,
+  "featured": true,
+  "order": 7,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

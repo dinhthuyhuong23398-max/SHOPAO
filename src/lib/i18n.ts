@@ -10,7 +10,9 @@ export function text(lang: Locale, ko: string, en: string, vi?: string): string 
 export const categoryNames: Record<string, { ko: string; en: string; vi: string }> = {
   dress: { ko: '드레스', en: 'Dresses', vi: 'Đầm (Dresses)' },
   top: { ko: '탑 & 블라우스', en: 'Tops & blouses', vi: 'Áo & Blouse (Tops)' },
-  trouser: { ko: '트라우저', en: 'Trousers', vi: 'Quần (Trousers)' }
+  trouser: { ko: '트라우저', en: 'Trousers', vi: 'Quần (Trousers)' },
+  sleepwear: { ko: '슬립웨어', en: 'Sleepwear', vi: 'Đồ ngủ (Sleepwear)' },
+  loungewear: { ko: '라운지웨어', en: 'Loungewear', vi: 'Đồ mặc nhà (Loungewear)' }
 };
 
 export const collectionTypes = {
