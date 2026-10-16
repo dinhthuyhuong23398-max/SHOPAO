@@ -3,21 +3,24 @@
   "slug": "maxi-silk-gown",
   "category": "dress",
   "name": {
-    "ko": "슬리브리스 맥시 가운",
-    "en": "Sleeveless maxi gown",
-    "vi": "Đầm dạ hội lụa maxi sát nách"
+    "ko": "백리스 파티 실크 드레스",
+    "en": "Backless Party Silk Dress",
+    "vi": "Đầm tiệc lụa sang trọng (Đầm tiệc)"
   },
   "description": {
-    "ko": "간결한 라운드 네크라인의 슬리브리스 가운.",
-    "en": "A sleeveless gown with a simple rounded neckline.",
-    "vi": "Đầm dạ hội lụa cao cấp với đường nét tối giản tôn vinh vẻ đẹp sang trọng đẳng cấp."
+    "ko": "우아한 카울 네크라인과 드라마틱한 백리스 실루엣, 섬세한 진주 드레이프 디테일의 최고급 파티 실크 드레스. 100% 프리미엄 실크로 고객님의 체형에 맞춤 제작됩니다.",
+    "en": "An alluring backless party silk dress featuring a soft cowl neckline and exquisite pearl draping details. Custom made-to-measure in 100% luxury silk.",
+    "vi": "Đầm tiệc lụa cao cấp với thiết kế cổ đổ trước và lưng trần quyến rũ đính chuỗi ngọc trai tinh tế. May đo chuẩn xác theo số đo cơ thể trên lụa tơ tằm thượng hạng."
   },
-  "image": "assets/designs/dress/maxi-silk-gown.jpg",
+  "image": "assets/designs/dress/maxi-silk-gown.png",
+  "gallery": [
+    "assets/designs/dress/maxi-silk-gown-back.png"
+  ],
   "published": true,
-  "featured": false,
-  "order": 7,
-  "priceMin": null,
-  "priceMax": null,
+  "featured": true,
+  "order": 4,
+  "priceMin": 85000,
+  "priceMax": 85000,
   "fabrics": [
     "suzhou",
     "ruby"
