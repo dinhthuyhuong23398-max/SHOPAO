@@ -1,0 +1,31 @@
+{
+  "id": "ML-34",
+  "slug": "tailored-linen-hline-skirt",
+  "category": "skirt",
+  "name": {
+    "ko": "테일러드 린넨 H라인 롱스커트 (기성복)",
+    "en": "Tailored Premium Linen H-Line Maxi Skirt",
+    "vi": "Chân váy linen chữ H cao cấp"
+  },
+  "description": {
+    "ko": "자연스러운 통기성과 탄탄한 텍스처를 지닌 100% 프리미엄 내추럴 린넨 H라인 롱스커트. 군더더기 없이 일자로 곧게 떨어지는 단정한 실루엣과 허리선을 매끄럽게 정돈해주는 하이웨이스트 테일러드 패턴으로 다리가 길어 보입니다. 뒤트임 디테일로 활동성이 우수하며, 오트밀 베이지, 화이트, 블랙, 네이비, 카키, 와인 브라운 등 모던한 컬러와 기성 표준 사이즈(XS, S, M, L)로 제작되었습니다.\n\n[기성 표준 사이즈 가이드 (단위: cm)]\n• XS: 허리 66 / 엉덩이 90 / 총장 85\n• S: 허리 70 / 엉덩이 94 / 총장 86\n• M: 허리 74 / 엉덩이 98 / 총장 87\n• L: 허리 78 / 엉덩이 102 / 총장 88",
+    "en": "Crafted from 100% breathable natural premium linen, this tailored H-line maxi skirt offers a sleek, straight-cut silhouette that elongates the frame effortlessly. Featuring a refined high-rise waistband, clean front darting, and a walking slit for graceful movement. Available in sophisticated shades (Natural Oat, Crisp White, Midnight Black, Classic Navy, Warm Khaki, Rich Wine) and standard ready-to-wear sizes XS, S, M, L.\n\n[Ready-to-Wear Size Guide (cm)]\n• XS: Waist 66 / Hips 90 / Length 85\n• S: Waist 70 / Hips 94 / Length 86\n• M: Waist 74 / Hips 98 / Length 87\n• L: Waist 78 / Hips 102 / Length 88",
+    "vi": "Chân váy linen dáng chữ H cao cấp chế tác từ 100% sợi linen tự nhiên dệt mộc cao cấp, chất vải dày dặn đứng phom nhưng cực kỳ thoáng khí và thấm hút mồ hôi. Thiết kế cạp cao tôn dáng, phom suông thẳng che khuyết điểm hoàn hảo và đường xẻ tà sau tinh tế tạo bước đi thanh thoát, uyển chuyển. Bảng màu nhã nhặn sang trọng: Be Yến Mạch, Trắng Tinh Khôi, Đen Tuyền, Xanh Navy, Khaki/Nâu Tây, Đỏ Rượu Vang. Bảng size chuẩn may sẵn XS, S, M, L.\n\n[Bảng Size Chuẩn May Sẵn (cm)]\n• XS: Vòng eo 66 / Vòng mông 90 / Chiều dài 85\n• S: Vòng eo 70 / Vòng mông 94 / Chiều dài 86\n• M: Vòng eo 74 / Vòng mông 98 / Chiều dài 87\n• L: Vòng eo 78 / Vòng mông 102 / Chiều dài 88"
+  },
+  "image": "assets/designs/skirt/tailored-linen-hline-skirt.jpg",
+  "gallery": [
+    "assets/designs/skirt/tailored-linen-hline-skirt-flatlay.jpg",
+    "assets/designs/skirt/tailored-linen-hline-skirt-fabric-detail.jpg",
+    "assets/designs/skirt/tailored-linen-hline-skirt-size-chart.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 26,
+  "priceMin": 75000,
+  "priceMax": 75000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
