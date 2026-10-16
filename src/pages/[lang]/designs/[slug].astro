@@ -78,7 +78,31 @@ const catName = categoryNames[product.category]?.[lang] || categoryNames[product
   </div>
   <section class="product-detail section-wrap">
     <div class="detail-photograph">
-      <img src={product.imageUrl} width="1000" height="1333" alt={pName} fetchpriority="high"/>
+      <div class="main-photo-wrapper">
+        <img id="mainProductPhoto" src={product.imageUrl} width="1000" height="1333" alt={pName} fetchpriority="high"/>
+      </div>
+      {product.galleryUrls && product.galleryUrls.length > 0 && (
+        <div class="photo-gallery-strip" role="group" aria-label={text(lang, '제품 갤러리', 'Product photo gallery')}>
+          <button 
+            type="button" 
+            class="gallery-thumb-btn active" 
+            data-img-src={product.imageUrl} 
+            aria-label={text(lang, '메인 사진', 'Main photo')}
+          >
+            <img src={product.thumbnailUrl} alt={pName} />
+          </button>
+          {product.galleryUrls.map((gUrl, idx) => (
+            <button 
+              type="button" 
+              class="gallery-thumb-btn" 
+              data-img-src={gUrl} 
+              aria-label={text(lang, `상세 사진 ${idx + 1}`, `Photo ${idx + 2}`)}
+            >
+              <img src={gUrl} alt={`${pName} - ${idx + 1}`} />
+            </button>
+          ))}
+        </div>
+      )}
       <div class="image-caption">
         <span>{product.id} / {catName}</span>
         <span>{text(lang,'디자인 참고 사진','Design reference')}</span>
@@ -125,4 +149,18 @@ const catName = categoryNames[product.category]?.[lang] || categoryNames[product
       {related.map(product=><ProductCard product={product} lang={lang}/>)}
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll('.gallery-thumb-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.gallery-thumb-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const newSrc = btn.getAttribute('data-img-src');
+        const mainImg = document.getElementById('mainProductPhoto') as HTMLImageElement | null;
+        if (mainImg && newSrc) {
+          mainImg.src = newSrc;
+        }
+      });
+    });
+  </script>
 </Layout>

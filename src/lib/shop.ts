@@ -55,6 +55,9 @@ export function priceLabel(design: Pick<Product,'priceMin'|'priceMax'>, lang: Lo
     return lang === 'ko' ? '가격 문의' : 'Ask for pricing';
   }
   const format = (value:number) => new Intl.NumberFormat(lang === 'ko'?'ko-KR':lang === 'vi'?'vi-VN':'en-US',{style:'currency',currency:'KRW',maximumFractionDigits:0}).format(value);
+  if (design.priceMin === design.priceMax) {
+    return format(design.priceMin);
+  }
   return `${format(design.priceMin)} – ${format(design.priceMax)}`;
 }
 

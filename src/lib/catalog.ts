@@ -18,6 +18,7 @@ const designSchema = z.object({
     const url = new URL(value);
     return url.protocol === 'https:' && ['instagram.com', 'www.instagram.com', 'threads.net', 'www.threads.net', 'threads.com', 'www.threads.com'].includes(url.hostname);
   }, 'Use an Instagram or Threads HTTPS URL') })).default([]),
+  gallery: z.array(imagePath).optional().default([]),
 }).refine(d => (d.priceMin === null && d.priceMax === null) || (d.priceMin !== null && d.priceMax !== null && d.priceMin <= d.priceMax), 'Provide both price bounds, in ascending order');
 export const settings = z.object({ instagram: z.string().regex(/^[A-Za-z0-9_.]+$/), threads: z.string().regex(/^[A-Za-z0-9_.]+$/), currency: z.literal('KRW'), defaultLocale: z.literal('ko'), brand: z.string(), sheetId: z.string().optional(), orderApiUrl: z.string().optional() }).parse(settingsData);
 export const fabrics: Fabric[] = z.array(z.object({ id: fabricId, name: localized, description: localized, charts: z.array(imagePath), colors: z.array(z.object({ id: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).refine(id=>id!=='consult', 'consult is reserved for consultation'), code: z.string(), name: localized, hex: z.string().regex(/^#[a-fA-F0-9]{6}$/) })) })).parse(fabricData);
@@ -43,6 +44,11 @@ export function getCatalog(): Promise<Catalog> {
   return prepared ??= Promise.all(designs.map(async design => {
     const src = sourceImage(design.image);
     const [large, thumb] = await Promise.all([getImage({ src, width: 1000, format: 'webp', quality: 82 }), getImage({ src, width: 480, format: 'webp', quality: 80 })]);
-    return { ...design, imageUrl: large.src, thumbnailUrl: thumb.src };
+    const galleryUrls = await Promise.all((design.gallery || []).map(async gPath => {
+      const gSrc = sourceImage(gPath);
+      const gLarge = await getImage({ src: gSrc, width: 1000, format: 'webp', quality: 82 });
+      return gLarge.src;
+    }));
+    return { ...design, imageUrl: large.src, thumbnailUrl: thumb.src, galleryUrls };
   })).then(products => ({ designs: products, fabrics, instagram: settings.instagram }));
 }

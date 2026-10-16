@@ -3,21 +3,24 @@
   "slug": "minimal-long-sleeve-cowl-neck",
   "category": "dress",
   "name": {
-    "ko": "롱슬리브 드레이프 드레스",
-    "en": "Long-sleeve cowl dress",
-    "vi": "Đầm lụa tay dài cổ đổ trang nhã"
+    "ko": "롱슬리브 카울넥 실크 드레스",
+    "en": "Long-Sleeve Cowl Neck Silk Dress",
+    "vi": "Đầm cổ đổ tay dài"
   },
   "description": {
-    "ko": "드레이프 네크라인과 긴 소매의 미니 드레스.",
-    "en": "A mini dress with long sleeves and a draped neckline.",
-    "vi": "Sự kết hợp giữa cổ đổ mềm mại và tay áo dài kín đáo, thanh lịch cho mùa thu đông."
+    "ko": "우아한 카울 드레이프 네크라인과 유려한 긴 소매가 매력적인 프리미엄 실크 미니 드레스. 100% 최고급 실크로 고객님의 체형에 맞춤 제작됩니다.",
+    "en": "An exquisite long-sleeve cowl neck mini dress crafted from 100% luxury silk. Custom made-to-measure tailored to your exact measurements.",
+    "vi": "Đầm lụa cổ đổ tay dài mềm mại, thanh lịch và quý phái. May đo chuẩn xác theo số đo cơ thể trên chất liệu lụa tơ tằm thượng hạng."
   },
   "image": "assets/designs/dress/minimal-long-sleeve-cowl-neck.jpg",
+  "gallery": [
+    "assets/designs/dress/minimal-long-sleeve-cowl-neck-selfie.jpg"
+  ],
   "published": true,
-  "featured": false,
-  "order": 9,
-  "priceMin": null,
-  "priceMax": null,
+  "featured": true,
+  "order": 1,
+  "priceMin": 80000,
+  "priceMax": 80000,
   "fabrics": [
     "suzhou",
     "ruby"

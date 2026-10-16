@@ -3,21 +3,25 @@
   "slug": "scoop-neck-slip-maxi",
   "category": "dress",
   "name": {
-    "ko": "스쿱넥 슬립 맥시",
-    "en": "Scoop-neck slip maxi",
-    "vi": "Đầm lụa maxi hai dây cổ chữ U"
+    "ko": "U넥 실크 슬립 맥시 드레스",
+    "en": "U-Neck Silk Slip Maxi Dress",
+    "vi": "Đầm 2 dây cổ U"
   },
   "description": {
-    "ko": "가느다란 스트랩과 길게 이어지는 라인.",
-    "en": "Fine straps and a long, uninterrupted silhouette.",
-    "vi": "Đầm hai dây dáng suông mềm mại ôm nhẹ theo từng chuyển động của cơ thể."
+    "ko": "클래식한 U자형 스쿱 네크라인과 가느다란 더블 스트랩의 롱 실크 슬립 드레스. 100% 프리미엄 실크로 고객님의 사이즈에 맞춰 정성껏 맞춤 제작됩니다.",
+    "en": "A timeless U-neckline long silk slip dress featuring delicate camisole double straps. Custom made-to-measure tailored in 100% pure silk.",
+    "vi": "Đầm lụa 2 dây cổ U phom maxi thướt tha, mềm mại và tôn dáng tự nhiên. May đo riêng chuẩn từng centimet theo số đo cá nhân."
   },
   "image": "assets/designs/dress/scoop-neck-slip-maxi.png",
+  "gallery": [
+    "assets/designs/dress/scoop-neck-slip-maxi-selfie.png",
+    "assets/designs/dress/scoop-neck-slip-maxi-hanger.png"
+  ],
   "published": true,
-  "featured": false,
-  "order": 6,
-  "priceMin": null,
-  "priceMax": null,
+  "featured": true,
+  "order": 2,
+  "priceMin": 80000,
+  "priceMax": 80000,
   "fabrics": [
     "suzhou",
     "ruby"
