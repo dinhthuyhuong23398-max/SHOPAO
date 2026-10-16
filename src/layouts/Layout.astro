@@ -13,8 +13,8 @@ const fullTitle = title === 'Michelle Store'
   ? text(lang, '미셸 스토어 (Michelle Store) | 프리미엄 사이즈 맞춤 실크 컬렉션', 'Michelle Store | Made-to-Measure Bespoke Silk Collection')
   : `${title} | Michelle Store`;
 const fullDescription = description || text(lang, '미셸 스토어 - 프리미엄 수저우 실크 & 루비 실크 100% 맞춤 제작. 고객님의 신체 치수에 맞춰 정교하게 제작되는 오뜨 꾸뛰르 사이즈 맞춤 실크 컬렉션.', 'Michelle Store - Bespoke luxury silk collection crafted in authentic Suzhou and Ruby silk. Made to your unique measurements with personalized atelier tailoring.');
-const notFound=Astro.props.notFound===true;
-const path=notFound?'/':routePath(Astro.url.pathname).replace(/^\/(ko|en)(?=\/|$)/,'') || '/';
+const isNotFound = notFound === true;
+const path = isNotFound ? '/' : routePath(Astro.url.pathname).replace(/^\/(ko|en)(?=\/|$)/,'') || '/';
 const siteOrigin = Astro.site?.origin || 'https://michellestore.com';
 const canonicalUrl = new URL(sitePath(`/${lang}${path === '/' ? '' : path}`), siteOrigin);
 const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toString();
