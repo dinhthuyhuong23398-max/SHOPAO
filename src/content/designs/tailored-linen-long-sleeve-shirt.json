@@ -1,0 +1,35 @@
+{
+  "id": "ML-33",
+  "slug": "tailored-linen-long-sleeve-shirt",
+  "category": "top",
+  "name": {
+    "ko": "테일러드 린넨 롱슬리브 셔츠 (기성복)",
+    "en": "Tailored Premium Linen Long-Sleeve Shirt",
+    "vi": "Áo sơ mi linen tay dài thiết kế sẵn"
+  },
+  "description": {
+    "ko": "자연스러운 질감과 뛰어난 통기성을 자랑하는 100% 프리미엄 내추럴 린넨 롱슬리브 셔츠. 깔끔한 포인티드 칼라와 자개 단추, 부드럽게 흐르는 릴랙스 핏으로 단독 착용은 물론 가벼운 아우터로도 완벽합니다. 화이트, 핑크, 라일락, 버건디, 옐로우 등 다채로운 컬러 웨이와 기성 표준 사이즈(XS, S, M, L)로 제작되었습니다.\n\n[기성 표준 사이즈 가이드 (단위: cm)]\n• XS: 총장 62 / 가슴 92 / 소매장 57 / 어깨너비 40\n• S: 총장 64 / 가슴 96 / 소매장 58 / 어깨너비 42\n• M: 총장 66 / 가슴 100 / 소매장 59 / 어깨너비 44\n• L: 총장 68 / 가슴 104 / 소매장 60 / 어깨너비 46",
+    "en": "Crafted from 100% breathable natural premium linen, this tailored long-sleeve shirt combines crisp elegance with effortless comfort. Featuring a classic pointed collar, genuine pearl buttons, and a versatile relaxed silhouette that styles seamlessly tucked in or layered as a light summer overshirt. Available in versatile shades (Classic White, Pastel Pink, Lavender Lilac, Rich Burgundy, Butter Yellow) and standard ready-to-wear sizes XS, S, M, L.\n\n[Ready-to-Wear Size Guide (cm)]\n• XS: Length 62 / Bust 92 / Sleeve 57 / Shoulder 40\n• S: Length 64 / Bust 96 / Sleeve 58 / Shoulder 42\n• M: Length 66 / Bust 100 / Sleeve 59 / Shoulder 44\n• L: Length 68 / Bust 104 / Sleeve 60 / Shoulder 46",
+    "vi": "Áo sơ mi linen tay dài cao cấp thiết kế sẵn từ chất liệu 100% linen tự nhiên dệt sợi mộc, đứng form nhưng cực kỳ mềm mại, thoáng mát và thấm hút mồ hôi vượt trội. Phom dáng suông rộng thanh lịch, ve cổ sơ mi sắc sảo cùng hàng cúc ngọc trai tinh tế, dễ dàng sơ vin hoặc khoác ngoài phóng khoáng. Nhiều tông màu nhã nhặn: Trắng tinh khôi, Hồng phấn, Tím pastel, Đỏ đô sang trọng, Vàng bơ tươi tắn. Bảng size chuẩn may sẵn XS, S, M, L.\n\n[Bảng Size Chuẩn May Sẵn (cm)]\n• XS: Chiều dài 62 / Ngực 92 / Dài tay 57 / Rộng vai 40\n• S: Chiều dài 64 / Ngực 96 / Dài tay 58 / Rộng vai 42\n• M: Chiều dài 66 / Ngực 100 / Dài tay 59 / Rộng vai 44\n• L: Chiều dài 68 / Ngực 104 / Dài tay 60 / Rộng vai 46"
+  },
+  "image": "assets/designs/top/linen-long-sleeve-shirt.jpg",
+  "gallery": [
+    "assets/designs/top/linen-long-sleeve-shirt-lilac.jpg",
+    "assets/designs/top/linen-long-sleeve-shirt-burgundy.jpg",
+    "assets/designs/top/linen-long-sleeve-shirt-white.jpg",
+    "assets/designs/top/linen-long-sleeve-shirt-pink.jpg",
+    "assets/designs/top/linen-long-sleeve-shirt-yellow-rack.jpg",
+    "assets/designs/top/linen-long-sleeve-shirt-colors.jpg",
+    "assets/designs/top/long-sleeve-shirt-size-chart.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 10,
+  "priceMin": 77000,
+  "priceMax": 77000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
