@@ -8,6 +8,7 @@ import {text} from '../lib/i18n';
 import {settings} from '../lib/catalog';
 import FloatingWidgets from '../components/FloatingWidgets';
 interface Props { lang:Locale; title?:string; description?:string; notFound?:boolean; }
+const { lang, title = 'Michelle Store', description, notFound = false } = Astro.props;
 const fullTitle = title === 'Michelle Store'
   ? text(lang, '미셸 스토어 (Michelle Store) | 프리미엄 사이즈 맞춤 실크 컬렉션', 'Michelle Store | Made-to-Measure Bespoke Silk Collection')
   : `${title} | Michelle Store`;
