@@ -18,6 +18,59 @@ const pDesc = product.description[lang] || product.description.en || product.des
 const catName = categoryNames[product.category]?.[lang] || categoryNames[product.category]?.en;
 ---
 <Layout lang={lang} title={pName} description={pDesc}>
+  <!-- Schema.org Product & BreadcrumbList Structured Data for Google Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": pName,
+    "description": pDesc,
+    "image": new URL(product.imageUrl, Astro.site || 'https://michellestore.com').toString(),
+    "sku": product.id,
+    "category": catName,
+    "brand": {
+      "@type": "Brand",
+      "name": "Michelle Store"
+    },
+    "material": "Silk (Suzhou / Ruby)",
+    "offers": {
+      "@type": "Offer",
+      "url": new URL(Astro.url.pathname, Astro.site || 'https://michellestore.com').toString(),
+      "priceCurrency": "KRW",
+      "price": product.priceMin || 0,
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "seller": {
+        "@type": "Organization",
+        "name": "Michelle Store"
+      }
+    }
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": text(lang, "컬렉션", "Collection"),
+        "item": new URL(sitePath(`/${lang}/#collection`), Astro.site || 'https://michellestore.com').toString()
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": catName,
+        "item": new URL(sitePath(`/${lang}/#collection`), Astro.site || 'https://michellestore.com').toString()
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": pName,
+        "item": new URL(Astro.url.pathname, Astro.site || 'https://michellestore.com').toString()
+      }
+    ]
+  })} />
+
   <div class="breadcrumb section-wrap">
     <a href={sitePath(`/${lang}/#collection`)}>{text(lang,'컬렉션','Collection')}</a>
     <span>/</span>

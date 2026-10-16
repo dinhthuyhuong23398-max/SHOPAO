@@ -1,0 +1,8 @@
+# robots.txt for Michelle Store
+# https://michellestore.com/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://michellestore.com/sitemap.xml

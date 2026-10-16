@@ -34,6 +34,26 @@ const second = heroSlides[1] ?? catalog.designs[1];
 const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSlides[0];
 ---
 <Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection')}>
+  <!-- Schema.org CollectionPage & ItemList Structured Data for Google Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": text(lang, "미셸 스토어 사이즈 맞춤 실크 컬렉션", "Michelle Store Made-to-measure Silk Collection"),
+    "description": text(lang, "수저우 실크와 루비 실크로 맞춤 제작되는 미셸의 드레스, 블라우스, 트라우저 컬렉션.", "Michelle's collection of custom made-to-measure dresses, blouses, and trousers in luxury silk."),
+    "url": new URL(sitePath(`/${lang}/`), Astro.site || 'https://michellestore.com').toString(),
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": catalog.designs.length,
+      "itemListElement": catalog.designs.map((design, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": design.name[lang] || design.name.en,
+        "url": new URL(sitePath(`/${lang}/designs/${design.slug}/`), Astro.site || 'https://michellestore.com').toString(),
+        "image": new URL(design.imageUrl, Astro.site || 'https://michellestore.com').toString()
+      }))
+    }
+  })} />
+
   <!-- 1. AUTO-SLIDING HERO BANNER WITH 4 MODELS -->
   <section class="hero">
     <div class="hero-copy">
@@ -498,43 +518,88 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     let activeCategory = 'all';
     let searchQuery = '';
 
+    // Text normalizer: removes accents/diacritics, spaces, hyphens for flexible search matching
+    function normalizeKeyword(str: string): string {
+      return (str || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9가-힣]/g, '');
+    }
+
+    // Category synonyms mapping
+    const categorySynonyms: Record<string, string[]> = {
+      dress: ['dress', 'dresses', '드레스', '원피스', 'dam', 'váy', 'slip', 'gown'],
+      top: ['top', 'tops', 'blouse', 'blouses', '탑', '블라우스', '셔츠', 'ao'],
+      trouser: ['trouser', 'trousers', 'pants', '바지', '슬랙스', '팬츠', 'quan']
+    };
+
     function applyFilterAndSearch() {
-      const q = searchQuery.trim().toLowerCase();
+      const rawQ = searchQuery.trim().toLowerCase();
+      const tokens = rawQ.split(/\s+/).filter(Boolean);
       let visibleCount = 0;
 
       productCards.forEach(card => {
-        const cat = card.dataset.category || '';
-        const id = card.dataset.id || '';
-        const slug = card.dataset.slug || '';
-        const nameKo = card.dataset.nameKo || '';
-        const nameEn = card.dataset.nameEn || '';
-        const nameVi = card.dataset.nameVi || '';
-        const fabrics = card.dataset.fabrics || '';
+        const cat = (card.dataset.category || '').toLowerCase();
+        const id = (card.dataset.id || '').toLowerCase();
+        const slug = (card.dataset.slug || '').toLowerCase();
+        const nameKo = (card.dataset.nameKo || '').toLowerCase();
+        const nameEn = (card.dataset.nameEn || '').toLowerCase();
+        const nameVi = (card.dataset.nameVi || '').toLowerCase();
+        const fabrics = (card.dataset.fabrics || '').toLowerCase();
 
+        // 1. Category filter
         const matchesCategory = (activeCategory === 'all' || cat === activeCategory);
-        const matchesQuery = !q || (
-          id.includes(q) ||
-          slug.includes(q) ||
-          nameKo.includes(q) ||
-          nameEn.includes(q) ||
-          nameVi.includes(q) ||
-          fabrics.includes(q)
-        );
+
+        // 2. Query search
+        let matchesQuery = true;
+        if (tokens.length > 0) {
+          const normId = normalizeKeyword(id);
+          const normSlug = normalizeKeyword(slug);
+          const normKo = normalizeKeyword(nameKo);
+          const normEn = normalizeKeyword(nameEn);
+          const normVi = normalizeKeyword(nameVi);
+          const normFab = normalizeKeyword(fabrics);
+          const synonyms = (categorySynonyms[cat] || []).map(normalizeKeyword).join(' ');
+
+          const fullSearchable = `${id} ${slug} ${nameKo} ${nameEn} ${nameVi} ${fabrics} ${normId} ${normSlug} ${normKo} ${normEn} ${normVi} ${normFab} ${synonyms}`;
+
+          matchesQuery = tokens.every(token => {
+            const normToken = normalizeKeyword(token);
+            return fullSearchable.includes(token) || (normToken.length > 0 && fullSearchable.includes(normToken));
+          });
+        }
 
         const isVisible = matchesCategory && matchesQuery;
         card.hidden = !isVisible;
-        if (isVisible) visibleCount++;
+        if (isVisible) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
       });
 
       if (countLabel) countLabel.textContent = String(visibleCount);
       if (emptyState) emptyState.hidden = (visibleCount > 0);
-      if (clearSearchBtn) clearSearchBtn.hidden = (q.length === 0);
+      if (clearSearchBtn) clearSearchBtn.hidden = (rawQ.length === 0);
 
       if (track) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
+        track.scrollLeft = 0;
         updateScrollIndicator();
       }
     }
+
+    // Initialize search from URL query if present (e.g. ?q=dress#collection)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlQuery = urlParams.get('q');
+      if (urlQuery && searchInput) {
+        searchInput.value = urlQuery;
+        searchQuery = urlQuery;
+        applyFilterAndSearch();
+      }
+    } catch {}
 
     searchInput?.addEventListener('input', () => {
       searchQuery = searchInput.value;
