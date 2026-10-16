@@ -1,0 +1,26 @@
+{
+  "id": "ML-29",
+  "slug": "classic-silk-tank-top",
+  "category": "top",
+  "name": {
+    "ko": "클래식 실크 탱크탑",
+    "en": "Classic Silk Scoop Neck Tank Top",
+    "vi": "Áo tank top lụa tơ tằm cổ tròn"
+  },
+  "description": {
+    "ko": "자연스러운 U네크라인과 부드러운 드레이프의 100% 최고급 프리미엄 실크 탱크탑. 단독 착용은 물론 재킷이나 셔츠의 이너웨어로도 우아하게 어울리며, 고객님의 체형에 맞게 맞춤 제작됩니다.",
+    "en": "A minimalist scoop-neck tank top handcrafted in 100% pure luxury silk. Drapes effortlessly in champagne pearl, perfect as a chic standalone piece or elegant layering staple.",
+    "vi": "Áo tank top (ba lỗ) lụa tơ tằm cao cấp cổ tròn mềm mại, độ bóng ngọc trai thanh lịch, dễ dàng phối cùng chân váy, quần tây hay áo khoác blazer, may đo riêng theo số đo."
+  },
+  "image": "assets/designs/top/classic-silk-tank-top.jpg",
+  "published": true,
+  "featured": true,
+  "order": 9,
+  "priceMin": 30000,
+  "priceMax": 30000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
