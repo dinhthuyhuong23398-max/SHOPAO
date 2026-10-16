@@ -3,21 +3,21 @@
   "slug": "minimal-cowl-neck-slip-dress",
   "category": "dress",
   "name": {
-    "ko": "드레이프 슬립 드레스",
-    "en": "Cowl-neck slip dress",
-    "vi": "Đầm lụa slip dress cổ đổ tối giản"
+    "ko": "슬리브리스 카울넥 실크 드레스",
+    "en": "Sleeveless Cowl Neck Silk Dress",
+    "vi": "Đầm cổ đổ không tay"
   },
   "description": {
-    "ko": "자연스럽게 흐르는 네크라인과 긴 실루엣.",
-    "en": "A softly draped neckline and a long, fluid silhouette.",
-    "vi": "Điểm nhấn cổ đổ mềm mại tự nhiên, phom dáng rủ nhẹ nhàng tôn lên thần thái quý phái."
+    "ko": "자연스럽게 흐르는 우아한 카울 네크라인과 슬리브리스 라인의 100% 프리미엄 실크 드레스. 고객님의 신체 치수에 맞춰 정교하게 맞춤 제작됩니다.",
+    "en": "An effortlessly elegant sleeveless cowl neck dress in pure 100% luxury silk. Custom made-to-measure tailored to your exact body silhouette.",
+    "vi": "Đầm lụa cổ đổ không tay mềm mại, tôn dáng thanh thoát và kiêu kỳ. May đo riêng theo số đo cá nhân trên lụa tơ tằm thượng hạng."
   },
-  "image": "assets/designs/dress/minimal-cowl-neck-slip-dress.jpg",
+  "image": "assets/designs/dress/minimal-cowl-neck-slip-dress.png",
   "published": true,
   "featured": true,
-  "order": 3,
-  "priceMin": null,
-  "priceMax": null,
+  "order": 1,
+  "priceMin": 80000,
+  "priceMax": 80000,
   "fabrics": [
     "suzhou",
     "ruby"
