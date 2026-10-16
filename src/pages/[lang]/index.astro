@@ -2,7 +2,8 @@
 import {sitePath} from '../../lib/paths';
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import {getCatalog} from '../../lib/catalog';
+import {Image} from 'astro:assets';
+import {getCatalog,sourceImage} from '../../lib/catalog';
 import {text,locales,categoryNames} from '../../lib/i18n';
 import type {Locale} from '../../lib/types';
 export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
@@ -213,28 +214,110 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     </div>
   </section>
 
-  <!-- 3. FABRIC STORY & 2 SILK CHARACTERISTICS (SUZHOU & RUBY) -->
-  <section class="fabric-story section-wrap">
-    <div class="fabric-story-art">
-      <img src={detail.imageUrl} loading="lazy" width="1000" height="1300" alt={detail.name[lang] || detail.name.en}/>
-      <span class="fabric-art-label">THE BEAUTY IS IN THE DETAIL.</span>
-    </div>
-    <div class="fabric-story-copy">
-      <span class="eyebrow">SILK & COLOR · {text(lang,'실크 & 컬러','FABRICS & COLORS')}</span>
-      <h2>
-        {text(lang,'같은 디자인도,','The same silhouette,')}<br/>
-        {text(lang,'나만의 분위기로.','a different feeling.')}
-      </h2>
-      <p>{text(lang,
-        '수저우 실크는 은은한 광택과 부드러운 감촉을, 루비 실크는 선명한 윤기와 탄탄한 실루엣을 선사합니다.\n차분한 아이보리부터 깊은 올리브, 와인까지 40여 가지 컬러북에서 나만의 조합을 찾아보세요.',
-        'Suzhou silk offers a gentle sheen and soft drape, while Ruby silk provides luminous luster and structured silhouette.\nFrom quiet ivory to deep olive, find your shade across our curated palette.'
-      )}</p>
-      <div class="editorial-swatches" aria-hidden="true">
-        {catalog.fabrics[0].colors.filter(c=>['04','14','76','103','16','61'].includes(c.id)).map(color=><span style={`--swatch:${color.hex}`}></span>)}
+  <!-- 3. SILK & COLOR CHARTS: SUZHOU & RUBY (Directly below collection) -->
+  <section class="charts-showcase-section section-wrap" id="color-charts">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">100% PURE SILK & COLOR PALETTES · {text(lang,'실크 원단 & 공식 컬러 차트','SILK PALETTES')}</span>
+        <h2>{text(lang,'수저우 실크 & 루비 실크 공식 컬러 차트','Exclusive Suzhou & Ruby Silk Color Palettes')}</h2>
       </div>
-      <a class="text-link" href={sitePath(`/${lang}/fabrics/`)}>
-        {text(lang,'실크와 컬러 만나보기','Discover the silks & colors')} ↗
-      </a>
+      <p>{text(lang,
+        '미셸의 모든 드레스는 고객님의 체형 치수에 맞춰 100% 프리미엄 실크(수저우 / 루비)와 40여 가지 컬러 중 원하는 조합으로 맞춤 제작됩니다.\n각 원단의 고유한 광택과 텍스처, 추천 실루엣을 확인해 보세요.',
+        'Every Michelle dress is made-to-measure tailored to your exact measurements in your choice of Suzhou or Ruby silk and 40+ curated color shades.\nDiscover each silk’s unique luster, hand-feel, and silhouette suitability.'
+      )}</p>
+    </div>
+
+    <!-- Dual Color Chart Cards -->
+    <div class="charts-dual-grid">
+      <!-- Suzhou Silk Card -->
+      <div class="chart-showcase-card">
+        <a class="chart-image-wrap" href={sitePath(`/${lang}/fabrics/#suzhou`)} title={text(lang, '수저우 실크 컬러차트 상세보기', 'View Suzhou Silk Palette')}>
+          <Image src={sourceImage('assets/fabrics/suzhou/chart-bilingual.jpg')} width={1200} format="webp" alt="Suzhou Silk Palette" loading="lazy" />
+          <div class="chart-zoom-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>{text(lang, '고해상도 차트 보기', 'View High-Res Chart')}</span>
+          </div>
+        </a>
+        <div class="chart-card-body">
+          <span class="chart-badge">SUZHOU SILK · 100% PURE SILK</span>
+          <h3>{text(lang, '수저우 실크 공식 컬러 차트', 'Suzhou Silk Premium Palette')}</h3>
+          <p class="chart-card-lead">{text(lang, '은은하고 자연스러운 광택과 극상의 부드러움', 'Subtle natural sheen & supreme silky softness')}</p>
+          <ul class="chart-specs-list">
+            <li>
+              <span class="spec-label">{text(lang, '원단 촉감', 'Feel & Texture')}</span>
+              <span>{text(lang, '피부에 닿았을 때 자극 없이 매우 부드럽고 가벼우며 쾌적한 통기성', 'Exceptionally gentle, featherlight, and breathable on sensitive skin')}</span>
+            </li>
+            <li>
+              <span class="spec-label">{text(lang, '드레이프', 'Drape & Fit')}</span>
+              <span>{text(lang, '몸의 곡선을 따라 자연스럽고 유려하게 흘러내리는 내추럴 실루엣', 'Soft fluid drape that contours naturally to body curves')}</span>
+            </li>
+            <li>
+              <span class="spec-label">{text(lang, '추천 드레스', 'Best For')}</span>
+              <span>{text(lang, '카울넥 슬립 드레스(ML-01), U넥 슬립 맥시(ML-06), 홀터넥 드레스(ML-02)', 'Cowl neck slip dress (ML-01), Scoop slip maxi (ML-06), Halter maxi (ML-02)')}</span>
+            </li>
+            <li>
+              <span class="spec-label">{text(lang, '컬러 구성', 'Shades')}</span>
+              <span>{text(lang, '01 펄 화이트, 04 밀크 화이트, 76 올리브 그린, 61 와인 버건디 등 24가지', '24 shades incl. 01 Pearl White, 04 Milk White, 76 Olive, 61 Wine')}</span>
+            </li>
+          </ul>
+          <div class="chart-card-footer">
+            <a class="text-link" href={sitePath(`/${lang}/fabrics/#suzhou`)}>
+              {text(lang, '수저우 실크 컬러북 전체보기', 'Explore Suzhou Silk Library')} ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ruby Silk Card -->
+      <div class="chart-showcase-card">
+        <a class="chart-image-wrap" href={sitePath(`/${lang}/fabrics/#ruby`)} title={text(lang, '루비 실크 컬러차트 상세보기', 'View Ruby Silk Palette')}>
+          <Image src={sourceImage('assets/fabrics/ruby/chart-bilingual.jpg')} width={1200} format="webp" alt="Ruby Silk Palette" loading="lazy" />
+          <div class="chart-zoom-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>{text(lang, '고해상도 차트 보기', 'View High-Res Chart')}</span>
+          </div>
+        </a>
+        <div class="chart-card-body">
+          <span class="chart-badge">RUBY SILK · 100% PURE SILK</span>
+          <h3>{text(lang, '루비 실크 공식 컬러 차트', 'Ruby Silk Premium Palette')}</h3>
+          <p class="chart-card-lead">{text(lang, '선명한 럭셔리 윤기와 탄탄한 실루엣 유지', 'Luminous luxury luster & structured shape retention')}</p>
+          <ul class="chart-specs-list">
+            <li>
+              <span class="spec-label">{text(lang, '원단 촉감', 'Feel & Texture')}</span>
+              <span>{text(lang, '도톰하고 묵직한 무게감으로 안정적인 피팅감과 구김 없는 탄력', 'Substantial luxury weight, crisp touch, and wrinkle-resistant elasticity')}</span>
+            </li>
+            <li>
+              <span class="spec-label">{text(lang, '드레이프', 'Drape & Fit')}</span>
+              <span>{text(lang, '원단의 탄탄한 힘으로 드레스 핏(form)을 정돈되고 우아하게 유지', 'Holds structural silhouette firmly with regal elegance')}</span>
+            </li>
+            <li>
+              <span class="spec-label">{text(lang, '추천 드레스', 'Best For')}</span>
+              <span>{text(lang, '백리스 파티 실크 드레스(ML-05), 롱슬리브 카울넥 드레스(ML-09), 격식 있는 파티 & 웨딩', 'Backless party gown (ML-05), Long-sleeve cowl dress (ML-09), Evening galas')}</span>
+            </li>
+            <li>
+              <span class="spec-label">{text(lang, '컬러 구성', 'Shades')}</span>
+              <span>{text(lang, '01 퓨어 화이트, 11 골드, 28 파우더 핑크, 80 와인 버건디, 16 블랙 등 24가지', '24 rich shades incl. 01 Pure White, 11 Gold, 28 Powder Pink, 80 Wine, 16 Black')}</span>
+            </li>
+          </ul>
+          <div class="chart-card-footer">
+            <a class="text-link" href={sitePath(`/${lang}/fabrics/#ruby`)}>
+              {text(lang, '루비 실크 컬러북 전체보기', 'Explore Ruby Silk Library')} ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bespoke Ordering Guidance Note -->
+    <div class="chart-order-tip">
+      <span class="chart-order-tip-icon">💡</span>
+      <div class="chart-order-tip-content">
+        <strong>{text(lang, '맞춤 제작 실크 & 컬러 선택 안내', 'How to Choose Your Silk & Color Code')}</strong>
+        <p>{text(lang,
+          '마음에 드는 드레스 디자인을 선택하신 후, 주문서(제안서) 또는 인스타그램 1:1 상담 시 원하시는 원단 종류(수저우 실크 / 루비 실크)와 컬러 번호(예: 수저우 04번 밀크 화이트 또는 루비 80번 와인 버건디)를 알려주세요. 고객님의 키, 가슴, 허리, 엉덩이 치수에 맞춰 한 분만을 위한 전담 테일러가 정성껏 수작업으로 완성해 드립니다.',
+          'Choose your favorite dress design, then specify your preferred fabric (Suzhou Silk / Ruby Silk) and color code (e.g., Suzhou No. 04 Milk White or Ruby No. 80 Wine Burgundy) in your order proposal or Instagram consultation. Our master tailors will meticulously handcraft your dress to your exact height and body measurements.'
+        )}</p>
+      </div>
     </div>
   </section>
 
