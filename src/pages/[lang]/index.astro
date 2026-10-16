@@ -286,24 +286,44 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
 
     <div class="measure-points-grid">
       <div class="measure-point-card">
-        <div class="measure-icon">01</div>
-        <h4>{text(lang, '가슴둘레 (Bust)', 'Bust Measurement')}</h4>
-        <p>{text(lang, '가슴의 가장 볼록한 부분을 줄자로 둘러 편안하게 측정합니다.', 'Measure around the fullest part of your bust comfortably.')}</p>
+        <div class="measure-card-media">
+          <img src={sitePath('/measure/bust.png')} width="800" height="500" loading="lazy" alt="Bust measurement guide" />
+          <span class="measure-badge">01</span>
+        </div>
+        <div class="measure-card-body">
+          <h4>{text(lang, '가슴둘레 (Bust)', 'Bust Measurement')}</h4>
+          <p>{text(lang, '가슴의 가장 볼록한 부분을 줄자로 둘러 편안하게 측정합니다.', 'Measure around the fullest part of your bust comfortably.')}</p>
+        </div>
       </div>
       <div class="measure-point-card">
-        <div class="measure-icon">02</div>
-        <h4>{text(lang, '허리둘레 (Waist)', 'Waist Measurement')}</h4>
-        <p>{text(lang, '배꼽 위 약 3cm, 가장 잘록한 허리 부분을 측정합니다.', 'Measure around your natural waist, roughly 3cm above the navel.')}</p>
+        <div class="measure-card-media">
+          <img src={sitePath('/measure/waist.png')} width="800" height="500" loading="lazy" alt="Waist measurement guide" />
+          <span class="measure-badge">02</span>
+        </div>
+        <div class="measure-card-body">
+          <h4>{text(lang, '허리둘레 (Waist)', 'Waist Measurement')}</h4>
+          <p>{text(lang, '배꼽 위 약 3cm, 가장 잘록한 허리 부분을 측정합니다.', 'Measure around your natural waist, roughly 3cm above the navel.')}</p>
+        </div>
       </div>
       <div class="measure-point-card">
-        <div class="measure-icon">03</div>
-        <h4>{text(lang, '엉덩이둘레 (Hips)', 'Hips Measurement')}</h4>
-        <p>{text(lang, '엉덩이의 가장 넓고 볼록한 부분을 수평으로 측정합니다.', 'Measure around the widest part of your hips and buttocks.')}</p>
+        <div class="measure-card-media">
+          <img src={sitePath('/measure/hips.png')} width="800" height="500" loading="lazy" alt="Hips measurement guide" />
+          <span class="measure-badge">03</span>
+        </div>
+        <div class="measure-card-body">
+          <h4>{text(lang, '엉덩이둘레 (Hips)', 'Hips Measurement')}</h4>
+          <p>{text(lang, '엉덩이의 가장 넓고 볼록한 부분을 수평으로 측정합니다.', 'Measure around the widest part of your hips and buttocks.')}</p>
+        </div>
       </div>
       <div class="measure-point-card">
-        <div class="measure-icon">04</div>
-        <h4>{text(lang, '키 & 몸무게 & 특이사항', 'Height, Weight & Notes')}</h4>
-        <p>{text(lang, '키와 몸무게를 함께 알려주시고, 어깨가 넓거나 팔이 긴 경우 메모를 남겨주세요.', 'Share your height & weight. Note if your shoulders or arms have special proportions.')}</p>
+        <div class="measure-card-media">
+          <img src={sitePath('/measure/height.jpg')} width="800" height="500" loading="lazy" alt="Height and proportions guide" />
+          <span class="measure-badge">04</span>
+        </div>
+        <div class="measure-card-body">
+          <h4>{text(lang, '키 & 몸무게 & 특이사항', 'Height, Weight & Notes')}</h4>
+          <p>{text(lang, '키와 몸무게를 함께 알려주시고, 어깨가 넓거나 팔이 긴 경우 메모를 남겨주세요.', 'Share your height & weight. Note if your shoulders or arms have special proportions.')}</p>
+        </div>
       </div>
     </div>
 
