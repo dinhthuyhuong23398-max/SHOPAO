@@ -3,21 +3,24 @@
   "slug": "high-waisted-tailored-pleated-trousers",
   "category": "trouser",
   "name": {
-    "ko": "하이웨이스트 플리츠 팬츠",
-    "en": "High-waisted pleated trousers",
+    "ko": "하이웨이스트 플리츠 실크 와이드 팬츠",
+    "en": "High-Waisted Tailored Pleated Silk Trousers",
     "vi": "Quần tây lụa cạp cao xếp ly"
   },
   "description": {
-    "ko": "높은 허리선과 앞면 주름의 테일러드 팬츠.",
-    "en": "Tailored trousers with a high waist and front pleats.",
-    "vi": "Cạp cao xếp ly thanh lịch tạo phom dáng chuẩn, phù hợp cả công sở lẫn dạo phố."
+    "ko": "단정하고 세련된 하이웨이스트 핀턱 주름과 와이드 핏으로 완벽한 레그 라인을 연출하는 100% 프리미엄 실크 테일러드 팬츠. 오피스룩부터 우아한 데일리룩까지 맞춤 제작됩니다.",
+    "en": "Impeccably tailored 100% premium silk wide-leg trousers featuring an elegant high waistline and front pleats. Custom made-to-measure for a flattering silhouette.",
+    "vi": "Quần tây lụa cạp cao xếp ly tinh tế phom suông rộng hack dáng, chất liệu lụa cao cấp mềm mại đứng phom, may đo riêng chuẩn xác theo chiều cao và số đo."
   },
   "image": "assets/designs/trouser/high-waisted-tailored-pleated-trousers.jpg",
+  "gallery": [
+    "assets/designs/trouser/high-waisted-tailored-pleated-trousers-detail.jpg"
+  ],
   "published": true,
-  "featured": false,
-  "order": 21,
-  "priceMin": null,
-  "priceMax": null,
+  "featured": true,
+  "order": 13,
+  "priceMin": 47000,
+  "priceMax": 47000,
   "fabrics": [
     "suzhou",
     "ruby"
