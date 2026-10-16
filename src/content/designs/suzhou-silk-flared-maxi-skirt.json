@@ -1,0 +1,29 @@
+{
+  "id": "ML-22",
+  "slug": "suzhou-silk-flared-maxi-skirt",
+  "category": "skirt",
+  "name": {
+    "ko": "쑤저우 실크 플레어 맥시 스커트",
+    "en": "Suzhou Silk Flared Maxi Skirt",
+    "vi": "Chân váy xòe lụa Tô Châu"
+  },
+  "description": {
+    "ko": "우아한 광택과 유려한 드레이프를 자랑하는 100% 쑤저우(Suzhou) 프리미엄 실크 플레어 맥시 스커트. 버터 옐로우와 더스티 로즈 등 감각적인 컬러로 고객님의 체형에 꼭 맞게 맞춤 제작됩니다.",
+    "en": "An alluring A-line flared maxi skirt handcrafted from 100% pure Suzhou luxury silk. Custom made-to-measure for a graceful silhouette in butter cream, dusty rose, or bespoke colors.",
+    "vi": "Chân váy xòe dáng dài bồng bềnh trên chất liệu lụa Tô Châu 100% thượng hạng mềm mại và rủ nhẹ. May đo riêng chuẩn xác theo chiều cao và số đo với bảng màu lụa tinh tế."
+  },
+  "image": "assets/designs/skirt/suzhou-silk-flared-maxi-skirt.jpg",
+  "gallery": [
+    "assets/designs/skirt/suzhou-silk-flared-maxi-skirt-pink.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 14,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

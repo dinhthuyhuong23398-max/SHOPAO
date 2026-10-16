@@ -10,7 +10,7 @@ const fabricId = z.enum(['suzhou', 'ruby']);
 const imagePath = z.string().regex(/^assets\/(designs|fabrics)\/[a-zA-Z0-9_\-/.]+\.(jpg|jpeg|png|webp)$/).refine(p => !p.includes('..'));
 const designSchema = z.object({
   id: z.string().regex(/^[A-Za-z0-9-]{1,100}$/), slug: z.string().regex(/^[a-z0-9-]+$/),
-  category: z.enum(['dress', 'top', 'trouser', 'sleepwear', 'loungewear']), name: localized, description: localized,
+  category: z.enum(['dress', 'top', 'trouser', 'sleepwear', 'loungewear', 'skirt']), name: localized, description: localized,
   image: imagePath, published: z.boolean(), featured: z.boolean(), order: z.number(),
   priceMin: z.number().int().positive().nullable().default(null), priceMax: z.number().int().positive().nullable().default(null),
   fabrics: z.array(fabricId).min(1),

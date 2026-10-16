@@ -4,7 +4,7 @@ export type FabricId = 'suzhou' | 'ruby';
 export interface Color { id: string; code: string; name: Localized; hex: string }
 export interface Fabric { id: FabricId; name: Localized; description: Localized; colors: Color[]; charts: string[] }
 export interface Design {
-  id: string; slug: string; category: 'dress' | 'top' | 'trouser' | 'sleepwear' | 'loungewear'; name: Localized;
+  id: string; slug: string; category: 'dress' | 'top' | 'trouser' | 'sleepwear' | 'loungewear' | 'skirt'; name: Localized;
   description: Localized; image: string; published: boolean; featured: boolean; order: number;
   priceMin: number | null; priceMax: number | null; fabrics: FabricId[];
   reviews: { label: Localized; url: string }[];
