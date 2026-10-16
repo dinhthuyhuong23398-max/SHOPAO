@@ -1,0 +1,36 @@
+{
+  "id": "ML-32",
+  "slug": "tailored-linen-two-piece-skirt-set",
+  "category": "loungewear",
+  "name": {
+    "ko": "테일러드 린넨 투피스 스커트 셋업",
+    "en": "Tailored Linen Two-Piece Skirt Set",
+    "vi": "Set linen áo cổ sen và chân váy A cao cấp"
+  },
+  "description": {
+    "ko": "우아한 피터팬 칼라와 퍼프 슬리브 블라우스, A라인 미니 스커트로 구성된 100% 프리미엄 내추럴 린넨 투피스 셋업. 스커트 안쪽에 부드러운 안감과 속바지가 내장되어 활동성이 뛰어나며, 단독 착용은 물론 셋업으로 클래식하고 세련된 여름 프렌치 룩을 완성합니다. (초콜릿 브라운 & 블랙 2컬러, 기성 사이즈 XS · S · M · L)\n\n[상의 기성 사이즈 가이드 (단위: cm)]\n• XS: 총장 52 / 가슴 84 / 허리 72 / 소매 32\n• S: 총장 52 / 가슴 88 / 허리 76 / 소매 33\n• M: 총장 52 / 가슴 92 / 허리 80 / 소매 34\n• L: 총장 52 / 가슴 96 / 허리 84 / 소매 35\n\n[스커트 기성 사이즈 가이드 (단위: cm)]\n• XS: 허리 66 / 엉덩이 90 / 총장 38\n• S: 허리 70 / 엉덩이 94 / 총장 38\n• M: 허리 74 / 엉덩이 98 / 총장 38\n• L: 허리 78 / 엉덩이 102 / 총장 38",
+    "en": "A chic Parisian-inspired two-piece set handcrafted in 100% pure premium natural linen. Includes a rounded Peter Pan collar button-down short-sleeve top with puffed shoulders and a flattering A-line mini skirt equipped with a breathable lining and built-in safety shorts. Available in Chocolate Brown and Classic Black, ready-to-wear sizes XS, S, M, L.\n\n[Top Size Guide (cm)]\n• XS: Length 52 / Bust 84 / Waist 72 / Sleeve 32\n• S: Length 52 / Bust 88 / Waist 76 / Sleeve 33\n• M: Length 52 / Bust 92 / Waist 80 / Sleeve 34\n• L: Length 52 / Bust 96 / Waist 84 / Sleeve 35\n\n[Skirt Size Guide (cm)]\n• XS: Waist 66 / Hips 90 / Length 38\n• S: Waist 70 / Hips 94 / Length 38\n• M: Waist 74 / Hips 98 / Length 38\n• L: Waist 78 / Hips 102 / Length 38",
+    "vi": "Set trang phục 2 món chất vải 100% linen tự nhiên cao cấp gồm áo sơ mi tay phồng cổ sen bo tròn điệu đà và chân váy chữ A trẻ trung. Thiết kế cạp váy may đo cao cấp có lót trong và quần bảo hộ may liền kín đáo, tiện lợi khi di chuyển. Hai gam màu sang trọng: Nâu Chocolate & Đen Classic. Bảng size chuẩn XS · S · M · L.\n\n[Bảng Size Áo (cm)]\n• XS: Dài 52 / Ngực 84 / Eo 72 / Tay dài 32\n• S: Dài 52 / Ngực 88 / Eo 76 / Tay dài 33\n• M: Dài 52 / Ngực 92 / Eo 80 / Tay dài 34\n• L: Dài 52 / Ngực 96 / Eo 84 / Tay dài 35\n\n[Bảng Size Chân Váy (cm)]\n• XS: Eo 66 / Mông 90 / Dài 38\n• S: Eo 70 / Mông 94 / Dài 38\n• M: Eo 74 / Mông 98 / Dài 38\n• L: Eo 78 / Mông 102 / Dài 38"
+  },
+  "image": "assets/designs/loungewear/tailored-linen-two-piece-skirt-set.jpg",
+  "gallery": [
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-black-flatlay.jpg",
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-brown-hanger.jpg",
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-black-hanger.jpg",
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-collar-detail.jpg",
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-hem-detail.jpg",
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-skirt-lining.jpg",
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-top-size-chart.jpg",
+    "assets/designs/loungewear/tailored-linen-two-piece-skirt-set-skirt-size-chart.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 15,
+  "priceMin": 140000,
+  "priceMax": 140000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
