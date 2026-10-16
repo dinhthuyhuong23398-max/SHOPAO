@@ -1,0 +1,32 @@
+{
+  "id": "ML-31",
+  "slug": "tailored-linen-shorts",
+  "category": "trouser",
+  "name": {
+    "ko": "테일러드 린넨 쇼츠 (숏팬츠)",
+    "en": "Tailored Premium Linen Shorts",
+    "vi": "Quần short linen cao cấp dáng ngắn"
+  },
+  "description": {
+    "ko": "자연스러운 통기성과 고급스러운 텍스처를 지닌 100% 프리미엄 내추럴 린넨 쇼츠. 허리 라인을 탄탄하게 잡아주는 테일러드 벨트루프와 프론트 지퍼·후크 클로징, 편안하면서도 세련되게 떨어지는 A라인 밑단 핏으로 여름철 클래식하면서도 스타일리시한 룩을 완성합니다.\n\n[기성 표준 사이즈 가이드 (단위: cm)]\n• XS: 허리 66 / 엉덩이 92 / 총장 29 / 밑단 너비 30\n• S: 허리 70 / 엉덩이 96 / 총장 30 / 밑단 너비 31\n• M: 허리 74 / 엉덩이 100 / 총장 31 / 밑단 너비 32\n• L: 허리 78 / 엉덩이 104 / 총장 32 / 밑단 너비 33",
+    "en": "Crafted from 100% breathable premium natural linen, these tailored shorts feature a structured high-waist waistband, clean front zip & hook closure, belt loops, and a breezy relaxed hemline. Available in ready-to-wear sizes XS, S, M, L.\n\n[Ready-to-Wear Size Guide (cm)]\n• XS: Waist 66 / Hips 92 / Length 29 / Leg Opening 30\n• S: Waist 70 / Hips 96 / Length 30 / Leg Opening 31\n• M: Waist 74 / Hips 100 / Length 31 / Leg Opening 32\n• L: Waist 78 / Hips 104 / Length 32 / Leg Opening 33",
+    "vi": "Quần short linen cao cấp dáng ngắn với chất vải linen tự nhiên dày dặn, thoáng mát, cạp quần may đo chỉn chu có đỉa thắt lưng và khóa cài tinh tế. Phom dáng trẻ trung, hack chân thon gọn dài miên man.\n\n[Bảng Size Chuẩn (cm)]\n• XS: Vòng eo 66 / Mông 92 / Chiều dài 29 / Rộng gấu 30\n• S: Vòng eo 70 / Mông 96 / Chiều dài 30 / Rộng gấu 31\n• M: Vòng eo 74 / Mông 100 / Chiều dài 31 / Rộng gấu 32\n• L: Vòng eo 78 / Mông 104 / Chiều dài 32 / Rộng gấu 33"
+  },
+  "image": "assets/designs/trouser/tailored-linen-shorts.jpg",
+  "gallery": [
+    "assets/designs/trouser/tailored-linen-shorts-white-model.jpg",
+    "assets/designs/trouser/tailored-linen-shorts-green-model.jpg",
+    "assets/designs/trouser/tailored-linen-shorts-detail.jpg",
+    "assets/designs/trouser/tailored-linen-shorts-size-chart.jpg"
+  ],
+  "published": true,
+  "featured": true,
+  "order": 16,
+  "priceMin": 75000,
+  "priceMax": 75000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
