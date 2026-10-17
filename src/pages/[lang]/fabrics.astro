@@ -34,38 +34,28 @@ const lang=Astro.params.lang as Locale;
             <p>{fDesc}</p>
           </div>
 
-          <!-- Color Swatches Grid -->
-          {fabric.colors.length > 0 && (
-            <div class="color-library">
-              {fabric.colors.map(color => {
-                const cName = color.name[lang] || color.name.en || color.name.ko;
-                return (
-                  <div class="color-tile">
-                    <span style={`background:${color.hex}`}></span>
-                    <b>{cName}</b>
-                    <small>No. {color.code}</small>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          <!-- Single Official High-Resolution Color Chart -->
+          <!-- Official Ultra High-Resolution 2048px Color Chart -->
           <div class="chart-section">
             <div class="chart-section-title">
-              <h3>{text(lang, '공식 컬러차트 (고해상도 2048px)', 'Official Color Chart (High-Res 2048px)')}</h3>
+              <h3>{text(lang, '공식 컬러차트 (초고해상도 2048px)', 'Official Color Chart (Ultra High-Res 2048px)')}</h3>
               <p class="muted">
                 {text(lang,
-                  '확대하여 원단의 미세한 광택과 톤을 확인해 보세요.',
-                  'Zoom in to inspect the fine texture and sheen.'
+                  '실제 원단 촬영본입니다. 이미지를 클릭하시면 2048px 초고화질 원본으로 확대하여 원단의 미세한 광택과 톤을 확인하실 수 있어요.',
+                  'Captured from authentic silk bolts. Click the image to view at full 2048px ultra HD to inspect the fine texture and sheen.'
                 )}
               </p>
             </div>
 
             <div class="chart-single-wrap">
               <figure class="chart-card">
-                <Image src={sourceImage(chartImg)} width={1400} format="webp" alt={`${fName} color chart`} loading="lazy"/>
-                <figcaption>{isSuzhou ? text(lang, '수저우 실크 프리미엄 컬러차트', 'Suzhou Silk Premium Color Chart') : text(lang, '루비 실크 프리미엄 컬러차트', 'Ruby Silk Premium Color Chart')}</figcaption>
+                <a href={sourceImage(chartImg).src} target="_blank" rel="noopener" class="chart-zoom-link" title={text(lang, '2048px 초고화질 원본 확대보기 (새 창)', 'View Full 2048px Ultra-HD Original (New Window)')}>
+                  <Image src={sourceImage(chartImg)} width={2048} quality={95} format="webp" alt={`${fName} color chart`} loading="lazy"/>
+                  <span class="chart-expand-hint">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    <span>{text(lang, '2048px 원본 확대보기', 'Click to zoom 2048px')}</span>
+                  </span>
+                </a>
+                <figcaption>{isSuzhou ? text(lang, '수저우 실크 프리미엄 컬러차트 (2048px)', 'Suzhou Silk Premium Color Chart (2048px)') : text(lang, '루비 실크 프리미엄 컬러차트 (2048px)', 'Ruby Silk Premium Color Chart (2048px)')}</figcaption>
               </figure>
             </div>
           </div>

@@ -824,6 +824,39 @@
   margin-top: 14px;
   font-weight: 500;
 }
+.chart-zoom-link {
+  display: block;
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.chart-zoom-link:hover img {
+  transform: scale(1.01);
+  transition: transform 0.25s ease;
+}
+.chart-expand-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(26, 26, 26, 0.78);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.chart-zoom-link:hover .chart-expand-hint {
+  opacity: 1;
+  background: rgba(26, 26, 26, 0.94);
+}
+
 
 /* Fabric Characteristics Comparison */
 .fabric-characteristics-section {
