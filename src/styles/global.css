@@ -759,6 +759,25 @@
   border: 1px dashed #b5bba9;
   font-size: 11.5px;
 }
+.care-tip-box {
+  background: #faf8f3;
+  border-color: rgba(52, 72, 53, 0.35);
+  margin-top: 8px;
+}
+.care-tip-box strong {
+  color: var(--green);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 3px;
+}
+.care-tip-box p {
+  color: #3b4234;
+  font-size: 11.8px;
+  line-height: 1.6;
+}
+
 
 /* High-Res Color Chart Single Layout */
 .chart-section {
