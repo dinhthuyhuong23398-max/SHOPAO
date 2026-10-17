@@ -172,20 +172,20 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       <div class="toolbar-right">
         <span class="collection-count"><span data-visible-count>{catalog.designs.length}</span> {text(lang,'가지 디자인','designs','mẫu thiết kế')}</span>
         <div class="view-mode-toggle" role="group" aria-label="View mode">
-          <button type="button" class="view-btn active" data-view="scroll" title={text(lang, '가로 스크롤 보기', 'Horizontal scroll view', 'Xem cuộn ngang')}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="6" height="14" rx="1"></rect><rect x="10" y="5" width="6" height="14" rx="1"></rect><rect x="18" y="5" width="6" height="14" rx="1"></rect></svg>
-            <span>{text(lang, '가로 스크롤', 'Scroll', 'Cuộn ngang')}</span>
-          </button>
-          <button type="button" class="view-btn" data-view="grid" title={text(lang, '그리드 보기', 'Grid view', 'Xem dạng lưới')}>
+          <button type="button" class="view-btn active" data-view="grid" title={text(lang, '그리드 보기', 'Grid view', 'Xem dạng lưới')}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><rect x="13" y="13" width="8" height="8" rx="1"></rect></svg>
             <span>{text(lang, '그리드', 'Grid', 'Lưới')}</span>
+          </button>
+          <button type="button" class="view-btn" data-view="scroll" title={text(lang, '가로 스크롤 보기', 'Horizontal scroll view', 'Xem cuộn ngang')}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="6" height="14" rx="1"></rect><rect x="10" y="5" width="6" height="14" rx="1"></rect><rect x="18" y="5" width="6" height="14" rx="1"></rect></svg>
+            <span>{text(lang, '가로 스크롤', 'Scroll', 'Cuộn ngang')}</span>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Horizontal Scroll Section with Chevrons -->
-    <div class="horizontal-scroll-section" id="horizontalScrollSection">
+    <!-- Collection Product Display (Grid View by Default, Scroll View Optional) -->
+    <div class="horizontal-scroll-section grid-view" id="horizontalScrollSection">
       <button type="button" class="scroll-chevron-btn prev" id="scrollPrevBtn" aria-label="Scroll left">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
@@ -199,7 +199,20 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       </button>
     </div>
 
-    <!-- Scroll Progress Indicator -->
+    <!-- Expand / Collapse All Designs Button for Grid Mode -->
+    <div class="collection-expand-wrapper" id="collectionExpandWrapper">
+      <button 
+        type="button" 
+        class="view-all-designs-btn" 
+        id="toggleAllDesignsBtn"
+        data-expand-text={text(lang, `전체 ${catalog.designs.length}개 디자인 모두 보기 ∨`, `View All ${catalog.designs.length} Designs ∨`, `Xem toàn bộ ${catalog.designs.length} mẫu thiết kế ∨`)}
+        data-collapse-text={text(lang, '간략히 보기 (처음 16개만 보기) ∧', 'Show Less (First 16 Designs) ∧', 'Thu gọn (16 mẫu đầu) ∧')}
+      >
+        <span class="btn-text" id="toggleAllDesignsText">{text(lang, `전체 ${catalog.designs.length}개 디자인 모두 보기 ∨`, `View All ${catalog.designs.length} Designs ∨`, `Xem toàn bộ ${catalog.designs.length} mẫu thiết kế ∨`)}</span>
+      </button>
+    </div>
+
+    <!-- Scroll Progress Indicator (Visible in Scroll Mode) -->
     <div class="scroll-indicator-bar" id="scrollIndicatorBar">
       <div class="scroll-indicator-thumb" id="scrollIndicatorThumb"></div>
     </div>
@@ -583,7 +596,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
 
     startHeroAutoPlay();
 
-    // 2. Collection Search, Filter & Horizontal Scrolling
+    // 2. Collection Search, Filter, Grid/Scroll View & Expand All
     const searchInput = document.getElementById('collectionSearchInput') as HTMLInputElement | null;
     const clearSearchBtn = document.getElementById('clearSearchBtn') as HTMLButtonElement | null;
     const resetSearchBtn = document.getElementById('resetSearchBtn') as HTMLButtonElement | null;
@@ -597,9 +610,16 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     const scrollNextBtn = document.getElementById('scrollNextBtn') as HTMLButtonElement | null;
     const scrollThumb = document.getElementById('scrollIndicatorThumb') as HTMLElement | null;
     const viewButtons = document.querySelectorAll<HTMLButtonElement>('[data-view]');
+    const expandWrapper = document.getElementById('collectionExpandWrapper') as HTMLElement | null;
+    const toggleDesignsBtn = document.getElementById('toggleAllDesignsBtn') as HTMLButtonElement | null;
+    const toggleDesignsText = document.getElementById('toggleAllDesignsText') as HTMLElement | null;
 
     let activeCategory = 'all';
     let searchQuery = '';
+    let currentView = 'grid'; // Grid is active by default
+    let isExpanded = false;
+    const INITIAL_VISIBLE_COUNT = 16;
+    const totalDesigns = productCards.length;
 
     // Text normalizer: removes accents/diacritics, spaces, hyphens for flexible search matching
     function normalizeKeyword(str: string): string {
@@ -623,7 +643,9 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     function applyFilterAndSearch() {
       const rawQ = searchQuery.trim().toLowerCase();
       const tokens = rawQ.split(/\s+/).filter(Boolean);
-      let visibleCount = 0;
+      const isFiltered = (activeCategory !== 'all') || (tokens.length > 0);
+      let matchedCount = 0;
+      let displayedCount = 0;
 
       productCards.forEach(card => {
         const cat = (card.dataset.category || '').toLowerCase();
@@ -656,25 +678,58 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           });
         }
 
-        const isVisible = matchesCategory && matchesQuery;
-        card.hidden = !isVisible;
-        if (isVisible) {
-          card.style.display = '';
-          visibleCount++;
+        const isMatch = matchesCategory && matchesQuery;
+        if (isMatch) {
+          matchedCount++;
+          // In Grid mode, if not expanded and no filter/search, limit to initial count (16 designs)
+          const shouldShow = (currentView === 'scroll' || isFiltered || isExpanded || matchedCount <= INITIAL_VISIBLE_COUNT);
+          if (shouldShow) {
+            card.hidden = false;
+            card.style.display = '';
+            displayedCount++;
+          } else {
+            card.hidden = true;
+            card.style.display = 'none';
+          }
         } else {
+          card.hidden = true;
           card.style.display = 'none';
         }
       });
 
-      if (countLabel) countLabel.textContent = String(visibleCount);
-      if (emptyState) emptyState.hidden = (visibleCount > 0);
+      if (countLabel) countLabel.textContent = String(matchedCount);
+      if (emptyState) emptyState.hidden = (matchedCount > 0);
       if (clearSearchBtn) clearSearchBtn.hidden = (rawQ.length === 0);
 
-      if (track) {
+      // Manage expand/collapse button visibility and text
+      if (expandWrapper && toggleDesignsText) {
+        if (currentView === 'scroll' || isFiltered || matchedCount <= INITIAL_VISIBLE_COUNT) {
+          expandWrapper.style.display = 'none';
+        } else {
+          expandWrapper.style.display = 'flex';
+          if (isExpanded) {
+            toggleDesignsText.textContent = toggleDesignsBtn?.dataset.collapseText || '간략히 보기 (처음 16개만 보기) ∧';
+          } else {
+            toggleDesignsText.textContent = toggleDesignsBtn?.dataset.expandText || `전체 ${totalDesigns}개 디자인 모두 보기 ∨`;
+          }
+        }
+      }
+
+      if (track && currentView === 'scroll') {
         track.scrollLeft = 0;
         updateScrollIndicator();
       }
     }
+
+    // Expand / Collapse all designs click handler
+    toggleDesignsBtn?.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      applyFilterAndSearch();
+      if (!isExpanded) {
+        const collElem = document.getElementById('collection');
+        collElem?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
 
     // Initialize search from URL query if present (e.g. ?q=dress#collection)
     try {
@@ -759,16 +814,19 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     // View mode toggle (Scroll vs Grid)
     viewButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const view = btn.dataset.view;
+        const view = btn.dataset.view || 'grid';
+        currentView = view;
         viewButtons.forEach(b => b.classList.toggle('active', b === btn));
         if (scrollSection) {
           scrollSection.classList.toggle('grid-view', view === 'grid');
         }
+        applyFilterAndSearch();
         updateScrollIndicator();
       });
     });
 
-    // Initial setup
+    // Initial setup (run applyFilterAndSearch to set up initial grid with 16 designs)
+    applyFilterAndSearch();
     updateScrollIndicator();
   </script>
 </Layout>

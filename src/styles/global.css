@@ -388,7 +388,7 @@
 .horizontal-scroll-section.grid-view .product-horizontal-track {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 42px 22px;
+  gap: 36px 20px;
   overflow-x: visible;
   padding: 10px 0;
 }
@@ -396,10 +396,50 @@
   flex: none;
   scroll-snap-align: none;
   padding: 0;
+  animation: fadeInDesign 0.35s ease forwards;
+}
+@keyframes fadeInDesign {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .horizontal-scroll-section.grid-view .scroll-chevron-btn,
-.horizontal-scroll-section.grid-view + .scroll-indicator-bar {
+.horizontal-scroll-section.grid-view ~ .scroll-indicator-bar {
   display: none !important;
+}
+
+/* Collection Expand/Collapse Button for Grid View */
+.collection-expand-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 38px 0 16px;
+}
+.view-all-designs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+  border-radius: 30px;
+  padding: 13px 36px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(28, 46, 34, 0.08);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.view-all-designs-btn:hover {
+  background: var(--green);
+  color: #f7f6f0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(28, 46, 34, 0.18);
+}
+.view-all-designs-btn:active {
+  transform: translateY(0);
 }
 
 /* Search Empty State */
@@ -518,54 +558,55 @@
 .steps-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 16px;
   border-top: 1px solid var(--line);
-  padding-top: 35px;
-  margin-top: 20px;
+  padding-top: 24px;
+  margin-top: 18px;
 }
 .step-card {
-  padding: 24px 20px;
-  background: rgba(255, 255, 255, 0.6);
+  padding: 18px 16px;
+  background: #ffffff;
   border: 1px solid var(--line);
-  border-radius: 4px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 6px;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .step-card:hover {
   background: #ffffff;
-  border-color: var(--green);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transform: translateY(-4px);
+  border-color: #8c7355;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  transform: translateY(-3px);
 }
 .step-card .step-num {
   font-family: var(--serif);
-  font-size: 38px;
-  font-style: italic;
-  color: #879476;
+  font-size: 26px;
+  font-weight: 600;
+  color: #a98d64;
   display: block;
   line-height: 1;
+  margin-bottom: 8px;
 }
 .step-card h3 {
-  font-size: 16px;
-  font-weight: 500;
-  margin: 16px 0 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+  margin: 0 0 6px;
   color: var(--ink);
 }
 .step-card p {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--muted);
-  line-height: 1.85;
+  line-height: 1.6;
 }
 
 /* Measurement Guide Section */
 .measurement-guide-section {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 55px;
+  padding-bottom: 50px;
 }
 .measure-points-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 35px;
+  gap: 18px;
+  margin-top: 24px;
 }
 .measure-point-card {
   padding: 0;
@@ -579,14 +620,15 @@
   flex-direction: column;
 }
 .measure-point-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: #8c7355;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
 }
 .measure-card-media {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  max-height: 160px;
   overflow: hidden;
   background: #eae8e1;
 }
@@ -598,122 +640,124 @@
   transition: transform 0.4s ease;
 }
 .measure-point-card:hover .measure-card-media img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 .measure-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 8px;
+  left: 8px;
   background: rgba(28, 46, 34, 0.88);
   backdrop-filter: blur(6px);
   color: #f6f4ee;
   font-family: var(--serif);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 20px;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
 .measure-card-body {
-  padding: 22px 20px 24px;
+  padding: 14px 16px 16px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 .measure-card-body h4 {
-  font-size: 15px;
-  margin: 0 0 10px;
+  font-size: 13.5px;
+  margin: 0 0 6px;
   font-weight: 600;
   color: var(--ink);
   letter-spacing: -0.2px;
 }
 .measure-card-body p {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.6;
   margin: 0;
 }
 .measure-tip-box {
-  margin-top: 32px;
-  padding: 18px 24px;
+  margin-top: 20px;
+  padding: 13px 18px;
   background: #f1efe6;
   border-left: 3px solid var(--green);
   border-radius: 0 4px 4px 0;
-  font-size: 12px;
-  line-height: 1.9;
+  font-size: 11.5px;
+  line-height: 1.7;
   color: var(--ink);
 }
 
 /* Fabric Care Guide Section (Silk & Linen) */
 .care-guide-section {
-  padding-top: 90px;
-  padding-bottom: 110px;
+  padding-top: 55px;
+  padding-bottom: 60px;
 }
 .care-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 35px;
-  margin-top: 35px;
+  gap: 26px;
+  margin-top: 26px;
 }
 .care-card {
   background: #ffffff;
   border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 36px 32px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
+  border-radius: 6px;
+  padding: 24px 26px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.28s ease;
 }
 .care-card:hover {
   border-color: var(--green);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 .care-card-header {
   border-bottom: 1px solid var(--line);
-  padding-bottom: 18px;
-  margin-bottom: 24px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
 }
 .care-tag {
   display: inline-block;
   font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
   font-weight: 600;
   color: var(--green);
   background: rgba(52, 72, 53, 0.1);
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .care-card-header h3 {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
-  font-weight: 400;
+  font-weight: 500;
 }
 .care-details {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 .care-item strong {
   display: block;
-  font-size: 13px;
-  color: var(--ink);
-  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 700;
+  margin-bottom: 2px;
 }
 .care-item p {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--muted);
-  line-height: 1.85;
+  line-height: 1.65;
   margin: 0;
 }
 .timeline-box {
-  margin-top: 8px;
-  padding: 14px 18px;
+  margin-top: 6px;
+  padding: 10px 14px;
   background: #f7f6f0;
   border-radius: 4px;
   border: 1px dashed #b5bba9;
+  font-size: 11.5px;
 }
 
 /* High-Res Color Chart Single Layout */
@@ -988,11 +1032,12 @@
 .floating-action-dock {
   position: fixed;
   right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 28px;
+  top: auto;
+  transform: none;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   z-index: 9999;
 }
 
@@ -1788,15 +1833,15 @@
 
 /* Color Charts Showcase Section directly below Collection */
 .charts-showcase-section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 55px;
+  padding-bottom: 55px;
   border-top: 1px solid var(--line);
 }
 .charts-dual-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 36px;
-  margin-top: 36px;
+  gap: 28px;
+  margin-top: 26px;
 }
 .chart-showcase-card {
   background: #ffffff;
@@ -1808,18 +1853,22 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .chart-showcase-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
 }
 .chart-image-wrap {
   position: relative;
   background: #fbf8f2;
   overflow: hidden;
   display: block;
+  max-height: 280px;
 }
 .chart-image-wrap img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: top center;
   display: block;
   transition: transform 0.35s ease;
 }
@@ -1828,88 +1877,89 @@
 }
 .chart-zoom-badge {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
+  bottom: 12px;
+  right: 12px;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(6px);
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   color: var(--green);
   display: flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  gap: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 .chart-card-body {
-  padding: 30px 28px 26px;
+  padding: 22px 24px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 .chart-badge {
   font-family: Arial, sans-serif;
-  font-size: 10.5px;
-  letter-spacing: 0.15em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   color: var(--green);
   font-weight: 700;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .chart-card-body h3 {
-  font-size: 23px;
-  margin: 0 0 12px;
+  font-size: 19px;
+  margin: 0 0 8px;
   line-height: 1.3;
 }
 .chart-card-lead {
-  font-size: 13.5px;
+  font-size: 12.5px;
   color: var(--green);
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .chart-specs-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 12px;
   color: var(--charcoal);
 }
 .chart-specs-list li {
   display: flex;
   align-items: baseline;
-  gap: 10px;
-  line-height: 1.6;
+  gap: 8px;
+  line-height: 1.5;
 }
 .chart-specs-list .spec-label {
   font-weight: 700;
   color: var(--green);
-  font-size: 12px;
+  font-size: 11.5px;
   flex-shrink: 0;
-  min-width: 90px;
+  min-width: 80px;
 }
 .chart-card-footer {
   margin-top: auto;
-  padding-top: 20px;
+  padding-top: 14px;
   border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 12px;
 }
 .chart-order-tip {
-  margin-top: 40px;
+  margin-top: 26px;
   background: #fbf8f0;
   border: 1px solid #e7dcce;
-  border-radius: 8px;
-  padding: 24px 28px;
+  border-radius: 6px;
+  padding: 16px 22px;
   display: flex;
   align-items: flex-start;
-  gap: 18px;
-  font-size: 13.5px;
-  line-height: 1.8;
+  gap: 14px;
+  font-size: 12px;
+  line-height: 1.7;
   color: var(--charcoal);
 }
 .chart-order-tip-icon {
