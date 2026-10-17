@@ -105,6 +105,7 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
       <a class="brand" href={sitePath(`/${lang}/`)} aria-label="Michelle Store"><img src={sitePath("/brand/michelle-logo.png")} width="834" height="390" alt="ML Michelle Store" /></a>
       <nav class="main-nav" aria-label={text(lang,'메인 메뉴','Main navigation')}>
         <a href={sitePath(`/${lang}/#collection`)}>{text(lang,'컬렉션','Collection')}</a>
+        <a href={sitePath(`/${lang}/?q=linen#collection`)} data-nav-linen>{text(lang,'린넨','Linen','Linen')}</a>
         <a href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크 & 컬러','Silk & color')}</a>
         <a href={sitePath(`/${lang}/#how-it-works`)}>{text(lang,'사이즈 맞춤 안내','Made to measure')}</a>
         <a href={sitePath(`/${lang}/#care-guide`)}>{text(lang,'관리 가이드','Care guide')}</a>

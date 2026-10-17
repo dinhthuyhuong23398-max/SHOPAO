@@ -167,6 +167,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     <div class="collection-toolbar">
       <div class="filters" role="group" aria-label={text(lang,'카테고리','Category','Phân loại')}>
         <button type="button" data-filter="all" aria-pressed="true">{text(lang,'전체','All pieces','Tất cả')}</button>
+        <button type="button" data-filter="linen" aria-pressed="false">{text(lang,'린넨','Linen','Linen')}</button>
         {Object.entries(categoryNames).map(([key,label])=><button type="button" data-filter={key} aria-pressed="false">{label[lang] || label.en}</button>)}
       </div>
       <div class="toolbar-right">
@@ -627,17 +628,18 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
+        .normalize('NFC')
         .replace(/[^a-z0-9가-힣]/g, '');
     }
 
     // Category synonyms mapping
     const categorySynonyms: Record<string, string[]> = {
       dress: ['dress', 'dresses', '드레스', '원피스', 'dam', 'váy', 'slip', 'gown', 'party', 'tiệc', 'đầm tiệc', '파티', 'halter', 'plunge', '2 day', '2 dây', 'basic', '캐미', '슬립', '베이직'],
-      top: ['top', 'tops', 'blouse', 'blouses', 'tank top', '탱크탑', '나시', '탑', '블라우스', '셔츠', 'ao', 'sơ mi', 'ba lỗ', 'áo ba lỗ', 'áo tank top', 'tay dài', 'sơ mi tay dài', '긴소매', '긴팔', 'thiết kế sẵn', 'thiet ke san', 'may sẵn', 'may san', 'sơ mi linen', 'linen shirt', '린넨 셔츠', '기성복'],
-      trouser: ['trouser', 'trousers', 'pants', '바지', '슬랙스', '팬츠', 'quan', 'shorts', 'short', 'linen', 'quần short', 'quần đùi', 'quần ngắn', 'quần linen', '쇼츠', '숏팬츠', '린넨', '린넨 쇼츠', '린넨 바지'],
+      top: ['top', 'tops', 'blouse', 'blouses', 'tank top', '탱크탑', '나시', '탑', '블라우스', '셔츠', 'ao', 'sơ mi', 'ba lỗ', 'áo ba lỗ', 'áo tank top', 'tay dài', 'sơ mi tay dài', '긴소매', '긴팔', 'thiết kế sẵn', 'thiet ke san', 'may sẵn', 'may san', '기성복'],
+      trouser: ['trouser', 'trousers', 'pants', '바지', '슬랙스', '팬츠', 'quan', 'shorts', 'short', 'quần short', 'quần đùi', 'quần ngắn', '쇼츠', '숏팬츠'],
       sleepwear: ['sleepwear', 'pajama', 'pajamas', 'nightwear', '슬립웨어', '잠옷', '파자마', 'do ngu', 'tank top', '2 day', '2 dây', 'cami', 'shorts', 'camisole'],
-      loungewear: ['loungewear', 'homewear', 'lounge', 'home', '라운지웨어', '홈웨어', '실내복', 'do mac nha', 'quần dài', 'cowl neck', 'flare', 'flared', 'set', 'ao', 'áo', 'set linen', 'linen set', 'set đồ', '투피스', '셋업', '스커트 셋업', 'set chân váy', 'set áo chân váy'],
-      skirt: ['skirt', 'skirts', '스커트', '치마', '플레어 스커트', 'A라인', '머메이드', '피쉬테일', '미니 스커트', '미니', 'chan vay', 'chân váy', 'chân váy ngắn', 'chan vay ngan', 'mini skirt', 'mini', 'váy dài', 'maxi skirt', 'flared skirt', 'a line', 'a-line', 'chu a', 'chữ a', 'duoi ca', 'đuôi cá', 'mermaid', 'fishtail', 'tô châu', 'suzhou', 'ruby', 'chữ h', 'chu h', 'h-line', 'h라인', 'h 라인', 'chân váy chữ h', 'chân váy linen', 'linen skirt', '린넨 스커트']
+      loungewear: ['loungewear', 'homewear', 'lounge', 'home', '라운지웨어', '홈웨어', '실내복', 'do mac nha', 'quần dài', 'cowl neck', 'flare', 'flared', 'set', 'ao', 'áo', 'set đồ', '투피스', '셋업', '스커트 셋업', 'set chân váy', 'set áo chân váy'],
+      skirt: ['skirt', 'skirts', '스커트', '치마', '플레어 스커트', 'A라인', '머메이드', '피쉬테일', '미니 스커트', '미니', 'chan vay', 'chân váy', 'chân váy ngắn', 'chan vay ngan', 'mini skirt', 'mini', 'váy dài', 'maxi skirt', 'flared skirt', 'a line', 'a-line', 'chu a', 'chữ a', 'duoi ca', 'đuôi cá', 'mermaid', 'fishtail', 'tô châu', 'suzhou', 'ruby', 'chữ h', 'chu h', 'h-line', 'h라인', 'h 라인']
     };
 
     function applyFilterAndSearch() {
@@ -657,7 +659,14 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
         const fabrics = (card.dataset.fabrics || '').toLowerCase();
 
         // 1. Category filter
-        const matchesCategory = (activeCategory === 'all' || cat === activeCategory);
+        let matchesCategory = false;
+        if (activeCategory === 'all') {
+          matchesCategory = true;
+        } else if (activeCategory === 'linen') {
+          matchesCategory = slug.includes('linen') || id.includes('ml-31') || id.includes('ml-32') || id.includes('ml-33') || id.includes('ml-34');
+        } else {
+          matchesCategory = (cat === activeCategory);
+        }
 
         // 2. Query search
         let matchesQuery = true;
@@ -731,13 +740,42 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       }
     });
 
-    // Initialize search from URL query if present (e.g. ?q=dress#collection)
+    // Handle Linen nav link click
+    document.querySelectorAll('[data-nav-linen]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (searchInput) {
+          e.preventDefault();
+          activeCategory = 'linen';
+          searchInput.value = '';
+          searchQuery = '';
+          filterButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.filter === 'linen')));
+          applyFilterAndSearch();
+          const coll = document.getElementById('collection');
+          if (coll) {
+            coll.scrollIntoView({ behavior: 'smooth' });
+          }
+          try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('q', 'linen');
+            url.hash = 'collection';
+            window.history.pushState({}, '', url.toString());
+          } catch {}
+        }
+      });
+    });
+
+    // Initialize search/filter from URL query if present (e.g. ?q=linen#collection)
     try {
       const urlParams = new URLSearchParams(window.location.search);
       const urlQuery = urlParams.get('q');
-      if (urlQuery && searchInput) {
-        searchInput.value = urlQuery;
-        searchQuery = urlQuery;
+      if (urlQuery) {
+        if (urlQuery.toLowerCase() === 'linen' || urlQuery === '린넨') {
+          activeCategory = 'linen';
+          filterButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.filter === 'linen')));
+        } else if (searchInput) {
+          searchInput.value = urlQuery;
+          searchQuery = urlQuery;
+        }
         applyFilterAndSearch();
       }
     } catch {}
