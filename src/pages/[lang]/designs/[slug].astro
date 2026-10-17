@@ -16,6 +16,7 @@ const related=catalog.designs.filter(d=>d.category===product.category&&d.id!==pr
 const pName = product.name[lang] || product.name.en || product.name.ko;
 const pDesc = product.description[lang] || product.description.en || product.description.ko;
 const catName = categoryNames[product.category]?.[lang] || categoryNames[product.category]?.en;
+const isLinen = product.slug.includes('linen') || ['ml-31', 'ml-32', 'ml-33', 'ml-34'].includes(product.id.toLowerCase());
 ---
 <Layout lang={lang} title={pName} description={pDesc}>
   <!-- Schema.org Product & BreadcrumbList Structured Data for Google Rich Snippets -->
@@ -31,7 +32,7 @@ const catName = categoryNames[product.category]?.[lang] || categoryNames[product
       "@type": "Brand",
       "name": "Michelle Store"
     },
-    "material": "Silk (Suzhou / Ruby)",
+    "material": isLinen ? "100% Premium Natural Linen" : "Silk (Suzhou / Ruby)",
     "offers": {
       "@type": "Offer",
       "url": new URL(Astro.url.pathname, Astro.site || 'https://michellestore.com').toString(),
@@ -108,7 +109,11 @@ const catName = categoryNames[product.category]?.[lang] || categoryNames[product
         <span>{text(lang,'디자인 참고 사진','Design reference')}</span>
       </div>
       <p class="field-hint">
-        {text(lang,
+        {isLinen ? text(lang,
+          '사진은 디자인 참고용이며 실제 제품은 100% 천연 린넨으로 제작됩니다. 코디된 다른 의류와 액세서리는 선택에 포함되지 않아요.',
+          'This photograph shows the design in 100% natural linen. Other styled garments and accessories are not included.',
+          'Hình ảnh thể hiện phom dáng thiết kế mẫu từ chất liệu 100% linen tự nhiên cao cấp.'
+        ) : text(lang,
           '사진은 디자인 참고용이며 선택하신 컬러로 자동 변경되지 않아요. 코디된 다른 의류와 액세서리는 선택에 포함되지 않아요.',
           'This photograph shows the design and does not change with your color choice. Other styled garments and accessories are not included.',
           'Hình ảnh thể hiện phom dáng thiết kế mẫu. Sản phẩm thực tế sẽ được may theo đúng chất liệu lụa, màu sắc và số đo bạn đã chọn.'
@@ -116,12 +121,16 @@ const catName = categoryNames[product.category]?.[lang] || categoryNames[product
       </p>
     </div>
     <div class="detail-content">
-      <span class="eyebrow">MADE TO MEASURE · {product.id}</span>
+      <span class="eyebrow">{isLinen ? text(lang, 'READY TO WEAR (기성복)', 'READY TO WEAR', 'HÀNG MAY SẴN') : text(lang, 'MADE TO MEASURE', 'MADE TO MEASURE', 'MAY ĐO THEO SỐ ĐO')} · {product.id}</span>
       <h1>{pName}</h1>
       <p class="detail-description">{pDesc}</p>
       <p class="detail-price">{priceLabel(product,lang)}</p>
       <p class="field-hint">
-        {text(lang,
+        {isLinen ? text(lang,
+          '100% 프리미엄 내추럴 린넨으로 제작된 기성복 컬렉션입니다. 표준 기성 사이즈(XS, S, M, L)로 제작되어 빠르게 받아보실 수 있습니다.',
+          '100% premium natural linen ready-to-wear collection. Available in standard sizes XS, S, M, L.',
+          'Sản phẩm thuộc bộ sưu tập Linen may sẵn cao cấp theo bảng size chuẩn (XS, S, M, L).'
+        ) : text(lang,
           '선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요. 최종 가격과 제작 가능 여부는 상담 시 확인해 주세요.',
           'This design is made to your measurements. Michelle will confirm final pricing and availability with you.',
           'Thiết kế này được may đo theo số đo của bạn. Thời gian may khoảng 7 ngày, vận chuyển khoảng 5–6 ngày.'
@@ -129,8 +138,12 @@ const catName = categoryNames[product.category]?.[lang] || categoryNames[product
       </p>
       <ProductCustomizer product={product} catalog={catalog} lang={lang} client:load/>
       <details class="product-details">
-        <summary>{text(lang,'사이즈 맞춤 제작 안내','Made-to-measure details')} <span>+</span></summary>
-        <p>{text(lang,
+        <summary>{isLinen ? text(lang, '린넨 기성복 사이즈 & 관리 안내', 'Ready-to-wear size & care guide', 'Hướng dẫn chọn size & bảo quản linen') : text(lang,'사이즈 맞춤 제작 안내','Made-to-measure details')} <span>+</span></summary>
+        <p>{isLinen ? text(lang,
+          '미셸의 린넨 컬렉션은 100% 천연 린넨 소재로 제작된 프리미엄 기성복입니다. 표준 기성 사이즈(XS, S, M, L) 중 선택하실 수 있으며, 세탁 시 미온수 울코스 또는 단독 손세탁을 권장합니다.',
+          'Michelle’s linen collection is crafted from 100% natural premium linen in standard ready-to-wear sizes (XS, S, M, L). Hand wash or gentle machine wash recommended.',
+          'Bộ sưu tập Linen của Michelle được may sẵn theo bảng size chuẩn từ chất liệu 100% linen tự nhiên thoáng mát, phom dáng thanh lịch. Giặt tay nhẹ nhàng hoặc giặt máy chế độ êm để giữ độ bền đẹp.'
+        ) : text(lang,
           '미셸의 컬렉션에 있는 디자인을 선택하고 실크와 컬러, 신체 치수를 담아 제안서를 만들어 주세요. 선택하신 디자인의 사이즈를 고객님의 치수에 맞춰 제작하며, 인스타그램 상담을 통해 사이즈와 최종 가격, 제작 일정을 확인해 드려요. 이곳에서 결제되거나 주문이 확정되지는 않아요.',
           'Choose an existing design from Michelle’s collection, select your silk and color, then add your measurements to the proposal. Your selected design is made to your size. Michelle will confirm sizing, final pricing and production timing on Instagram. This site does not take payment or confirm an order.'
         )}</p>

@@ -86,9 +86,11 @@ export default function FloatingWidgets({
     // Listen for custom open events from other components (like ProductCustomizer or Proposal)
     const handleOpenOrder = (e: any) => {
       const detail = e.detail || {};
+      const isLinenProd = detail.product?.slug?.includes('linen') || ['ML-31', 'ML-32', 'ML-33', 'ML-34'].includes(detail.product?.id);
       const prodName = detail.product?.name?.[lang] || detail.product?.name?.en || detail.product?.id || '';
-      const fabName = detail.fabricId === 'ruby' ? 'Lụa Ruby (Ruby Silk)' : 'Lụa Tô Châu (Suzhou Silk)';
-      const col = detail.colorId ? `No. ${detail.colorId}` : '';
+      const fabName = detail.fabricName || (isLinenProd ? '100% Premium Natural Linen' : (detail.fabricId === 'ruby' ? 'Lụa Ruby (Ruby Silk)' : 'Lụa Tô Châu (Suzhou Silk)'));
+      const col = detail.colorId || '';
+      const sizeVal = detail.size || 'M';
 
       setOrderForm(prev => ({
         ...prev,
@@ -96,6 +98,8 @@ export default function FloatingWidgets({
         fabric: fabName,
         color: col || prev.color,
         quantity: detail.quantity || 1,
+        sizeType: isLinenProd ? 'standard' : prev.sizeType,
+        standardSize: isLinenProd ? sizeVal : prev.standardSize,
         note: detail.note || prev.note
       }));
       setOrderSuccess(null);
@@ -552,12 +556,15 @@ export default function FloatingWidgets({
 
                   {/* Thông tin sản phẩm đang chọn */}
                   <div className="form-section-card">
-                    <span className="card-sub-title">01. {text(lang, '선택한 디자인 및 원단', 'Selected Garment', 'Sản phẩm & Chất liệu lụa')}</span>
+                    <span className="card-sub-title">01. {text(lang, '선택한 디자인 및 원단', 'Selected Garment', 'Thông tin sản phẩm đã chọn')}</span>
                     <div className="selected-summary-box">
-                      <p><b>{text(lang, '디자인', 'Design', 'Thiết kế')}:</b> {orderForm.productName || text(lang, '실크 맞춤 디자인', 'Bespoke Silk Design', 'Thiết kế lụa theo yêu cầu')}</p>
+                      <p><b>{text(lang, '디자인', 'Design', 'Thiết kế')}:</b> {orderForm.productName || text(lang, '선택한 디자인', 'Selected Design', 'Thiết kế theo yêu cầu')}</p>
                       <div className="flex-row">
-                        <span><b>{text(lang, '원단', 'Fabric', 'Loại vải')}:</b> {orderForm.fabric}</span>
-                        <span><b>{text(lang, '컬러', 'Color', 'Mã màu')}:</b> {orderForm.color || text(lang, '컬러차트 선택', 'Palette Selection', 'Tư vấn theo bảng màu')}</span>
+                        <span><b>{text(lang, '소재', 'Fabric', 'Chất liệu')}:</b> {orderForm.fabric}</span>
+                        {orderForm.color && <span><b>{text(lang, '컬러', 'Color', 'Màu sắc')}:</b> {orderForm.color}</span>}
+                        {orderForm.sizeType === 'standard' && (
+                          <span><b>{text(lang, '사이즈', 'Size', 'Kích cỡ')}:</b> {orderForm.standardSize}</span>
+                        )}
                       </div>
                     </div>
                   </div>

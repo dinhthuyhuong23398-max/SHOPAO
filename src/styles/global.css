@@ -1988,3 +1988,40 @@
   }
 }
 
+/* Linen Customizer Size Selector */
+.size-options-grid {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.size-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  height: 46px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+.size-option:hover {
+  border-color: var(--green);
+}
+.size-option.selected {
+  border-color: var(--green);
+  background: var(--green);
+  color: #ffffff;
+}
+.size-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
