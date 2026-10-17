@@ -55,7 +55,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
   const isLinen = product.slug.includes('linen') || ['ML-31', 'ML-32', 'ML-33', 'ML-34'].includes(product.id);
   const linenInfo = LINEN_DATA[product.id] || { sizes: ['XS', 'S', 'M', 'L'], colors: [] };
 
-  const [fabricId,setFabric]=useState<FabricId|'suzhou'>(isLinen ? 'suzhou' : '');
+  const [fabricId,setFabric]=useState<FabricId|''>(isLinen ? 'suzhou' : '');
   const [colorId,setColor]=useState('');
   const [selectedSize, setSize] = useState('S');
   const [linenColorId, setLinenColorId] = useState(linenInfo.colors[0]?.id || '');
