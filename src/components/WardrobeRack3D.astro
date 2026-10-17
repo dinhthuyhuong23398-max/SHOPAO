@@ -30,9 +30,9 @@ if (wardrobeItems.length < 8) {
 function getFabricLabel(item: Product, l: Locale): string {
   const isLinen = item.slug.includes('linen') || ['ml-31', 'ml-32', 'ml-33', 'ml-34'].includes(item.id.toLowerCase());
   if (isLinen) {
-    return text(l, '100% 천연 린넨 · 기성복 사이즈', '100% Natural Linen · Ready-to-wear Size', '100% Linen Tự Nhiên · May Theo Size');
+    return text(l, '100% 천연 린넨 · 기성복 사이즈', '100% Natural Linen · Ready-to-wear Size');
   }
-  return text(l, '100% 수저우 / 루비 실크 · 1:1 맞춤 제작', '100% Suzhou / Ruby Silk · Bespoke Tailored', '100% Lụa Tô Châu / Ruby · May Đo Riêng');
+  return text(l, '100% 수저우 / 루비 실크 · 1:1 맞춤 제작', '100% Suzhou / Ruby Silk · Bespoke Tailored');
 }
 ---
 
@@ -40,16 +40,16 @@ function getFabricLabel(item: Product, l: Locale): string {
   <!-- Compact Luxury Header -->
   <div class="wardrobe-hero-heading">
     <div class="wardrobe-badge-row">
-      <span class="eyebrow">{text(lang, 'LỤA MAY ĐO THEO YÊU CẦU · LỤA THIẾT KẾ RIÊNG', 'BESPOKE SILK & NATURAL LINEN', 'LỤA MAY ĐO THEO YÊU CẦU · LỤA THIẾT KẾ RIÊNG')}</span>
+      <span class="eyebrow">{text(lang, '사이즈 맞춤 제작 · 비스포크 실크 & 천연 린넨', 'BESPOKE SILK & NATURAL LINEN')}</span>
       <button type="button" class="wardrobe-sound-btn" id="wardrobeSoundBtn" title="Toggle slide sound" aria-label="Toggle slide sound">
         <span class="sound-icon" id="soundIcon">🔊</span>
       </button>
     </div>
     <h1 class="wardrobe-title">
-      {text(lang, '미셸의 디자인, 나에게 맞는 사이즈.', 'Michelle’s designs, made to your size.', 'Các thiết kế của Michelle, may đo theo kích cỡ của bạn.')}
+      {text(lang, '미셸의 디자인, 나에게 맞는 사이즈.', 'Michelle’s designs, made to your size.')}
     </h1>
     <p class="wardrobe-sub">
-      {text(lang, '가로로 밀어서 컬렉션을 둘러보세요 · 옷걸이를 터치하여 선택', 'Drag or swipe to browse garments on the rack · Tap to select', 'Chạm vuốt ngang hoặc kéo chuột để lướt sào đồ · Chạm để xem mẫu')}
+      {text(lang, '가로로 밀어서 컬렉션을 둘러보세요 · 옷걸이를 터치하여 선택', 'Drag or swipe to browse garments on the rack · Tap to select')}
     </p>
   </div>
 
@@ -136,10 +136,10 @@ function getFabricLabel(item: Product, l: Locale): string {
       <div class="rack-floor-shadow"></div>
 
       <!-- Arrow Nav Buttons -->
-      <button type="button" class="rack-nav-arrow prev" id="rackPrevBtn" aria-label="Món trước">
+      <button type="button" class="rack-nav-arrow prev" id="rackPrevBtn" aria-label={text(lang, '이전 디자인', 'Previous garment')}>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
-      <button type="button" class="rack-nav-arrow next" id="rackNextBtn" aria-label="Món tiếp theo">
+      <button type="button" class="rack-nav-arrow next" id="rackNextBtn" aria-label={text(lang, '다음 디자인', 'Next garment')}>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
@@ -147,7 +147,7 @@ function getFabricLabel(item: Product, l: Locale): string {
     <!-- Swipe Prompt Pill -->
     <div class="swipe-hint-pill">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M2 12h20"/></svg>
-      <span>{text(lang, '좌우로 밀거나 드래그하여 옷걸이를 넘겨보세요', 'Drag or swipe to browse garments', 'Vuốt ngang hoặc kéo chuột để lướt sào đồ')}</span>
+      <span>{text(lang, '좌우로 밀거나 드래그하여 옷걸이를 넘겨보세요', 'Drag or swipe to browse garments')}</span>
     </div>
   </div>
 
@@ -166,11 +166,11 @@ function getFabricLabel(item: Product, l: Locale): string {
 
     <div class="hud-action-row">
       <a class="hud-cta-btn" id="hudCta" href={sitePath(`/${lang}/designs/${wardrobeItems[0].slug}/`)}>
-        <span>{text(lang, '디자인 자세히 보기', 'View design details', 'Xem chi tiết thiết kế')}</span>
+        <span>{text(lang, '디자인 자세히 보기', 'View design details')}</span>
         <span class="cta-arrow">↗</span>
       </a>
       <a class="hud-sub-btn" href="#collection">
-        <span>{text(lang, '전체 컬렉션', 'All collection', 'Xem tất cả')}</span>
+        <span>{text(lang, '전체 컬렉션', 'All collection')}</span>
       </a>
     </div>
 

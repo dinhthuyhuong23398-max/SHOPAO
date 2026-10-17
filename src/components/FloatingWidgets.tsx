@@ -56,7 +56,7 @@ export default function FloatingWidgets({
     phone: '',
     address: '',
     productName: '',
-    fabric: 'Lụa Tô Châu (Suzhou Silk)',
+    fabric: lang === 'ko' ? '수저우 실크 (Suzhou Silk)' : 'Suzhou Silk',
     color: '',
     quantity: 1,
     sizeType: 'bespoke', // 'bespoke' | 'standard'
@@ -88,7 +88,7 @@ export default function FloatingWidgets({
       const detail = e.detail || {};
       const isLinenProd = detail.product?.slug?.includes('linen') || ['ML-31', 'ML-32', 'ML-33', 'ML-34'].includes(detail.product?.id);
       const prodName = detail.product?.name?.[lang] || detail.product?.name?.en || detail.product?.id || '';
-      const fabName = detail.fabricName || (isLinenProd ? '100% Premium Natural Linen' : (detail.fabricId === 'ruby' ? 'Lụa Ruby (Ruby Silk)' : 'Lụa Tô Châu (Suzhou Silk)'));
+      const fabName = detail.fabricName || (isLinenProd ? '100% Premium Natural Linen' : (detail.fabricId === 'ruby' ? (lang === 'ko' ? '루비 실크 (Ruby Silk)' : 'Ruby Silk') : (lang === 'ko' ? '수저우 실크 (Suzhou Silk)' : 'Suzhou Silk')));
       const col = detail.colorId || '';
       const sizeVal = detail.size || 'M';
 
@@ -129,7 +129,7 @@ export default function FloatingWidgets({
     setIsApiConfigOpen(false);
   };
 
-  // Tra cứu đơn hàng
+  // Order lookup
   const handleTrackOrder = async (e: React.FormEvent) => {
     e.preventDefault();
     const query = trackingQuery.trim();
@@ -143,7 +143,7 @@ export default function FloatingWidgets({
     try {
       let found: OrderItem[] = [];
 
-      // 1. Kiểm tra API Google Apps Script nếu có
+      // 1. Check Google Apps Script API
       if (activeApiUrl) {
         try {
           const res = await fetch(`${activeApiUrl}?query=${encodeURIComponent(query)}`);
@@ -156,7 +156,7 @@ export default function FloatingWidgets({
         }
       }
 
-      // 2. Nếu API chưa có hoặc không ra kết quả, tra cứu trong localStorage gần đây
+      // 2. Fallback to localStorage
       if (found.length === 0) {
         const raw = localStorage.getItem(STORAGE_ORDERS_KEY);
         if (raw) {
@@ -183,13 +183,13 @@ export default function FloatingWidgets({
         );
       }
     } catch (err: any) {
-      setTrackingError(err?.message || 'Lỗi khi tra cứu');
+      setTrackingError(err?.message || (lang === 'ko' ? '조회 중 오류가 발생했습니다.' : 'Error during lookup.'));
     } finally {
       setTrackingLoading(false);
     }
   };
 
-  // Đặt hàng
+  // Place order
   const handleOrderSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!orderForm.customerName.trim() || !orderForm.phone.trim() || !orderForm.address.trim()) {
@@ -208,34 +208,34 @@ export default function FloatingWidgets({
     let sizeInfo = '';
     if (orderForm.sizeType === 'bespoke') {
       const parts = [];
-      if (orderForm.bust) parts.push(`Ngực: ${orderForm.bust}cm`);
-      if (orderForm.waist) parts.push(`Eo: ${orderForm.waist}cm`);
-      if (orderForm.hips) parts.push(`Mông: ${orderForm.hips}cm`);
-      if (orderForm.height) parts.push(`Cao: ${orderForm.height}cm`);
-      if (orderForm.weight) parts.push(`Nặng: ${orderForm.weight}kg`);
-      sizeInfo = parts.length ? `[May đo] ${parts.join(' | ')}` : '[May đo theo số đo tư vấn]';
+      if (orderForm.bust) parts.push(lang === 'ko' ? `가슴: ${orderForm.bust}cm` : `Bust: ${orderForm.bust}cm`);
+      if (orderForm.waist) parts.push(lang === 'ko' ? `허리: ${orderForm.waist}cm` : `Waist: ${orderForm.waist}cm`);
+      if (orderForm.hips) parts.push(lang === 'ko' ? `힙: ${orderForm.hips}cm` : `Hips: ${orderForm.hips}cm`);
+      if (orderForm.height) parts.push(lang === 'ko' ? `키: ${orderForm.height}cm` : `Height: ${orderForm.height}cm`);
+      if (orderForm.weight) parts.push(lang === 'ko' ? `몸무게: ${orderForm.weight}kg` : `Weight: ${orderForm.weight}kg`);
+      sizeInfo = parts.length ? `[${lang === 'ko' ? '맞춤제작' : 'Bespoke'}] ${parts.join(' | ')}` : `[${lang === 'ko' ? '상담 후 맞춤' : 'Bespoke via consultation'}]`;
     } else {
-      sizeInfo = `[Size chuẩn] ${orderForm.standardSize}`;
+      sizeInfo = `[${lang === 'ko' ? '기성사이즈' : 'Standard'}] ${orderForm.standardSize}`;
     }
 
     const payload: OrderItem = {
       orderId,
-      createdAt: now.toLocaleString('vi-VN'),
+      createdAt: now.toLocaleString(lang === 'ko' ? 'ko-KR' : 'en-US'),
       customerName: orderForm.customerName.trim(),
       phone: orderForm.phone.trim(),
       address: orderForm.address.trim(),
-      productName: orderForm.productName.trim() || 'Thiết kế lụa may đo Michelle',
+      productName: orderForm.productName.trim() || (lang === 'ko' ? '미셸 맞춤 실크 디자인' : 'Michelle Bespoke Design'),
       fabric: orderForm.fabric,
-      color: orderForm.color || 'Tư vấn mã màu qua Instagram',
+      color: orderForm.color || (lang === 'ko' ? '인스타그램 색상 상담' : 'Color consultation via Instagram'),
       quantity: orderForm.quantity,
       sizeOrMeasurements: sizeInfo,
       customDesign: orderForm.customDesign.trim(),
       note: orderForm.note.trim(),
-      status: 'Chờ xác nhận'
+      status: lang === 'ko' ? '접수 대기' : 'Pending Confirmation'
     };
 
     try {
-      // 1. Lưu vào localStorage của khách để tra cứu ngay lập tức
+      // 1. Save to local storage
       try {
         const raw = localStorage.getItem(STORAGE_ORDERS_KEY);
         const list: OrderItem[] = raw ? JSON.parse(raw) : [];
@@ -243,12 +243,12 @@ export default function FloatingWidgets({
         localStorage.setItem(STORAGE_ORDERS_KEY, JSON.stringify(list.slice(0, 20)));
       } catch {}
 
-      // 2. Gửi về Google Sheet qua Apps Script API nếu có URL
+      // 2. Send to Google Sheet
       if (activeApiUrl) {
         try {
           await fetch(activeApiUrl, {
             method: 'POST',
-            mode: 'no-cors', // Tránh CORS block từ browser khi post tới Google Script
+            mode: 'no-cors', // Avoid CORS block
             headers: {
               'Content-Type': 'application/json'
             },
@@ -261,7 +261,7 @@ export default function FloatingWidgets({
 
       setOrderSuccess({ orderId, phone: orderForm.phone.trim() });
     } catch (err: any) {
-      setOrderError(err?.message || 'Có lỗi khi đặt hàng. Vui lòng thử lại.');
+      setOrderError(err?.message || (lang === 'ko' ? '주문 처리 중 오류가 발생했습니다. 다시 시도해 주세요.' : 'An error occurred while placing order. Please try again.'));
     } finally {
       setOrderSubmitting(false);
     }
@@ -283,9 +283,9 @@ export default function FloatingWidgets({
 
   return (
     <>
-      {/* 1. HAI NÚT NỔI BÊN PHẢI MÀN HÌNH (FLOATING DOCK) */}
+      {/* 1. FLOATING DOCK */}
       <aside className="floating-action-dock" aria-label="Quick Actions">
-        {/* Nút 1: Instagram Logo Button */}
+        {/* Button 1: Instagram */}
         <a
           href={`https://www.instagram.com/${instagram}/`}
           target="_blank"
@@ -301,7 +301,7 @@ export default function FloatingWidgets({
           </svg>
         </a>
 
-        {/* Nút 2: Tra Cứu Trạng Thái Đơn Hàng (Order Tracking Button) */}
+        {/* Button 2: Order Tracking */}
         <button
           type="button"
           onClick={() => {
@@ -325,7 +325,7 @@ export default function FloatingWidgets({
         </button>
       </aside>
 
-      {/* 2. MODAL TRA CỨU ĐƠN HÀNG (ORDER TRACKING MODAL) */}
+      {/* 2. ORDER TRACKING MODAL */}
       {isTrackingOpen && (
         <div className="modal-backdrop" onClick={() => setIsTrackingOpen(false)}>
           <div className="modal-dialog tracking-modal" onClick={e => e.stopPropagation()}>
@@ -491,13 +491,13 @@ export default function FloatingWidgets({
         </div>
       )}
 
-      {/* 3. MODAL ĐẶT HÀNG TRỰC TIẾP (DIRECT ORDER MODAL) */}
+      {/* 3. DIRECT ORDER MODAL */}
       {isOrderOpen && (
         <div className="modal-backdrop" onClick={() => setIsOrderOpen(false)}>
           <div className="modal-dialog order-modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
               <div className="modal-title-group">
-                <span className="eyebrow">MICHELLE STORE · ĐẶT HÀNG</span>
+                <span className="eyebrow">{text(lang, 'MICHELLE STORE · 주문 신청', 'MICHELLE STORE · ORDER REQUEST')}</span>
                 <h3>{text(lang, '온라인 주문 신청서', 'Place Your Order', 'Phiếu Đặt Hàng Trực Tuyến')}</h3>
               </div>
               <button
@@ -554,7 +554,7 @@ export default function FloatingWidgets({
                 <form onSubmit={handleOrderSubmit} className="order-form">
                   {orderError && <p className="notice warning">{orderError}</p>}
 
-                  {/* Thông tin sản phẩm đang chọn */}
+                  {/* Selected Garment Details */}
                   <div className="form-section-card">
                     <span className="card-sub-title">01. {text(lang, '선택한 디자인 및 원단', 'Selected Garment', 'Thông tin sản phẩm đã chọn')}</span>
                     <div className="selected-summary-box">
@@ -569,7 +569,7 @@ export default function FloatingWidgets({
                     </div>
                   </div>
 
-                  {/* Thông tin khách hàng */}
+                  {/* Customer Shipping Details */}
                   <div className="form-section-card">
                     <span className="card-sub-title">02. {text(lang, '고객 배송 정보', 'Shipping Details', 'Thông tin nhận hàng')}</span>
                     <div className="form-grid-2">
@@ -610,7 +610,7 @@ export default function FloatingWidgets({
                     </div>
                   </div>
 
-                  {/* Size và yêu cầu may đo */}
+                  {/* Sizing & Custom Options */}
                   <div className="form-section-card">
                     <div className="card-header-flex">
                       <span className="card-sub-title">03. {text(lang, '사이즈 & 맞춤 제작 옵션', 'Sizing & Custom Tailoring', 'Size / Số đo & Yêu cầu riêng')}</span>
@@ -620,14 +620,14 @@ export default function FloatingWidgets({
                           className={orderForm.sizeType === 'bespoke' ? 'active' : ''}
                           onClick={() => setOrderForm({ ...orderForm, sizeType: 'bespoke' })}
                         >
-                          {text(lang, '치수 맞춤 (May đo)', 'Bespoke', 'May đo theo số đo')}
+                          {text(lang, '치수 맞춤 제작', 'Bespoke Tailored')}
                         </button>
                         <button
                           type="button"
                           className={orderForm.sizeType === 'standard' ? 'active' : ''}
                           onClick={() => setOrderForm({ ...orderForm, sizeType: 'standard' })}
                         >
-                          {text(lang, '기성 사이즈 (S/M/L)', 'Standard Size', 'Size chuẩn (S/M/L)')}
+                          {text(lang, '기성 사이즈 (XS~L)', 'Standard Size (XS-L)')}
                         </button>
                       </div>
                     </div>
@@ -719,7 +719,7 @@ export default function FloatingWidgets({
                     )}
 
                     <div className="form-field mt-3">
-                      <label htmlFor="customDesign">{text(lang, '디자인 맞춤 수정 요청', 'Custom Design Requests', 'Yêu cầu thiết kế riêng')} (Tùy chọn)</label>
+                      <label htmlFor="customDesign">{text(lang, '디자인 맞춤 수정 요청', 'Custom Design Requests')} ({text(lang, '선택사항', 'Optional')})</label>
                       <input
                         id="customDesign"
                         type="text"
@@ -730,7 +730,7 @@ export default function FloatingWidgets({
                     </div>
 
                     <div className="form-field mt-2">
-                      <label htmlFor="orderNote">{text(lang, '기타 메모 / 배송 요청사항', 'Notes', 'Ghi chú thêm')} (Tùy chọn)</label>
+                      <label htmlFor="orderNote">{text(lang, '기타 메모 / 배송 요청사항', 'Notes & Delivery Requests')} ({text(lang, '선택사항', 'Optional')})</label>
                       <textarea
                         id="orderNote"
                         rows={2}
@@ -743,7 +743,7 @@ export default function FloatingWidgets({
 
                   <div className="order-actions">
                     <button type="submit" className="button primary full-width" disabled={orderSubmitting}>
-                      {orderSubmitting ? 'Đang gửi đơn hàng...' : '✓ ' + text(lang, '주문서 제출하기', 'Submit Order', 'Xác Nhận Đặt Hàng & Lưu Vào Hệ Thống')}
+                      {orderSubmitting ? text(lang, '주문 전송 중...', 'Submitting order...') : '✓ ' + text(lang, '주문서 제출하기', 'Submit Order')}
                     </button>
                     <p className="privacy-note text-center">
                       🔒 {text(
