@@ -11,8 +11,8 @@ interface Props {
 
 const { catalog, lang } = Astro.props;
 
-// 8 featured diverse designs representing both Bespoke Silk and Natural Linen
-const featuredIds = ['ML-01', 'ML-34', 'ML-02', 'ML-31', 'ML-05', 'ML-33', 'ML-06', 'ML-32'];
+// Featured designs on the rack (Updated per user request: removed ML-34, ML-02, ML-31; added ML-20, ML-19, ML-32, ML-04, ML-13)
+const featuredIds = ['ML-01', 'ML-20', 'ML-19', 'ML-32', 'ML-04', 'ML-13', 'ML-05', 'ML-06'];
 const wardrobeItems: Product[] = featuredIds
   .map(id => catalog.designs.find(d => d.id === id))
   .filter((d): d is Product => Boolean(d));
