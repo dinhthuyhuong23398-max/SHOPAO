@@ -2801,3 +2801,14 @@
   .rack-nav-arrow.prev { left: 8px; }
   .rack-nav-arrow.next { right: 8px; }
 }
+
+
+/* Compact Collection Section Top Spacing */
+.collection-section {
+  padding-top: 32px !important;
+}
+@media (max-width: 760px) {
+  .collection-section {
+    padding-top: 20px !important;
+  }
+}
