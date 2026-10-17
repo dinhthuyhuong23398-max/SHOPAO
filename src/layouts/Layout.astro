@@ -110,23 +110,28 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
         <a href={sitePath(`/${lang}/#how-it-works`)}>{text(lang,'사이즈 맞춤 안내','Made to measure')}</a>
         <a href={sitePath(`/${lang}/#care-guide`)}>{text(lang,'관리 가이드','Care guide')}</a>
       </nav>
+      <div class="header-search-bar" id="headerSearchBar">
+        <div class="header-search-form" id="headerSearchForm" role="search">
+          <svg class="header-search-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="search" 
+            id="headerSearchInput" 
+            class="header-search-input" 
+            placeholder={text(lang, '디자인 이름, 번호(ML-01), 실크 검색...', 'Search designs, code (ML-01), silk...', 'Tìm kiếm thiết kế, mã số (ML-01), loại vải...')} 
+            autocomplete="off" 
+          />
+          <button type="button" id="headerClearBtn" class="header-clear-btn" aria-label="Clear search" hidden>✕</button>
+        </div>
+      </div>
       <div class="header-tools">
         <div class="language-switch" aria-label="Language">
           <a data-language href={sitePath(`/ko${path}`)} lang="ko" aria-current={lang==='ko'?'page':undefined}>KR</a>
           <span>/</span>
           <a data-language href={sitePath(`/en${path}`)} lang="en" aria-current={lang==='en'?'page':undefined}>EN</a>
         </div>
-        <a 
-          class="header-search-link" 
-          href={sitePath(`/${lang}/#collection`)} 
-          id="headerSearchBtn"
-          aria-label={text(lang, '디자인 검색', 'Search designs')}
-        >
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </a>
         <a class="bag-link" href={sitePath(`/${lang}/selections/`)} aria-label={text(lang,'나의 선택','My selections')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg><span class="bag-count" data-bag-count>0</span>
         </a>
@@ -147,23 +152,44 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
       window.addEventListener('storage',updateCount);
       window.addEventListener('michelle:cart-updated',updateCount);
 
-      // Header Search Button quick navigation and focus
-      const headerSearchBtn = document.getElementById('headerSearchBtn');
-      headerSearchBtn?.addEventListener('click', (e) => {
-        const searchInput = document.getElementById('collectionSearchInput') as HTMLInputElement | null;
-        if (searchInput) {
-          e.preventDefault();
-          const target = document.getElementById('collection');
-          target?.scrollIntoView({ behavior: 'smooth' });
-          setTimeout(() => {
-            searchInput.focus();
-            searchInput.parentElement?.classList.add('search-highlight-ring');
-            setTimeout(() => {
-              searchInput.parentElement?.classList.remove('search-highlight-ring');
-            }, 1200);
-          }, 400);
-        }
-      });
+      // Header Search Bar navigation and instant sync
+      const headerSearchInput = document.getElementById('headerSearchInput') as HTMLInputElement | null;
+      const headerClearBtn = document.getElementById('headerClearBtn');
+
+      if (headerSearchInput) {
+        headerSearchInput.addEventListener('input', () => {
+          const val = headerSearchInput.value;
+          if (headerClearBtn) headerClearBtn.hidden = !val;
+          window.dispatchEvent(new CustomEvent('michelle:search-input', { detail: { query: val } }));
+        });
+
+        const performSearchSubmit = () => {
+          const val = headerSearchInput.value.trim();
+          const currentPath = window.location.pathname;
+          const isHome = currentPath.endsWith('/ko/') || currentPath.endsWith('/en/') || currentPath.endsWith('/ko') || currentPath.endsWith('/en') || currentPath === '/';
+          if (isHome) {
+            const coll = document.getElementById('collection');
+            coll?.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            const lang = document.documentElement.lang || 'ko';
+            window.location.href = `/${lang}/?q=${encodeURIComponent(val)}#collection`;
+          }
+        };
+
+        headerSearchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            performSearchSubmit();
+          }
+        });
+
+        headerClearBtn?.addEventListener('click', () => {
+          headerSearchInput.value = '';
+          headerClearBtn.hidden = true;
+          window.dispatchEvent(new CustomEvent('michelle:search-input', { detail: { query: '' } }));
+          headerSearchInput.focus();
+        });
+      }
     </script>
   </body>
 </html>

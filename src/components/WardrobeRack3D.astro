@@ -1,0 +1,507 @@
+---
+import { sitePath } from '../lib/paths';
+import { text } from '../lib/i18n';
+import type { Catalog, Locale, Product } from '../lib/types';
+import { priceLabel } from '../lib/shop';
+
+interface Props {
+  catalog: Catalog;
+  lang: Locale;
+}
+
+const { catalog, lang } = Astro.props;
+
+// 8 featured diverse designs representing both Bespoke Silk and Natural Linen
+const featuredIds = ['ML-01', 'ML-34', 'ML-02', 'ML-31', 'ML-05', 'ML-33', 'ML-06', 'ML-32'];
+const wardrobeItems: Product[] = featuredIds
+  .map(id => catalog.designs.find(d => d.id === id))
+  .filter((d): d is Product => Boolean(d));
+
+if (wardrobeItems.length < 8) {
+  for (const d of catalog.designs) {
+    if (!wardrobeItems.some(item => item.id === d.id)) {
+      wardrobeItems.push(d);
+      if (wardrobeItems.length >= 8) break;
+    }
+  }
+}
+
+// Fabric badge helper
+function getFabricLabel(item: Product, l: Locale): string {
+  const isLinen = item.slug.includes('linen') || ['ml-31', 'ml-32', 'ml-33', 'ml-34'].includes(item.id.toLowerCase());
+  if (isLinen) {
+    return text(l, '100% 천연 린넨 · 기성복 사이즈', '100% Natural Linen · Ready-to-wear Size', '100% Linen Tự Nhiên · May Theo Size');
+  }
+  return text(l, '100% 수저우 / 루비 실크 · 1:1 맞춤 제작', '100% Suzhou / Ruby Silk · Bespoke Tailored', '100% Lụa Tô Châu / Ruby · May Đo Riêng');
+}
+---
+
+<section class="wardrobe-hero" id="wardrobe-hero">
+  <!-- Compact Luxury Header -->
+  <div class="wardrobe-hero-heading">
+    <div class="wardrobe-badge-row">
+      <span class="eyebrow">{text(lang, 'LỤA MAY ĐO THEO YÊU CẦU · LỤA THIẾT KẾ RIÊNG', 'BESPOKE SILK & NATURAL LINEN', 'LỤA MAY ĐO THEO YÊU CẦU · LỤA THIẾT KẾ RIÊNG')}</span>
+      <button type="button" class="wardrobe-sound-btn" id="wardrobeSoundBtn" title="Toggle slide sound" aria-label="Toggle slide sound">
+        <span class="sound-icon" id="soundIcon">🔊</span>
+      </button>
+    </div>
+    <h1 class="wardrobe-title">
+      {text(lang, '미셸의 디자인, 나에게 맞는 사이즈.', 'Michelle’s designs, made to your size.', 'Các thiết kế của Michelle, may đo theo kích cỡ của bạn.')}
+    </h1>
+    <p class="wardrobe-sub">
+      {text(lang, '가로로 밀어서 컬렉션을 둘러보세요 · 옷걸이를 터치하여 선택', 'Drag or swipe to browse garments on the rack · Tap to select', 'Chạm vuốt ngang hoặc kéo chuột để lướt sào đồ · Chạm để xem mẫu')}
+    </p>
+  </div>
+
+  <!-- 3D Rack Stage -->
+  <div class="wardrobe-rack-container" id="wardrobeContainer">
+    <!-- Ceiling Mounts & Brackets -->
+    <div class="ceiling-brackets">
+      <div class="bracket-bar left"></div>
+      <div class="bracket-bar right"></div>
+    </div>
+
+    <!-- Solid Polished Metal Rail -->
+    <div class="horizontal-metal-rail"></div>
+
+    <!-- 3D Perspective Stage -->
+    <div class="wardrobe-3d-stage" id="wardrobe3dStage" tabindex="0" role="region" aria-label="Interactive 3D Clothes Rack">
+      <div class="wardrobe-track" id="wardrobeTrack">
+        {wardrobeItems.map((item, idx) => {
+          const isLinen = item.slug.includes('linen') || ['ml-31', 'ml-32', 'ml-33', 'ml-34'].includes(item.id.toLowerCase());
+          const fabricBadge = isLinen ? 'LINEN' : 'SILK BESPOKE';
+          const nameStr = item.name[lang] || item.name.en;
+          const priceStr = priceLabel(item, lang);
+          const detailUrl = sitePath(`/${lang}/designs/${item.slug}/`);
+          const fabricDesc = getFabricLabel(item, lang);
+
+          return (
+            <div 
+              class="rack-garment-item" 
+              data-index={idx}
+              data-id={item.id}
+              data-name={nameStr}
+              data-price={priceStr}
+              data-fabric={fabricDesc}
+              data-url={detailUrl}
+            >
+              <!-- Wooden Hanger with Brass Hook -->
+              <div class="hanger-assembly">
+                <svg class="hanger-svg" viewBox="0 0 200 95" fill="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id={`brassHook-${idx}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fdf3d7"/>
+                      <stop offset="35%" stop-color="#d4af37"/>
+                      <stop offset="70%" stop-color="#997a15"/>
+                      <stop offset="100%" stop-color="#4e3d06"/>
+                    </linearGradient>
+                    <linearGradient id={`woodShoulder-${idx}`} x1="0%" y1="0%" x2="100%" y2="50%">
+                      <stop offset="0%" stop-color="#a47247"/>
+                      <stop offset="25%" stop-color="#7a4e28"/>
+                      <stop offset="50%" stop-color="#915e34"/>
+                      <stop offset="80%" stop-color="#643b18"/>
+                      <stop offset="100%" stop-color="#3d220b"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Metal Hook Hooking Over Rail -->
+                  <path d="M 100 52 C 100 28, 116 16, 116 8 C 116 3, 111 0, 100 0 C 89 0, 85 8, 86 16" stroke={`url(#brassHook-${idx})`} stroke-width="4.5" stroke-linecap="round" fill="none"/>
+                  <circle cx="100" cy="52" r="4.5" fill={`url(#brassHook-${idx})`}/>
+                  <!-- Ergonomic Wooden Shoulder -->
+                  <path d="M 100 52 L 15 82 C 10 84, 8 88, 12 90 C 22 90, 85 65, 100 65 C 115 65, 178 90, 188 90 C 192 88, 190 84, 185 82 Z" fill={`url(#woodShoulder-${idx})`}/>
+                  <rect x="92" y="56" width="16" height="5.5" rx="1.5" fill={`url(#brassHook-${idx})`}/>
+                </svg>
+                <span class={`hanger-tag-pill ${isLinen ? 'linen' : ''}`}>{fabricBadge}</span>
+              </div>
+
+              <!-- Garment Card -->
+              <a class="garment-card-box" href={detailUrl} draggable="false" aria-label={nameStr}>
+                <span class="garment-code-badge">{item.id}</span>
+                <img 
+                  src={item.imageUrl} 
+                  alt={nameStr} 
+                  draggable="false" 
+                  loading={idx < 3 ? 'eager' : 'lazy'} 
+                  fetchpriority={idx === 0 ? 'high' : 'auto'}
+                  width="480"
+                  height="640"
+                />
+                <div class="garment-card-lighting"></div>
+              </a>
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- Floor Reflection Shadow -->
+      <div class="rack-floor-shadow"></div>
+
+      <!-- Arrow Nav Buttons -->
+      <button type="button" class="rack-nav-arrow prev" id="rackPrevBtn" aria-label="Món trước">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button type="button" class="rack-nav-arrow next" id="rackNextBtn" aria-label="Món tiếp theo">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Swipe Prompt Pill -->
+    <div class="swipe-hint-pill">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M2 12h20"/></svg>
+      <span>{text(lang, '좌우로 밀거나 드래그하여 옷걸이를 넘겨보세요', 'Drag or swipe to browse garments', 'Vuốt ngang hoặc kéo chuột để lướt sào đồ')}</span>
+    </div>
+  </div>
+
+  <!-- Compact Dynamic Product Information HUD -->
+  <div class="wardrobe-hud" id="wardrobeHud">
+    <div class="hud-main-info">
+      <div class="hud-top-meta">
+        <span class="hud-index-badge" id="hudIndex">01 / {String(wardrobeItems.length).padStart(2, '0')}</span>
+        <span class="hud-fabric-text" id="hudFabric">{getFabricLabel(wardrobeItems[0], lang)}</span>
+      </div>
+      <div class="hud-title-price-row">
+        <h2 class="hud-garment-title" id="hudTitle">{wardrobeItems[0].name[lang] || wardrobeItems[0].name.en}</h2>
+        <span class="hud-garment-price" id="hudPrice">{priceLabel(wardrobeItems[0], lang)}</span>
+      </div>
+    </div>
+
+    <div class="hud-action-row">
+      <a class="hud-cta-btn" id="hudCta" href={sitePath(`/${lang}/designs/${wardrobeItems[0].slug}/`)}>
+        <span>{text(lang, '디자인 자세히 보기', 'View design details', 'Xem chi tiết thiết kế')}</span>
+        <span class="cta-arrow">↗</span>
+      </a>
+      <a class="hud-sub-btn" href="#collection">
+        <span>{text(lang, '전체 컬렉션', 'All collection', 'Xem tất cả')}</span>
+      </a>
+    </div>
+
+    <!-- Dots Container -->
+    <div class="rack-dots" id="rackDots">
+      {wardrobeItems.map((_, idx) => (
+        <button type="button" class={`rack-dot ${idx === 0 ? 'active' : ''}`} data-index={idx} aria-label={`Garment ${idx + 1}`}></button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Web Audio API synthesized metallic slide sound
+  let audioCtx: AudioContext | null = null;
+  let soundEnabled = false; // default off for quiet browsing, toggleable
+
+  function playSlideSound() {
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(320 + Math.random() * 60, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.07);
+
+      gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.07);
+    } catch (_) {}
+  }
+
+  const soundBtn = document.getElementById('wardrobeSoundBtn');
+  const soundIcon = document.getElementById('soundIcon');
+  soundBtn?.addEventListener('click', () => {
+    soundEnabled = !soundEnabled;
+    soundBtn.classList.toggle('active', soundEnabled);
+    if (soundIcon) soundIcon.textContent = soundEnabled ? '🔊' : '🔇';
+  });
+
+  // 3D CLOTHES RACK PHYSICS & INTERACTION ENGINE
+  const stage = document.getElementById('wardrobe3dStage');
+  const prevBtn = document.getElementById('rackPrevBtn');
+  const nextBtn = document.getElementById('rackNextBtn');
+  const dots = document.querySelectorAll('.rack-dot');
+
+  // HUD Elements
+  const hudIndex = document.getElementById('hudIndex');
+  const hudFabric = document.getElementById('hudFabric');
+  const hudTitle = document.getElementById('hudTitle');
+  const hudPrice = document.getElementById('hudPrice');
+  const hudCta = document.getElementById('hudCta') as HTMLAnchorElement | null;
+
+  const items = Array.from(document.querySelectorAll('.rack-garment-item')) as HTMLElement[];
+  const totalItems = items.length;
+
+  function calculateSpacing(): number {
+    return window.innerWidth <= 640 ? 115 : 155;
+  }
+
+  let itemSpacing = calculateSpacing();
+  window.addEventListener('resize', () => {
+    itemSpacing = calculateSpacing();
+    render();
+  });
+
+  let currentPos = 0;
+  let targetPos = 0;
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let startPos = 0;
+  let lastX = 0;
+  let velocity = 0;
+  let lastTime = 0;
+  let animFrameId: number | null = null;
+  let swayAngle = 0;
+  let lastSnappedIdx = 0;
+  let isHorizontalGesture: boolean | null = null;
+
+  function clampIndex(idx: number): number {
+    return Math.max(0, Math.min(totalItems - 1, idx));
+  }
+
+  function updateHud(index: number) {
+    const activeItem = items[index];
+    if (!activeItem) return;
+
+    const name = activeItem.dataset.name || '';
+    const price = activeItem.dataset.price || '';
+    const fabric = activeItem.dataset.fabric || '';
+    const url = activeItem.dataset.url || '#';
+
+    if (hudIndex) hudIndex.textContent = `${String(index + 1).padStart(2, '0')} / ${String(totalItems).padStart(2, '0')}`;
+    if (hudFabric) hudFabric.textContent = fabric;
+    if (hudTitle) hudTitle.textContent = name;
+    if (hudPrice) hudPrice.textContent = price;
+    if (hudCta) hudCta.href = url;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function render() {
+    const delta = targetPos - currentPos;
+    currentPos += delta * 0.14;
+
+    // Inertial sway
+    const speed = delta * 8;
+    swayAngle += (speed - swayAngle) * 0.16;
+
+    const activeIdx = Math.round(currentPos);
+    if (activeIdx !== lastSnappedIdx && activeIdx >= 0 && activeIdx < totalItems) {
+      lastSnappedIdx = activeIdx;
+      updateHud(activeIdx);
+      playSlideSound();
+    }
+
+    items.forEach((item, i) => {
+      const diff = i - currentPos;
+      const absDiff = Math.abs(diff);
+
+      let x = 0;
+      let rotY = 0;
+      let z = 0;
+      let scale = 1;
+      let opacity = 1;
+
+      if (absDiff < 0.05) {
+        x = diff * itemSpacing;
+        rotY = diff * 18;
+        z = 35;
+        scale = 1.04;
+        opacity = 1;
+      } else if (diff > 0) {
+        x = diff * itemSpacing + Math.min(diff, 1) * 26;
+        rotY = -Math.min(56, 30 + diff * 12);
+        z = -Math.min(150, diff * 40);
+        scale = Math.max(0.80, 1 - diff * 0.065);
+        opacity = Math.max(0.35, 1 - diff * 0.20);
+      } else {
+        x = diff * itemSpacing - Math.min(absDiff, 1) * 26;
+        rotY = Math.min(56, 30 + absDiff * 12);
+        z = -Math.min(150, absDiff * 40);
+        scale = Math.max(0.80, 1 - absDiff * 0.065);
+        opacity = Math.max(0.35, 1 - absDiff * 0.20);
+      }
+
+      const sway = Math.max(-7, Math.min(7, swayAngle * (1 - Math.min(absDiff * 0.2, 0.6))));
+
+      item.style.transform = `translate3d(${x.toFixed(1)}px, 0, ${z.toFixed(1)}px) rotateY(${rotY.toFixed(1)}deg) rotateZ(${sway.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
+      item.style.zIndex = String(Math.round(100 - absDiff * 10));
+      item.style.opacity = opacity.toFixed(2);
+      item.classList.toggle('active', absDiff < 0.35);
+    });
+
+    if (Math.abs(targetPos - currentPos) > 0.001 || Math.abs(swayAngle) > 0.04 || isDragging) {
+      animFrameId = requestAnimationFrame(render);
+    } else {
+      currentPos = targetPos;
+      animFrameId = null;
+    }
+  }
+
+  function startAnimation() {
+    if (!animFrameId) {
+      animFrameId = requestAnimationFrame(render);
+    }
+  }
+
+  if (stage) {
+    // 1. TOUCH EVENTS (Mobile / Tablet) - 100% Reliable Swipe Detection
+    stage.addEventListener('touchstart', (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      isDragging = true;
+      isHorizontalGesture = null;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      lastX = startX;
+      startPos = targetPos;
+      velocity = 0;
+      lastTime = performance.now();
+      startAnimation();
+    }, { passive: true });
+
+    stage.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const dx = currentX - startX;
+      const dy = currentY - startY;
+
+      // Detect horizontal swipe vs vertical scroll
+      if (isHorizontalGesture === null) {
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+          isHorizontalGesture = Math.abs(dx) >= Math.abs(dy);
+        }
+      }
+
+      if (isHorizontalGesture) {
+        if (e.cancelable) e.preventDefault(); // Lock horizontal drag, prevent page jitter
+        const now = performance.now();
+        const dt = Math.max(1, now - lastTime);
+        velocity = (currentX - lastX) / dt;
+        lastX = currentX;
+        lastTime = now;
+
+        // Instant direct finger tracking
+        targetPos = startPos - dx / itemSpacing;
+        if (targetPos < -0.35) targetPos = -0.35 + (targetPos + 0.35) * 0.25;
+        if (targetPos > totalItems - 0.65) targetPos = (totalItems - 0.65) + (targetPos - (totalItems - 0.65)) * 0.25;
+        currentPos = targetPos; // direct sync during finger drag for 60fps butter-smooth tracking
+      }
+    }, { passive: false });
+
+    const handleTouchEnd = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (isHorizontalGesture) {
+        const momentum = -velocity * 120 / itemSpacing;
+        targetPos += Math.max(-1.6, Math.min(1.6, momentum));
+      }
+      targetPos = clampIndex(Math.round(targetPos));
+      startAnimation();
+    };
+
+    stage.addEventListener('touchend', handleTouchEnd);
+    stage.addEventListener('touchcancel', handleTouchEnd);
+
+    // 2. MOUSE DRAG EVENTS (Desktop)
+    stage.addEventListener('mousedown', (e: MouseEvent) => {
+      if (e.button !== 0) return;
+      isDragging = true;
+      startX = e.clientX;
+      lastX = e.clientX;
+      startPos = targetPos;
+      velocity = 0;
+      lastTime = performance.now();
+      stage.style.cursor = 'grabbing';
+      startAnimation();
+    });
+
+    window.addEventListener('mousemove', (e: MouseEvent) => {
+      if (!isDragging) return;
+      const now = performance.now();
+      const dt = Math.max(1, now - lastTime);
+      velocity = (e.clientX - lastX) / dt;
+      lastX = e.clientX;
+      lastTime = now;
+
+      const dx = e.clientX - startX;
+      targetPos = startPos - dx / itemSpacing;
+      if (targetPos < -0.35) targetPos = -0.35 + (targetPos + 0.35) * 0.25;
+      if (targetPos > totalItems - 0.65) targetPos = (totalItems - 0.65) + (targetPos - (totalItems - 0.65)) * 0.25;
+      currentPos = targetPos;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (stage) stage.style.cursor = 'grab';
+      const momentum = -velocity * 120 / itemSpacing;
+      targetPos += Math.max(-1.6, Math.min(1.6, momentum));
+      targetPos = clampIndex(Math.round(targetPos));
+      startAnimation();
+    });
+
+    // 3. TRACKPAD & MOUSE WHEEL (Desktop)
+    stage.addEventListener('wheel', (e: WheelEvent) => {
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+      if (Math.abs(delta) > 4) {
+        e.preventDefault();
+        targetPos = clampIndex(targetPos + delta * 0.0035);
+        startAnimation();
+      }
+    }, { passive: false });
+
+    // 4. CLICK TO SLIDE ITEM TO CENTER
+    items.forEach((item, idx) => {
+      item.addEventListener('click', (e) => {
+        if (Math.abs(targetPos - idx) > 0.35) {
+          e.preventDefault();
+          targetPos = idx;
+          startAnimation();
+        }
+      });
+    });
+
+    // 5. ARROW CONTROLS
+    prevBtn?.addEventListener('click', () => {
+      targetPos = clampIndex(Math.round(targetPos) - 1);
+      startAnimation();
+    });
+    nextBtn?.addEventListener('click', () => {
+      targetPos = clampIndex(Math.round(targetPos) + 1);
+      startAnimation();
+    });
+
+    // 6. DOTS JUMP
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = Number(dot.getAttribute('data-index') || 0);
+        targetPos = clampIndex(idx);
+        startAnimation();
+      });
+    });
+
+    // 7. KEYBOARD NAVIGATION
+    stage.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        targetPos = clampIndex(Math.round(targetPos) - 1);
+        startAnimation();
+      } else if (e.key === 'ArrowRight') {
+        targetPos = clampIndex(Math.round(targetPos) + 1);
+        startAnimation();
+      }
+    });
+  }
+
+  // Initial render
+  updateHud(0);
+  render();
+</script>

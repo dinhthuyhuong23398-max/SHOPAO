@@ -2,6 +2,7 @@
 import {sitePath} from '../../lib/paths';
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import WardrobeRack3D from '../../components/WardrobeRack3D.astro';
 import {Image} from 'astro:assets';
 import {getCatalog,sourceImage} from '../../lib/catalog';
 import {text,locales,categoryNames} from '../../lib/i18n';
@@ -9,30 +10,6 @@ import type {Locale} from '../../lib/types';
 export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
 const lang=Astro.params.lang as Locale;
 const catalog=await getCatalog();
-
-// 4 high-fashion model designs for the auto-sliding hero
-const heroSlugs = [
-  'minimal-cowl-neck-slip-dress',
-  'halter-maxi',
-  'scoop-neck-slip-maxi',
-  'minimal-long-sleeve-cowl-neck'
-];
-
-const heroSlides = heroSlugs
-  .map(slug => catalog.designs.find(d => d.slug === slug))
-  .filter((d): d is typeof catalog.designs[0] => Boolean(d));
-
-if (heroSlides.length < 4) {
-  for (const d of catalog.designs) {
-    if (!heroSlides.some(s => s.id === d.id)) {
-      heroSlides.push(d);
-      if (heroSlides.length >= 4) break;
-    }
-  }
-}
-
-const second = heroSlides[1] ?? catalog.designs[1];
-const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSlides[0];
 ---
 <Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection')}>
   <!-- Schema.org CollectionPage & ItemList Structured Data for Google Rich Snippets -->
@@ -55,81 +32,8 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     }
   })} />
 
-  <!-- 1. AUTO-SLIDING HERO BANNER WITH 4 MODELS -->
-  <section class="hero">
-    <div class="hero-copy">
-      <span class="eyebrow">SILK, MADE TO MEASURE · {text(lang,'사이즈 맞춤 제작','BESPOKE SILK')}</span>
-      <h1>
-        {text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>
-        {text(lang,'나에게 맞는 사이즈.','made to your size.')}
-      </h1>
-      <p class="hero-script">Silk, made to measure.</p>
-      <p class="hero-description">
-        {text(lang,
-          '미셸의 컬렉션에서 디자인과 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.',
-          'Choose a design from Michelle’s collection, along with your silk and color.\nYour selected piece is made to your measurements.',
-          'Lựa chọn thiết kế từ bộ sưu tập của Michelle, chọn chất liệu lụa Tô Châu hoặc Ruby cùng bảng màu ưng ý.\nTrang phục sẽ được may đo chuẩn xác theo từng số đo cơ thể của bạn.'
-        )}
-      </p>
-      <div class="hero-actions">
-        <a class="button primary hero-button" href="#collection">
-          {text(lang,'컬렉션 살펴보기','Explore collection','Xem bộ sưu tập')}<span>↗</span>
-        </a>
-        <a class="button secondary hero-sub-button" href="#care-guide">
-          {text(lang,'원단 관리 가이드','Fabric care guide','Hướng dẫn bảo quản')}
-        </a>
-      </div>
-      <div class="hero-footnote">
-        <span class="fine-line"></span>
-        <span>{text(lang,'미셸의 컬렉션에서 고르고, 사이즈는 나에게 맞게','Choose from the collection. Made to your measurements.','Đồ lụa may đo theo số đo · Đồ linen may sẵn theo size')}</span>
-      </div>
-    </div>
-    
-    <div class="hero-visual">
-      <div class="hero-carousel" id="heroCarousel">
-        <div class="hero-slides-track" id="heroTrack">
-          {heroSlides.map((slide, idx) => (
-            <a class="hero-slide" href={sitePath(`/${lang}/designs/${slide.slug}/`)} aria-label={slide.name[lang] || slide.name.en}>
-              <img 
-                src={slide.imageUrl} 
-                width="1000" 
-                height="1333" 
-                fetchpriority={idx === 0 ? "high" : "auto"} 
-                loading={idx === 0 ? "eager" : "lazy"} 
-                alt={slide.name[lang] || slide.name.en}
-              />
-              <span class="photo-caption">
-                <span>0{idx + 1} / {slide.name[lang] || slide.name.en}</span>
-                <span>{text(lang, '디자인 보기', 'EXPLORE', 'CHI TIẾT')} ↗</span>
-              </span>
-            </a>
-          ))}
-        </div>
-        
-        <button type="button" class="hero-nav-btn prev" id="heroPrevBtn" aria-label="Previous slide">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <button type="button" class="hero-nav-btn next" id="heroNextBtn" aria-label="Next slide">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
-
-        <div class="hero-indicators" id="heroIndicators">
-          {heroSlides.map((_, idx) => (
-            <button type="button" class={`hero-indicator-btn ${idx === 0 ? 'active' : ''}`} data-index={idx} aria-label={`Slide ${idx + 1}`}>
-              <span class="ind-number">0{idx + 1}</span>
-              <span class="ind-bar"><span class="ind-progress"></span></span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <a class="hero-inset" href={sitePath(`/${lang}/designs/${second.slug}/`)}>
-        <img src={second.thumbnailUrl} width="480" height="640" alt={second.name[lang] || second.name.en}/>
-        <span>{text(lang,'나를 닮은 한 벌','A piece of you','Thiết kế tinh tế')} ↗</span>
-      </a>
-      <span class="vertical-caption">SUZHOU · RUBY · MADE TO MEASURE</span>
-    </div>
-  </section>
+  <!-- 1. INTERACTIVE 3D ATELIER WARDROBE RACK HERO -->
+  <WardrobeRack3D catalog={catalog} lang={lang} />
 
   <!-- 2. COLLECTION SECTION WITH HORIZONTAL SCROLL & REALTIME SEARCH -->
   <section class="collection-section section-wrap" id="collection">
@@ -780,8 +684,24 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       }
     } catch {}
 
+    // Sync with Header Search Bar
+    window.addEventListener('michelle:search-input', (e: any) => {
+      const q = e.detail?.query || '';
+      if (searchInput && searchInput.value !== q) {
+        searchInput.value = q;
+      }
+      searchQuery = q;
+      applyFilterAndSearch();
+    });
+
     searchInput?.addEventListener('input', () => {
       searchQuery = searchInput.value;
+      const headerInput = document.getElementById('headerSearchInput') as HTMLInputElement | null;
+      const headerClear = document.getElementById('headerClearBtn');
+      if (headerInput && headerInput.value !== searchInput.value) {
+        headerInput.value = searchInput.value;
+        if (headerClear) headerClear.hidden = !searchInput.value;
+      }
       applyFilterAndSearch();
     });
 
