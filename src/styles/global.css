@@ -2708,23 +2708,131 @@
 
 /* Mobile & Tablet Optimizations */
 @media (max-width: 860px) {
+  :root {
+    scroll-padding-top: 75px !important;
+  }
+  .announcement {
+    padding: 3px 10px !important;
+    font-size: 8px !important;
+  }
   .site-header {
     height: auto !important;
-    padding: 10px 4% !important;
-    gap: 8px !important;
+    padding: 5px 3.5% 2px !important;
+    gap: 0 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .brand {
+    order: 1 !important;
+    flex: 0 0 auto !important;
+    height: 30px !important;
+    width: auto !important;
+    max-width: 85px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .brand img {
+    height: 22px !important;
+    max-height: 22px !important;
+    width: auto !important;
+    object-fit: contain !important;
   }
   .header-search-bar {
-    order: 3;
-    width: 100%;
-    max-width: 100%;
-    margin: 4px 0 2px;
+    order: 2 !important;
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 8px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .header-search-form {
+    height: 27px !important;
+    min-height: 27px !important;
+    padding: 0 8px !important;
+    border-radius: 14px !important;
+    background: #f4f3ee !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: none !important;
+  }
+  .header-search-form:focus-within {
+    background: #ffffff !important;
+    border-color: var(--green) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+  .header-search-icon {
+    width: 12px !important;
+    height: 12px !important;
+    margin-right: 5px !important;
+    color: #8c947f !important;
+    flex-shrink: 0 !important;
   }
   .header-search-input {
-    font-size: 12.5px;
-    padding: 7px 0;
+    font-size: 11px !important;
+    height: 25px !important;
+    line-height: 25px !important;
+    padding: 0 !important;
+    color: var(--ink) !important;
+    min-width: 0 !important;
+    text-overflow: ellipsis !important;
+  }
+  .header-search-input::placeholder {
+    font-size: 10px !important;
+    color: #9ea494 !important;
+  }
+  .header-clear-btn {
+    width: 15px !important;
+    height: 15px !important;
+    font-size: 8.5px !important;
+    flex-shrink: 0 !important;
+  }
+  .header-tools {
+    order: 3 !important;
+    flex: 0 0 auto !important;
+    height: 30px !important;
+    gap: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .language-switch {
+    font-size: 10.5px !important;
+    gap: 3px !important;
+  }
+  .bag-link {
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .bag-link svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .bag-count {
+    font-size: 9.5px !important;
   }
   .main-nav {
     order: 4 !important;
+    width: calc(100% + 7%) !important;
+    margin-left: -3.5% !important;
+    margin-right: -3.5% !important;
+    padding: 0 3.5% !important;
+    height: 27px !important;
+    min-height: 27px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+    margin-top: 2px !important;
+    font-size: 10.5px !important;
+  }
+  .main-nav a {
+    padding: 3px 2px !important;
+    font-size: 10.5px !important;
+    white-space: nowrap !important;
   }
   .wardrobe-hero {
     padding: 14px 0 18px;
