@@ -6,3 +6,4 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://michellestore.com/sitemap.xml
+Sitemap: https://michellestore.com/sitemap.txt
