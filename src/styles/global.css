@@ -1621,7 +1621,7 @@
   gap: 14px;
 }
 
-.field-hint-inline {
+.silk-chart-sections{display:grid;gap:18px;margin:10px 0 18px}.silk-chart-card{border:1px solid var(--line);background:#faf9f4;overflow:hidden}.silk-chart-card.selected{border-color:var(--green);background:#edeee5}.silk-chart-heading{width:100%;display:flex;align-items:baseline;gap:10px;text-align:left;border:0;padding:14px 16px;color:var(--ink)}.silk-chart-heading span{font-size:15px}.silk-chart-heading small{font:10px Arial,sans-serif;letter-spacing:.14em;color:var(--muted)}.silk-chart-heading b{margin-left:auto;font-size:14px;font-weight:400}.silk-chart-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 8px 8px}.silk-chart-image-link{display:block;background:#e9e7dd;overflow:hidden}.silk-chart-image-link img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;transition:transform .3s ease}.silk-chart-image-link:hover img{transform:scale(1.025)}.silk-color-select-label{display:block;padding:0 16px 16px;font-size:11px;color:var(--muted)}.silk-color-select-label select{display:block;width:100%;margin-top:7px;padding:11px 12px;border:1px solid var(--line);background:#fff;font-size:12px}.field-hint-inline{
   font-size: 13.5px;
   font-weight: 600;
   color: #2b3e30;
@@ -2972,3 +2972,4 @@
     padding-top: 20px !important;
   }
 }
+

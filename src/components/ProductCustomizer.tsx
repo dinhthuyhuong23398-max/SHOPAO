@@ -50,6 +50,23 @@ const LINEN_DATA: Record<string, {
   }
 };
 
+const SILK_COLOR_CHARTS: Record<FabricId, {
+  ko: string;
+  en: string;
+  images: string[];
+}> = {
+  suzhou: {
+    ko: '수저우 실크',
+    en: 'SUZHOU SILK',
+    images: Array.from({length: 6}, (_, index) => sitePath(`/fabrics/suzhou/color-${String(index + 1).padStart(2, '0')}.jpg`))
+  },
+  ruby: {
+    ko: '루비 실크',
+    en: 'RUBY SILK',
+    images: Array.from({length: 6}, (_, index) => sitePath(`/fabrics/ruby/color-${String(index + 1).padStart(2, '0')}.jpg`))
+  }
+};
+
 export default function ProductCustomizer({product,catalog,lang}:{product:Product;catalog:Catalog;lang:Locale}) {
   const {cart,ready,persistent,unreadable}=useCart();
   const isLinen = product.slug.includes('linen') || ['ML-31', 'ML-32', 'ML-33', 'ML-34'].includes(product.id);
@@ -211,7 +228,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
           </div>
         </fieldset>
 
-        {/* Silk Option 02: Color Swatches */}
+        {/* Silk Option 02: Customer-provided fabric photos and color code */}
         <fieldset>
           <legend>
             <span>02</span> {text(lang,'컬러 선택','Choose your color','Chọn màu sắc')}
@@ -221,7 +238,34 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
             <p className="field-hint">{text(lang,'먼저 실크를 선택해 주세요.','Choose a silk to see its colors.','Vui lòng chọn loại lụa để xem bảng màu.')}</p>
           ) : (
             <>
-              {fabric.colors.length>0&&<div className="swatch-grid">{fabric.colors.map(c=><label key={c.id} className={`swatch-label ${c.id===colorId?'selected':''}`} title={`${c.name[lang]||c.name.en} · ${c.code}`}><input type="radio" name="color" value={c.id} checked={colorId===c.id} onChange={()=>{setColor(c.id);setSaved(false)}} aria-label={`${c.name[lang]||c.name.en} · ${c.code}`} required/><span className="swatch" style={{backgroundColor:c.hex}} aria-hidden="true"><span>{c.id===colorId?'✓':''}</span></span><small>{c.code}</small></label>)}</div>}
+              <div className="silk-chart-sections">
+                {(Object.keys(SILK_COLOR_CHARTS) as FabricId[])
+                  .filter(chartId => product.fabrics.includes(chartId))
+                  .map(chartId => {
+                    const chart = SILK_COLOR_CHARTS[chartId];
+                    const chartFabric = catalog.fabrics.find(item => item.id === chartId);
+                    if (!chartFabric) return null;
+                    return <section key={chartId} className={`silk-chart-card ${fabricId === chartId ? 'selected' : ''}`}>
+                      <button type="button" className="silk-chart-heading" onClick={() => chooseFabric(chartId)} aria-pressed={fabricId === chartId}>
+                        <span>{chart.ko}</span>
+                        <small>{chart.en}</small>
+                        <b aria-hidden="true">{fabricId === chartId ? '✓' : '+'}</b>
+                      </button>
+                      <div className="silk-chart-gallery">
+                        {chart.images.map((image, index) => <a key={image} href={image} target="_blank" rel="noopener" className="silk-chart-image-link">
+                          <img src={image} alt={`${chart.en} color chart ${index + 1}`} loading="lazy" />
+                        </a>)}
+                      </div>
+                      {fabricId === chartId && <label className="silk-color-select-label" htmlFor={`silk-color-${chartId}`}>
+                        {text(lang, '컬러 코드 선택', 'Select color code')}
+                        <select id={`silk-color-${chartId}`} name="color" value={colorId === 'consult' ? '' : colorId} onChange={event => { setColor(event.target.value); setSaved(false); }} required={colorId !== 'consult'}>
+                          <option value="">{text(lang, '이미지의 컬러 코드를 선택하세요', 'Choose the color code shown in the images')}</option>
+                          {chartFabric.colors.map(item => <option key={item.id} value={item.id}>{item.code} · {item.name[lang] || item.name.en}</option>)}
+                        </select>
+                      </label>}
+                    </section>;
+                  })}
+              </div>
               <label className="consult-option"><input type="radio" name="color" value="consult" checked={colorId==='consult'} onChange={()=>{setColor('consult');setSaved(false)}} required/>{text(lang,'컬러는 미셸과 상담할게요','I’ll discuss the color with Michelle','Tư vấn màu trực tiếp cùng Michelle')}</label>
               <p className="field-hint">{fabric.colors.length?text(lang,`컬러는 첫 번째 ${fabric.name.ko} 컬러북 기준이에요. 화면과 실제 원단의 색은 다를 수 있어요.`,`Colors refer to the first ${fabric.name.en} color book. Screen colors may differ from the fabric.`,`Bảng màu tham chiếu theo danh mục màu ${fabric.name.vi || fabric.name.en}. Màu hiển thị trên màn hình có thể có độ chênh nhẹ so với thực tế.`):(fabric.description[lang]||fabric.description.en)}</p>
               {repeatedCodes.length>0&&<p className="field-hint">{text(lang,`컬러북의 ${repeatedCodes.join('·')}번은 서로 다른 색에 쓰여요. 색상 이름도 함께 확인해 주세요.`,`The chart uses codes ${repeatedCodes.join(' and ')} for different shades. Check the color name as well.`)}</p>}
