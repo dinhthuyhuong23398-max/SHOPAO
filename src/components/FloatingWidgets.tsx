@@ -305,6 +305,7 @@ export default function FloatingWidgets({
     if (lang !== 'ko') return status;
     switch (status) {
       case 'Chờ xác nhận':
+      case 'Đang chờ lễ tân':
       case 'Pending Confirmation':
       case '접수 대기':
         return '접수 대기';
