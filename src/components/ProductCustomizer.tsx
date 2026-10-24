@@ -275,6 +275,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
               fabricId: isLinen ? 'linen' : fabricId,
               fabricName: detailFabric,
               colorId: detailColor,
+              itemDetails: `${product.id} · ${product.name[lang] || product.name.en} · ${detailFabric} · ${detailColor} · x${quantity}`,
               size: isLinen ? selectedSize : undefined,
               quantity,
               note: detailNote
@@ -300,3 +301,4 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
     </p>
   </form>;
 }
+
