@@ -415,10 +415,16 @@ export default function FloatingWidgets({
                     placeholder={text(lang, '예: 01012345678 또는 MS-261016-1234', 'e.g. 0901234567 or MS-261016-1234', 'Ví dụ: 0987654321 hoặc MS-261016-1234')}
                   />
                   <button type="submit" className="button primary" disabled={trackingLoading}>
-                    {trackingLoading ? '...' : text(lang, '조회', 'Search', 'Tra cứu')}
+                    {trackingLoading ? text(lang, '조회 중...', 'Checking...', 'Đang kiểm tra...') : text(lang, '조회', 'Search', 'Tra cứu')}
                   </button>
                 </div>
               </form>
+
+              {trackingLoading && (
+                <div className="tracking-notice tracking-loading" role="status" aria-live="polite">
+                  <p>{text(lang, '잠시만 기다려 주세요. 주문 정보를 확인하고 있습니다.', 'Please wait a moment. We are checking your order information.', 'Vui lòng chờ một chút, đang kiểm tra thông tin đơn hàng.')}</p>
+                </div>
+              )}
 
               {trackingError && (
                 <div className="tracking-notice warning">
