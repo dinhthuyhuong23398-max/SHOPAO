@@ -2973,3 +2973,183 @@
   }
 }
 
+/* Product ordering layout: spacious on desktop, single-column and touch-friendly below tablet. */
+.product-detail {
+  align-items: start;
+}
+
+.detail-content {
+  min-width: 0;
+}
+
+.customizer {
+  width: 100%;
+}
+
+.customizer-buttons-stack .button {
+  min-height: 54px;
+  justify-content: center;
+  text-align: center;
+}
+
+.silk-chart-card {
+  min-width: 0;
+}
+
+.silk-chart-image-link {
+  min-width: 0;
+  border: 1px solid transparent;
+}
+
+.silk-chart-image-link:focus-visible {
+  border-color: var(--green);
+}
+
+@media (max-width: 860px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .detail-photograph {
+    position: static;
+  }
+
+  .detail-photograph > img {
+    max-height: 760px;
+    object-fit: contain;
+  }
+
+  .detail-content {
+    padding-top: 34px;
+  }
+
+  .customizer {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 540px) {
+  .detail-content {
+    padding-top: 26px;
+  }
+
+  .detail-content h1 {
+    font-size: clamp(24px, 7vw, 30px);
+    line-height: 1.35;
+  }
+
+  .customizer {
+    padding-top: 22px;
+    margin-top: 24px;
+  }
+
+  .customizer fieldset {
+    margin-bottom: 24px;
+  }
+
+  .customizer legend {
+    line-height: 1.55;
+  }
+
+  .customizer legend small {
+    float: none;
+    display: block;
+    margin: 4px 0 0 27px;
+  }
+
+  .fabric-options {
+    gap: 9px;
+  }
+
+  .fabric-option {
+    min-height: 70px;
+    padding: 13px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .silk-chart-sections {
+    gap: 14px;
+  }
+
+  .silk-chart-heading {
+    min-height: 52px;
+    padding: 13px 14px;
+  }
+
+  .silk-chart-heading span {
+    font-size: 14px;
+  }
+
+  .silk-chart-heading small {
+    font-size: 9px;
+  }
+
+  .silk-chart-gallery {
+    gap: 6px;
+    padding: 0 6px 6px;
+  }
+
+  .silk-chart-image-link img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .silk-color-select-label {
+    padding: 0 14px 14px;
+  }
+
+  .silk-color-select-label select {
+    min-height: 46px;
+    font-size: 16px;
+  }
+
+  .quantity-row {
+    min-height: 46px;
+    margin-bottom: 22px;
+  }
+
+  .stepper {
+    height: 44px;
+  }
+
+  .stepper button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .stepper input,
+  .stepper > span {
+    width: 42px;
+    font-size: 16px;
+  }
+
+  .customizer-buttons-stack {
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .customizer-buttons-stack .button {
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 14px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 380px) {
+  .fabric-options {
+    grid-template-columns: 1fr;
+  }
+
+  .silk-chart-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .customizer-buttons-stack .button {
+    font-size: 10px;
+  }
+}
+
