@@ -34,6 +34,7 @@ interface OrderItem {
 }
 
 const STORAGE_ORDERS_KEY = 'michelle_recent_orders';
+const DEFAULT_ORDER_API_URL = 'https://script.google.com/macros/s/AKfycbw7pFJx50ZJhgIzckJ_9Bjsx4Jrly7Teg6m7rlajsH1dS7MAJQS0sgxdnCHLN_4uoFZgQ/exec';
 
 const normalizeStatusValue = (value: unknown) => {
   const raw = String(value ?? '').trim();
@@ -157,7 +158,7 @@ export default function FloatingWidgets({
   // Order lookup
   const handleTrackOrder = async (e: React.FormEvent) => {
     e.preventDefault();
-    const query = trackingQuery.trim();
+    const query = trackingQuery.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
     if (!query) return;
 
     setTrackingLoading(true);
@@ -167,18 +168,30 @@ export default function FloatingWidgets({
 
     try {
       let found: OrderItem[] = [];
+      const apiUrl = (orderApiUrl || DEFAULT_ORDER_API_URL).replace(/\/$/, '');
 
       // 1. Check Google Apps Script API
-      if (orderApiUrl) {
-        try {
-          const res = await fetch(`${orderApiUrl}?query=${encodeURIComponent(query)}`);
-          const data = await res.json();
-          if (data && data.success && Array.isArray(data.orders)) {
-            found = data.orders.map(normalizeOrderRecord);
-          }
-        } catch (fetchErr) {
-          console.warn('API lookup failed, falling back to local memory', fetchErr);
+      try {
+        const apiQuery = `${apiUrl}?query=${encodeURIComponent(query)}&_=${Date.now()}`;
+        const res = await fetch(apiQuery, {
+          method: 'GET',
+          cache: 'no-store',
+          headers: { Accept: 'application/json' }
+        });
+        if (!res.ok) throw new Error(`Tracking API HTTP ${res.status}`);
+        const data = await res.json();
+        if (data && data.success) {
+          const records = Array.isArray(data.orders)
+            ? data.orders
+            : data.order
+              ? [data.order]
+              : data.orderId
+                ? [data]
+                : [];
+          found = records.map(normalizeOrderRecord).filter(item => item.orderId || item.phone);
         }
+      } catch (fetchErr) {
+        console.warn('API lookup failed, falling back to local memory', fetchErr);
       }
 
       // 2. Fallback to localStorage
