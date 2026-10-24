@@ -1435,38 +1435,6 @@
   color: #8c5d19;
 }
 
-.modal-footer-tools {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid #ebe8dc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-}
-
-.api-config-box {
-  margin-top: 14px;
-  padding: 14px;
-  background: #f7f4eb;
-  border-radius: 6px;
-  border: 1px solid #dfd8c8;
-}
-
-.api-config-box .input-group {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.api-config-box input {
-  flex: 1;
-  padding: 6px 10px;
-  font-size: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 /* ==========================================================================
    DIRECT ORDER FORM STYLES
    ========================================================================== */
