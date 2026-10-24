@@ -168,22 +168,15 @@ export default function FloatingWidgets({
 
     try {
       let found: OrderItem[] = [];
-      const apiUrl = (orderApiUrl || DEFAULT_ORDER_API_URL).replace(/\/$/, '');
 
       // 1. Check Google Apps Script API
+      const apiUrl = (orderApiUrl || DEFAULT_ORDER_API_URL).replace(/\/$/, '');
       try {
-        const apiQuery = apiUrl + '?query=' + encodeURIComponent(query) + '&_=' + Date.now();
-        const res = await fetch(apiQuery, { cache: 'no-store' });
+        const res = await fetch(apiUrl + '?query=' + encodeURIComponent(query) + '&_=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error('Tracking API HTTP ' + res.status);
         const data = await res.json();
         if (data && data.success) {
-          const records = Array.isArray(data.orders)
-            ? data.orders
-            : data.order
-              ? [data.order]
-              : data.orderId
-                ? [data]
-                : [];
+          const records = Array.isArray(data.orders) ? data.orders : data.order ? [data.order] : data.orderId ? [data] : [];
           found = records.map(normalizeOrderRecord).filter(item => item.orderId || item.phone);
         }
       } catch (fetchErr) {
