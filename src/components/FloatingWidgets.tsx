@@ -444,10 +444,22 @@ export default function FloatingWidgets({
                           <span className="info-label">{text(lang, '고객 정보', 'Customer', 'Khách hàng')}:</span>
                           <span className="info-val"><b>{item.customerName}</b> ({item.phone})</span>
                         </div>
+                        {item.email && (
+                          <div className="info-row">
+                            <span className="info-label">{text(lang, '이메일', 'Email', 'Email')}:</span>
+                            <span className="info-val">{item.email}</span>
+                          </div>
+                        )}
                         <div className="info-row">
                           <span className="info-label">{text(lang, '배송 주소', 'Address', 'Địa chỉ')}:</span>
                           <span className="info-val">{item.address}</span>
                         </div>
+                        {item.productId && (
+                          <div className="info-row">
+                            <span className="info-label">{text(lang, '상품 코드', 'Product Code', 'Mã sản phẩm')}:</span>
+                            <span className="info-val">{item.productId}</span>
+                          </div>
+                        )}
                         <div className="info-row">
                           <span className="info-label">{text(lang, '선택 상품', 'Products', 'Sản phẩm')}:</span>
                           <span className="info-val">
@@ -464,6 +476,18 @@ export default function FloatingWidgets({
                           <div className="info-row">
                             <span className="info-label">{text(lang, '맞춤 요청', 'Custom Note', 'Yêu cầu riêng')}:</span>
                             <span className="info-val">{item.customDesign}</span>
+                          </div>
+                        )}
+                        {item.note && (
+                          <div className="info-row">
+                            <span className="info-label">{text(lang, '주문 메모', 'Order Note', 'Ghi chú đơn hàng')}:</span>
+                            <span className="info-val">{item.note}</span>
+                          </div>
+                        )}
+                        {item.itemDetails && (
+                          <div className="info-row info-row-details">
+                            <span className="info-label">{text(lang, '선택 상세', 'Selection Details', 'Chi tiết lựa chọn')}:</span>
+                            <span className="info-val">{item.itemDetails}</span>
                           </div>
                         )}
                         <div className="info-row tracking-code-highlight">
