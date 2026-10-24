@@ -14,9 +14,7 @@ interface OrderItem {
   createdAt: string;
   customerName: string;
   phone: string;
-  email?: string;
   address: string;
-  productId?: string;
   productName: string;
   fabric: string;
   color: string;
@@ -27,10 +25,6 @@ interface OrderItem {
   status: string;
   trackingCode?: string;
   adminNote?: string;
-  language?: string;
-  source?: string;
-  pageUrl?: string;
-  itemDetails?: string;
 }
 
 const STORAGE_ORDERS_KEY = 'michelle_recent_orders';
@@ -60,10 +54,8 @@ export default function FloatingWidgets({
   const [orderForm, setOrderForm] = useState({
     customerName: '',
     phone: '',
-    email: '',
     address: '',
     productName: '',
-    productId: '',
     fabric: lang === 'ko' ? '수저우 실크 (Suzhou Silk)' : 'Suzhou Silk',
     color: '',
     quantity: 1,
@@ -75,8 +67,7 @@ export default function FloatingWidgets({
     height: '',
     weight: '',
     customDesign: '',
-    note: '',
-    itemDetails: ''
+    note: ''
   });
 
   const [orderSubmitting, setOrderSubmitting] = useState(false);
@@ -104,10 +95,8 @@ export default function FloatingWidgets({
       setOrderForm(prev => ({
         ...prev,
         productName: prodName || prev.productName,
-        productId: detail.product?.id || prev.productId,
         fabric: fabName,
         color: col || prev.color,
-        itemDetails: detail.itemDetails || prev.itemDetails,
         quantity: detail.quantity || 1,
         sizeType: isLinenProd ? 'standard' : prev.sizeType,
         standardSize: isLinenProd ? sizeVal : prev.standardSize,
@@ -234,9 +223,7 @@ export default function FloatingWidgets({
       createdAt: now.toLocaleString(lang === 'ko' ? 'ko-KR' : 'en-US'),
       customerName: orderForm.customerName.trim(),
       phone: orderForm.phone.trim(),
-      email: orderForm.email.trim(),
       address: orderForm.address.trim(),
-      productId: orderForm.productId.trim(),
       productName: orderForm.productName.trim() || (lang === 'ko' ? '미셸 맞춤 실크 디자인' : 'Michelle Bespoke Design'),
       fabric: orderForm.fabric,
       color: orderForm.color || (lang === 'ko' ? '인스타그램 색상 상담' : 'Color consultation via Instagram'),
@@ -244,11 +231,7 @@ export default function FloatingWidgets({
       sizeOrMeasurements: sizeInfo,
       customDesign: orderForm.customDesign.trim(),
       note: orderForm.note.trim(),
-      status: lang === 'ko' ? '접수 대기' : 'Pending Confirmation',
-      language: lang,
-      source: 'SHOPAO web',
-      pageUrl: window.location.href,
-      itemDetails: orderForm.itemDetails || ''
+      status: lang === 'ko' ? '접수 대기' : 'Pending Confirmation'
     };
 
     try {
@@ -390,11 +373,7 @@ export default function FloatingWidgets({
                     rel="noopener noreferrer"
                     className="button secondary small-btn"
                   >
-                    <svg className="platform-button-icon instagram-inline-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                    </svg>
-                    <span>{text(lang, '인스타그램으로 직접 문의하기', 'Ask Michelle on Instagram', 'Hỏi trực tiếp qua Instagram')}</span>
-                    <span aria-hidden="true">↗</span>
+                    💬 {text(lang, '인스타그램으로 직접 문의하기', 'Ask Michelle on Instagram', 'Hỏi trực tiếp qua Instagram')} ↗
                   </a>
                 </div>
               )}
@@ -555,11 +534,7 @@ export default function FloatingWidgets({
                       rel="noopener noreferrer"
                       className="button primary full-width"
                     >
-                      <svg className="platform-button-icon instagram-inline-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618-6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259.014-3.667.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                      </svg>
-                      <span>{text(lang, '인스타그램으로 주문 확인 메시지 보내기', 'Confirm with Michelle on Instagram', 'Nhắn tin xác nhận qua Instagram @' + instagram)}</span>
-                      <span aria-hidden="true">↗</span>
+                      💬 {text(lang, '인스타그램으로 주문 확인 메시지 보내기', 'Confirm with Michelle on Instagram', 'Nhắn tin xác nhận qua Instagram @' + instagram)} ↗
                     </a>
                     <button
                       type="button"
@@ -587,12 +562,10 @@ export default function FloatingWidgets({
                       <div className="flex-row">
                         <span><b>{text(lang, '소재', 'Fabric', 'Chất liệu')}:</b> {orderForm.fabric}</span>
                         {orderForm.color && <span><b>{text(lang, '컬러', 'Color', 'Màu sắc')}:</b> {orderForm.color}</span>}
-                        <span><b>{text(lang, '수량', 'Qty', 'Số lượng')}:</b> {orderForm.quantity}</span>
                         {orderForm.sizeType === 'standard' && (
                           <span><b>{text(lang, '사이즈', 'Size', 'Kích cỡ')}:</b> {orderForm.standardSize}</span>
                         )}
                       </div>
-                      {orderForm.itemDetails && <p className="field-hint"><b>{text(lang, '선택 상세', 'Selection details')}:</b> {orderForm.itemDetails}</p>}
                     </div>
                   </div>
 
@@ -610,10 +583,6 @@ export default function FloatingWidgets({
                           onChange={e => setOrderForm({ ...orderForm, customerName: e.target.value })}
                           placeholder={text(lang, '예: 김미셸', 'e.g. Jane Doe', 'Ví dụ: Nguyễn Thùy Hương')}
                         />
-                      </div>
-                      <div className="form-field">
-                        <label htmlFor="customerEmail">{text(lang, '이메일', 'Email', 'Email')} ({text(lang, '선택사항', 'Optional', 'Tùy chọn')})</label>
-                        <input id="customerEmail" type="email" value={orderForm.email} onChange={e => setOrderForm({ ...orderForm, email: e.target.value })} placeholder="you@example.com" />
                       </div>
                       <div className="form-field">
                         <label htmlFor="customerPhone">{text(lang, '연락처 (전화번호)', 'Phone Number', 'Số điện thoại nhận hàng')} *</label>
@@ -773,13 +742,8 @@ export default function FloatingWidgets({
                   </div>
 
                   <div className="order-actions">
-                    <button type="submit" className="button primary full-width order-submit-button" disabled={orderSubmitting}>
-                      <svg className="order-button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M6 8h12l1 13H5L6 8Z" />
-                        <path d="M9 8a3 3 0 0 1 6 0" />
-                      </svg>
-                      <span>{orderSubmitting ? text(lang, '주문 전송 중...', 'Submitting order...') : text(lang, '주문서 제출하기', 'Submit Order')}</span>
-                      <span aria-hidden="true">↗</span>
+                    <button type="submit" className="button primary full-width" disabled={orderSubmitting}>
+                      {orderSubmitting ? text(lang, '주문 전송 중...', 'Submitting order...') : '✓ ' + text(lang, '주문서 제출하기', 'Submit Order')}
                     </button>
                     <p className="privacy-note text-center">
                       🔒 {text(
@@ -799,4 +763,3 @@ export default function FloatingWidgets({
     </>
   );
 }
-

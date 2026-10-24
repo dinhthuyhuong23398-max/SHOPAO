@@ -77,7 +77,6 @@ export default function ProposalDelivery({ input, message }: { input: ProposalIn
                 fabricId: firstPiece?.fabricId || 'suzhou',
                 colorId: firstPiece?.colorId || '',
                 quantity: input.cart.items.reduce((sum, i) => sum + i.quantity, 0),
-                itemDetails: input.cart.items.map(i => `${i.designId} x${i.quantity}${i.note ? ` · ${i.note}` : ''}`).join(' | '),
                 note: lang === 'ko' ? `[맞춤 제안서] ${input.cart.items.length}벌 디자인. 신체 치수 포함.` : `[Bespoke Proposal] ${input.cart.items.length} items with measurements.`
               }
             }));
@@ -110,4 +109,3 @@ export default function ProposalDelivery({ input, message }: { input: ProposalIn
     </details>
   </>;
 }
-
