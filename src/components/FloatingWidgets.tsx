@@ -14,7 +14,9 @@ interface OrderItem {
   createdAt: string;
   customerName: string;
   phone: string;
+  email?: string;
   address: string;
+  productId?: string;
   productName: string;
   fabric: string;
   color: string;
@@ -25,6 +27,10 @@ interface OrderItem {
   status: string;
   trackingCode?: string;
   adminNote?: string;
+  language?: string;
+  source?: string;
+  pageUrl?: string;
+  itemDetails?: string;
 }
 
 const STORAGE_ORDERS_KEY = 'michelle_recent_orders';
@@ -54,8 +60,10 @@ export default function FloatingWidgets({
   const [orderForm, setOrderForm] = useState({
     customerName: '',
     phone: '',
+    email: '',
     address: '',
     productName: '',
+    productId: '',
     fabric: lang === 'ko' ? '수저우 실크 (Suzhou Silk)' : 'Suzhou Silk',
     color: '',
     quantity: 1,
@@ -67,7 +75,8 @@ export default function FloatingWidgets({
     height: '',
     weight: '',
     customDesign: '',
-    note: ''
+    note: '',
+    itemDetails: ''
   });
 
   const [orderSubmitting, setOrderSubmitting] = useState(false);
@@ -95,8 +104,10 @@ export default function FloatingWidgets({
       setOrderForm(prev => ({
         ...prev,
         productName: prodName || prev.productName,
+        productId: detail.product?.id || prev.productId,
         fabric: fabName,
         color: col || prev.color,
+        itemDetails: detail.itemDetails || prev.itemDetails,
         quantity: detail.quantity || 1,
         sizeType: isLinenProd ? 'standard' : prev.sizeType,
         standardSize: isLinenProd ? sizeVal : prev.standardSize,
@@ -223,7 +234,9 @@ export default function FloatingWidgets({
       createdAt: now.toLocaleString(lang === 'ko' ? 'ko-KR' : 'en-US'),
       customerName: orderForm.customerName.trim(),
       phone: orderForm.phone.trim(),
+      email: orderForm.email.trim(),
       address: orderForm.address.trim(),
+      productId: orderForm.productId.trim(),
       productName: orderForm.productName.trim() || (lang === 'ko' ? '미셸 맞춤 실크 디자인' : 'Michelle Bespoke Design'),
       fabric: orderForm.fabric,
       color: orderForm.color || (lang === 'ko' ? '인스타그램 색상 상담' : 'Color consultation via Instagram'),
@@ -231,7 +244,11 @@ export default function FloatingWidgets({
       sizeOrMeasurements: sizeInfo,
       customDesign: orderForm.customDesign.trim(),
       note: orderForm.note.trim(),
-      status: lang === 'ko' ? '접수 대기' : 'Pending Confirmation'
+      status: lang === 'ko' ? '접수 대기' : 'Pending Confirmation',
+      language: lang,
+      source: 'SHOPAO web',
+      pageUrl: window.location.href,
+      itemDetails: orderForm.itemDetails || ''
     };
 
     try {
@@ -562,10 +579,12 @@ export default function FloatingWidgets({
                       <div className="flex-row">
                         <span><b>{text(lang, '소재', 'Fabric', 'Chất liệu')}:</b> {orderForm.fabric}</span>
                         {orderForm.color && <span><b>{text(lang, '컬러', 'Color', 'Màu sắc')}:</b> {orderForm.color}</span>}
+                        <span><b>{text(lang, '수량', 'Qty', 'Số lượng')}:</b> {orderForm.quantity}</span>
                         {orderForm.sizeType === 'standard' && (
                           <span><b>{text(lang, '사이즈', 'Size', 'Kích cỡ')}:</b> {orderForm.standardSize}</span>
                         )}
                       </div>
+                      {orderForm.itemDetails && <p className="field-hint"><b>{text(lang, '선택 상세', 'Selection details')}:</b> {orderForm.itemDetails}</p>}
                     </div>
                   </div>
 
@@ -583,6 +602,10 @@ export default function FloatingWidgets({
                           onChange={e => setOrderForm({ ...orderForm, customerName: e.target.value })}
                           placeholder={text(lang, '예: 김미셸', 'e.g. Jane Doe', 'Ví dụ: Nguyễn Thùy Hương')}
                         />
+                      </div>
+                      <div className="form-field">
+                        <label htmlFor="customerEmail">{text(lang, '이메일', 'Email', 'Email')} ({text(lang, '선택사항', 'Optional', 'Tùy chọn')})</label>
+                        <input id="customerEmail" type="email" value={orderForm.email} onChange={e => setOrderForm({ ...orderForm, email: e.target.value })} placeholder="you@example.com" />
                       </div>
                       <div className="form-field">
                         <label htmlFor="customerPhone">{text(lang, '연락처 (전화번호)', 'Phone Number', 'Số điện thoại nhận hàng')} *</label>
@@ -763,3 +786,4 @@ export default function FloatingWidgets({
     </>
   );
 }
+
