@@ -251,11 +251,18 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
                         <small>{chart.en}</small>
                         <b aria-hidden="true">{fabricId === chartId ? '✓' : '+'}</b>
                       </button>
-                      <div className="silk-chart-gallery">
-                        {chart.images.map((image, index) => <a key={image} href={image} target="_blank" rel="noopener" className="silk-chart-image-link">
-                          <img src={image} alt={`${chart.en} color chart ${index + 1}`} loading="lazy" />
-                        </a>)}
-                      </div>
+                      {chart.images[0] && <a href={chart.images[0]} target="_blank" rel="noopener" className="silk-chart-preview silk-chart-image-link">
+                        <img src={chart.images[0]} alt={`${chart.en} color chart`} loading="lazy" />
+                        <span>{text(lang, '이미지를 눌러 크게 보기', 'Click to view full quality')}</span>
+                      </a>}
+                      {chart.images.length > 1 && <details className="silk-chart-more">
+                        <summary>{text(lang, `전체 컬러 이미지 ${chart.images.length}장 보기`, `View all ${chart.images.length} color images`)}</summary>
+                        <div className="silk-chart-gallery">
+                          {chart.images.slice(1).map((image, index) => <a key={image} href={image} target="_blank" rel="noopener" className="silk-chart-image-link">
+                            <img src={image} alt={`${chart.en} color chart ${index + 2}`} loading="lazy" />
+                          </a>)}
+                        </div>
+                      </details>}
                       {fabricId === chartId && <label className="silk-color-select-label" htmlFor={`silk-color-${chartId}`}>
                         {text(lang, '컬러 코드 선택', 'Select color code')}
                         <select id={`silk-color-${chartId}`} name="color" value={colorId === 'consult' ? '' : colorId} onChange={event => { setColor(event.target.value); setSaved(false); }} required={colorId !== 'consult'}>
