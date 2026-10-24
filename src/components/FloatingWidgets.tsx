@@ -35,6 +35,30 @@ interface OrderItem {
 
 const STORAGE_ORDERS_KEY = 'michelle_recent_orders';
 
+const normalizeOrderRecord = (record: Record<string, any>): OrderItem => ({
+  orderId: String(record.orderId ?? record['Mã đơn'] ?? ''),
+  createdAt: String(record.createdAt ?? record['Thời gian tạo'] ?? ''),
+  customerName: String(record.customerName ?? record['Họ tên khách'] ?? ''),
+  phone: String(record.phone ?? record['Số điện thoại'] ?? ''),
+  email: String(record.email ?? record.Email ?? ''),
+  address: String(record.address ?? record['Địa chỉ nhận hàng'] ?? ''),
+  productId: String(record.productId ?? record['Mã SP'] ?? ''),
+  productName: String(record.productName ?? record['Tên sản phẩm'] ?? ''),
+  fabric: String(record.fabric ?? record['Chất liệu'] ?? ''),
+  color: String(record.color ?? record['Màu / mã màu'] ?? ''),
+  quantity: record.quantity ?? record['Số lượng'] ?? '',
+  sizeOrMeasurements: String(record.sizeOrMeasurements ?? record['Size / số đo'] ?? ''),
+  customDesign: String(record.customDesign ?? record['Yêu cầu chỉnh sửa'] ?? ''),
+  note: String(record.note ?? record['Ghi chú đơn hàng'] ?? ''),
+  status: String(record.status ?? record['Trạng thái'] ?? ''),
+  trackingCode: String(record.trackingCode ?? record['Mã vận đơn'] ?? ''),
+  adminNote: String(record.adminNote ?? record['Ghi chú nội bộ'] ?? ''),
+  language: String(record.language ?? record['Ngôn ngữ'] ?? ''),
+  source: String(record.source ?? record['Nguồn'] ?? ''),
+  pageUrl: String(record.pageUrl ?? record['URL trang'] ?? ''),
+  itemDetails: String(record.itemDetails ?? record['Chi tiết lựa chọn'] ?? '')
+});
+
 export default function FloatingWidgets({
   lang,
   instagram = 'michelle1998kr',
@@ -139,7 +163,7 @@ export default function FloatingWidgets({
           const res = await fetch(`${orderApiUrl}?query=${encodeURIComponent(query)}`);
           const data = await res.json();
           if (data && data.success && Array.isArray(data.orders)) {
-            found = data.orders;
+            found = data.orders.map(normalizeOrderRecord);
           }
         } catch (fetchErr) {
           console.warn('API lookup failed, falling back to local memory', fetchErr);
@@ -277,6 +301,28 @@ export default function FloatingWidgets({
     }
   };
 
+  const getStatusLabel = (status: string) => {
+    if (lang !== 'ko') return status;
+    switch (status) {
+      case 'Chờ xác nhận':
+      case 'Pending Confirmation':
+      case '접수 대기':
+        return '접수 대기';
+      case 'Đang cắt may':
+      case 'Đang may':
+      case 'Tailoring':
+        return '제작 중';
+      case 'Đang vận chuyển':
+      case 'Shipping':
+        return '배송 중';
+      case 'Đã hoàn thành':
+      case 'Completed':
+        return '배송 완료';
+      default:
+        return status || '상태 확인 중';
+    }
+  };
+
   return (
     <>
       {/* 1. FLOATING DOCK */}
@@ -327,7 +373,7 @@ export default function FloatingWidgets({
           <div className="modal-dialog tracking-modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
               <div className="modal-title-group">
-                <span className="eyebrow">MICHELLE STORE · ORDER TRACKING</span>
+                <span className="eyebrow">{text(lang, 'MICHELLE STORE · 주문 및 배송 조회', 'MICHELLE STORE · ORDER TRACKING', 'MICHELLE STORE · TRA CỨU ĐƠN HÀNG')}</span>
                 <h3>{text(lang, '주문 및 배송 상태 조회', 'Order & Delivery Tracking', 'Kiểm Tra Trạng Thái Đơn Hàng')}</h3>
               </div>
               <button
@@ -388,7 +434,7 @@ export default function FloatingWidgets({
                           <span className="order-date">{item.createdAt}</span>
                         </div>
                         <span className={`status-pill ${getStatusColor(item.status)}`}>
-                          ● {item.status}
+                          ● {getStatusLabel(item.status)}
                         </span>
                       </div>
 
@@ -419,12 +465,14 @@ export default function FloatingWidgets({
                             <span className="info-val">{item.customDesign}</span>
                           </div>
                         )}
-                        {item.trackingCode && (
-                          <div className="info-row tracking-code-highlight">
-                            <span className="info-label">🚚 {text(lang, '운송장 번호', 'Tracking No', 'Mã vận đơn')}:</span>
-                            <span className="info-val"><b>{item.trackingCode}</b></span>
-                          </div>
-                        )}
+                        <div className="info-row tracking-code-highlight">
+                          <span className="info-label">🚚 {text(lang, '운송장 번호', 'Tracking No', 'Mã vận đơn')}:</span>
+                          <span className="info-val">
+                            {item.trackingCode
+                              ? <b>{item.trackingCode}</b>
+                              : text(lang, '아직 운송장 번호가 등록되지 않았습니다.', 'Not assigned yet', 'Chưa có mã vận đơn')}
+                          </span>
+                        </div>
                         {item.adminNote && (
                           <div className="info-row admin-note-row">
                             <span className="info-label">💬 {text(lang, '미셸 안내', 'Shop Note', 'Ghi chú từ shop')}:</span>
