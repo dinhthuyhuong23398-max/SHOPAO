@@ -1621,7 +1621,7 @@
   gap: 14px;
 }
 
-.field-hint-inline {
+.silk-chart-sections{display:grid;gap:18px;margin:10px 0 18px}.silk-chart-card{border:1px solid var(--line);background:#faf9f4;overflow:hidden}.silk-chart-card.selected{border-color:var(--green);background:#edeee5}.silk-chart-heading{width:100%;display:flex;align-items:baseline;gap:10px;text-align:left;border:0;padding:14px 16px;color:var(--ink)}.silk-chart-heading span{font-size:15px}.silk-chart-heading small{font:10px Arial,sans-serif;letter-spacing:.14em;color:var(--muted)}.silk-chart-heading b{margin-left:auto;font-size:14px;font-weight:400}.silk-chart-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 8px 8px}.silk-chart-image-link{display:block;background:#e9e7dd;overflow:hidden}.silk-chart-image-link img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;transition:transform .3s ease}.silk-chart-image-link:hover img{transform:scale(1.025)}.silk-color-select-label{display:block;padding:0 16px 16px;font-size:11px;color:var(--muted)}.silk-color-select-label select{display:block;width:100%;margin-top:7px;padding:11px 12px;border:1px solid var(--line);background:#fff;font-size:12px}.field-hint-inline{
   font-size: 13.5px;
   font-weight: 600;
   color: #2b3e30;
@@ -2972,3 +2972,373 @@
     padding-top: 20px !important;
   }
 }
+
+/* Product ordering layout: spacious on desktop, single-column and touch-friendly below tablet. */
+.product-detail {
+  align-items: start;
+}
+
+.detail-content {
+  min-width: 0;
+}
+
+.customizer {
+  width: 100%;
+}
+
+.customizer-buttons-stack .button {
+  min-height: 54px;
+  justify-content: center;
+  text-align: center;
+}
+
+.silk-chart-card {
+  min-width: 0;
+}
+
+.silk-chart-image-link {
+  min-width: 0;
+  border: 1px solid transparent;
+}
+
+.silk-chart-image-link:focus-visible {
+  border-color: var(--green);
+}
+
+@media (max-width: 860px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .detail-photograph {
+    position: static;
+  }
+
+  .detail-photograph > img {
+    max-height: 760px;
+    object-fit: contain;
+  }
+
+  .detail-content {
+    padding-top: 34px;
+  }
+
+  .customizer {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 540px) {
+  .detail-content {
+    padding-top: 26px;
+  }
+
+  .detail-content h1 {
+    font-size: clamp(24px, 7vw, 30px);
+    line-height: 1.35;
+  }
+
+  .customizer {
+    padding-top: 22px;
+    margin-top: 24px;
+  }
+
+  .customizer fieldset {
+    margin-bottom: 24px;
+  }
+
+  .customizer legend {
+    line-height: 1.55;
+  }
+
+  .customizer legend small {
+    float: none;
+    display: block;
+    margin: 4px 0 0 27px;
+  }
+
+  .fabric-options {
+    gap: 9px;
+  }
+
+  .fabric-option {
+    min-height: 70px;
+    padding: 13px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .silk-chart-sections {
+    gap: 14px;
+  }
+
+  .silk-chart-heading {
+    min-height: 52px;
+    padding: 13px 14px;
+  }
+
+  .silk-chart-heading span {
+    font-size: 14px;
+  }
+
+  .silk-chart-heading small {
+    font-size: 9px;
+  }
+
+  .silk-chart-gallery {
+    gap: 6px;
+    padding: 0 6px 6px;
+  }
+
+  .silk-chart-image-link img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .silk-color-select-label {
+    padding: 0 14px 14px;
+  }
+
+  .silk-color-select-label select {
+    min-height: 46px;
+    font-size: 16px;
+  }
+
+  .quantity-row {
+    min-height: 46px;
+    margin-bottom: 22px;
+  }
+
+  .stepper {
+    height: 44px;
+  }
+
+  .stepper button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .stepper input,
+  .stepper > span {
+    width: 42px;
+    font-size: 16px;
+  }
+
+  .customizer-buttons-stack {
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .customizer-buttons-stack .button {
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 14px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}
+
+/* Compact silk charts: one sharp preview per fabric, with the remaining originals on demand. */
+.silk-chart-preview {
+  position: relative;
+  display: block;
+  margin: 0 8px 8px;
+  background: #e9e7dd;
+}
+
+.silk-chart-preview img {
+  width: 100%;
+  height: min(300px, 32vw);
+  min-height: 170px;
+  object-fit: contain;
+  background: #e9e7dd;
+}
+
+.silk-chart-preview > span {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 4px 8px;
+  background: rgba(28, 46, 34, .82);
+  color: #fff;
+  font: 10px/1.3 Arial, sans-serif;
+  letter-spacing: .02em;
+}
+
+.silk-chart-more {
+  margin: 0 8px 8px;
+  border-top: 1px solid var(--line);
+}
+
+.silk-chart-more summary {
+  padding: 9px 2px 3px;
+  color: var(--green);
+  font-size: 10px;
+}
+
+.silk-chart-more .silk-chart-gallery {
+  margin-top: 8px;
+  padding: 0;
+}
+
+.silk-chart-more .silk-chart-image-link img {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 540px) {
+  .silk-chart-preview {
+    margin-inline: 6px;
+  }
+
+  .silk-chart-preview img {
+    height: min(220px, 56vw);
+    min-height: 150px;
+  }
+
+  .silk-chart-preview > span {
+    right: 7px;
+    bottom: 7px;
+    font-size: 9px;
+  }
+
+  .silk-chart-more {
+    margin-inline: 6px;
+  }
+}
+
+/* Show every shade as a compact visual thumbnail so customers can choose by sight. */
+.silk-chart-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 0 8px 8px;
+}
+
+.silk-chart-gallery .silk-chart-image-link img {
+  width: 100%;
+  height: 118px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: #e9e7dd;
+}
+
+.silk-chart-gallery .silk-chart-image-link {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid transparent;
+  background: #e9e7dd;
+  cursor: pointer;
+}
+
+.silk-chart-gallery .silk-chart-image-link.selected {
+  border-color: var(--green);
+}
+
+@media (max-width: 540px) {
+  .silk-chart-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    padding: 0 6px 6px;
+  }
+
+  .silk-chart-gallery .silk-chart-image-link img {
+    height: 88px;
+  }
+}
+
+@media (max-width: 380px) {
+  .fabric-options {
+    grid-template-columns: 1fr;
+  }
+
+  .silk-chart-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .customizer-buttons-stack .button {
+    font-size: 10px;
+  }
+}
+
+/* Clear platform branding and a stronger primary order action. */
+.platform-button-icon,
+.order-button-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+
+.button.primary.order-submit-button,
+.order-now-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700 !important;
+  letter-spacing: .025em;
+  box-shadow: 0 8px 22px rgba(94, 63, 28, .22), inset 0 1px rgba(255,255,255,.28);
+}
+
+.button.primary.order-submit-button {
+  min-height: 60px;
+  background: linear-gradient(135deg, #c9a46d, #a87940) !important;
+  border-color: #a87940 !important;
+  color: #fff !important;
+  font-size: 14px;
+}
+
+.order-now-btn {
+  min-height: 62px;
+  background: linear-gradient(135deg, #d6b47f, #b47d43) !important;
+  border-color: #a87940 !important;
+  color: #fff !important;
+  font-size: 14px;
+}
+
+.button.primary.order-submit-button:hover:not(:disabled),
+.order-now-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: saturate(1.08) brightness(1.04);
+  box-shadow: 0 11px 26px rgba(94, 63, 28, .28), inset 0 1px rgba(255,255,255,.35);
+}
+
+.button.primary.order-submit-button:active:not(:disabled),
+.order-now-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.social-pill,
+.success-actions .button,
+.tracking-notice .button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media (max-width: 540px) {
+  .button.primary.order-submit-button,
+  .order-now-btn {
+    min-height: 58px;
+    font-size: 12px;
+    padding-inline: 12px;
+  }
+
+  .platform-button-icon,
+  .order-button-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
