@@ -172,13 +172,9 @@ export default function FloatingWidgets({
 
       // 1. Check Google Apps Script API
       try {
-        const apiQuery = `${apiUrl}?query=${encodeURIComponent(query)}&_=${Date.now()}`;
-        const res = await fetch(apiQuery, {
-          method: 'GET',
-          cache: 'no-store',
-          headers: { Accept: 'application/json' }
-        });
-        if (!res.ok) throw new Error(`Tracking API HTTP ${res.status}`);
+        const apiQuery = apiUrl + '?query=' + encodeURIComponent(query) + '&_=' + Date.now();
+        const res = await fetch(apiQuery, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Tracking API HTTP ' + res.status);
         const data = await res.json();
         if (data && data.success) {
           const records = Array.isArray(data.orders)
