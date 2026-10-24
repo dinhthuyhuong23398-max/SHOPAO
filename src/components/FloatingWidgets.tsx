@@ -158,7 +158,7 @@ export default function FloatingWidgets({
   // Order lookup
   const handleTrackOrder = async (e: React.FormEvent) => {
     e.preventDefault();
-    const query = trackingQuery.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+    const query = trackingQuery.trim();
     if (!query) return;
 
     setTrackingLoading(true);
@@ -170,17 +170,17 @@ export default function FloatingWidgets({
       let found: OrderItem[] = [];
 
       // 1. Check Google Apps Script API
-      const apiUrl = (orderApiUrl || DEFAULT_ORDER_API_URL).replace(/\/$/, '');
-      try {
-        const res = await fetch(apiUrl + '?query=' + encodeURIComponent(query) + '&_=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('Tracking API HTTP ' + res.status);
-        const data = await res.json();
-        if (data && data.success) {
-          const records = Array.isArray(data.orders) ? data.orders : data.order ? [data.order] : data.orderId ? [data] : [];
-          found = records.map(normalizeOrderRecord).filter(item => item.orderId || item.phone);
+      {
+        try {
+          const apiUrl = orderApiUrl || DEFAULT_ORDER_API_URL;
+          const res = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}&_=${Date.now()}`);
+          const data = await res.json();
+          if (data && data.success && Array.isArray(data.orders)) {
+            found = data.orders.map(normalizeOrderRecord);
+          }
+        } catch (fetchErr) {
+          console.warn('API lookup failed, falling back to local memory', fetchErr);
         }
-      } catch (fetchErr) {
-        console.warn('API lookup failed, falling back to local memory', fetchErr);
       }
 
       // 2. Fallback to localStorage
