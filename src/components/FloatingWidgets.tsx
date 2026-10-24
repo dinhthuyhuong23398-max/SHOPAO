@@ -35,6 +35,17 @@ interface OrderItem {
 
 const STORAGE_ORDERS_KEY = 'michelle_recent_orders';
 
+const normalizeStatusValue = (value: unknown) => {
+  const raw = String(value ?? '').trim();
+  const key = raw.toLocaleLowerCase();
+  if (['chờ xác nhận', 'pending confirmation'].includes(key)) return 'Chờ xác nhận';
+  if (['đang chờ lễ tân', 'reception pending', '접수 대기'].includes(key)) return 'Đang chờ lễ tân';
+  if (['đang cắt may', 'đang may', 'tailoring', '제작 중'].includes(key)) return 'Đang cắt may';
+  if (['đang vận chuyển', 'shipping', '배송 중'].includes(key)) return 'Đang vận chuyển';
+  if (['đã hoàn thành', 'completed', '배송 완료'].includes(key)) return 'Đã hoàn thành';
+  return raw;
+};
+
 const normalizeOrderRecord = (record: Record<string, any>): OrderItem => ({
   orderId: String(record.orderId ?? record['Mã đơn'] ?? ''),
   createdAt: String(record.createdAt ?? record['Thời gian tạo'] ?? ''),
@@ -50,7 +61,7 @@ const normalizeOrderRecord = (record: Record<string, any>): OrderItem => ({
   sizeOrMeasurements: String(record.sizeOrMeasurements ?? record['Size / số đo'] ?? ''),
   customDesign: String(record.customDesign ?? record['Yêu cầu chỉnh sửa'] ?? ''),
   note: String(record.note ?? record['Ghi chú đơn hàng'] ?? ''),
-  status: String(record.status ?? record['Trạng thái'] ?? ''),
+  status: normalizeStatusValue(record.status ?? record['Trạng thái'] ?? ''),
   trackingCode: String(record.trackingCode ?? record['Mã vận đơn'] ?? ''),
   adminNote: String(record.adminNote ?? record['Ghi chú nội bộ'] ?? ''),
   language: String(record.language ?? record['Ngôn ngữ'] ?? ''),
