@@ -3205,6 +3205,63 @@
   border-color: var(--green);
 }
 
+/* Korean-first order tracking: compact, readable, and mobile-safe. */
+.tracking-modal .modal-title-group h3 {
+  letter-spacing: -0.02em;
+}
+
+.tracking-modal .tracking-search-form label {
+  line-height: 1.5;
+}
+
+.tracking-modal .order-status-card {
+  padding: 16px;
+}
+
+.tracking-modal .order-card-top {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tracking-modal .tracking-code-highlight {
+  border: 1px solid #e5d3ad;
+  background: #fff8e8;
+}
+
+@media (max-width: 540px) {
+  .tracking-modal .modal-header,
+  .tracking-modal .modal-body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .tracking-modal .search-input-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .tracking-modal .search-input-group input {
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .tracking-modal .search-input-group .button {
+    min-width: 72px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .tracking-modal .order-card-content .info-row {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .tracking-modal .order-card-content .info-label {
+    width: auto;
+  }
+}
+
 @media (max-width: 540px) {
   .silk-chart-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
