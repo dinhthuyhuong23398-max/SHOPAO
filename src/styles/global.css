@@ -3253,13 +3253,31 @@
 
   .tracking-modal .order-card-content .info-row {
     display: grid;
-    grid-template-columns: 92px minmax(0, 1fr);
+  grid-template-columns: 104px minmax(0, 1fr);
     gap: 8px;
+  align-items: start;
   }
 
   .tracking-modal .order-card-content .info-label {
     width: auto;
   }
+
+.tracking-modal .order-card-content .info-val {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.55;
+}
+
+.tracking-modal .info-row-details {
+  padding-top: 7px;
+  border-top: 1px solid #f0ebdf;
+}
+
+.tracking-modal .order-card-content b {
+  overflow-wrap: anywhere;
+}
 }
 
 @media (max-width: 540px) {
@@ -3365,5 +3383,19 @@
     width: 17px;
     height: 17px;
   }
+}
+
+/* Keep every customer-facing order field readable on desktop too. */
+.tracking-modal .order-card-content .info-val {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.55;
+}
+
+.tracking-modal .info-row-details {
+  padding-top: 7px;
+  border-top: 1px solid #f0ebdf;
 }
 
