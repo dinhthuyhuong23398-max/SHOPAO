@@ -327,7 +327,12 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
           }));
         }}
       >
-        🛍️ {text(lang, '바로 주문하기 (배송 정보 입력)', 'Order Now (Delivery Form)', 'Đặt Hàng Nhanh (Giao tận nơi)')} ↗
+        <svg className="order-button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M6 8h12l1 13H5L6 8Z" />
+          <path d="M9 8a3 3 0 0 1 6 0" />
+        </svg>
+        <span>{text(lang, '바로 주문하기 (배송 정보 입력)', 'Order Now (Delivery Form)', 'Đặt Hàng Nhanh (Giao tận nơi)')}</span>
+        <span className="button-arrow" aria-hidden="true">↗</span>
       </button>
       <button className="button secondary full-width" disabled={!isSaveReady} type="submit">
         {saved?text(lang,'선택에 저장됨','Added to selections','Đã thêm vào túi đồ'):editId?text(lang,'선택 수정하기','Update selection','Cập nhật lựa chọn'):text(lang,'나의 선택에 담기','Add to my selections','Thêm vào túi đồ')}<span>{saved?'✓':'+'}</span>
