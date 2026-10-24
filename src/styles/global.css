@@ -3224,6 +3224,19 @@
   background: #e9e7dd;
 }
 
+.silk-chart-gallery .silk-chart-image-link {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid transparent;
+  background: #e9e7dd;
+  cursor: pointer;
+}
+
+.silk-chart-gallery .silk-chart-image-link.selected {
+  border-color: var(--green);
+}
+
 @media (max-width: 540px) {
   .silk-chart-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));

@@ -252,9 +252,9 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
                         <b aria-hidden="true">{fabricId === chartId ? '✓' : '+'}</b>
                       </button>
                       <div className="silk-chart-gallery">
-                        {chart.images.map((image, index) => <a key={image} href={image} target="_blank" rel="noopener" className="silk-chart-image-link">
+                        {chart.images.map((image, index) => <button key={image} type="button" className={`silk-chart-image-link ${fabricId === chartId ? 'selected' : ''}`} onClick={() => chooseFabric(chartId)} aria-label={`${chart.en} color chart ${index + 1}`} aria-pressed={fabricId === chartId}>
                           <img src={image} alt={`${chart.en} color chart ${index + 1}`} loading="lazy" />
-                        </a>)}
+                        </button>)}
                       </div>
                       {fabricId === chartId && <label className="silk-color-select-label" htmlFor={`silk-color-${chartId}`}>
                         {text(lang, '컬러 코드 선택', 'Select color code')}
