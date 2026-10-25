@@ -277,19 +277,20 @@ export default function FloatingWidgets({
       } catch {}
 
       // 2. Send to Google Sheet
-      if (orderApiUrl) {
-        try {
-          await fetch(orderApiUrl, {
-            method: 'POST',
-            mode: 'no-cors', // Avoid CORS block
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-          });
-        } catch (postErr) {
-          console.warn('POST to Apps Script failed, saved locally', postErr);
-        }
+      try {
+        const apiUrl = (orderApiUrl || DEFAULT_ORDER_API_URL).replace(/\/$/, '');
+        await fetch(apiUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: {
+            // text/plain is a CORS-safelisted content type and works reliably on mobile browsers.
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (postErr) {
+        console.warn('POST to Apps Script failed, saved locally', postErr);
       }
 
       setOrderSuccess({ orderId, phone: orderForm.phone.trim() });
