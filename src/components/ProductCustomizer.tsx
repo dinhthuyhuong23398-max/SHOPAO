@@ -256,13 +256,34 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
                           <img src={image} alt={`${chart.en} color chart ${index + 1}`} loading="lazy" />
                         </button>)}
                       </div>
-                      {fabricId === chartId && <label className="silk-color-select-label" htmlFor={`silk-color-${chartId}`}>
-                        {text(lang, '컬러 코드 선택', 'Select color code')}
-                        <select id={`silk-color-${chartId}`} name="color" value={colorId === 'consult' ? '' : colorId} onChange={event => { setColor(event.target.value); setSaved(false); }} required={colorId !== 'consult'}>
-                          <option value="">{text(lang, '이미지의 컬러 코드를 선택하세요', 'Choose the color code shown in the images')}</option>
-                          {chartFabric.colors.map(item => <option key={item.id} value={item.id}>{item.code} · {item.name[lang] || item.name.en}</option>)}
-                        </select>
-                      </label>}
+                      {fabricId === chartId && (
+                        <div className="silk-color-picker" role="group" aria-label={text(lang, '컬러 선택', 'Choose a color')}>
+                          <p className="silk-color-picker-title">{text(lang, '컬러를 선택하세요', 'Select a color')}</p>
+                          <div className="silk-color-grid">
+                            {chartFabric.colors.map(item => {
+                              const isSelected = colorId === item.id;
+                              return (
+                                <button
+                                  key={item.id}
+                                  type="button"
+                                  className={`silk-color-option ${isSelected ? 'selected' : ''}`}
+                                  onClick={() => { setColor(item.id); setSaved(false); }}
+                                  aria-pressed={isSelected}
+                                  aria-label={`${item.code} · ${item.name[lang] || item.name.en}`}
+                                >
+                                  <span className="silk-color-chip" style={{ backgroundColor: item.hex }}>
+                                    {isSelected && <span className="silk-color-check" aria-hidden="true">✓</span>}
+                                  </span>
+                                  <span className="silk-color-meta">
+                                    <b>{item.code}</b>
+                                    <small>{item.name[lang] || item.name.en}</small>
+                                  </span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </section>;
                   })}
               </div>
