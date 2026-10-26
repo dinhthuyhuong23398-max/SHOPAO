@@ -3,8 +3,7 @@ import {sitePath} from '../../../lib/paths';
 import Layout from '../../../layouts/Layout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
 import DesignPosts from '../../../components/DesignPosts.astro';
-import ProductCustomizer from '../../../components/ProductCustomizer';
-import {getCatalog,designs} from '../../../lib/catalog';
+import {getCatalog,designs,settings} from '../../../lib/catalog';
 import {priceLabel} from '../../../lib/shop';
 import {text,locales,categoryNames} from '../../../lib/i18n';
 import type {Locale} from '../../../lib/types';
@@ -136,7 +135,18 @@ const isLinen = product.slug.includes('linen') || ['ml-31', 'ml-32', 'ml-33', 'm
           'Thiết kế này được may đo theo số đo của bạn. Thời gian may khoảng 7 ngày, vận chuyển khoảng 5–6 ngày.'
         )}
       </p>
-      <ProductCustomizer product={product} catalog={catalog} lang={lang} client:load/>
+      <section class="product-contact-panel" aria-label={text(lang, '문의하기', 'Contact Michelle')}>
+        <span class="eyebrow">{text(lang, '사이즈와 컬러 상담', 'Sizing & color consultation')}</span>
+        <p>{text(lang, '원하시는 디자인은 Instagram 또는 Threads에서 직접 상담해 주세요.', 'For sizing, color and availability, contact Michelle directly on Instagram or Threads.')}</p>
+        <div class="product-contact-icons">
+          <a class="product-contact-icon" href={`https://www.instagram.com/${settings.instagram}/`} target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.266.058 1.645.07 4.849.07zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4z"/></svg>
+          </a>
+          <a class="product-contact-icon threads-logo" href={`https://www.threads.com/@${settings.threads}`} target="_blank" rel="noopener noreferrer" aria-label="Threads" title="Threads">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2zm1.196 4.279c-2.38 0-4.086 1.637-4.086 3.921 0 2.457 1.83 4.025 4.316 4.025 1.488 0 2.808-.592 3.587-1.611l-1.393-.974c-.53.649-1.336 1.01-2.194 1.01-1.458 0-2.528-.888-2.553-2.316h6.398c.041-.219.062-.444.062-.676 0-2.094-1.516-3.379-4.137-3.379zm-2.318 3.25c.108-.94.943-1.666 2.193-1.666 1.189 0 2.016.702 2.138 1.666h-4.331z"/></svg>
+          </a>
+        </div>
+      </section>
       <details class="product-details">
         <summary>{isLinen ? text(lang, '린넨 기성복 사이즈 & 관리 안내', 'Ready-to-wear size & care guide', 'Hướng dẫn chọn size & bảo quản linen') : text(lang,'사이즈 맞춤 제작 안내','Made-to-measure details')} <span>+</span></summary>
         <p>{isLinen ? text(lang,
