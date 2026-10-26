@@ -3418,3 +3418,19 @@
   .silk-color-option{padding:8px 7px}
   .silk-color-chip{width:28px;height:28px;flex-basis:28px}
 }
+
+/* Contact-first product pages */
+.product-contact-panel{margin-top:30px;padding:24px;background:#edeee5;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.product-contact-panel>p{max-width:520px;margin:10px 0 18px;color:var(--muted);font-size:12px;line-height:1.9}
+.product-contact-icons{display:flex;gap:10px}
+.product-contact-icon,.social-logo-link{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--ink);border-radius:50%;background:transparent;transition:background .2s,color .2s,transform .2s}
+.product-contact-icon:hover,.social-logo-link:hover{background:var(--green);color:#fff;transform:translateY(-2px)}
+.product-contact-icon svg,.social-logo-link svg{width:21px;height:21px}
+.social-logo-button{justify-content:center!important;padding:12px!important}
+.social-logo-button .platform-button-icon{width:22px;height:22px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:540px){
+  .product-contact-panel{padding:20px}
+  .product-contact-panel>p{font-size:11px}
+  .product-contact-icon{width:42px;height:42px}
+}
