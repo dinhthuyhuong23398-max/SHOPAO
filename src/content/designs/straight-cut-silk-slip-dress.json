@@ -1,0 +1,26 @@
+{
+  "id": "ML-36",
+  "slug": "straight-cut-silk-slip-dress",
+  "category": "dress",
+  "name": {
+    "ko": "실크 스트레이트 슬립 드레스",
+    "en": "Straight-Cut Silk Slip Dress",
+    "vi": "Đầm lụa dáng suông"
+  },
+  "description": {
+    "ko": "부드럽게 흐르는 실크와 깔끔한 스트레이트 실루엣이 돋보이는 우아한 드레스입니다. 고객님의 신체 치수에 맞춰 제작됩니다.",
+    "en": "An elegant straight-cut silk slip dress with a soft, fluid drape and a clean, effortless silhouette. Made to your measurements.",
+    "vi": "Đầm lụa dáng suông mềm mại, rũ nhẹ thanh lịch và được may theo số đo riêng."
+  },
+  "image": "assets/designs/dress/straight-cut-silk-slip-dress.jpg",
+  "published": true,
+  "featured": true,
+  "order": 1,
+  "priceMin": 80000,
+  "priceMax": 80000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}

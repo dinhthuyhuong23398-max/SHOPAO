@@ -1,0 +1,26 @@
+{
+  "id": "ML-37",
+  "slug": "cowl-neck-flare-sleeve-silk-top",
+  "category": "top",
+  "name": {
+    "ko": "카울넥 플레어 소매 실크 탑",
+    "en": "Cowl Neck Silk Top with Flared Sleeves",
+    "vi": "Áo lụa cổ đổ tay ống loe"
+  },
+  "description": {
+    "ko": "우아한 카울넥과 부드럽게 퍼지는 플레어 소매가 돋보이는 프리미엄 실크 탑입니다. 단독 또는 스커트와 함께 세련되게 연출할 수 있습니다.",
+    "en": "A refined silk top with a softly draped cowl neckline and elegant flared sleeves. Designed to pair beautifully with a skirt or tailored separates.",
+    "vi": "Áo lụa cổ đổ tay ống loe mềm mại, thanh lịch, dễ phối cùng chân váy hoặc quần may đo."
+  },
+  "image": "assets/designs/top/cowl-neck-flare-sleeve-silk-top.jpg",
+  "published": true,
+  "featured": true,
+  "order": 2,
+  "priceMin": 47000,
+  "priceMax": 47000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
