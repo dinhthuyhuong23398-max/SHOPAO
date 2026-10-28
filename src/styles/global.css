@@ -3494,3 +3494,6 @@
   .floating-action-dock{right:max(6px, env(safe-area-inset-right));gap:8px}
   .floating-btn{width:42px;height:42px}
 }
+
+/* Use the store green for every product price. */
+.product-price,.detail-price,.hud-garment-price{color:var(--green)!important}
