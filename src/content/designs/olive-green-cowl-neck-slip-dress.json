@@ -1,0 +1,26 @@
+{
+  "id": "ML-15",
+  "slug": "olive-green-cowl-neck-slip-dress",
+  "category": "dress",
+  "name": {
+    "ko": "올리브 그린 슬립 카울넥 드레스",
+    "en": "Olive Green Cowl Neck Slip Dress",
+    "vi": "Đầm hai dây cổ đổ xanh olive"
+  },
+  "description": {
+    "ko": "올리브 그린 컬러의 우아한 카울넥 슬립 드레스.",
+    "en": "An elegant olive green spaghetti-strap dress with a softly draped cowl neckline.",
+    "vi": "Đầm hai dây cổ đổ màu xanh olive, dáng dài thanh lịch."
+  },
+  "image": "assets/designs/dress/minimal-cowl-neck-slip-dress.png",
+  "published": false,
+  "featured": true,
+  "order": 0,
+  "priceMin": 80000,
+  "priceMax": 80000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
