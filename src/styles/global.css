@@ -3468,3 +3468,29 @@
   .product-info-grid>div{grid-template-columns:1fr;gap:3px}
   .product-contact-channel{gap:11px}
 }
+
+/* Center the floating contact/tracking dock without scroll listeners. */
+.floating-action-dock{
+  top:50%;
+  right:18px;
+  bottom:auto;
+  transform:translateY(-50%);
+  gap:12px;
+  contain:layout paint;
+}
+@media(max-width:540px){
+  .floating-action-dock{
+    top:50%;
+    right:max(8px, env(safe-area-inset-right));
+    bottom:auto;
+    transform:translateY(-50%);
+    gap:9px;
+  }
+  .floating-btn{width:46px;height:46px}
+  .floating-btn-instagram .instagram-logo-svg{width:23px;height:23px}
+  .floating-btn-tracking .tracking-icon-svg{width:20px;height:20px}
+}
+@media(max-width:380px){
+  .floating-action-dock{right:max(6px, env(safe-area-inset-right));gap:8px}
+  .floating-btn{width:42px;height:42px}
+}
