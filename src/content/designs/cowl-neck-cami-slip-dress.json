@@ -1,0 +1,26 @@
+{
+  "id": "ML-35",
+  "slug": "cowl-neck-cami-slip-dress",
+  "category": "dress",
+  "name": {
+    "ko": "카울넥 실크 캐미 슬립 드레스",
+    "en": "Cowl Neck Silk Cami Slip Dress",
+    "vi": "Đầm 2 dây cổ đổ"
+  },
+  "description": {
+    "ko": "자연스럽게 흐르는 카울넥과 섬세한 2줄 스트랩이 돋보이는 프리미엄 실크 드레스. 고객님의 신체 치수에 맞춰 우아하게 제작됩니다.",
+    "en": "A refined silk cami slip dress with a softly draped cowl neckline and delicate double straps. Made to your measurements for an elegant, fluid silhouette.",
+    "vi": "Đầm lụa 2 dây cổ đổ mềm mại, tôn dáng thanh lịch và được may theo số đo riêng."
+  },
+  "image": "assets/designs/dress/cowl-neck-cami-slip-dress.jpg",
+  "published": true,
+  "featured": true,
+  "order": 0,
+  "priceMin": 80000,
+  "priceMax": 80000,
+  "fabrics": [
+    "suzhou",
+    "ruby"
+  ],
+  "reviews": []
+}
