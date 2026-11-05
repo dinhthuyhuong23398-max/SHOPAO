@@ -11,28 +11,23 @@ const blank={chest:'',waist:'',hips:'',height:'',weight:''};
 const help: Record<string, Record<Locale, string>> = {
   chest: {
     ko: '가슴의 가장 넓은 부분을 수평으로 둘러 재주세요.',
-    en: 'Measure around the fullest part of your chest, keeping the tape level.',
-    vi: 'Đo ở phần đầy đặn nhất của ngực, giữ thước dây nằm ngang bằng phẳng.'
+    en: 'Measure around the fullest part of your chest, keeping the tape level.'
   },
   waist: {
     ko: '허리의 가장 잘록한 부분을 편안하게 둘러 재주세요.',
-    en: 'Measure around your natural waist without tightening the tape.',
-    vi: 'Đo ở phần nhỏ nhất của eo (khoảng 3cm trên rốn), không siết chặt thước dây.'
+    en: 'Measure around your natural waist without tightening the tape.'
   },
   hips: {
     ko: '엉덩이의 가장 넓은 부분을 수평으로 둘러 재주세요.',
-    en: 'Measure around the fullest part of your hips with the tape level.',
-    vi: 'Đo ở phần rộng nhất của mông, giữ thước dây ngang bằng phẳng.'
+    en: 'Measure around the fullest part of your hips with the tape level.'
   },
   height: {
     ko: '신발을 벗고 바르게 선 상태에서 재주세요.',
-    en: 'Measure your height standing straight without shoes.',
-    vi: 'Đo chiều cao khi đứng thẳng, không mang giày dép.'
+    en: 'Measure your height standing straight without shoes.'
   },
   weight: {
     ko: '현재 몸무게를 입력해 주세요.',
-    en: 'Enter your current body weight.',
-    vi: 'Nhập cân nặng thực tế hiện tại của bạn.'
+    en: 'Enter your current body weight.'
   },
 };
 const factor=(key:keyof Measurements,unit:UnitSystem)=>unit==='metric'?1:key==='weight'?0.45359237:2.54;
