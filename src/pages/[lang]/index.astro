@@ -40,7 +40,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": text(lang, "미셸 스토어 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션", "Michelle Store Made-to-measure premium synthetic-blend silk Collection"),
-    "description": text(lang, "수저우 고급 합성섬유 혼방 실크와 루비 고급 합성섬유 혼방 실크로 맞춤 제작되는 미셸의 드레스, 블라우스, 트라우저 컬렉션.", "Michelle's collection of custom made-to-measure dresses, blouses, and trousers in luxury premium synthetic-blend silk."),
+    "description": text(lang, "수저우 고급 합성섬유 혼방 실크와 루비 고급 합성섬유 혼방 실크로 맞춤 제작되는 미셸의 드레스, 블라우스, 트라우저 컬렉션.", "Michelle's collection of custom made-to-measure dresses, blouses, and trousers in premium synthetic-blend silk."),
     "url": new URL(sitePath(`/${lang}/`), Astro.site || 'https://michellestore.com').toString(),
     "mainEntity": {
       "@type": "ItemList",
@@ -58,7 +58,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <!-- 1. AUTO-SLIDING HERO BANNER WITH 4 MODELS -->
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">SILK, MADE TO MEASURE · {text(lang,'사이즈 맞춤 제작','BESPOKE premium synthetic-blend silk')}</span>
+      <span class="eyebrow">PREMIUM SYNTHETIC-BLEND FABRIC · {text(lang,'사이즈 맞춤 제작','BESPOKE premium synthetic-blend silk')}</span>
       <h1>
         {text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>
         {text(lang,'나에게 맞는 사이즈.','made to your size.')}
@@ -212,11 +212,11 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <section class="charts-showcase-section section-wrap" id="color-charts">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">100% PURE SILK & COLOR PALETTES · {text(lang,'고급 합성섬유 혼방 실크 원단 & 공식 컬러 차트','premium synthetic-blend silk PALETTES')}</span>
+        <span class="eyebrow">PREMIUM SYNTHETIC-BLEND FABRIC & COLOR PALETTES · {text(lang,'고급 합성섬유 혼방 실크 원단 & 공식 컬러 차트','premium synthetic-blend silk PALETTES')}</span>
         <h2>{text(lang,'수저우 고급 합성섬유 혼방 실크 & 루비 고급 합성섬유 혼방 실크 공식 컬러 차트','Exclusive Suzhou & Ruby premium synthetic-blend silk Color Palettes')}</h2>
       </div>
       <p>{text(lang,
-        '미셸의 모든 드레스는 고객님의 체형 치수에 맞춰 premium synthetic-blend silk(수저우 / 루비)와 40여 가지 컬러 중 원하는 조합으로 맞춤 제작됩니다.\n각 원단의 고유한 광택과 텍스처, 추천 실루엣을 확인해 보세요.',
+        '미셸의 모든 드레스는 고객님의 체형 치수에 맞춰 고급 합성섬유 혼방 원단(수저우 / 루비)와 40여 가지 컬러 중 원하는 조합으로 맞춤 제작됩니다.\n각 원단의 고유한 광택과 텍스처, 추천 실루엣을 확인해 보세요.',
         'Every Michelle dress is made-to-measure tailored to your exact measurements in your choice of Suzhou or Ruby premium synthetic-blend silk and 40+ curated color shades.\nDiscover each premium synthetic-blend silk’s unique luster, hand-feel, and silhouette suitability.'
       )}</p>
     </div>
@@ -233,8 +233,8 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           </div>
         </a>
         <div class="chart-card-body">
-          <span class="chart-badge">SUZHOU premium synthetic-blend silk · premium synthetic-blend silk</span>
-          <h3>{text(lang, '수저우 고급 합성섬유 혼방 실크 공식 컬러 차트', 'Suzhou premium synthetic-blend silk Premium Palette')}</h3>
+          <span class="chart-badge">SUZHOU · PREMIUM SYNTHETIC-BLEND SILK</span>
+          <h3>{text(lang, '수저우 고급 합성섬유 혼방 실크 공식 컬러 차트', 'Suzhou Synthetic-Blend Fabric Color Palette')}</h3>
           <p class="chart-card-lead">{text(lang, '은은하고 자연스러운 광택과 극상의 부드러움', 'Subtle natural sheen & supreme silky softness')}</p>
           <ul class="chart-specs-list">
             <li>
@@ -272,7 +272,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           </div>
         </a>
         <div class="chart-card-body">
-          <span class="chart-badge">RUBY premium synthetic-blend silk · premium synthetic-blend silk</span>
+          <span class="chart-badge">RUBY · PREMIUM SYNTHETIC-BLEND SILK</span>
           <h3>{text(lang, '루비 고급 합성섬유 혼방 실크 공식 컬러 차트', 'Ruby premium synthetic-blend silk Premium Palette')}</h3>
           <p class="chart-card-lead">{text(lang, '선명한 럭셔리 윤기와 탄탄한 실루엣 유지', 'Luminous luxury luster & structured shape retention')}</p>
           <ul class="chart-specs-list">
