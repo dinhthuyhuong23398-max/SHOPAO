@@ -12,7 +12,7 @@ const { lang, title = 'Michelle Store', description, notFound = false } = Astro.
 const fullTitle = title === 'Michelle Store'
   ? text(lang, '미셸 스토어 (Michelle Store) | 프리미엄 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션', 'Michelle Store | Made-to-Measure Bespoke premium synthetic-blend silk Collection')
   : `${title} | Michelle Store`;
-const fullDescription = description || text(lang, '미셸 스토어 - 프리미엄 수저우 고급 합성섬유 혼방 실크 & 루비 고급 합성섬유 혼방 실크 100% 맞춤 제작. 고객님의 신체 치수에 맞춰 정교하게 제작되는 오뜨 꾸뛰르 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션.', 'Michelle Store - Bespoke luxury premium synthetic-blend silk collection crafted in authentic Suzhou and Ruby premium synthetic-blend silk. Made to your unique measurements with personalized atelier tailoring.');
+const fullDescription = description || text(lang, '미셸 스토어 - 프리미엄 수저우 고급 합성섬유 혼방 실크 & 루비 고급 합성섬유 혼방 실크 100% 맞춤 제작. 고객님의 신체 치수에 맞춰 정교하게 제작되는 오뜨 꾸뛰르 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션.', 'Michelle Store - Bespoke premium synthetic-blend silk collection made with premium synthetic-blend fabric in Suzhou and Ruby ranges. Made to your unique measurements with personalized atelier tailoring.');
 const isNotFound = notFound === true;
 const path = isNotFound ? '/' : routePath(Astro.url.pathname).replace(/^\/(ko|en)(?=\/|$)/,'') || '/';
 const siteOrigin = Astro.site?.origin || 'https://michellestore.com';
@@ -75,7 +75,7 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
             "url": "https://michellestore.com/brand/michelle-logo.png"
           },
           "image": "https://michellestore.com/brand/michelle-logo.png",
-          "description": text(lang, "미셸의 디자인과 프리미엄 수저우·루비 고급 합성섬유 혼방 실크로 제작하는 1:1 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션.", "Bespoke premium synthetic-blend silk collection crafted in luxurious Suzhou and Ruby premium synthetic-blend silk. Made to your unique measurements."),
+          "description": text(lang, "미셸의 디자인과 프리미엄 수저우·루비 고급 합성섬유 혼방 실크로 제작하는 1:1 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션.", "Bespoke premium synthetic-blend silk collection crafted in premium synthetic-blend fabric from the Suzhou and Ruby ranges. Made to your unique measurements."),
           "sameAs": [
             `https://www.instagram.com/${settings.instagram}/`,
             `https://www.threads.com/@${settings.threads}`
