@@ -2,9 +2,9 @@
   {
     "id": "suzhou",
     "name": {
-      "ko": "수저우 실크",
-      "vi": "Lụa Tô Châu",
-      "en": "Suzhou Silk"
+      "ko": "고급 합성섬유 혼방 실크 – 수저우",
+      "vi": "Lụa pha tổng hợp cao cấp – Tô Châu",
+      "en": "Premium synthetic-blend silk – Suzhou"
     },
     "description": {
       "ko": "부드럽고 매끄러우며 은은한 자연스러운 광택감이 특징입니다. 피부에 닿았을 때 매우 부드럽고 편안하며 구김이 적습니다.",
@@ -255,14 +255,14 @@
   {
     "id": "ruby",
     "name": {
-      "ko": "루비 실크",
-      "vi": "Lụa Ruby",
-      "en": "Ruby Silk"
+      "ko": "고급 합성섬유 혼방 실크 – 루비",
+      "vi": "Lụa pha tổng hợp cao cấp – Ruby",
+      "en": "Premium synthetic-blend silk – Ruby"
     },
     "description": {
-      "ko": "수저우 실크보다 광택감이 더 뚜렷하며, 원단이 도톰하고 힘이 있어 핏(form)을 탄탄하게 잡아주며 구김이 없습니다.",
-      "vi": "Độ bóng rõ hơn lụa Tô Châu, chất vải dày dặn, đầm tay, giữ form dáng tốt và không nhăn.",
-      "en": "More pronounced luster than Suzhou silk, thicker hand-feel, structured drape with excellent shape retention, wrinkle-free."
+      "ko": "고급 합성섬유 혼방 실크보다 광택감이 더 뚜렷하며, 원단이 도톰하고 힘이 있어 핏(form)을 탄탄하게 잡아주며 구김이 없습니다.",
+      "vi": "Độ bóng rõ hơn lụa pha tổng hợp cao cấp, chất vải dày dặn, đầm tay, giữ form dáng tốt và không nhăn.",
+      "en": "More pronounced luster than premium synthetic-blend silk, thicker hand-feel, structured drape with excellent shape retention, wrinkle-free."
     },
     "colors": [
       {
