@@ -95,7 +95,7 @@ export default function FloatingWidgets({
     address: '',
     productName: '',
     productId: '',
-    fabric: lang === 'ko' ? '수저우 실크 (Suzhou Silk)' : 'Suzhou Silk',
+    fabric: lang === 'ko' ? '수저우 고급 합성섬유 혼방 실크 (Suzhou premium synthetic-blend silk)' : 'Suzhou premium synthetic-blend silk',
     color: '',
     quantity: 1,
     sizeType: 'bespoke', // 'bespoke' | 'standard'
@@ -121,7 +121,7 @@ export default function FloatingWidgets({
       const detail = e.detail || {};
       const isLinenProd = detail.product?.slug?.includes('linen') || ['ML-31', 'ML-32', 'ML-33', 'ML-34'].includes(detail.product?.id);
       const prodName = detail.product?.name?.[lang] || detail.product?.name?.en || detail.product?.id || '';
-      const fabName = detail.fabricName || (isLinenProd ? '100% Premium Natural Linen' : (detail.fabricId === 'ruby' ? (lang === 'ko' ? '루비 실크 (Ruby Silk)' : 'Ruby Silk') : (lang === 'ko' ? '수저우 실크 (Suzhou Silk)' : 'Suzhou Silk')));
+      const fabName = detail.fabricName || (isLinenProd ? '100% Premium Natural Linen' : (detail.fabricId === 'ruby' ? (lang === 'ko' ? '루비 고급 합성섬유 혼방 실크 (Ruby premium synthetic-blend silk)' : 'Ruby premium synthetic-blend silk') : (lang === 'ko' ? '수저우 고급 합성섬유 혼방 실크 (Suzhou premium synthetic-blend silk)' : 'Suzhou premium synthetic-blend silk')));
       const col = detail.colorId || '';
       const sizeVal = detail.size || 'M';
 
@@ -253,7 +253,7 @@ export default function FloatingWidgets({
       email: orderForm.email.trim(),
       address: orderForm.address.trim(),
       productId: orderForm.productId.trim(),
-      productName: orderForm.productName.trim() || (lang === 'ko' ? '미셸 맞춤 실크 디자인' : 'Michelle Bespoke Design'),
+      productName: orderForm.productName.trim() || (lang === 'ko' ? '미셸 맞춤 고급 합성섬유 혼방 실크 디자인' : 'Michelle Bespoke Design'),
       fabric: orderForm.fabric,
       color: orderForm.color || (lang === 'ko' ? '인스타그램 색상 상담' : 'Color consultation via Instagram'),
       quantity: orderForm.quantity,
