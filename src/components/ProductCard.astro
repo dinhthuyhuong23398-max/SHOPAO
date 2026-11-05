@@ -16,7 +16,6 @@ const isLinen = product.slug.includes('linen') || ['ml-31', 'ml-32', 'ml-33', 'm
   data-slug={product.slug.toLowerCase()}
   data-name-ko={product.name.ko.toLowerCase()}
   data-name-en={product.name.en.toLowerCase()}
-  data-name-vi={(product.name.vi || product.name.en).toLowerCase()}
   data-fabrics={product.fabrics.join(' ').toLowerCase()}
 >
   <a href={sitePath(`/${lang}/designs/${product.slug}/`)} class="product-image-link">
