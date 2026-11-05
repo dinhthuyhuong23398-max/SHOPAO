@@ -56,13 +56,13 @@ const SILK_COLOR_CHARTS: Record<FabricId, {
   images: string[];
 }> = {
   suzhou: {
-    ko: '수저우 실크',
-    en: 'SUZHOU SILK',
+    ko: '수저우 고급 합성섬유 혼방 실크',
+    en: 'SUZHOU premium synthetic-blend silk',
     images: Array.from({length: 6}, (_, index) => sitePath(`/fabrics/suzhou/color-${String(index + 1).padStart(2, '0')}.jpg`))
   },
   ruby: {
-    ko: '루비 실크',
-    en: 'RUBY SILK',
+    ko: '루비 고급 합성섬유 혼방 실크',
+    en: 'RUBY premium synthetic-blend silk',
     images: Array.from({length: 6}, (_, index) => sitePath(`/fabrics/ruby/color-${String(index + 1).padStart(2, '0')}.jpg`))
   }
 };
@@ -215,7 +215,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
       <>
         {/* Silk Option 01: Fabric Choice (Suzhou / Ruby) */}
         <fieldset>
-          <legend><span>01</span> {text(lang,'실크 선택','Choose your silk','Chọn chất liệu lụa')}</legend>
+          <legend><span>01</span> {text(lang,'고급 합성섬유 혼방 실크 선택','Choose your premium synthetic-blend silk','Chọn chất liệu lụa pha tổng hợp cao cấp')}</legend>
           <div className="fabric-options">
             {catalog.fabrics.filter(f=>product.fabrics.includes(f.id)).map(f => (
               <label key={f.id} className={`fabric-option ${fabricId===f.id?'selected':''}`}>
@@ -235,7 +235,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
             {selectedSilkColor && <small>{selectedSilkColor}{color && ` · ${color.code}`}</small>}
           </legend>
           {!fabric ? (
-            <p className="field-hint">{text(lang,'먼저 실크를 선택해 주세요.','Choose a silk to see its colors.','Vui lòng chọn loại lụa để xem bảng màu.')}</p>
+            <p className="field-hint">{text(lang,'먼저 고급 합성섬유 혼방 실크를 선택해 주세요.','Choose a premium synthetic-blend silk to see its colors.','Vui lòng chọn loại lụa pha tổng hợp cao cấp để xem bảng màu.')}</p>
           ) : (
             <>
               <div className="silk-chart-sections">
@@ -328,7 +328,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
         className="button order-now-btn full-width" 
         disabled={!isOrderReady}
         onClick={() => {
-          const detailFabric = isLinen ? '100% Premium Natural Linen' : (fabricId === 'ruby' ? 'Lụa Ruby (Ruby Silk)' : 'Lụa Tô Châu (Suzhou Silk)');
+          const detailFabric = isLinen ? '100% Premium Natural Linen' : (fabricId === 'ruby' ? 'lụa pha tổng hợp cao cấp (Ruby premium synthetic-blend silk)' : 'lụa pha tổng hợp cao cấp (Suzhou premium synthetic-blend silk)');
           const detailColor = isLinen 
             ? (selectedLinenColorName || text(lang, '기본 색상', 'Standard Color', 'Màu theo ảnh mẫu'))
             : (colorId === 'consult' ? text(lang, '상담 후 결정', 'Consultation', 'Tư vấn cùng Michelle') : (color?.name[lang] || colorId));
@@ -366,7 +366,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
     <p className="field-hint centered">
       {isLinen 
         ? text(lang, '기성복 컬렉션은 표준 사이즈(XS, S, M, L)로 제작되어 별도의 맞춤 치수 입력이 필요하지 않습니다.', 'Ready-to-wear items are crafted to standard sizes (XS, S, M, L) and do not require custom body measurements.', 'Sản phẩm may sẵn theo bảng size chuẩn XS, S, M, L, không cần đo lại số đo cơ thể.')
-        : text(lang,'치수는 모든 아이템을 고른 뒤 한 번만 입력해요.','Enter your measurements once, after choosing all your pieces.','Số đo cơ thể chỉ cần nhập một lần sau khi bạn đã chọn xong các mẫu lụa.')
+        : text(lang,'치수는 모든 아이템을 고른 뒤 한 번만 입력해요.','Enter your measurements once, after choosing all your pieces.','Số đo cơ thể chỉ cần nhập một lần sau khi bạn đã chọn xong các mẫu lụa pha tổng hợp cao cấp.')
       }
     </p>
   </form>;
