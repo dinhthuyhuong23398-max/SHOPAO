@@ -633,7 +633,6 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
         const slug = (card.dataset.slug || '').toLowerCase();
         const nameKo = (card.dataset.nameKo || '').toLowerCase();
         const nameEn = (card.dataset.nameEn || '').toLowerCase();
-        const nameVi = (card.dataset.nameVi || '').toLowerCase();
         const fabrics = (card.dataset.fabrics || '').toLowerCase();
 
         // 1. Category filter
@@ -653,11 +652,10 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           const normSlug = normalizeKeyword(slug);
           const normKo = normalizeKeyword(nameKo);
           const normEn = normalizeKeyword(nameEn);
-          const normVi = normalizeKeyword(nameVi);
           const normFab = normalizeKeyword(fabrics);
           const synonyms = (categorySynonyms[cat] || []).map(normalizeKeyword).join(' ');
 
-          const fullSearchable = `${id} ${slug} ${nameKo} ${nameEn} ${nameVi} ${fabrics} ${normId} ${normSlug} ${normKo} ${normEn} ${normVi} ${normFab} ${synonyms}`;
+          const fullSearchable = `${id} ${slug} ${nameKo} ${nameEn} ${fabrics} ${normId} ${normSlug} ${normKo} ${normEn} ${normFab} ${synonyms}`;
 
           matchesQuery = tokens.every(token => {
             const normToken = normalizeKeyword(token);
