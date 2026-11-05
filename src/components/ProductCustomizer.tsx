@@ -57,12 +57,12 @@ const SILK_COLOR_CHARTS: Record<FabricId, {
 }> = {
   suzhou: {
     ko: '수저우 고급 합성섬유 혼방 실크',
-    en: 'SUZHOU premium synthetic-blend silk',
+    en: 'SUZHOU PREMIUM SYNTHETIC-BLEND SILK',
     images: Array.from({length: 6}, (_, index) => sitePath(`/fabrics/suzhou/color-${String(index + 1).padStart(2, '0')}.jpg`))
   },
   ruby: {
     ko: '루비 고급 합성섬유 혼방 실크',
-    en: 'RUBY premium synthetic-blend silk',
+    en: 'RUBY PREMIUM SYNTHETIC-BLEND SILK',
     images: Array.from({length: 6}, (_, index) => sitePath(`/fabrics/ruby/color-${String(index + 1).padStart(2, '0')}.jpg`))
   }
 };
