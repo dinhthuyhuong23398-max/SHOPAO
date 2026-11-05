@@ -32,7 +32,7 @@ const productFabrics = product.fabrics.map(id => catalog.fabrics.find(fabric => 
       "@type": "Brand",
       "name": "Michelle Store"
     },
-    "material": isLinen ? "100% Premium Natural Linen" : "Silk (Suzhou / Ruby)",
+    "material": isLinen ? "100% Premium Natural Linen" : "premium synthetic-blend silk (Suzhou / Ruby)",
     "offers": {
       "@type": "Offer",
       "url": new URL(Astro.url.pathname, Astro.site || 'https://michellestore.com').toString(),
@@ -116,7 +116,7 @@ const productFabrics = product.fabrics.map(id => catalog.fabrics.find(fabric => 
         ) : text(lang,
           '사진은 디자인 참고용이며 선택하신 컬러로 자동 변경되지 않아요. 코디된 다른 의류와 액세서리는 선택에 포함되지 않아요.',
           'This photograph shows the design and does not change with your color choice. Other styled garments and accessories are not included.',
-          'Hình ảnh thể hiện phom dáng thiết kế mẫu. Sản phẩm thực tế sẽ được may theo đúng chất liệu lụa, màu sắc và số đo bạn đã chọn.'
+          'Hình ảnh thể hiện phom dáng thiết kế mẫu. Sản phẩm thực tế sẽ được may theo đúng chất liệu lụa pha tổng hợp cao cấp, màu sắc và số đo bạn đã chọn.'
         )}
       </p>
     </div>
@@ -171,8 +171,8 @@ const productFabrics = product.fabrics.map(id => catalog.fabrics.find(fabric => 
           'Michelle’s linen collection is crafted from 100% natural premium linen in standard ready-to-wear sizes (XS, S, M, L). Hand wash or gentle machine wash recommended.',
           'Bộ sưu tập Linen của Michelle được may sẵn theo bảng size chuẩn từ chất liệu 100% linen tự nhiên thoáng mát, phom dáng thanh lịch. Giặt tay nhẹ nhàng hoặc giặt máy chế độ êm để giữ độ bền đẹp.'
         ) : text(lang,
-          '미셸의 컬렉션에 있는 디자인을 선택하고 실크와 컬러, 신체 치수를 담아 제안서를 만들어 주세요. 선택하신 디자인의 사이즈를 고객님의 치수에 맞춰 제작하며, 인스타그램 상담을 통해 사이즈와 최종 가격, 제작 일정을 확인해 드려요. 이곳에서 결제되거나 주문이 확정되지는 않아요.',
-          'Choose an existing design from Michelle’s collection, select your silk and color, then add your measurements to the proposal. Your selected design is made to your size. Michelle will confirm sizing, final pricing and production timing on Instagram. This site does not take payment or confirm an order.'
+          '미셸의 컬렉션에 있는 디자인을 선택하고 고급 합성섬유 혼방 실크와 컬러, 신체 치수를 담아 제안서를 만들어 주세요. 선택하신 디자인의 사이즈를 고객님의 치수에 맞춰 제작하며, 인스타그램 상담을 통해 사이즈와 최종 가격, 제작 일정을 확인해 드려요. 이곳에서 결제되거나 주문이 확정되지는 않아요.',
+          'Choose an existing design from Michelle’s collection, select your premium synthetic-blend silk and color, then add your measurements to the proposal. Your selected design is made to your size. Michelle will confirm sizing, final pricing and production timing on Instagram. This site does not take payment or confirm an order.'
         )}</p>
       </details>
     </div>
