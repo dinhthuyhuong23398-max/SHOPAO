@@ -8,44 +8,44 @@ import {StorageNotice,CopyField} from './ShopShared';
 
 const LINEN_DATA: Record<string, {
   sizes: string[];
-  colors: { id: string; name: { ko: string; en: string; vi: string }; hex: string }[];
+  colors: { id: string; name: { ko: string; en: string }; hex: string }[];
 }> = {
   'ML-31': {
     sizes: ['XS', 'S', 'M', 'L'],
     colors: [
-      { id: 'black', name: { ko: '블랙', en: 'Black', vi: 'Đen' }, hex: '#222222' },
-      { id: 'white', name: { ko: '화이트', en: 'White', vi: 'Trắng' }, hex: '#fcfcfc' },
-      { id: 'beige', name: { ko: '베이지', en: 'Beige', vi: 'Be' }, hex: '#d9cdb8' },
-      { id: 'brown', name: { ko: '브라운', en: 'Brown', vi: 'Nâu' }, hex: '#7a5238' },
-      { id: 'khaki', name: { ko: '올리브 카키', en: 'Olive Khaki', vi: 'Xanh rêu' }, hex: '#586249' }
+      { id: 'black', name: { ko: '블랙', en: 'Black' }, hex: '#222222' },
+      { id: 'white', name: { ko: '화이트', en: 'White' }, hex: '#fcfcfc' },
+      { id: 'beige', name: { ko: '베이지', en: 'Beige' }, hex: '#d9cdb8' },
+      { id: 'brown', name: { ko: '브라운', en: 'Brown' }, hex: '#7a5238' },
+      { id: 'khaki', name: { ko: '올리브 카키', en: 'Olive Khaki' }, hex: '#586249' }
     ]
   },
   'ML-32': {
     sizes: ['XS', 'S', 'M', 'L'],
     colors: [
-      { id: 'brown', name: { ko: '초콜릿 브라운', en: 'Chocolate Brown', vi: 'Nâu sô cô la' }, hex: '#4e3328' },
-      { id: 'black', name: { ko: '블랙', en: 'Black', vi: 'Đen' }, hex: '#222222' }
+      { id: 'brown', name: { ko: '초콜릿 브라운', en: 'Chocolate Brown' }, hex: '#4e3328' },
+      { id: 'black', name: { ko: '블랙', en: 'Black' }, hex: '#222222' }
     ]
   },
   'ML-33': {
     sizes: ['XS', 'S', 'M', 'L'],
     colors: [
-      { id: 'white', name: { ko: '클래식 화이트', en: 'Classic White', vi: 'Trắng tinh khôi' }, hex: '#fcfcfc' },
-      { id: 'pink', name: { ko: '파스텔 핑크', en: 'Pastel Pink', vi: 'Hồng phấn' }, hex: '#f2d5da' },
-      { id: 'lilac', name: { ko: '라벤더 라일락', en: 'Lavender Lilac', vi: 'Tím pastel' }, hex: '#d8cfdf' },
-      { id: 'burgundy', name: { ko: '버건디', en: 'Burgundy', vi: 'Đỏ đô' }, hex: '#72202f' },
-      { id: 'yellow', name: { ko: '버터 옐로우', en: 'Butter Yellow', vi: 'Vàng bơ' }, hex: '#f5e49f' }
+      { id: 'white', name: { ko: '클래식 화이트', en: 'Classic White' }, hex: '#fcfcfc' },
+      { id: 'pink', name: { ko: '파스텔 핑크', en: 'Pastel Pink' }, hex: '#f2d5da' },
+      { id: 'lilac', name: { ko: '라벤더 라일락', en: 'Lavender Lilac' }, hex: '#d8cfdf' },
+      { id: 'burgundy', name: { ko: '버건디', en: 'Burgundy' }, hex: '#72202f' },
+      { id: 'yellow', name: { ko: '버터 옐로우', en: 'Butter Yellow' }, hex: '#f5e49f' }
     ]
   },
   'ML-34': {
     sizes: ['XS', 'S', 'M', 'L'],
     colors: [
-      { id: 'oatmeal', name: { ko: '오트밀 베이지', en: 'Oatmeal Beige', vi: 'Be Yến Mạch' }, hex: '#d8cbba' },
-      { id: 'white', name: { ko: '크리스프 화이트', en: 'Crisp White', vi: 'Trắng Tinh Khôi' }, hex: '#fcfcfc' },
-      { id: 'black', name: { ko: '미드나잇 블랙', en: 'Midnight Black', vi: 'Đen Tuyền' }, hex: '#222222' },
-      { id: 'navy', name: { ko: '클래식 네이비', en: 'Classic Navy', vi: 'Xanh Navy' }, hex: '#212d45' },
-      { id: 'khaki', name: { ko: '웜 카키', en: 'Warm Khaki', vi: 'Khaki / Nâu Tây' }, hex: '#7a6e55' },
-      { id: 'wine', name: { ko: '리치 와인', en: 'Rich Wine', vi: 'Đỏ Rượu Vang' }, hex: '#5f232b' }
+      { id: 'oatmeal', name: { ko: '오트밀 베이지', en: 'Oatmeal Beige' }, hex: '#d8cbba' },
+      { id: 'white', name: { ko: '크리스프 화이트', en: 'Crisp White' }, hex: '#fcfcfc' },
+      { id: 'black', name: { ko: '미드나잇 블랙', en: 'Midnight Black' }, hex: '#222222' },
+      { id: 'navy', name: { ko: '클래식 네이비', en: 'Classic Navy' }, hex: '#212d45' },
+      { id: 'khaki', name: { ko: '웜 카키', en: 'Warm Khaki' }, hex: '#7a6e55' },
+      { id: 'wine', name: { ko: '리치 와인', en: 'Rich Wine' }, hex: '#5f232b' }
     ]
   }
 };
@@ -116,7 +116,7 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
     event.preventDefault();
     if(isLinen) {
       try {
-        const itemNote = `[Size: ${selectedSize}${selectedLinenColorName ? ` · Màu: ${selectedLinenColorName}` : ''}] ${note}`.trim();
+        const itemNote = `[Size: ${selectedSize}${selectedLinenColorName ? ` · Color: ${selectedLinenColorName}` : ''}] ${note}`.trim();
         const effectiveColor = linenColorId || 'default';
         if(editId&&cart.items.some(i=>i.id===editId)){
           updateSelection(editId,{fabricId:'suzhou',colorId:effectiveColor,quantity,note:itemNote});
@@ -328,11 +328,11 @@ export default function ProductCustomizer({product,catalog,lang}:{product:Produc
         className="button order-now-btn full-width" 
         disabled={!isOrderReady}
         onClick={() => {
-          const detailFabric = isLinen ? '100% Premium Natural Linen' : (fabricId === 'ruby' ? 'Lụa Ruby (Ruby Silk)' : 'Lụa Tô Châu (Suzhou Silk)');
+          const detailFabric = isLinen ? '100% Premium Natural Linen' : (fabricId === 'ruby' ? 'Premium synthetic-blend silk (Ruby)' : 'Premium synthetic-blend silk (Suzhou)');
           const detailColor = isLinen 
             ? (selectedLinenColorName || text(lang, '기본 색상', 'Standard Color'))
             : (colorId === 'consult' ? text(lang, '상담 후 결정', 'Consultation') : (color?.name[lang] || colorId));
-          const detailNote = isLinen ? `[Size: ${selectedSize}${selectedLinenColorName ? ` · Màu: ${selectedLinenColorName}` : ''}] ${note}`.trim() : note;
+          const detailNote = isLinen ? `[Size: ${selectedSize}${selectedLinenColorName ? ` · Color: ${selectedLinenColorName}` : ''}] ${note}`.trim() : note;
 
           window.dispatchEvent(new CustomEvent('michelle:open-order', {
             detail: {
