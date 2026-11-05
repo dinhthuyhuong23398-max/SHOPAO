@@ -103,7 +103,7 @@ export function buildProposal(cart: Cart, measurements: Measurements, units: Uni
   parseCart(cart);
   if (!cart.items.length || !validMeasurements(measurements) || cart.items.some(item=>!resolveItem(item,catalog).available)) throw new Error('Incomplete proposal');
   const greeting = lang === 'vi' 
-    ? 'Xin chào Michelle, mình muốn đặt may đo các thiết kế lụa theo số đo cá nhân dưới đây:' 
+    ? 'Xin chào Michelle, mình muốn đặt may đo các thiết kế lụa pha tổng hợp cao cấp theo số đo cá nhân dưới đây:' 
     : (lang === 'ko' ? '안녕하세요 미셸님, 아래 디자인의 사이즈 맞춤 제작 상담을 요청드려요.' : 'Hi Michelle, I would like a quote for these designs made to my measurements.');
   const lines = [greeting, ''];
   cart.items.forEach((item,index)=>{
