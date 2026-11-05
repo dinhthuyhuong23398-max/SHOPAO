@@ -10,9 +10,9 @@ import FloatingWidgets from '../components/FloatingWidgets';
 interface Props { lang:Locale; title?:string; description?:string; notFound?:boolean; }
 const { lang, title = 'Michelle Store', description, notFound = false } = Astro.props;
 const fullTitle = title === 'Michelle Store'
-  ? text(lang, '미셸 스토어 (Michelle Store) | 프리미엄 사이즈 맞춤 실크 컬렉션', 'Michelle Store | Made-to-Measure Bespoke Silk Collection')
+  ? text(lang, '미셸 스토어 (Michelle Store) | 프리미엄 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션', 'Michelle Store | Made-to-Measure Bespoke premium synthetic-blend silk Collection')
   : `${title} | Michelle Store`;
-const fullDescription = description || text(lang, '미셸 스토어 - 프리미엄 수저우 실크 & 루비 실크 100% 맞춤 제작. 고객님의 신체 치수에 맞춰 정교하게 제작되는 오뜨 꾸뛰르 사이즈 맞춤 실크 컬렉션.', 'Michelle Store - Bespoke luxury silk collection crafted in authentic Suzhou and Ruby silk. Made to your unique measurements with personalized atelier tailoring.');
+const fullDescription = description || text(lang, '미셸 스토어 - 프리미엄 수저우 고급 합성섬유 혼방 실크 & 루비 고급 합성섬유 혼방 실크 100% 맞춤 제작. 고객님의 신체 치수에 맞춰 정교하게 제작되는 오뜨 꾸뛰르 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션.', 'Michelle Store - Bespoke luxury premium synthetic-blend silk collection crafted in authentic Suzhou and Ruby premium synthetic-blend silk. Made to your unique measurements with personalized atelier tailoring.');
 const isNotFound = notFound === true;
 const path = isNotFound ? '/' : routePath(Astro.url.pathname).replace(/^\/(ko|en)(?=\/|$)/,'') || '/';
 const siteOrigin = Astro.site?.origin || 'https://michellestore.com';
@@ -27,7 +27,7 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
     <meta name="theme-color" content="#f6f4ee" />
     <title>{fullTitle}</title>
     <meta name="description" content={fullDescription} />
-    <meta name="keywords" content={text(lang, '미셸 스토어, 사이즈 맞춤 실크, 수저우 실크, 루비 실크, 실크 드레스, 실크 블라우스, 맞춤 원피스, Michelle Store, 실크 슬립 드레스', 'Michelle Store, bespoke silk, made to measure silk, suzhou silk, ruby silk, custom silk dress, luxury silk tailoring')} />
+    <meta name="keywords" content={text(lang, '미셸 스토어, 사이즈 맞춤 고급 합성섬유 혼방 실크, 수저우 고급 합성섬유 혼방 실크, 루비 고급 합성섬유 혼방 실크, 고급 합성섬유 혼방 실크 드레스, 고급 합성섬유 혼방 실크 블라우스, 맞춤 원피스, Michelle Store, 고급 합성섬유 혼방 실크 슬립 드레스', 'Michelle Store, bespoke premium synthetic-blend silk, made to measure premium synthetic-blend silk, suzhou premium synthetic-blend silk, ruby premium synthetic-blend silk, custom premium synthetic-blend silk dress, luxury premium synthetic-blend silk tailoring')} />
     <meta name="author" content="Michelle Store" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     
@@ -75,7 +75,7 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
             "url": "https://michellestore.com/brand/michelle-logo.png"
           },
           "image": "https://michellestore.com/brand/michelle-logo.png",
-          "description": text(lang, "미셸의 디자인과 프리미엄 수저우·루비 실크로 제작하는 1:1 사이즈 맞춤 실크 컬렉션.", "Bespoke silk collection crafted in luxurious Suzhou and Ruby silk. Made to your unique measurements."),
+          "description": text(lang, "미셸의 디자인과 프리미엄 수저우·루비 고급 합성섬유 혼방 실크로 제작하는 1:1 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션.", "Bespoke premium synthetic-blend silk collection crafted in luxurious Suzhou and Ruby premium synthetic-blend silk. Made to your unique measurements."),
           "sameAs": [
             `https://www.instagram.com/${settings.instagram}/`,
             `https://www.threads.com/@${settings.threads}`
@@ -100,13 +100,13 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
   </head>
   <body>
     <a href="#main" class="skip-link">{text(lang,'본문으로 이동','Skip to content')}</a>
-    <div class="announcement">{text(lang,'미셸의 실크, 나에게 맞는 사이즈로','SILK, MADE TO YOUR MEASUREMENTS')}<span>SUZHOU & RUBY</span></div>
+    <div class="announcement">{text(lang,'미셸의 고급 합성섬유 혼방 실크, 나에게 맞는 사이즈로','premium synthetic-blend silk, MADE TO YOUR MEASUREMENTS')}<span>SUZHOU & RUBY</span></div>
     <header class="site-header">
       <a class="brand" href={sitePath(`/${lang}/`)} aria-label="Michelle Store"><img src={sitePath("/brand/michelle-logo.png")} width="834" height="390" alt="ML Michelle Store" /></a>
       <nav class="main-nav" aria-label={text(lang,'메인 메뉴','Main navigation')}>
         <a href={sitePath(`/${lang}/#collection`)}>{text(lang,'컬렉션','Collection')}</a>
         <a href={sitePath(`/${lang}/?q=linen#collection`)} data-nav-linen>{text(lang,'린넨','Linen')}</a>
-        <a href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'실크 & 컬러','Silk & color')}</a>
+        <a href={sitePath(`/${lang}/fabrics/`)}>{text(lang,'고급 합성섬유 혼방 실크 & 컬러','premium synthetic-blend silk & color')}</a>
         <a href={sitePath(`/${lang}/#how-it-works`)}>{text(lang,'사이즈 맞춤 안내','Made to measure')}</a>
         <a href={sitePath(`/${lang}/#care-guide`)}>{text(lang,'관리 가이드','Care guide')}</a>
       </nav>
