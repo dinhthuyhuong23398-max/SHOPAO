@@ -34,13 +34,13 @@ if (heroSlides.length < 4) {
 const second = heroSlides[1] ?? catalog.designs[1];
 const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSlides[0];
 ---
-<Layout lang={lang} title={text(lang,'사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션','Made-to-measure premium synthetic-blend silk collection')}>
+<Layout lang={lang} title={text(lang,'사이즈 맞춤 실크 컬렉션','Made-to-measure silk collection')}>
   <!-- Schema.org CollectionPage & ItemList Structured Data for Google Rich Snippets -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": text(lang, "미셸 스토어 사이즈 맞춤 고급 합성섬유 혼방 실크 컬렉션", "Michelle Store Made-to-measure premium synthetic-blend silk Collection"),
-    "description": text(lang, "수저우 고급 합성섬유 혼방 실크와 루비 고급 합성섬유 혼방 실크로 맞춤 제작되는 미셸의 드레스, 블라우스, 트라우저 컬렉션.", "Michelle's collection of custom made-to-measure dresses, blouses, and trousers in premium synthetic-blend silk."),
+    "name": text(lang, "미셸 스토어 사이즈 맞춤 실크 컬렉션", "Michelle Store Made-to-measure silk Collection"),
+    "description": text(lang, "수저우 실크와 루비 실크로 맞춤 제작되는 미셸의 드레스, 블라우스, 트라우저 컬렉션.", "Michelle's collection of custom made-to-measure dresses, blouses, and trousers in silk."),
     "url": new URL(sitePath(`/${lang}/`), Astro.site || 'https://michellestore.com').toString(),
     "mainEntity": {
       "@type": "ItemList",
@@ -58,16 +58,16 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <!-- 1. AUTO-SLIDING HERO BANNER WITH 4 MODELS -->
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">PREMIUM SYNTHETIC-BLEND FABRIC · {text(lang,'사이즈 맞춤 제작','BESPOKE premium synthetic-blend silk')}</span>
+      <span class="eyebrow">SILK, MADE TO MEASURE · {text(lang,'사이즈 맞춤 제작','BESPOKE silk')}</span>
       <h1>
         {text(lang,'미셸의 디자인,','Michelle’s designs,')}<br/>
         {text(lang,'나에게 맞는 사이즈.','made to your size.')}
       </h1>
-      <p class="hero-script">premium synthetic-blend silk, made to measure.</p>
+      <p class="hero-script">silk, made to measure.</p>
       <p class="hero-description">
         {text(lang,
-          '미셸의 컬렉션에서 디자인과 고급 합성섬유 혼방 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.',
-          'Choose a design from Michelle’s collection, along with your premium synthetic-blend silk and color.\nYour selected piece is made to your measurements.'
+          '미셸의 컬렉션에서 디자인과 실크, 컬러를 고르세요.\n선택하신 디자인을 고객님의 신체 치수에 맞춰 제작해 드려요.',
+          'Choose a design from Michelle’s collection, along with your silk and color.\nYour selected piece is made to your measurements.'
         )}
       </p>
       <div class="hero-actions">
@@ -138,8 +138,8 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
         <h2>{text(lang,'전체 컬렉션','The Full Collection')}</h2>
       </div>
       <p>{text(lang,
-        '모든 디자인은 수저우 고급 합성섬유 혼방 실크 또는 루비 고급 합성섬유 혼방 실크 중 원하는 소재와 컬러로 맞춤 제작할 수 있어요.',
-        'Every design can be tailored in your choice of Suzhou or Ruby premium synthetic-blend silk and favorite hue.'
+        '모든 디자인은 수저우 실크 또는 루비 실크 중 원하는 소재와 컬러로 맞춤 제작할 수 있어요.',
+        'Every design can be tailored in your choice of Suzhou or Ruby Silk and favorite hue.'
       )}</p>
     </div>
 
@@ -212,12 +212,12 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
   <section class="charts-showcase-section section-wrap" id="color-charts">
     <div class="section-heading">
       <div>
-        <span class="eyebrow">PREMIUM SYNTHETIC-BLEND FABRIC & COLOR PALETTES · {text(lang,'고급 합성섬유 혼방 실크 원단 & 공식 컬러 차트','premium synthetic-blend silk PALETTES')}</span>
-        <h2>{text(lang,'수저우 고급 합성섬유 혼방 실크 & 루비 고급 합성섬유 혼방 실크 공식 컬러 차트','Exclusive Suzhou & Ruby premium synthetic-blend silk Color Palettes')}</h2>
+        <span class="eyebrow">SILK & COLOR PALETTES · {text(lang,'실크 원단 & 공식 컬러 차트','silk PALETTES')}</span>
+        <h2>{text(lang,'수저우 실크 & 루비 실크 공식 컬러 차트','Exclusive Suzhou & Ruby Silk Color Palettes')}</h2>
       </div>
       <p>{text(lang,
-        '미셸의 모든 드레스는 고객님의 체형 치수에 맞춰 고급 합성섬유 혼방 원단(수저우 / 루비)와 40여 가지 컬러 중 원하는 조합으로 맞춤 제작됩니다.\n각 원단의 고유한 광택과 텍스처, 추천 실루엣을 확인해 보세요.',
-        'Every Michelle dress is made-to-measure tailored to your exact measurements in your choice of Suzhou or Ruby premium synthetic-blend silk and 40+ curated color shades.\nDiscover each premium synthetic-blend silk’s unique luster, hand-feel, and silhouette suitability.'
+        '미셸의 모든 드레스는 고객님의 체형 치수에 맞춰 수저우·루비 실크 원단와 40여 가지 컬러 중 원하는 조합으로 맞춤 제작됩니다.\n각 원단의 고유한 광택과 텍스처, 추천 실루엣을 확인해 보세요.',
+        'Every Michelle dress is made-to-measure tailored to your exact measurements in your choice of Suzhou or Ruby Silk and 40+ curated color shades.\nDiscover each silk’s unique luster, hand-feel, and silhouette suitability.'
       )}</p>
     </div>
 
@@ -225,16 +225,16 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     <div class="charts-dual-grid">
       <!-- Suzhou Silk Card -->
       <div class="chart-showcase-card">
-        <a class="chart-image-wrap" href={sitePath(`/${lang}/fabrics/#suzhou`)} title={text(lang, '수저우 고급 합성섬유 혼방 실크 컬러차트 상세보기', 'View Suzhou premium synthetic-blend silk Palette')}>
-          <Image src={sourceImage('assets/fabrics/suzhou/chart-bilingual.jpg')} width={1600} quality={95} format="webp" alt="Suzhou premium synthetic-blend silk Palette" loading="lazy" />
+        <a class="chart-image-wrap" href={sitePath(`/${lang}/fabrics/#suzhou`)} title={text(lang, '수저우 실크 컬러차트 상세보기', 'View Suzhou Silk Palette')}>
+          <Image src={sourceImage('assets/fabrics/suzhou/chart-bilingual.jpg')} width={1600} quality={95} format="webp" alt="Suzhou Silk Palette" loading="lazy" />
           <div class="chart-zoom-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
             <span>{text(lang, '고해상도 차트 보기', 'View High-Res Chart')}</span>
           </div>
         </a>
         <div class="chart-card-body">
-          <span class="chart-badge">SUZHOU · PREMIUM SYNTHETIC-BLEND SILK</span>
-          <h3>{text(lang, '수저우 고급 합성섬유 혼방 실크 공식 컬러 차트', 'Suzhou Synthetic-Blend Fabric Color Palette')}</h3>
+          <span class="chart-badge">SUZHOU SILK</span>
+          <h3>{text(lang, '수저우 실크 공식 컬러 차트', 'Suzhou Silk Color Palette')}</h3>
           <p class="chart-card-lead">{text(lang, '은은하고 자연스러운 광택과 극상의 부드러움', 'Subtle natural sheen & supreme silky softness')}</p>
           <ul class="chart-specs-list">
             <li>
@@ -256,7 +256,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           </ul>
           <div class="chart-card-footer">
             <a class="text-link" href={sitePath(`/${lang}/fabrics/#suzhou`)}>
-              {text(lang, '수저우 고급 합성섬유 혼방 실크 컬러북 전체보기', 'Explore Suzhou premium synthetic-blend silk Library')} ↗
+              {text(lang, '수저우 실크 컬러북 전체보기', 'Explore Suzhou Silk Library')} ↗
             </a>
           </div>
         </div>
@@ -264,16 +264,16 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
 
       <!-- Ruby Silk Card -->
       <div class="chart-showcase-card">
-        <a class="chart-image-wrap" href={sitePath(`/${lang}/fabrics/#ruby`)} title={text(lang, '루비 고급 합성섬유 혼방 실크 컬러차트 상세보기', 'View Ruby premium synthetic-blend silk Palette')}>
-          <Image src={sourceImage('assets/fabrics/ruby/chart-bilingual.jpg')} width={1600} quality={95} format="webp" alt="Ruby premium synthetic-blend silk Palette" loading="lazy" />
+        <a class="chart-image-wrap" href={sitePath(`/${lang}/fabrics/#ruby`)} title={text(lang, '루비 실크 컬러차트 상세보기', 'View Ruby Silk Palette')}>
+          <Image src={sourceImage('assets/fabrics/ruby/chart-bilingual.jpg')} width={1600} quality={95} format="webp" alt="Ruby Silk Palette" loading="lazy" />
           <div class="chart-zoom-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
             <span>{text(lang, '고해상도 차트 보기', 'View High-Res Chart')}</span>
           </div>
         </a>
         <div class="chart-card-body">
-          <span class="chart-badge">RUBY · PREMIUM SYNTHETIC-BLEND SILK</span>
-          <h3>{text(lang, '루비 고급 합성섬유 혼방 실크 공식 컬러 차트', 'Ruby premium synthetic-blend silk Premium Palette')}</h3>
+          <span class="chart-badge">RUBY SILK</span>
+          <h3>{text(lang, '루비 실크 공식 컬러 차트', 'Ruby Silk Premium Palette')}</h3>
           <p class="chart-card-lead">{text(lang, '선명한 럭셔리 윤기와 탄탄한 실루엣 유지', 'Luminous luxury luster & structured shape retention')}</p>
           <ul class="chart-specs-list">
             <li>
@@ -286,7 +286,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
             </li>
             <li>
               <span class="spec-label">{text(lang, '추천 드레스', 'Best For')}</span>
-              <span>{text(lang, '백리스 파티 고급 합성섬유 혼방 실크 드레스(ML-05), 롱슬리브 카울넥 드레스(ML-09), 격식 있는 파티 & 웨딩', 'Backless party gown (ML-05), Long-sleeve cowl dress (ML-09), Evening galas')}</span>
+              <span>{text(lang, '백리스 파티 실크 드레스(ML-05), 롱슬리브 카울넥 드레스(ML-09), 격식 있는 파티 & 웨딩', 'Backless party gown (ML-05), Long-sleeve cowl dress (ML-09), Evening galas')}</span>
             </li>
             <li>
               <span class="spec-label">{text(lang, '컬러 구성', 'Shades')}</span>
@@ -295,7 +295,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
           </ul>
           <div class="chart-card-footer">
             <a class="text-link" href={sitePath(`/${lang}/fabrics/#ruby`)}>
-              {text(lang, '루비 고급 합성섬유 혼방 실크 컬러북 전체보기', 'Explore Ruby premium synthetic-blend silk Library')} ↗
+              {text(lang, '루비 실크 컬러북 전체보기', 'Explore Ruby Silk Library')} ↗
             </a>
           </div>
         </div>
@@ -306,10 +306,10 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     <div class="chart-order-tip">
       <span class="chart-order-tip-icon">💡</span>
       <div class="chart-order-tip-content">
-        <strong>{text(lang, '맞춤 제작 고급 합성섬유 혼방 실크 & 컬러 선택 안내', 'How to Choose Your premium synthetic-blend silk & Color Code')}</strong>
+        <strong>{text(lang, '맞춤 제작 실크 & 컬러 선택 안내', 'How to Choose Your silk & Color Code')}</strong>
         <p>{text(lang,
-          '마음에 드는 드레스 디자인을 선택하신 후, 주문서(제안서) 또는 인스타그램 1:1 상담 시 원하시는 원단 종류(수저우 고급 합성섬유 혼방 실크 / 루비 고급 합성섬유 혼방 실크)와 컬러 번호(예: 수저우 04번 밀크 화이트 또는 루비 80번 와인 버건디)를 알려주세요. 고객님의 키, 가슴, 허리, 엉덩이 치수에 맞춰 한 분만을 위한 전담 테일러가 정성껏 수작업으로 완성해 드립니다.',
-          'Choose your favorite dress design, then specify your preferred fabric (Suzhou premium synthetic-blend silk / Ruby premium synthetic-blend silk) and color code (e.g., Suzhou No. 04 Milk White or Ruby No. 80 Wine Burgundy) in your order proposal or Instagram consultation. Our master tailors will meticulously handcraft your dress to your exact height and body measurements.'
+          '마음에 드는 드레스 디자인을 선택하신 후, 주문서(제안서) 또는 인스타그램 1:1 상담 시 원하시는 원단 종류(수저우 실크 / 루비 실크)와 컬러 번호(예: 수저우 04번 밀크 화이트 또는 루비 80번 와인 버건디)를 알려주세요. 고객님의 키, 가슴, 허리, 엉덩이 치수에 맞춰 한 분만을 위한 전담 테일러가 정성껏 수작업으로 완성해 드립니다.',
+          'Choose your favorite dress design, then specify your preferred fabric (Suzhou Silk / Ruby Silk) and color code (e.g., Suzhou No. 04 Milk White or Ruby No. 80 Wine Burgundy) in your order proposal or Instagram consultation. Our master tailors will meticulously handcraft your dress to your exact height and body measurements.'
         )}</p>
       </div>
     </div>
@@ -338,10 +338,10 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       </div>
       <div class="step-card">
         <span class="step-num">02</span>
-        <h3>{text(lang,'원단 & 컬러 선택','premium synthetic-blend silk & Color')}</h3>
+        <h3>{text(lang,'원단 & 컬러 선택','silk & Color')}</h3>
         <p>{text(lang,
-          '수저우 고급 합성섬유 혼방 실크 또는 루비 고급 합성섬유 혼방 실크를 고르고, 공식 컬러차트에서 원하는 색상 코드를 확인합니다.',
-          'Choose between Suzhou or Ruby premium synthetic-blend silk and pick your desired shade from the color chart.'
+          '수저우 실크 또는 루비 실크를 고르고, 공식 컬러차트에서 원하는 색상 코드를 확인합니다.',
+          'Choose between Suzhou or Ruby Silk and pick your desired shade from the color chart.'
         )}</p>
       </div>
       <div class="step-card">
@@ -433,7 +433,7 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
     <div class="section-heading">
       <div>
         <span class="eyebrow">CARE GUIDE · {text(lang,'원단 관리 가이드','CARE GUIDE')}</span>
-        <h2>{text(lang,'고급 합성섬유 혼방 실크 & 린넨 관리 가이드','premium synthetic-blend silk & Linen Care Guide')}</h2>
+        <h2>{text(lang,'실크 & 린넨 관리 가이드','silk & Linen Care Guide')}</h2>
       </div>
       <p>{text(lang,
         '고급 원단을 오래도록 아름답게 유지하기 위한 세탁 및 보관 방법입니다.',
@@ -445,13 +445,13 @@ const detail = catalog.designs.find(d => d.slug === 'slim-fit-blouse') ?? heroSl
       <!-- Silk Care -->
       <div class="care-card">
         <div class="care-card-header">
-          <span class="care-tag">premium synthetic-blend silk CARE</span>
-          <h3>{text(lang, '고급 합성섬유 혼방 실크 의류 관리법', 'premium synthetic-blend silk Garment Care')}</h3>
+          <span class="care-tag">silk CARE</span>
+          <h3>{text(lang, '실크 의류 관리법', 'silk Garment Care')}</h3>
         </div>
         <div class="care-details">
           <div class="care-item">
             <strong>{text(lang, '세탁 (Washing)', 'Washing')}:</strong>
-            <p>{text(lang, '손세탁 또는 세탁망에 넣어 30°C 이하 미온수/냉수로 세탁하세요. 샴푸나 순한 중성세제를 사용하시고 강력 표백제는 피해주세요.', 'Hand wash or use a laundry bag in water below 30°C. Use mild shampoo or gentle premium synthetic-blend silk detergent. Avoid harsh detergents.')}</p>
+            <p>{text(lang, '손세탁 또는 세탁망에 넣어 30°C 이하 미온수/냉수로 세탁하세요. 샴푸나 순한 중성세제를 사용하시고 강력 표백제는 피해주세요.', 'Hand wash or use a laundry bag in water below 30°C. Use mild shampoo or gentle silk detergent. Avoid harsh detergents.')}</p>
           </div>
           <div class="care-item">
             <strong>{text(lang, '건조 (Drying)', 'Drying')}:</strong>
