@@ -8,13 +8,13 @@ import type {Locale} from '../../lib/types';
 export function getStaticPaths(){return locales.map(lang=>({params:{lang}}));}
 const lang=Astro.params.lang as Locale;
 ---
-<Layout lang={lang} title={text(lang,'고급 합성섬유 혼방 실크 & 컬러','premium synthetic-blend silk & color')}>
+<Layout lang={lang} title={text(lang,'실크 & 컬러','silk & color')}>
   <div class="section-wrap page-intro">
     <span class="eyebrow">THE COLOR LIBRARY</span>
     <h1>{text(lang,'나만의 색을 찾는 시간','Find your kind of color')}</h1>
     <p>{text(lang,
-      '수저우와 루비, 두 가지 프리미엄 고급 합성섬유 혼방 실크에서 시작되는 나만의 선택.\n화면과 조명에 따라 색이 다르게 보일 수 있으니, 정확한 색상 코드는 미셸과 상담 시 확인해 주세요.',
-      'Your choice begins with Suzhou or Ruby premium synthetic-blend silk.\nScreens and lighting can change how colors appear. Confirm the exact shade with Michelle.'
+      '수저우와 루비, 두 가지 프리미엄 실크에서 시작되는 나만의 선택.\n화면과 조명에 따라 색이 다르게 보일 수 있으니, 정확한 색상 코드는 미셸과 상담 시 확인해 주세요.',
+      'Your choice begins with Suzhou or Ruby Silk.\nScreens and lighting can change how colors appear. Confirm the exact shade with Michelle.'
     )}</p>
   </div>
 
@@ -29,7 +29,7 @@ const lang=Astro.params.lang as Locale;
       return (
         <section class="fabric-library" id={fabric.id}>
           <div class="fabric-library-heading">
-            <span class="eyebrow">{fabric.id.toUpperCase()} SILK · {isSuzhou ? text(lang, '수저우 고급 합성섬유 혼방 실크', 'Suzhou premium synthetic-blend silk') : text(lang, '루비 고급 합성섬유 혼방 실크', 'Ruby premium synthetic-blend silk')}</span>
+            <span class="eyebrow">{fabric.id.toUpperCase()} SILK · {isSuzhou ? text(lang, '수저우 실크', 'Suzhou Silk') : text(lang, '루비 실크', 'Ruby Silk')}</span>
             <h2>{fName}</h2>
             <p>{fDesc}</p>
           </div>
@@ -41,7 +41,7 @@ const lang=Astro.params.lang as Locale;
               <p class="muted">
                 {text(lang,
                   '실제 원단 촬영본입니다. 이미지를 클릭하시면 2048px 초고화질 원본으로 확대하여 원단의 미세한 광택과 톤을 확인하실 수 있어요.',
-                  'Captured from premium synthetic-blend silk bolts. Click the image to view at full 2048px ultra HD to inspect the fine texture and sheen.'
+                  'Captured from silk bolts. Click the image to view at full 2048px ultra HD to inspect the fine texture and sheen.'
                 )}
               </p>
             </div>
@@ -55,7 +55,7 @@ const lang=Astro.params.lang as Locale;
                     <span>{text(lang, '2048px 원본 확대보기', 'Click to zoom 2048px')}</span>
                   </span>
                 </a>
-                <figcaption>{isSuzhou ? text(lang, '수저우 고급 합성섬유 혼방 실크 프리미엄 컬러차트 (2048px)', 'Suzhou premium synthetic-blend silk Premium Color Chart (2048px)') : text(lang, '루비 고급 합성섬유 혼방 실크 프리미엄 컬러차트 (2048px)', 'Ruby premium synthetic-blend silk Premium Color Chart (2048px)')}</figcaption>
+                <figcaption>{isSuzhou ? text(lang, '수저우 실크 프리미엄 컬러차트 (2048px)', 'Suzhou Silk Premium Color Chart (2048px)') : text(lang, '루비 실크 프리미엄 컬러차트 (2048px)', 'Ruby Silk Premium Color Chart (2048px)')}</figcaption>
               </figure>
             </div>
           </div>
@@ -68,13 +68,13 @@ const lang=Astro.params.lang as Locale;
       <div class="section-heading">
         <div>
           <span class="eyebrow">FABRIC GUIDE</span>
-          <h2>{text(lang, '두 가지 고급 합성섬유 혼방 실크의 특별한 매력', 'Compare Our Two Synthetic-Blend Fabric Ranges')}</h2>
+          <h2>{text(lang, '두 가지 실크의 특별한 매력', 'Compare Our Two Silk Fabric Ranges')}</h2>
         </div>
       </div>
       <div class="fabric-compare-grid">
         <div class="compare-card">
-          <span class="compare-badge">SUZHOU premium synthetic-blend silk</span>
-          <h3>{text(lang, '수저우 고급 합성섬유 혼방 실크 (Suzhou premium synthetic-blend silk)', 'Suzhou premium synthetic-blend silk')}</h3>
+          <span class="compare-badge">SUZHOU silk</span>
+          <h3>{text(lang, '수저우 실크 (Suzhou Silk)', 'Suzhou Silk')}</h3>
           <p class="compare-lead">{text(lang, '은은한 광택과 극상의 부드러움', 'Subtle sheen & supreme softness')}</p>
           <ul class="compare-list">
             <li>{text(lang, '피부에 닿는 촉감이 극도로 부드럽고 쾌적하여 한 겹으로 착용 시에도 편안합니다.', 'Exceptionally gentle and pleasant on skin, ideal even in a single layer.')}</li>
@@ -82,8 +82,8 @@ const lang=Astro.params.lang as Locale;
           </ul>
         </div>
         <div class="compare-card">
-          <span class="compare-badge">RUBY premium synthetic-blend silk</span>
-          <h3>{text(lang, '루비 고급 합성섬유 혼방 실크 (Ruby premium synthetic-blend silk)', 'Ruby premium synthetic-blend silk')}</h3>
+          <span class="compare-badge">RUBY silk</span>
+          <h3>{text(lang, '루비 실크 (Ruby Silk)', 'Ruby Silk')}</h3>
           <p class="compare-lead">{text(lang, '선명한 광택감과 탄탄한 실루엣 유지', 'Lustrous sheen & structured drape')}</p>
           <ul class="compare-list">
             <li>{text(lang, '원단이 힘이 있고 도톰하여 완벽한 드레스 실루엣을 오랫동안 유지해 줍니다.', 'Substantial body and structured drape that keeps tailored silhouettes intact.')}</li>
