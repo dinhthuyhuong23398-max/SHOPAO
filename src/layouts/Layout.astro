@@ -76,10 +76,7 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
           },
           "image": "https://michellestore.com/brand/michelle-logo.png",
           "description": text(lang, "미셸의 디자인과 프리미엄 수저우·루비 실크로 제작하는 1:1 사이즈 맞춤 실크 컬렉션.", "Bespoke silk collection crafted in premium synthetic-blend fabric from the Suzhou and Ruby ranges. Made to your unique measurements."),
-          "sameAs": [
-            `https://www.instagram.com/${settings.instagram}/`,
-            `https://www.threads.com/@${settings.threads}`
-          ],
+          "sameAs": [settings.kakao],
           "priceRange": "$$$$"
         },
         {
@@ -137,16 +134,13 @@ const ogImageUrl = new URL(sitePath('/brand/michelle-logo.png'), siteOrigin).toS
     <main id="main"><slot /></main>
     <footer class="site-footer">
       <div class="footer-top"><div><span class="eyebrow light">MICHELLE STORE</span><p class="footer-statement">Made for <em>you.</em></p></div><div class="footer-message"><p>{text(lang,'미셸의 디자인, 내가 고른 컬러.\n내 치수에 맞춰 제작하는 한 벌.','Michelle’s designs. Your chosen color.\nMade to your measurements.')}</p><div class="footer-social-links">
-          <a class="social-logo-link" href={`https://www.instagram.com/${settings.instagram}/`} target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
-            <svg class="social-icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
-          </a>
-          <a class="social-logo-link threads-logo" href={`https://www.threads.com/@${settings.threads}`} target="_blank" rel="noopener noreferrer" aria-label="Threads" title="Threads">
-            <svg class="social-icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2zm1.196 4.279c-2.38 0-4.086 1.637-4.086 3.921 0 2.457 1.83 4.025 4.316 4.025 1.488 0 2.808-.592 3.587-1.611l-1.393-.974c-.53.649-1.336 1.01-2.194 1.01-1.458 0-2.528-.888-2.553-2.316h6.398c.041-.219.062-.444.062-.676 0-2.094-1.516-3.379-4.137-3.379z"/></svg>
+          <a class="social-logo-link kakao-logo-link" href={settings.kakao} target="_blank" rel="noopener noreferrer" aria-label="KakaoTalk" title="KakaoTalk">
+            <svg class="social-icon-svg kakao-icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 3C6.477 3 2 6.58 2 11c0 2.85 1.87 5.35 4.7 6.78L5.5 22l5.1-3.2c.46.07.93.1 1.4.1 5.523 0 10-3.58 10-8S17.523 3 12 3z"/></svg>
           </a>
         </div></div></div>
       <div class="footer-bottom"><span>© {new Date().getFullYear()} Michelle Store</span><span>{text(lang,'사이즈 맞춤 제작 · 최종 가격은 상담 후 안내','Made to measure · Final pricing confirmed in consultation')}</span><a href={sitePath(`/${lang}/privacy/`)}>{text(lang,'저장 정보 안내','Your saved information')}</a></div>
     </footer>
-    <FloatingWidgets lang={lang} instagram={settings.instagram} sheetId={settings.sheetId} orderApiUrl={settings.orderApiUrl} client:load />
+    <FloatingWidgets lang={lang} kakaoUrl={settings.kakao} sheetId={settings.sheetId} orderApiUrl={settings.orderApiUrl} client:load />
     <script>
       import {CART_KEY,parseCart} from '../lib/shop';
       function updateCount(){
