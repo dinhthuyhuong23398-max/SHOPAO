@@ -348,7 +348,7 @@ export default function FloatingWidgets({
           aria-label={text(lang, '카카오톡 상담', 'Chat on KakaoTalk')}
         >
           <span className="floating-tooltip">
-            {text(lang, '카카오톡 @' + kakaoUrl, 'KakaoTalk @' + kakaoUrl)}
+            {text(lang, '카카오톡으로 문의하기', 'Contact us on KakaoTalk')}
           </span>
           <svg className="kakao-logo-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.477 3 2 6.58 2 11c0 2.85 1.87 5.35 4.7 6.78L5.5 22l5.1-3.2c.46.07.93.1 1.4.1 5.523 0 10-3.58 10-8S17.523 3 12 3z"/></svg>
         </a>
@@ -426,7 +426,7 @@ export default function FloatingWidgets({
                 <div className="tracking-notice warning">
                   <p>{trackingError}</p>
                   <a
-                    href={`https://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-`}
+                    href={`http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button secondary small-btn"
@@ -570,7 +570,7 @@ export default function FloatingWidgets({
                   </p>
                   <div className="success-actions">
                     <a
-                      href={`https://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-`}
+                      href={`http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="button primary full-width"
