@@ -1,9 +1,8 @@
 {
-  "instagram": "michelle1998kr",
-  "threads": "michelle1998kr",
   "currency": "KRW",
   "defaultLocale": "ko",
   "brand": "Michelle Store",
   "sheetId": "1E2ywyOPViJ73f5JrSzYRDQcQNaHOD5FrvCwHojrSb1s",
-  "orderApiUrl": ""
+  "orderApiUrl": "",
+  "kakao": "http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-"
 }
