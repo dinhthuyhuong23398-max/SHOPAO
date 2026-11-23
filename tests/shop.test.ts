@@ -3,7 +3,7 @@ import {addItem,parseCart,decodeRecovery,encodeRecovery,buildProposal,resolveIte
 import type {Cart,Catalog,Selection,Measurements} from '../src/lib/types';
 const item:Selection={id:'a',designId:'ML-01',fabricId:'suzhou',colorId:'04',quantity:1,note:'기장 조절 가능할까요?'};
 const cart:Cart={version:1,items:[item]};
-const catalog:Catalog={instagram:'michelle1998kr',fabrics:[{id:'suzhou',name:{ko:'수저우',en:'Suzhou'},description:{ko:'설명',en:'Description'},charts:[],colors:[{id:'04',code:'04',name:{ko:'아이보리',en:'Ivory'},hex:'#eeeeee'}]},{id:'ruby',name:{ko:'루비',en:'Ruby'},description:{ko:'설명',en:'Description'},charts:[],colors:[]}],designs:[{id:'ML-01',slug:'dress',category:'dress',name:{ko:'드레스',en:'Dress'},description:{ko:'설명',en:'Description'},image:'assets/designs/dress.jpg',imageUrl:'/dress.webp',thumbnailUrl:'/dress.webp',published:true,featured:true,order:1,priceMin:null,priceMax:null,fabrics:['suzhou','ruby'],reviews:[]}]};
+const catalog:Catalog={kakao:'http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-',fabrics:[{id:'suzhou',name:{ko:'수저우',en:'Suzhou'},description:{ko:'설명',en:'Description'},charts:[],colors:[{id:'04',code:'04',name:{ko:'아이보리',en:'Ivory'},hex:'#eeeeee'}]},{id:'ruby',name:{ko:'루비',en:'Ruby'},description:{ko:'설명',en:'Description'},charts:[],colors:[]}],designs:[{id:'ML-01',slug:'dress',category:'dress',name:{ko:'드레스',en:'Dress'},description:{ko:'설명',en:'Description'},image:'assets/designs/dress.jpg',imageUrl:'/dress.webp',thumbnailUrl:'/dress.webp',published:true,featured:true,order:1,priceMin:null,priceMax:null,fabrics:['suzhou','ruby'],reviews:[]}]};
 const measurements:Measurements={chest:90,waist:70,hips:96,height:168,weight:58};
 
 describe('selection lifecycle',()=>{
