@@ -3,7 +3,7 @@ import { layoutProposal, PAGE, proposalDocument, wrapText, type ProposalInput } 
 import type { Catalog, Selection } from '../src/lib/types';
 
 const catalog: Catalog = {
-  instagram: 'michelle1998kr',
+  kakao: 'http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-',
   designs: [{ id: 'ML-01', slug: 'dress', category: 'dress', name: { ko: '드레스', en: 'Dress' }, description: { ko: '설명', en: 'Description' }, image: 'assets/designs/dress.jpg', imageUrl: '/dress.webp', thumbnailUrl: '/dress-small.webp', priceMin: null, priceMax: null, published: true, featured: true, order: 1, fabrics: ['suzhou', 'ruby'], reviews: [] }],
   fabrics: [
     { id: 'suzhou', name: { ko: '수저우', en: 'Suzhou' }, description: { ko: '설명', en: 'Description' }, charts: [], colors: [
