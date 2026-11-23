@@ -341,7 +341,7 @@ export default function FloatingWidgets({
       <aside className="floating-action-dock" aria-label="Quick Actions">
         {/* Button 1: KakaoTalk */}
         <a
-          href={`http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-`}
+          href={kakaoUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="floating-btn floating-btn-kakao"
@@ -426,7 +426,7 @@ export default function FloatingWidgets({
                 <div className="tracking-notice warning">
                   <p>{trackingError}</p>
                   <a
-                    href={`http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-`}
+                    href={kakaoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button secondary small-btn"
@@ -570,7 +570,7 @@ export default function FloatingWidgets({
                   </p>
                   <div className="success-actions">
                     <a
-                      href={`http://qr.kakao.com/talk/E40GykPMudmlMfg.KH2yVKrSgYw-`}
+                      href={kakaoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="button primary full-width"
