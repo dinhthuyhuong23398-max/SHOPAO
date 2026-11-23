@@ -20,7 +20,7 @@ const designSchema = z.object({
   }, 'Use an Instagram or Threads HTTPS URL') })).default([]),
   gallery: z.array(imagePath).optional().default([]),
 }).refine(d => (d.priceMin === null && d.priceMax === null) || (d.priceMin !== null && d.priceMax !== null && d.priceMin <= d.priceMax), 'Provide both price bounds, in ascending order');
-export const settings = z.object({ kakao: z.string().url(), currency: z.literal('KRW'), defaultLocale: z.literal('ko'), brand: z.string(), sheetId: z.string().optional(), orderApiUrl: z.string().optional() }).parse(settingsData);
+export const settings = z.object({ kakao: z.string().url(), instagram: z.string().regex(/^[A-Za-z0-9_.]+$/), threads: z.string().regex(/^[A-Za-z0-9_.]+$/), currency: z.literal('KRW'), defaultLocale: z.literal('ko'), brand: z.string(), sheetId: z.string().optional(), orderApiUrl: z.string().optional() }).parse(settingsData);
 export const fabrics: Fabric[] = z.array(z.object({ id: fabricId, name: localized, description: localized, charts: z.array(imagePath), colors: z.array(z.object({ id: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).refine(id=>id!=='consult', 'consult is reserved for consultation'), code: z.string(), name: localized, hex: z.string().regex(/^#[a-fA-F0-9]{6}$/) })) })).parse(fabricData);
 const records = import.meta.glob('../content/designs/*.json', { eager: true, import: 'default' });
 export const designs: Design[] = Object.values(records).map(value => designSchema.parse(value)).filter(d => d.published).sort((a,b) => a.order - b.order);
