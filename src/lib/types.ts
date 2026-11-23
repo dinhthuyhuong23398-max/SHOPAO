@@ -11,7 +11,7 @@ export interface Design {
   gallery?: string[];
 }
 export interface Product extends Design { imageUrl: string; thumbnailUrl: string; galleryUrls?: string[]; }
-export interface Catalog { designs: Product[]; fabrics: Fabric[]; instagram: string }
+export interface Catalog { designs: Product[]; fabrics: Fabric[]; kakao: string }
 export interface Selection {
   id: string; designId: string; colorId: string; fabricId: FabricId; quantity: number; note: string;
 }
