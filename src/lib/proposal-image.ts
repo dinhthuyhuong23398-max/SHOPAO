@@ -115,7 +115,7 @@ export async function proposalImages(input: ProposalInput): Promise<ProposalImag
       }
       line(ctx, text(input.lang, '사진은 디자인 참고용이며, 옆의 컬러칩이 선택하신 색상입니다.', 'Photos show the design. The separate swatch shows your selected color.'), PAGE.left, 1296, 19, COLORS.muted);
       line(ctx, text(input.lang, '화면 색상은 참고용입니다. 최종 가격과 제작 가능 여부는 상담 후 확정됩니다.', 'Screen colors are approximate. Final pricing and availability require confirmation.'), PAGE.left, 1328, 19, COLORS.muted);
-      line(ctx, `@${input.catalog.instagram}`, PAGE.left, 1391, 18, COLORS.muted);
+      line(ctx, 'KakaoTalk', PAGE.left, 1391, 18, COLORS.muted);
       ctx.textAlign = 'right'; line(ctx, `${index + 1} / ${pages.length}`, PAGE.width - PAGE.left, 1391, 18, COLORS.muted); ctx.textAlign = 'left';
       const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Export failed')), 'image/png'));
       results.push({ url: URL.createObjectURL(blob), filename: `michelle-proposal-${index + 1}-of-${pages.length}.png` });
